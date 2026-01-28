@@ -116,6 +116,111 @@
         "padding-block-end": 15
       }
     },
+    "header_announcements_marquee_8eHfJB": {
+      "type": "header-announcements-marquee",
+      "blocks": {
+        "announcement_wXQx6r": {
+          "type": "_announcement",
+          "settings": {
+            "text": "24x7 Extensive Customer Support",
+            "link": "",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "announcement_TQtW6p": {
+          "type": "_announcement",
+          "name": "t:names.announcement",
+          "settings": {
+            "text": "Free Shipping World Wide",
+            "link": "",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.75rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "announcement_FH7rH9": {
+          "type": "_announcement",
+          "name": "t:names.announcement",
+          "settings": {
+            "text": "Secret Deals: TOT 30% Korting",
+            "link": "",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.75rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "announcement_WhrizJ": {
+          "type": "_announcement",
+          "name": "t:names.announcement",
+          "settings": {
+            "text": "Get 20% Off on All Cosmetic Cream Packs",
+            "link": "",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.75rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "announcement_XtyAjM": {
+          "type": "_announcement",
+          "name": "t:names.announcement",
+          "settings": {
+            "text": "100% Original & Organic",
+            "link": "",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.75rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "announcement_VzRTe3": {
+          "type": "_announcement",
+          "name": "t:names.announcement",
+          "settings": {
+            "text": "24x7 Extensive Customer Support",
+            "link": "",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.75rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "announcement_wXQx6r",
+        "announcement_TQtW6p",
+        "announcement_FH7rH9",
+        "announcement_WhrizJ",
+        "announcement_XtyAjM",
+        "announcement_VzRTe3"
+      ],
+      "name": "Announcement bar - v2",
+      "settings": {
+        "speed": 5,
+        "section_width": "page-width",
+        "color_scheme": "scheme-2",
+        "divider_width": 0,
+        "padding-block-start": 15,
+        "padding-block-end": 15
+      }
+    },
     "header_section": {
       "type": "header",
       "blocks": {
@@ -188,6 +293,7 @@
   },
   "order": [
     "header_announcements_9jGBFp",
+    "header_announcements_marquee_8eHfJB",
     "header_section"
   ]
 }
