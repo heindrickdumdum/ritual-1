@@ -1,0 +1,27 @@
+.tw-flex {
+  display: flex
+}
+
+.tw-flex-1 {
+  flex: 1 1 0%
+}
+
+.tw-items-center {
+  align-items: center
+}
+
+.tw-gap-6 {
+  gap: 1.5rem
+}
+
+.tw-border-r-\[1px\] {
+  border-right-width: 1px
+}
+
+.tw-pr-6 {
+  padding-right: 1.5rem
+}
+
+.tw-pr-8 {
+  padding-right: 2rem
+}
