@@ -106,6 +106,7 @@
         "announcement_gQiRHT",
         "announcement_qYR4L7"
       ],
+      "disabled": true,
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,
@@ -139,7 +140,7 @@
             "text": "Free Shipping World Wide",
             "link": "",
             "font": "var(--font-subheading--family)",
-            "font_size": "0.75rem",
+            "font_size": "1rem",
             "weight": "",
             "letter_spacing": "normal",
             "case": "none"
@@ -153,7 +154,7 @@
             "text": "Secret Deals: TOT 30% Korting",
             "link": "",
             "font": "var(--font-subheading--family)",
-            "font_size": "0.75rem",
+            "font_size": "1rem",
             "weight": "",
             "letter_spacing": "normal",
             "case": "none"
@@ -167,7 +168,7 @@
             "text": "Get 20% Off on All Cosmetic Cream Packs",
             "link": "",
             "font": "var(--font-subheading--family)",
-            "font_size": "0.75rem",
+            "font_size": "1rem",
             "weight": "",
             "letter_spacing": "normal",
             "case": "none"
@@ -181,7 +182,7 @@
             "text": "100% Original & Organic",
             "link": "",
             "font": "var(--font-subheading--family)",
-            "font_size": "0.75rem",
+            "font_size": "1rem",
             "weight": "",
             "letter_spacing": "normal",
             "case": "none"
@@ -195,7 +196,7 @@
             "text": "24x7 Extensive Customer Support",
             "link": "",
             "font": "var(--font-subheading--family)",
-            "font_size": "0.75rem",
+            "font_size": "1rem",
             "weight": "",
             "letter_spacing": "normal",
             "case": "none"
