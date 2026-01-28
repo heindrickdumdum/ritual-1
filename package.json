@@ -1,0 +1,12 @@
+{
+  "name": "ritual-shopify-theme",
+  "version": "1.0.0",
+  "description": "Shopify theme with Tailwind CSS",
+  "scripts": {
+    "dev": "tailwindcss -i ./styles/tailwind.css -o ./assets/tailwind.css --watch",
+    "build": "tailwindcss -i ./styles/tailwind.css -o ./assets/tailwind.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
