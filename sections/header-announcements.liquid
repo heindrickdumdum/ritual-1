@@ -1,4 +1,12 @@
 
+<style>
+  .announcement-bar-side {
+    border-color: var(--color-foreground);
+    color: var(--color-foreground);
+    border-right-style: solid;
+  }
+</style>
+
 
 {% if section.blocks.size > 1 %}
   <script
@@ -22,8 +30,7 @@
     endif
   %}
   <div class="tw-flex tw-gap-6 tw-items-center">
-    <span class="tw-border-r-[1px] tw-pr-6">Why Ritual1 - Test</span>
-    <announcement-bar-component
+    <span class="announcement-bar-side tw-border-r-[1px] tw-border-white tw-border-r-solid tw-pr-6">Why Ritual1</span>  <announcement-bar-component
       class="announcement-bar__slider tw-flex-1"
       {% if autoplay == true %}
         autoplay="{{ section.settings.speed }}" aria-live="polite"
