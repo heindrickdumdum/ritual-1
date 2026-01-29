@@ -36,6 +36,13 @@
     border: 1px solid rgba(var(--color-foreground), 0.1);
     box-shadow: 0px 4px 8px rgba(227, 227, 222, 0.2);
     border-radius: 20px;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .featured-card__link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
   }
 
   #shopify-section-{{ section.id }} .featured-card:hover {
@@ -100,15 +107,28 @@ border-radius: 9999px;
     <div class="featured-cards">
       <div class="featured-cards__grid">
         {%- for block in section.blocks -%}
-          <div class="featured-card" {{ block.shopify_attributes }}>
+          {%- liquid
+            assign card_id = 'featured-card-' | append: block.id
+          -%}
+          <article class="featured-card" {{ block.shopify_attributes }}>
+            {%- if block.settings.link != blank -%}
+              <a 
+                href="{{ block.settings.link }}" 
+                class="featured-card__link"
+                aria-labelledby="{{ card_id }}"
+              >
+                <span class="visually-hidden">{{ block.settings.title }}</span>
+              </a>
+            {%- endif -%}
+            
             {%- if block.settings.icon != blank -%}
-              <div class="featured-card__icon">
+              <div class="featured-card__icon" aria-hidden="true">
                 {{ block.settings.icon }}
               </div>
             {%- endif -%}
             
             {%- if block.settings.title != blank -%}
-              <h3 class="featured-card__title">{{ block.settings.title }}</h3>
+              <h3 class="featured-card__title" id="{{ card_id }}">{{ block.settings.title }}</h3>
             {%- endif -%}
             
             {%- if block.settings.description != blank -%}
@@ -116,7 +136,7 @@ border-radius: 9999px;
                 {{ block.settings.description }}
               </div>
             {%- endif -%}
-          </div>
+          </article>
         {%- endfor -%}
       </div>
     </div>
@@ -240,6 +260,11 @@ border-radius: 9999px;
           "type": "textarea",
           "id": "description",
           "label": "Description"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
         }
       ]
     }
