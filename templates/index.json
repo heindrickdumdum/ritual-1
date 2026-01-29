@@ -221,7 +221,52 @@
       "name": "Why Choose",
       "settings": {
         "title": "Why Choose Ritual1",
+        "highlight_word": "Ritual1",
+        "highlight_color": "#4a9b8e",
         "description": "We combine medical expertise with personalized care to deliver results you can trust",
+        "section_width": "page-width",
+        "color_scheme": "",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "how_it_works_mYkb9q": {
+      "type": "how-it-works",
+      "blocks": {
+        "step_fGEM4p": {
+          "type": "step",
+          "settings": {
+            "label": "Step 1",
+            "title": "Tell Us About Yourself",
+            "description": "Complete a short consultation form about your health goals and medical history"
+          }
+        },
+        "step_8XtrHf": {
+          "type": "step",
+          "settings": {
+            "label": "Step 2",
+            "title": "Review by Medical Team",
+            "description": "Licensed healthcare providers review your information and create a personalized plan"
+          }
+        },
+        "step_iDxwiV": {
+          "type": "step",
+          "settings": {
+            "label": "Step 3",
+            "title": "Delivered to Your Door",
+            "description": "Receive your treatment discreetly with ongoing support from our care team"
+          }
+        }
+      },
+      "block_order": [
+        "step_fGEM4p",
+        "step_8XtrHf",
+        "step_iDxwiV"
+      ],
+      "name": "How It Works",
+      "settings": {
+        "title": "How It Works",
+        "description": "Simple steps to personalized wellness solutions",
         "section_width": "page-width",
         "color_scheme": "",
         "padding-block-start": 48,
@@ -232,6 +277,7 @@
   "order": [
     "hero_jVaWmY",
     "featured_cards_Urq7eN",
-    "why_choose_iTHzJJ"
+    "why_choose_iTHzJJ",
+    "how_it_works_mYkb9q"
   ]
 }
