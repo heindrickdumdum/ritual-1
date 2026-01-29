@@ -164,11 +164,10 @@
         "title": "",
         "subheading": "",
         "heading_size": "h3",
-        "background": "#f7f7f4",
-        "background_gradient": "",
-        "divider": false,
-        "padding_top": 36,
-        "padding_bottom": 100
+        "section_width": "page-width",
+        "color_scheme": "",
+        "padding-block-start": 0,
+        "padding-block-end": 100
       }
     },
     "product_list_fa6P9H": {
