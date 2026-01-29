@@ -1,4 +1,10 @@
-
+<style>
+  #shopify-section-{{ section.id }} .section {
+    --padding-block-start: {{ section.settings.padding-block-start }}rem;
+    --padding-block-end: {{ section.settings.padding-block-end }}rem;
+  }
+  
+</style>
 
 {% liquid
   assign media_count = 0
@@ -495,7 +501,6 @@
 
   <div
     class="hero__container spacing-style section section--full-width"
-    style="{% render 'spacing-style', settings: section.settings %}"
   >
     {%- if section.settings.link != blank -%}
       <a
