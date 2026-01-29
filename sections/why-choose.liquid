@@ -1,0 +1,381 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding-block-start }}px;
+    --section-padding-bottom: {{ section.settings.padding-block-end }}px;
+  }
+
+  #shopify-section-{{ section.id }} .section {
+    padding-top: var(--section-padding-top);
+    padding-bottom: var(--section-padding-bottom);
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-header__title {
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 0 0 1rem;
+    color: rgb(var(--color-foreground));
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-header__description {
+    font-size: 1rem;
+    color: rgba(var(--color-foreground), 0.7);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 989px) {
+    #shopify-section-{{ section.id }} .why-choose-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-card {
+    background: #F7F7F5;
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-card--large {
+    grid-row: span 2;
+  }
+
+  @media (max-width: 989px) {
+    #shopify-section-{{ section.id }} .why-choose-card--large {
+      grid-row: span 1;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-card__link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-card__content {
+    margin-bottom: 1.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-card__title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0 0 0.75rem;
+    color: rgb(var(--color-foreground));
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-card__description {
+    font-size: 0.875rem;
+    color: rgba(var(--color-foreground), 0.7);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-card__image {
+    width: 100%;
+    height: 250px;
+    background: #E5E5E0;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: auto;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-card--large .why-choose-card__image {
+    height: 350px;
+  }
+
+  @media (max-width: 989px) {
+    #shopify-section-{{ section.id }} .why-choose-card--large .why-choose-card__image {
+      height: 250px;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-testimonial {
+    background: #F7F7F5;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    font-style: italic;
+    margin-top: 1.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-testimonial__quote {
+    font-size: 1rem;
+    color: rgb(var(--color-foreground));
+    line-height: 1.6;
+    margin: 0 0 1rem;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-testimonial__author {
+    font-size: 0.875rem;
+    color: rgba(var(--color-foreground), 0.6);
+    font-style: normal;
+  }
+{%- endstyle -%}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}">
+  <div class="container">
+    {%- if section.settings.title != blank or section.settings.description != blank -%}
+      <div class="why-choose-header">
+        {%- if section.settings.title != blank -%}
+          <h2 class="why-choose-header__title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        
+        {%- if section.settings.description != blank -%}
+          <p class="why-choose-header__description">{{ section.settings.description }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="why-choose-grid">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'feature_card' -%}
+            {%- liquid
+              assign card_id = 'why-choose-card-' | append: block.id
+            -%}
+            <article 
+              class="why-choose-card{% if block.settings.large_card %} why-choose-card--large{% endif %}" 
+              {{ block.shopify_attributes }}
+            >
+              {%- if block.settings.link != blank -%}
+                <a 
+                  href="{{ block.settings.link }}" 
+                  class="why-choose-card__link"
+                  aria-labelledby="{{ card_id }}"
+                >
+                  <span class="visually-hidden">{{ block.settings.title }}</span>
+                </a>
+              {%- endif -%}
+
+              <div class="why-choose-card__content">
+                {%- if block.settings.title != blank -%}
+                  <h3 class="why-choose-card__title" id="{{ card_id }}">
+                    {{ block.settings.title }}
+                  </h3>
+                {%- endif -%}
+                
+                {%- if block.settings.description != blank -%}
+                  <p class="why-choose-card__description">
+                    {{ block.settings.description }}
+                  </p>
+                {%- endif -%}
+              </div>
+
+              {%- if block.settings.image != blank -%}
+                <div class="why-choose-card__image">
+                  {{
+                    block.settings.image
+                    | image_url: width: 800
+                    | image_tag:
+                      loading: 'lazy',
+                      width: block.settings.image.width,
+                      height: block.settings.image.height,
+                      alt: block.settings.image.alt
+                  }}
+                </div>
+              {%- else -%}
+                <div class="why-choose-card__image"></div>
+              {%- endif -%}
+            </article>
+
+          {%- when 'testimonial' -%}
+            <div class="why-choose-testimonial" {{ block.shopify_attributes }}>
+              {%- if block.settings.quote != blank -%}
+                <blockquote class="why-choose-testimonial__quote">
+                  "{{ block.settings.quote }}"
+                </blockquote>
+              {%- endif -%}
+              
+              {%- if block.settings.author != blank -%}
+                <cite class="why-choose-testimonial__author">
+                  {{ block.settings.author }}
+                </cite>
+              {%- endif -%}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Why Choose",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Why Choose Ritual1"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "We combine medical expertise with personalized care to deliver results you can trust"
+    },
+    {
+      "type": "header",
+      "content": "t:content.section_layout"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_card",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Feature description text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "large_card",
+          "label": "Large card (spans 2 rows)",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "If I had to sum up my experience, I would use the word transformational."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "Yves, a Ritual1 patient"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Choose",
+      "blocks": [
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "Treatment that comes to you",
+            "description": "Skip the trip to your doctor's office and the line at your local pharmacy. Access treatment on any device, plus free shipping on all medication.",
+            "large_card": true
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "Clinically proven treatments",
+            "description": "Access prescription medications, supported by science and supported by our experienced healthcare practitioners."
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "Truly compassionate care",
+            "description": "No judgment, no stigma. Instead, a practitioner who's there for you when you need them."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "If I had to sum up my experience, I would use the word transformational.",
+            "author": "Yves, a Ritual1 patient"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
