@@ -272,12 +272,102 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "before_after_cards_N73PB4": {
+      "type": "before-after-cards",
+      "blocks": {
+        "testimonial_card_wyDHcj": {
+          "type": "testimonial_card",
+          "settings": {
+            "title": "Lina's Transformation",
+            "treatment": "Clear Complexion",
+            "duration": "4 months"
+          }
+        },
+        "testimonial_card_ARGkxJ": {
+          "type": "testimonial_card",
+          "settings": {
+            "title": "Tom's Revival",
+            "treatment": "Hydration Boost",
+            "duration": "3 months"
+          }
+        },
+        "testimonial_card_T6zUEq": {
+          "type": "testimonial_card",
+          "settings": {
+            "title": "Sophia's Renewal",
+            "treatment": "Radiant Glow",
+            "duration": "5 months"
+          }
+        },
+        "testimonial_card_4KkhKL": {
+          "type": "testimonial_card",
+          "settings": {
+            "title": "Jake's Clarity",
+            "treatment": "Pore Refinement",
+            "duration": "6 months"
+          }
+        },
+        "testimonial_card_tkeYQH": {
+          "type": "testimonial_card",
+          "settings": {
+            "title": "Customer's Story",
+            "treatment": "Treatment name",
+            "duration": "3 months"
+          }
+        },
+        "testimonial_card_i9UjHp": {
+          "type": "testimonial_card",
+          "settings": {
+            "title": "Customer's Story",
+            "treatment": "Treatment name",
+            "duration": "3 months"
+          }
+        },
+        "testimonial_card_L6e8FE": {
+          "type": "testimonial_card",
+          "settings": {
+            "title": "Customer's Story",
+            "treatment": "Treatment name",
+            "duration": "3 months"
+          }
+        },
+        "testimonial_card_EX8qk7": {
+          "type": "testimonial_card",
+          "settings": {
+            "title": "Customer's Story",
+            "treatment": "Treatment name",
+            "duration": "3 months"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_card_wyDHcj",
+        "testimonial_card_ARGkxJ",
+        "testimonial_card_T6zUEq",
+        "testimonial_card_4KkhKL",
+        "testimonial_card_tkeYQH",
+        "testimonial_card_i9UjHp",
+        "testimonial_card_L6e8FE",
+        "testimonial_card_EX8qk7"
+      ],
+      "name": "Before After Cards",
+      "settings": {
+        "title": "Results You'll Love - Here's the Proof",
+        "button_text": "Start Your Free Consultation",
+        "button_url": "",
+        "section_width": "page-width",
+        "color_scheme": "",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
     "featured_cards_Urq7eN",
     "why_choose_iTHzJJ",
-    "how_it_works_mYkb9q"
+    "how_it_works_mYkb9q",
+    "before_after_cards_N73PB4"
   ]
 }
