@@ -355,8 +355,8 @@
       "settings": {
         "title": "Results You'll Love - Here's the Proof",
         "button_text": "Start Your Free Consultation",
-        "button_url": "",
-        "section_width": "page-width",
+        "button_url": "shopify://collections",
+        "section_width": "full-width",
         "color_scheme": "",
         "padding-block-start": 48,
         "padding-block-end": 48
