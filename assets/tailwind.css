@@ -6,10 +6,6 @@
   flex: 1 1 0%
 }
 
-.tw-flex-shrink-0 {
-  flex-shrink: 0
-}
-
 .tw-items-center {
   align-items: center
 }
@@ -18,24 +14,8 @@
   gap: 1.5rem
 }
 
-.tw-overflow-hidden {
-  overflow: hidden
-}
-
-.tw-whitespace-nowrap {
-  white-space: nowrap
-}
-
 .tw-border-r-\[1px\] {
   border-right-width: 1px
-}
-
-.tw-border-solid {
-  border-style: solid
-}
-
-.tw-border-none {
-  border-style: none
 }
 
 .tw-border-white {
@@ -43,20 +23,11 @@
   border-color: rgb(255 255 255 / var(--tw-border-opacity, 1))
 }
 
-.tw-pr-6 {
+.tw-px-6 {
+  padding-left: 1.5rem;
   padding-right: 1.5rem
 }
 
-.tw-text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem
-}
-
-.tw-uppercase {
-  text-transform: uppercase
-}
-
-.tw-text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+.tw-pr-6 {
+  padding-right: 1.5rem
 }
