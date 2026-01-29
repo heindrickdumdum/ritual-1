@@ -21,6 +21,10 @@
     color: rgb(var(--color-foreground));
   }
 
+  #shopify-section-{{ section.id }} .why-choose-header__title .highlight {
+    color: {{ section.settings.highlight_color }};
+  }
+
   #shopify-section-{{ section.id }} .why-choose-header__description {
     font-size: 1rem;
     color: rgba(var(--color-foreground), 0.7);
@@ -137,7 +141,20 @@
     {%- if section.settings.title != blank or section.settings.description != blank -%}
       <div class="why-choose-header">
         {%- if section.settings.title != blank -%}
-          <h2 class="why-choose-header__title">{{ section.settings.title }}</h2>
+          <h2 class="why-choose-header__title">
+            {%- liquid
+              if section.settings.highlight_word != blank
+                assign title_parts = section.settings.title | split: section.settings.highlight_word
+                echo title_parts[0]
+                echo '<span class="highlight">'
+                echo section.settings.highlight_word
+                echo '</span>'
+                echo title_parts[1]
+              else
+                echo section.settings.title
+              endif
+            -%}
+          </h2>
         {%- endif -%}
         
         {%- if section.settings.description != blank -%}
@@ -228,6 +245,19 @@
       "id": "title",
       "label": "Heading",
       "default": "Why Choose Ritual1"
+    },
+    {
+      "type": "text",
+      "id": "highlight_word",
+      "label": "Highlight word",
+      "info": "Enter a word from the heading to highlight with a custom color",
+      "default": "Ritual1"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight color",
+      "default": "#4A9B8E"
     },
     {
       "type": "textarea",
