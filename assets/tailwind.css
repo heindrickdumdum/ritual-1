@@ -1,5 +1,31 @@
+.tw-relative {
+  position: relative
+}
+
+.tw-mx-auto {
+  margin-left: auto;
+  margin-right: auto
+}
+
+.tw-my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem
+}
+
+.tw-mt-8 {
+  margin-top: 2rem
+}
+
 .tw-flex {
   display: flex
+}
+
+.tw-w-full {
+  width: 100%
+}
+
+.tw-max-w-\[1360px\] {
+  max-width: 1360px
 }
 
 .tw-flex-1 {
@@ -38,6 +64,11 @@
 .tw-px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem
+}
+
+.tw-py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem
 }
 
 .tw-pr-6 {

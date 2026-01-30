@@ -147,6 +147,9 @@
   #shopify-section-{{ section.id }} .before-after-carousel__nav:disabled {
     opacity: 0.3;
     cursor: not-allowed;
+    background: #F7F7F4;
+    border: 1px solid #D5D7DA;
+    color: #181D27;
   }
 
   #shopify-section-{{ section.id }} .before-after-carousel__nav--prev {
@@ -167,13 +170,14 @@
     background: #E5E5E0;
     border-radius: 1px;
     overflow: hidden;
-    max-width: 300px;
-    margin: 0 auto 2rem;
+    max-width: 1192px;
+    /* margin: 0 auto 2rem; */
+    margin: 0 auto;
   }
 
   #shopify-section-{{ section.id }} .before-after-carousel__progress-bar {
     height: 100%;
-    background: rgb(var(--color-foreground));
+    background: #181D27;
     transition: width 0.3s ease;
   }
 
@@ -268,20 +272,24 @@
         </div>
       </div>
 
-      <button class="before-after-carousel__nav before-after-carousel__nav--prev" data-carousel-prev aria-label="Previous">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
+      <div class="tw-py-8">
+        <div class="tw-flex tw-items-center tw-relative tw-mt-8 tw-max-w-[1360px] tw-mx-auto">
+        <button class="before-after-carousel__nav before-after-carousel__nav--prev" data-carousel-prev aria-label="Previous">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
 
-      <button class="before-after-carousel__nav before-after-carousel__nav--next" data-carousel-next aria-label="Next">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
+        <button class="before-after-carousel__nav before-after-carousel__nav--next" data-carousel-next aria-label="Next">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
 
-      <div class="before-after-carousel__progress">
-        <div class="before-after-carousel__progress-bar" data-carousel-progress></div>
+        <div class="before-after-carousel__progress tw-w-full">
+          <div class="before-after-carousel__progress-bar" data-carousel-progress></div>
+        </div>
+      </div>
       </div>
     </div>
 
