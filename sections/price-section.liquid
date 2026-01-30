@@ -1,0 +1,457 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-background: {{ section.settings.background_color }};
+    --card-background: {{ section.settings.card_background }};
+    --button-background: {{ section.settings.button_color }};
+    --text-color: {{ section.settings.text_color }};
+    --price-color: {{ section.settings.price_color }};
+  }
+{%- endstyle -%}
+
+<div class="section--padding" style="background-color: var(--section-background);">
+  <div class="container">
+    <div class="price-section__wrapper">
+      {%- comment -%} Left Content {%- endcomment -%}
+      <div class="price-section__content">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="price-section__heading">
+            {{ section.settings.heading }}
+          </h2>
+        {%- endif -%}
+
+        {%- if section.settings.description != blank -%}
+          <div class="price-section__description">
+            {{ section.settings.description }}
+          </div>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <ul class="price-section__features">
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when 'feature' -%}
+                  <li class="price-section__feature" {{ block.shopify_attributes }}>
+                    <svg class="price-section__checkmark" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path d="M16.6667 5L7.5 14.1667L3.33334 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>{{ block.settings.text }}</span>
+                  </li>
+              {%- endcase -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- if section.settings.show_trust_badge -%}
+          <div class="price-section__trust">
+            <div class="price-section__avatars">
+              {%- if section.settings.avatar_1 != blank -%}
+                <img src="{{ section.settings.avatar_1 | image_url: width: 48 }}" alt="" width="48" height="48" loading="lazy">
+              {%- endif -%}
+              {%- if section.settings.avatar_2 != blank -%}
+                <img src="{{ section.settings.avatar_2 | image_url: width: 48 }}" alt="" width="48" height="48" loading="lazy">
+              {%- endif -%}
+              {%- if section.settings.avatar_3 != blank -%}
+                <img src="{{ section.settings.avatar_3 | image_url: width: 48 }}" alt="" width="48" height="48" loading="lazy">
+              {%- endif -%}
+            </div>
+            <p class="price-section__trust-text">{{ section.settings.trust_text }}</p>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Right Pricing Card {%- endcomment -%}
+      <div class="price-section__card">
+        <div class="price-section__pricing">
+          {%- if section.settings.original_price != blank -%}
+            <span class="price-section__original-price">{{ section.settings.original_price }}</span>
+          {%- endif -%}
+          {%- if section.settings.price != blank -%}
+            <div class="price-section__price">{{ section.settings.price }}</div>
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.card_features != blank -%}
+          <ul class="price-section__card-features">
+            {%- assign card_features = section.settings.card_features | newline_to_br | split: '<br />' -%}
+            {%- for feature in card_features -%}
+              {%- if feature != blank -%}
+                <li class="price-section__card-feature">
+                  <svg class="price-section__checkmark" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M16.6667 5L7.5 14.1667L3.33334 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span>{{ feature }}</span>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- if section.settings.button_text != blank -%}
+          <a href="{{ section.settings.button_link }}" class="price-section__button">
+            {{ section.settings.button_text }}
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.show_payment_icons -%}
+          <div class="price-section__payment-icons">
+            <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/0169695890db3db16bfe.svg" alt="PayPal" width="50" height="32" loading="lazy">
+            <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/37fc65d0a1b853b0bf9e.svg" alt="Visa" width="50" height="32" loading="lazy">
+            <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/ae9ceec48b1dc489596c.svg" alt="Mastercard" width="50" height="32" loading="lazy">
+            <img src="https://cdn.shopify.com/shopifycloud/checkout-web/assets/29ead66149dffbd3d980.svg" alt="American Express" width="50" height="32" loading="lazy">
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .price-section__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .price-section__content {
+    padding: 2rem 0;
+  }
+
+  .price-section__heading {
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0 0 1.5rem 0;
+    color: var(--text-color, #1a1a1a);
+  }
+
+  .price-section__description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 0 2rem 0;
+    color: var(--text-color, #6b6b6b);
+  }
+
+  .price-section__features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.5rem 0;
+  }
+
+  .price-section__feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-color, #1a1a1a);
+  }
+
+  .price-section__checkmark {
+    flex-shrink: 0;
+    color: #2d7a6e;
+  }
+
+  .price-section__trust {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .price-section__avatars {
+    display: flex;
+    align-items: center;
+    margin-left: -0.5rem;
+  }
+
+  .price-section__avatars img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--section-background, #fff);
+    margin-left: -0.5rem;
+    object-fit: cover;
+  }
+
+  .price-section__trust-text {
+    font-size: 0.9rem;
+    margin: 0;
+    color: var(--text-color, #6b6b6b);
+  }
+
+  .price-section__card {
+    background: var(--card-background, #ffffff);
+    border-radius: 12px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .price-section__pricing {
+    margin-bottom: 2rem;
+  }
+
+  .price-section__original-price {
+    font-size: 1rem;
+    text-decoration: line-through;
+    color: #999;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .price-section__price {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--price-color, #1a1a1a);
+  }
+
+  .price-section__card-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+  }
+
+  .price-section__card-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    color: #1a1a1a;
+  }
+
+  .price-section__button {
+    display: block;
+    width: 100%;
+    background: var(--button-background, #2d7a6e);
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    margin-bottom: 1.5rem;
+  }
+
+  .price-section__button:hover {
+    opacity: 0.9;
+  }
+
+  .price-section__payment-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .price-section__payment-icons img {
+    height: 28px;
+    width: auto;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 991px) {
+    .price-section__wrapper {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .price-section__heading {
+      font-size: 2rem;
+    }
+
+    .price-section__card {
+      padding: 2rem 1.5rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .price-section__features {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .price-section__heading {
+      font-size: 1.75rem;
+    }
+
+    .price-section__price {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Price Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f5f3ef"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Color",
+      "default": "#2d7a6e"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Personalised Treatments for Your Body, Skin, and Hair"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Science-aware formulations tailored to your hair goals and routine. Thoughtfully created to support consistency, track progress over time, and fit calmly into your daily life."
+    },
+    {
+      "type": "header",
+      "content": "Trust Badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_badge",
+      "label": "Show Trust Badge",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_1",
+      "label": "Avatar 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_2",
+      "label": "Avatar 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_3",
+      "label": "Avatar 3"
+    },
+    {
+      "type": "text",
+      "id": "trust_text",
+      "label": "Trust Text",
+      "default": "Trusted by 2,400+ members"
+    },
+    {
+      "type": "header",
+      "content": "Pricing Card"
+    },
+    {
+      "type": "text",
+      "id": "original_price",
+      "label": "Original Price",
+      "default": "€249"
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Price",
+      "default": "€179 / month"
+    },
+    {
+      "type": "textarea",
+      "id": "card_features",
+      "label": "Card Features",
+      "info": "Add one feature per line",
+      "default": "Personalised treatment plan\nOngoing clinical support\nFree delivery to your door"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Get Started"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show Payment Icons",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Feature Text",
+          "default": "Personalised serum"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Price Section",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "text": "Personalised serum"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "text": "Free delivery"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "text": "Ongoing support"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
