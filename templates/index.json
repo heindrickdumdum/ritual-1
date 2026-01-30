@@ -361,6 +361,52 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "price_section_aN4BeH": {
+      "type": "price-section",
+      "blocks": {
+        "feature_d4PxUK": {
+          "type": "feature",
+          "settings": {
+            "text": "Personalised serum"
+          }
+        },
+        "feature_rCriPF": {
+          "type": "feature",
+          "settings": {
+            "text": "Free delivery"
+          }
+        },
+        "feature_9MjRHd": {
+          "type": "feature",
+          "settings": {
+            "text": "Ongoing support"
+          }
+        }
+      },
+      "block_order": [
+        "feature_d4PxUK",
+        "feature_rCriPF",
+        "feature_9MjRHd"
+      ],
+      "name": "Price Section",
+      "settings": {
+        "background_color": "#f5f3ef",
+        "card_background": "#ffffff",
+        "text_color": "#1a1a1a",
+        "price_color": "#1a1a1a",
+        "button_color": "#2d7a6e",
+        "heading": "Personalised Treatments for Your Body, Skin, and Hair",
+        "description": "Science-aware formulations tailored to your hair goals and routine. Thoughtfully created to support consistency, track progress over time, and fit calmly into your daily life.",
+        "show_trust_badge": true,
+        "trust_text": "Trusted by 2,400+ members",
+        "original_price": "€249",
+        "price": "€179 / month",
+        "card_features": "Personalised treatment plan\nOngoing clinical support\nFree delivery to your door",
+        "button_text": "Get Started",
+        "button_link": "",
+        "show_payment_icons": true
+      }
     }
   },
   "order": [
@@ -368,6 +414,7 @@
     "featured_cards_Urq7eN",
     "why_choose_iTHzJJ",
     "how_it_works_mYkb9q",
-    "before_after_cards_N73PB4"
+    "before_after_cards_N73PB4",
+    "price_section_aN4BeH"
   ]
 }
