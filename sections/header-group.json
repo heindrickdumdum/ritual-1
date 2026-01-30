@@ -120,106 +120,62 @@
     "header_announcements_marquee_8eHfJB": {
       "type": "header-announcements-marquee",
       "blocks": {
-        "announcement_wXQx6r": {
-          "type": "_announcement",
+        "announcement_wxtLkL": {
+          "type": "announcement",
           "settings": {
             "text": "24x7 Extensive Customer Support",
-            "link": "",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "weight": "",
-            "letter_spacing": "normal",
-            "case": "none"
-          },
-          "blocks": {}
+            "link": ""
+          }
         },
-        "announcement_TQtW6p": {
-          "type": "_announcement",
-          "name": "t:names.announcement",
+        "announcement_pQDU4k": {
+          "type": "announcement",
           "settings": {
             "text": "Free Shipping World Wide",
-            "link": "",
-            "font": "var(--font-subheading--family)",
-            "font_size": "1rem",
-            "weight": "",
-            "letter_spacing": "normal",
-            "case": "none"
-          },
-          "blocks": {}
+            "link": ""
+          }
         },
-        "announcement_FH7rH9": {
-          "type": "_announcement",
-          "name": "t:names.announcement",
+        "announcement_hp9yaY": {
+          "type": "announcement",
           "settings": {
             "text": "Secret Deals: TOT 30% Korting",
-            "link": "",
-            "font": "var(--font-subheading--family)",
-            "font_size": "1rem",
-            "weight": "",
-            "letter_spacing": "normal",
-            "case": "none"
-          },
-          "blocks": {}
+            "link": ""
+          }
         },
-        "announcement_WhrizJ": {
-          "type": "_announcement",
-          "name": "t:names.announcement",
+        "announcement_rmpGBU": {
+          "type": "announcement",
           "settings": {
             "text": "Get 20% Off on All Cosmetic Cream Packs",
-            "link": "",
-            "font": "var(--font-subheading--family)",
-            "font_size": "1rem",
-            "weight": "",
-            "letter_spacing": "normal",
-            "case": "none"
-          },
-          "blocks": {}
+            "link": ""
+          }
         },
-        "announcement_XtyAjM": {
-          "type": "_announcement",
-          "name": "t:names.announcement",
+        "announcement_nxMKPw": {
+          "type": "announcement",
           "settings": {
             "text": "100% Original & Organic",
-            "link": "",
-            "font": "var(--font-subheading--family)",
-            "font_size": "1rem",
-            "weight": "",
-            "letter_spacing": "normal",
-            "case": "none"
-          },
-          "blocks": {}
+            "link": ""
+          }
         },
-        "announcement_VzRTe3": {
-          "type": "_announcement",
-          "name": "t:names.announcement",
+        "announcement_bC39iD": {
+          "type": "announcement",
           "settings": {
             "text": "24x7 Extensive Customer Support",
-            "link": "",
-            "font": "var(--font-subheading--family)",
-            "font_size": "1rem",
-            "weight": "",
-            "letter_spacing": "normal",
-            "case": "none"
-          },
-          "blocks": {}
+            "link": ""
+          }
         }
       },
       "block_order": [
-        "announcement_wXQx6r",
-        "announcement_TQtW6p",
-        "announcement_FH7rH9",
-        "announcement_WhrizJ",
-        "announcement_XtyAjM",
-        "announcement_VzRTe3"
+        "announcement_wxtLkL",
+        "announcement_pQDU4k",
+        "announcement_hp9yaY",
+        "announcement_rmpGBU",
+        "announcement_nxMKPw",
+        "announcement_bC39iD"
       ],
       "name": "Announcement bar - v2",
       "settings": {
-        "speed": 5,
-        "section_width": "full-width",
+        "speed": 20,
         "color_scheme": "scheme-2",
-        "divider_width": 0,
-        "padding-block-start": 15,
-        "padding-block-end": 15
+        "divider_width": 0
       }
     },
     "header_section": {
