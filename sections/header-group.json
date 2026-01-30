@@ -173,7 +173,11 @@
       ],
       "name": "Announcement bar - v2",
       "settings": {
-        "speed": 20,
+        "show_prefix": true,
+        "prefix_text": "Why Ritual1",
+        "prefix_link": "",
+        "border_color": "#26736d",
+        "speed": 30,
         "color_scheme": "scheme-2",
         "divider_width": 0
       }
