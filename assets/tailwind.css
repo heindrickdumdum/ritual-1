@@ -6,8 +6,16 @@
   flex: 1 1 0%
 }
 
+.tw-flex-none {
+  flex: none
+}
+
 .tw-items-center {
   align-items: center
+}
+
+.tw-justify-center {
+  justify-content: center
 }
 
 .tw-gap-6 {
@@ -15,6 +23,10 @@
 }
 
 .tw-border-r-\[1px\] {
+  border-right-width: 1px
+}
+
+.tw-border-r {
   border-right-width: 1px
 }
 

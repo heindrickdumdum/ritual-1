@@ -1,43 +1,63 @@
+<style>
+  #shopify-section-{{ section.id }} {
+    color: rgb(var(--color-foreground));
+  }
+</style>
+
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
-<aside
-  class="announcement-bar-marquee section section--full-width color-{{ section.settings.color_scheme }}"
-  style="--marquee-speed: {{ section.settings.speed }}s; --border-bottom-width: {{ section.settings.divider_width }}px;"
->
-  <div class="announcement-bar-marquee__wrapper">
-    <div class="announcement-bar-marquee__track" data-marquee-track>
-      <div class="announcement-bar-marquee__content" data-marquee-content>
-        {%- for block in section.blocks -%}
-          <div class="announcement-bar-marquee__item" {{ block.shopify_attributes }}>
-            {%- if block.settings.link != blank -%}
-              <a href="{{ block.settings.link }}" class="announcement-bar-marquee__link">
-                {{ block.settings.text }}
-              </a>
-            {%- else -%}
-              <span class="announcement-bar-marquee__text">
-                {{ block.settings.text }}
-              </span>
-            {%- endif -%}
-          </div>
-        {%- endfor -%}
-      </div>
-      <div class="announcement-bar-marquee__content" data-marquee-content aria-hidden="true">
-        {%- for block in section.blocks -%}
-          <div class="announcement-bar-marquee__item">
-            {%- if block.settings.link != blank -%}
-              <a href="{{ block.settings.link }}" class="announcement-bar-marquee__link" tabindex="-1">
-                {{ block.settings.text }}
-              </a>
-            {%- else -%}
-              <span class="announcement-bar-marquee__text">
-                {{ block.settings.text }}
-              </span>
-            {%- endif -%}
-          </div>
-        {%- endfor -%}
+<div class="tw-flex tw-items-center tw-justify-center color-{{ section.settings.color_scheme }}">
+  {%- if section.settings.show_prefix -%}
+    <div class="tw-flex-none tw-px-6" style="border-right: 1px solid {{ section.settings.border_color }};">
+      {%- if section.settings.prefix_link != blank -%}
+        <a href="{{ section.settings.prefix_link }}" style="color: rgb(var(--color-foreground)); text-decoration: none;">
+          {{ section.settings.prefix_text }}
+        </a>
+      {%- else -%}
+        <span>{{ section.settings.prefix_text }}</span>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+  <aside
+    class="announcement-bar-marquee section section--full-width"
+    style="--marquee-speed: {{ section.settings.speed }}s; --border-bottom-width: {{ section.settings.divider_width }}px;"
+  >
+    <div class="announcement-bar-marquee__wrapper">
+    
+      <div class="announcement-bar-marquee__track" data-marquee-track>
+        <div class="announcement-bar-marquee__content" data-marquee-content>
+          {%- for block in section.blocks -%}
+            <div class="announcement-bar-marquee__item" {{ block.shopify_attributes }}>
+              {%- if block.settings.link != blank -%}
+                <a href="{{ block.settings.link }}" class="announcement-bar-marquee__link">
+                  {{ block.settings.text }}
+                </a>
+              {%- else -%}
+                <span class="announcement-bar-marquee__text">
+                  {{ block.settings.text }}
+                </span>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+        <div class="announcement-bar-marquee__content" data-marquee-content aria-hidden="true">
+          {%- for block in section.blocks -%}
+            <div class="announcement-bar-marquee__item">
+              {%- if block.settings.link != blank -%}
+                <a href="{{ block.settings.link }}" class="announcement-bar-marquee__link" tabindex="-1">
+                  {{ block.settings.text }}
+                </a>
+              {%- else -%}
+                <span class="announcement-bar-marquee__text">
+                  {{ block.settings.text }}
+                </span>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
       </div>
     </div>
-  </div>
-</aside>
+  </aside>
+</div>
 
 {% stylesheet %}
   .announcement-bar-marquee {
@@ -85,7 +105,7 @@
 
   .announcement-bar-marquee__text,
   .announcement-bar-marquee__link {
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 400;
     color: rgb(var(--color-foreground));
     text-decoration: none;
@@ -142,6 +162,37 @@
     "groups": ["header"]
   },
   "settings": [
+    {
+      "type": "header",
+      "content": "Prefix Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_prefix",
+      "label": "Show prefix text",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "prefix_text",
+      "label": "Prefix text",
+      "default": "Why Ritual1"
+    },
+    {
+      "type": "url",
+      "id": "prefix_link",
+      "label": "Prefix link (optional)"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#26736D"
+    },
+    {
+      "type": "header",
+      "content": "Marquee Settings"
+    },
     {
       "type": "range",
       "id": "speed",
