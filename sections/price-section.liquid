@@ -5,10 +5,12 @@
     --button-background: {{ section.settings.button_color }};
     --text-color: {{ section.settings.text_color }};
     --price-color: {{ section.settings.price_color }};
+    --padding-top: {{ section.settings.padding_top }}px;
+    --padding-bottom: {{ section.settings.padding_bottom }}px;
   }
 {%- endstyle -%}
 
-<div class="section--padding" style="background-color: var(--section-background);">
+<div class="price-section" style="background-color: var(--section-background); padding-top: var(--padding-top); padding-bottom: var(--padding-bottom);">
   <div class="container">
     <div class="price-section__wrapper">
       {%- comment -%} Left Content {%- endcomment -%}
@@ -412,6 +414,30 @@
       "id": "show_payment_icons",
       "label": "Show Payment Icons",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
     }
   ],
   "blocks": [
