@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>Personalized Treatments for Your Body, Skin, and Hair</p>",
+            "text": "<p>Personalized</p><p>Treatments for Your</p><p>Body, Skin, and Hair</p>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -405,7 +405,9 @@
         "card_features": "Personalised treatment plan\nOngoing clinical support\nFree delivery to your door",
         "button_text": "Get Started",
         "button_link": "",
-        "show_payment_icons": true
+        "show_payment_icons": true,
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
