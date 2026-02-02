@@ -17,6 +17,33 @@
   assign total_reviews = block.settings.total_reviews | default: 52
   assign show_half_stars = block.settings.show_half_stars | default: true
   
+  # Style settings - Colors
+  assign bg_color = block.settings.background_color | default: '#2c2c2c'
+  assign text_color = block.settings.text_color | default: '#ffffff'
+  assign star_color = block.settings.star_color | default: '#F4D06F'
+  
+  # Style settings - Spacing
+  assign padding_top = block.settings.padding_top | default: 24
+  assign padding_bottom = block.settings.padding_bottom | default: 24
+  assign padding_left = block.settings.padding_left | default: 32
+  assign padding_right = block.settings.padding_right | default: 32
+  assign element_spacing = block.settings.element_spacing | default: 16
+  
+  # Style settings - Typography
+  assign heading_font_size = block.settings.heading_font_size | default: 24
+  assign heading_font_weight = block.settings.heading_font_weight | default: '400'
+  assign stats_font_size = block.settings.stats_font_size | default: 24
+  assign stats_font_weight = block.settings.stats_font_weight | default: '400'
+  assign rating_font_weight = block.settings.rating_font_weight | default: '600'
+  
+  # Style settings - Stars
+  assign star_size = block.settings.star_size | default: 36
+  assign star_spacing = block.settings.star_spacing | default: 4
+  
+  # Style settings - Layout
+  assign text_alignment = block.settings.text_alignment | default: 'center'
+  assign content_alignment = block.settings.content_alignment | default: 'center'
+  
   # Calculate full stars and half star
   assign rating_floor = rating | floor
   assign rating_decimal = rating | modulo: 1
@@ -31,61 +58,55 @@
   endif
 -%}
 
-<div class="review-summary-block" {{ block.shopify_attributes }}>
-  <div class="review-summary-block__container">
-    <p class="review-summary-block__heading">{{ heading }}</p>
+<div class="review-summary-block" {{ block.shopify_attributes }} style="background-color: {{ bg_color }}; padding: {{ padding_top }}px {{ padding_right }}px {{ padding_bottom }}px {{ padding_left }}px;">
+  <div class="review-summary-block__container" style="gap: {{ element_spacing }}px; justify-content: {{ content_alignment }}; text-align: {{ text_alignment }};">
+    <p class="review-summary-block__heading" style="color: {{ text_color }}; font-size: {{ heading_font_size }}px; font-weight: {{ heading_font_weight }};">{{ heading }}</p>
     
-    <div class="review-summary-block__stars" role="img" aria-label="{{ rating }} out of 5 stars">
+    <div class="review-summary-block__stars" role="img" aria-label="{{ rating }} out of 5 stars" style="gap: {{ star_spacing }}px;">
       {%- for i in (1..5) -%}
         {%- if i <= rating_floor -%}
           {%- comment %} Full star {% endcomment -%}
-          <svg class="review-summary-block__star" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 2L25.878 13.764L38.776 15.528L29.388 24.472L31.756 37.236L20 30.764L8.244 37.236L10.612 24.472L1.224 15.528L14.122 13.764L20 2Z" fill="#F4D06F" stroke="#F4D06F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg class="review-summary-block__star" width="{{ star_size }}" height="{{ star_size }}" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 2L25.878 13.764L38.776 15.528L29.388 24.472L31.756 37.236L20 30.764L8.244 37.236L10.612 24.472L1.224 15.528L14.122 13.764L20 2Z" fill="{{ star_color }}" stroke="{{ star_color }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         {%- elsif i == half_star_position and has_half_star and show_half_stars -%}
           {%- comment %} Half star {% endcomment -%}
-          <svg class="review-summary-block__star review-summary-block__star--half" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="review-summary-block__star review-summary-block__star--half" width="{{ star_size }}" height="{{ star_size }}" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="half-fill-{{ block.id }}">
-                <stop offset="50%" stop-color="#F4D06F"/>
+                <stop offset="50%" stop-color="{{ star_color }}"/>
                 <stop offset="50%" stop-color="transparent"/>
               </linearGradient>
             </defs>
-            <path d="M20 2L25.878 13.764L38.776 15.528L29.388 24.472L31.756 37.236L20 30.764L8.244 37.236L10.612 24.472L1.224 15.528L14.122 13.764L20 2Z" fill="url(#half-fill-{{ block.id }})" stroke="#F4D06F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20 2L25.878 13.764L38.776 15.528L29.388 24.472L31.756 37.236L20 30.764L8.244 37.236L10.612 24.472L1.224 15.528L14.122 13.764L20 2Z" fill="url(#half-fill-{{ block.id }})" stroke="{{ star_color }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         {%- else -%}
           {%- comment %} Empty star {% endcomment -%}
-          <svg class="review-summary-block__star review-summary-block__star--empty" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 2L25.878 13.764L38.776 15.528L29.388 24.472L31.756 37.236L20 30.764L8.244 37.236L10.612 24.472L1.224 15.528L14.122 13.764L20 2Z" stroke="#F4D06F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg class="review-summary-block__star review-summary-block__star--empty" width="{{ star_size }}" height="{{ star_size }}" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 2L25.878 13.764L38.776 15.528L29.388 24.472L31.756 37.236L20 30.764L8.244 37.236L10.612 24.472L1.224 15.528L14.122 13.764L20 2Z" stroke="{{ star_color }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         {%- endif -%}
       {%- endfor -%}
     </div>
     
-    <p class="review-summary-block__stats">
-      <span class="review-summary-block__rating">{{ rating }}</span>/5 based on <span class="review-summary-block__count">{{ total_reviews }}</span> reviews
+    <p class="review-summary-block__stats" style="color: {{ text_color }}; font-size: {{ stats_font_size }}px; font-weight: {{ stats_font_weight }};">
+      <span class="review-summary-block__rating" style="font-weight: {{ rating_font_weight }};">{{ rating }}</span>/5 based on <span class="review-summary-block__count" style="font-weight: {{ rating_font_weight }};">{{ total_reviews }}</span> reviews
     </p>
   </div>
 </div>
 
 <style>
   .review-summary-block {
-    background: transparent;
-    padding: 1.5rem 2rem;
+    display: block;
   }
 
   .review-summary-block__container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
     flex-wrap: wrap;
   }
 
   .review-summary-block__heading {
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: #ffffff;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
@@ -93,19 +114,13 @@
   .review-summary-block__stars {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
   }
 
   .review-summary-block__star {
-    width: 36px;
-    height: 36px;
     flex-shrink: 0;
   }
 
   .review-summary-block__stats {
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: #ffffff;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
@@ -116,33 +131,14 @@
   }
 
   @media screen and (max-width: 768px) {
-    .review-summary-block {
-      padding: 1.25rem 1rem;
-    }
-
     .review-summary-block__container {
-      gap: 0.75rem;
-    }
-
-    .review-summary-block__heading {
-      font-size: 1.125rem;
-    }
-
-    .review-summary-block__star {
-      width: 28px;
-      height: 28px;
-    }
-
-    .review-summary-block__stats {
-      font-size: 1.125rem;
+      font-size: 0.9em;
     }
   }
 
   @media screen and (max-width: 480px) {
     .review-summary-block__container {
       flex-direction: column;
-      text-align: center;
-      gap: 0.5rem;
     }
   }
 </style>
@@ -181,7 +177,7 @@
     },
     {
       "type": "header",
-      "content": "Style Settings"
+      "content": "Colors"
     },
     {
       "type": "color",
@@ -194,6 +190,180 @@
       "id": "text_color",
       "label": "Text Color",
       "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star Color",
+      "default": "#F4D06F"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Left",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Right",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "element_spacing",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Element Spacing",
+      "default": 16,
+      "info": "Space between heading, stars, and stats"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "min": 12,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Heading Font Weight",
+      "options": [
+        {"value": "300", "label": "Light"},
+        {"value": "400", "label": "Normal"},
+        {"value": "500", "label": "Medium"},
+        {"value": "600", "label": "Semibold"},
+        {"value": "700", "label": "Bold"}
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "stats_font_size",
+      "min": 12,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Stats Font Size",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "stats_font_weight",
+      "label": "Stats Font Weight",
+      "options": [
+        {"value": "300", "label": "Light"},
+        {"value": "400", "label": "Normal"},
+        {"value": "500", "label": "Medium"},
+        {"value": "600", "label": "Semibold"},
+        {"value": "700", "label": "Bold"}
+      ],
+      "default": "400"
+    },
+    {
+      "type": "select",
+      "id": "rating_font_weight",
+      "label": "Rating Numbers Font Weight",
+      "options": [
+        {"value": "400", "label": "Normal"},
+        {"value": "500", "label": "Medium"},
+        {"value": "600", "label": "Semibold"},
+        {"value": "700", "label": "Bold"}
+      ],
+      "default": "600",
+      "info": "Weight for 4.8 and 52"
+    },
+    {
+      "type": "header",
+      "content": "Stars"
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "min": 16,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Star Size",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "star_spacing",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Star Spacing",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Content Alignment",
+      "options": [
+        {"value": "flex-start", "label": "Left"},
+        {"value": "center", "label": "Center"},
+        {"value": "flex-end", "label": "Right"}
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        {"value": "left", "label": "Left"},
+        {"value": "center", "label": "Center"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "center"
     }
   ],
   "presets": [
