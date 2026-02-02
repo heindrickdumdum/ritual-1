@@ -44,7 +44,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>Personalized</p><p>Treatments for Your</p><p>Body, Skin, and Hair</p>",
+            "text": "<p>Personalized Treatments for Your Body, Skin, and Hair</p>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
