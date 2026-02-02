@@ -61,6 +61,8 @@
     {%- endif -%}
     {%- if settings.weight != blank -%}
       --font-weight: {{ settings.weight }};
+    {%- elsif settings.font_weight != blank -%}
+      --font-weight: {{ settings.font_weight }};
     {% else %}
       --font-weight: {{ settings.font | replace: 'family', 'weight' }};
     {%- endif -%}
