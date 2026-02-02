@@ -3,6 +3,10 @@
     --padding-block-start: {{ section.settings.padding-block-start }}rem;
     --padding-block-end: {{ section.settings.padding-block-end }}rem;
   }
+
+  #shopify-section-{{ section.id }} .hero__content-wrapper {
+    --hero-content-max-width: {{ section.settings.content_max_width }}px;
+  }
   
 </style>
 
@@ -583,6 +587,8 @@
     position: relative;
     inset: 0;
     z-index: var(--layer-flat);
+    max-width: var(--hero-content-max-width, none);
+    margin-inline: auto;
   }
 
   .hero__content-wrapper .group-block-content {
@@ -1097,6 +1103,17 @@
       "step": 1,
       "unit": "px",
       "default": 12
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Content Max Width",
+      "min": 400,
+      "max": 2000,
+      "step": 50,
+      "unit": "px",
+      "default": 1200,
+      "info": "Maximum width for content area"
     },
     {
       "type": "select",
