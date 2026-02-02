@@ -7,11 +7,6 @@
   margin-right: auto
 }
 
-.tw-my-8 {
-  margin-top: 2rem;
-  margin-bottom: 2rem
-}
-
 .tw-mt-8 {
   margin-top: 2rem
 }
@@ -49,10 +44,6 @@
 }
 
 .tw-border-r-\[1px\] {
-  border-right-width: 1px
-}
-
-.tw-border-r {
   border-right-width: 1px
 }
 
