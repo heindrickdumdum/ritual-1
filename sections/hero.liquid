@@ -6,6 +6,13 @@
 
   #shopify-section-{{ section.id }} .hero__content-wrapper {
     --hero-content-max-width: {{ section.settings.content_max_width }}px;
+    {% if section.settings.content_horizontal_alignment == 'left' %}
+      --hero-content-margin-inline: 0 auto;
+    {% elsif section.settings.content_horizontal_alignment == 'right' %}
+      --hero-content-margin-inline: auto 0;
+    {% else %}
+      --hero-content-margin-inline: auto;
+    {% endif %}
   }
   
 </style>
@@ -588,7 +595,7 @@
     inset: 0;
     z-index: var(--layer-flat);
     max-width: var(--hero-content-max-width, none);
-    margin-inline: auto;
+    margin-inline: var(--hero-content-margin-inline, auto);
   }
 
   .hero__content-wrapper .group-block-content {
@@ -1114,6 +1121,27 @@
       "unit": "px",
       "default": 1200,
       "info": "Maximum width for content area"
+    },
+    {
+      "type": "select",
+      "id": "content_horizontal_alignment",
+      "label": "Content Horizontal Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "info": "Horizontal position of content wrapper"
     },
     {
       "type": "select",
