@@ -280,3 +280,118 @@
     }
   }
 </style>
+
+{% schema %}
+{
+  "name": "Review",
+  "tag": "div",
+  "class": "review-block-wrapper",
+  "settings": [
+    {
+      "type": "range",
+      "id": "review_rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5,
+      "label": "Rating"
+    },
+    {
+      "type": "text",
+      "id": "review_author",
+      "label": "Reviewer Name",
+      "default": "Sarah Johnson"
+    },
+    {
+      "type": "text",
+      "id": "review_date",
+      "label": "Review Date",
+      "default": "2024-01-15",
+      "info": "Format: YYYY-MM-DD"
+    },
+    {
+      "type": "checkbox",
+      "id": "verified_purchase",
+      "label": "Verified Purchase",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Review Content"
+    },
+    {
+      "type": "text",
+      "id": "review_title",
+      "label": "Review Title",
+      "default": "Amazing product!"
+    },
+    {
+      "type": "textarea",
+      "id": "review_content",
+      "label": "Review Text",
+      "default": "I've been using this product for a few weeks now and I'm absolutely loving it. The quality is exceptional and it exceeded my expectations. Highly recommend to anyone looking for a reliable solution!"
+    },
+    {
+      "type": "header",
+      "content": "Avatar Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_avatar",
+      "label": "Show Avatar",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_image",
+      "label": "Avatar Image",
+      "info": "Optional - if not set, will show initial letter"
+    },
+    {
+      "type": "select",
+      "id": "avatar_style",
+      "label": "Avatar Style",
+      "options": [
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "circle"
+    },
+    {
+      "type": "header",
+      "content": "Product Reference"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_reference",
+      "label": "Show Product Reference",
+      "default": false
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Review",
+      "settings": {
+        "review_rating": 5,
+        "review_author": "Sarah Johnson",
+        "review_title": "Amazing product!",
+        "review_content": "I've been using this product for a few weeks now and I'm absolutely loving it. The quality is exceptional and it exceeded my expectations. Highly recommend to anyone looking for a reliable solution!",
+        "verified_purchase": true,
+        "show_avatar": true,
+        "avatar_style": "circle"
+      }
+    }
+  ]
+}
+{% endschema %}
