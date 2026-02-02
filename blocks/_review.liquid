@@ -21,8 +21,11 @@
   assign rating_floor = rating | floor
   assign rating_decimal = rating | modulo: 1
   assign has_half_star = false
+  assign half_star_position = 0
+  
   if rating_decimal >= 0.25 and rating_decimal < 0.75
     assign has_half_star = true
+    assign half_star_position = rating_floor | plus: 1
   elsif rating_decimal >= 0.75
     assign rating_floor = rating_floor | plus: 1
   endif
@@ -39,7 +42,7 @@
           <svg class="review-summary-block__star" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20 2L25.878 13.764L38.776 15.528L29.388 24.472L31.756 37.236L20 30.764L8.244 37.236L10.612 24.472L1.224 15.528L14.122 13.764L20 2Z" fill="#F4D06F" stroke="#F4D06F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-        {%- elsif i == rating_floor | plus: 1 and has_half_star and show_half_stars -%}
+        {%- elsif i == half_star_position and has_half_star and show_half_stars -%}
           {%- comment %} Half star {% endcomment -%}
           <svg class="review-summary-block__star review-summary-block__star--half" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
