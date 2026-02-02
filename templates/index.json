@@ -12,6 +12,19 @@
     "hero_jVaWmY": {
       "type": "hero",
       "blocks": {
+        "review_fBMdEg": {
+          "type": "_review",
+          "name": "Reviews Summary",
+          "settings": {
+            "heading_text": "Our customers rate us",
+            "average_rating": "4.8",
+            "total_reviews": 52,
+            "show_half_stars": true,
+            "background_color": "#bb3c3c",
+            "text_color": "#ffffff"
+          },
+          "blocks": {}
+        },
         "text_YLPk4p": {
           "type": "text",
           "name": "t:names.heading",
@@ -81,6 +94,7 @@
         }
       },
       "block_order": [
+        "review_fBMdEg",
         "text_YLPk4p",
         "text_8bMDVL",
         "button_H9gpTf"
