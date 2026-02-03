@@ -45,10 +45,10 @@
   }
 
   #shopify-section-{{ section.id }} .before-after-card {
-    flex: 0 0 300px;
+    flex: 0 0 432px;
     background: #F7F7F5;
     border-radius: 16px;
-    padding: 1.5rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
   }
@@ -68,7 +68,7 @@
   #shopify-section-{{ section.id }} .before-after-card__image-wrapper {
     flex: 1;
     position: relative;
-    aspect-ratio: 1;
+    aspect-ratio: 49 / 60;
     border-radius: 12px;
     overflow: hidden;
     background: #E5E5E0;
@@ -90,27 +90,35 @@
     border-radius: 12px;
     font-size: 0.75rem;
     color: rgb(var(--color-foreground));
-    font-weight: 500;
+    font-weight: 700;
   }
 
   #shopify-section-{{ section.id }} .before-after-card__title {
-    font-size: 1.125rem;
+    font-size: 1.5rem;
     font-weight: 500;
-    margin: 0 0 0.75rem;
+    margin: 0 0 1rem;
     color: rgb(var(--color-foreground));
   }
 
   #shopify-section-{{ section.id }} .before-after-card__details {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
   }
 
   #shopify-section-{{ section.id }} .before-after-card__detail {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     font-size: 0.875rem;
+    padding: 1rem 0;
+            
   }
+
+   #shopify-section-{{ section.id }} .before-after-card__detail.detail--treatment {
+    border-width: 1px 0px;
+    border-style: solid;
+    border-color: #E9EAEB;
+   }
 
   #shopify-section-{{ section.id }} .before-after-card__detail-label {
     color: rgba(var(--color-foreground), 0.6);
@@ -252,14 +260,14 @@
 
                 <div class="before-after-card__details">
                   {%- if block.settings.treatment != blank -%}
-                    <div class="before-after-card__detail">
+                    <div class="before-after-card__detail detail--treatment">
                       <span class="before-after-card__detail-label">Treatment</span>
                       <span class="before-after-card__detail-value">{{ block.settings.treatment }}</span>
                     </div>
                   {%- endif -%}
 
                   {%- if block.settings.duration != blank -%}
-                    <div class="before-after-card__detail">
+                    <div class="before-after-card__detail detail--duration">
                       <span class="before-after-card__detail-label">Duration</span>
                       <span class="before-after-card__detail-value">{{ block.settings.duration }}</span>
                     </div>
