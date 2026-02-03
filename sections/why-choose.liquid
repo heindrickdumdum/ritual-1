@@ -74,15 +74,14 @@
   }
 
   #shopify-section-{{ section.id }} .why-choose-card__title {
-    font-size: 1.25rem;
     font-weight: 500;
     margin: 0 0 0.75rem;
     color: rgb(var(--color-foreground));
   }
 
   #shopify-section-{{ section.id }} .why-choose-card__description {
-    font-size: 0.875rem;
-    color: rgba(var(--color-foreground), 0.7);
+    font-size: 1.125rem;
+    color: #535862; /* Gray/600 */
     line-height: 1.6;
     margin: 0;
   }
@@ -121,16 +120,19 @@
   }
 
   #shopify-section-{{ section.id }} .why-choose-testimonial__quote {
-    font-size: 1rem;
     color: rgb(var(--color-foreground));
-    line-height: 1.6;
+    line-height: normal;
     margin: 0 0 1rem;
+    font-weight: normal;
+    font-style: italic;
   }
 
   #shopify-section-{{ section.id }} .why-choose-testimonial__author {
-    font-size: 0.875rem;
+    font-size: 1.125rem;
     color: rgba(var(--color-foreground), 0.6);
     font-style: normal;
+    /* Gray/600 */
+    color: #535862;
   }
 {%- endstyle -%}
 
@@ -217,9 +219,11 @@
           {%- when 'testimonial' -%}
             <div class="why-choose-testimonial" {{ block.shopify_attributes }}>
               {%- if block.settings.quote != blank -%}
-                <blockquote class="why-choose-testimonial__quote">
-                  "{{ block.settings.quote }}"
-                </blockquote>
+                <h3>
+                  <blockquote class="why-choose-testimonial__quote">
+                    "{{ block.settings.quote }}"
+                  </blockquote>
+                </h3>
               {%- endif -%}
               
               {%- if block.settings.author != blank -%}
