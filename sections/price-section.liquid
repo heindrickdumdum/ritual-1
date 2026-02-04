@@ -176,7 +176,12 @@
 
   .price-section__checkmark {
     flex-shrink: 0;
-    color: #2d7a6e;
+    padding: 6px;
+    color: #181D27;
+    background-color: #E3E3DE;
+    border-radius: 20px;
+    width: 28px;
+    height: 28px;
   }
 
   .price-section__trust {
@@ -214,11 +219,14 @@
   }
 
   .price-section__pricing {
+    display: flex;
+    gap: 1rem;
     margin-bottom: 2rem;
+    align-items: baseline;
   }
 
   .price-section__original-price {
-    font-size: 1rem;
+    font-size: 1.25rem;
     text-decoration: line-through;
     color: #999;
     display: block;
@@ -226,7 +234,7 @@
   }
 
   .price-section__price {
-    font-size: 2.5rem;
+    font-size: 2.75rem;
     font-weight: 600;
     color: var(--price-color, #1a1a1a);
   }
@@ -289,7 +297,7 @@
   }
 
   .price-section__payment-icons img {
-    height: 28px;
+    height: 2rem;
     width: auto;
     opacity: 0.7;
   }
