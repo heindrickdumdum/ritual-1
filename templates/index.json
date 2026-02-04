@@ -323,6 +323,8 @@
           "type": "testimonial_card",
           "settings": {
             "title": "Tom's Revival",
+            "before_image": "shopify://shop_images/uifaces-human-avatar.jpg",
+            "after_image": "shopify://shop_images/uifaces-human-avatar_1.jpg",
             "treatment": "Hydration Boost",
             "duration": "3 months"
           }
@@ -466,6 +468,7 @@
         "team_member_7HPzCX": {
           "type": "team_member",
           "settings": {
+            "avatar": "shopify://shop_images/1cdef0657f45d3128f729f078ae13cc177047172.png",
             "name": "Soham",
             "role": "Doctor"
           }
@@ -473,6 +476,7 @@
         "team_member_7c6iP9": {
           "type": "team_member",
           "settings": {
+            "avatar": "shopify://shop_images/uifaces-human-avatar_1.jpg",
             "name": "Cody",
             "role": "Dietitian"
           }
@@ -480,6 +484,7 @@
         "team_member_Uq3dzC": {
           "type": "team_member",
           "settings": {
+            "avatar": "shopify://shop_images/4240806b872670d82295b502afe3ec8c7e7098e2.png",
             "name": "Aubrey",
             "role": "Psychologist"
           }
@@ -487,6 +492,7 @@
         "team_member_fqNMtT": {
           "type": "team_member",
           "settings": {
+            "avatar": "shopify://shop_images/uifaces-human-avatar.jpg",
             "name": "Ronald",
             "role": "Personal Trainer"
           }
