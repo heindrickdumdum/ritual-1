@@ -441,6 +441,18 @@
         "button_text": "Get Started",
         "button_link": "",
         "show_payment_icons": true,
+        "payment_icon_type": "custom",
+        "payment_icons_limit": 6,
+        "payment_icon_1": "shopify://shop_images/paypal-icon.svg",
+        "payment_icon_1_alt": "Paypal",
+        "payment_icon_2": "shopify://shop_images/visa-icon.svg",
+        "payment_icon_2_alt": "Visa",
+        "payment_icon_3": "shopify://shop_images/masercard-icon.svg",
+        "payment_icon_3_alt": "Mastercard",
+        "payment_icon_4": "shopify://shop_images/amex-icon.svg",
+        "payment_icon_4_alt": "Amex",
+        "payment_icon_5_alt": "Payment Method",
+        "payment_icon_6_alt": "Payment Method",
         "padding_top": 60,
         "padding_bottom": 60
       }
