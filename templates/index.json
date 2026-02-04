@@ -470,7 +470,9 @@
           "settings": {
             "avatar": "shopify://shop_images/1cdef0657f45d3128f729f078ae13cc177047172.png",
             "name": "Soham",
-            "role": "Doctor"
+            "role": "Doctor",
+            "position_x": "15",
+            "position_y": "5"
           }
         },
         "team_member_7c6iP9": {
@@ -478,7 +480,9 @@
           "settings": {
             "avatar": "shopify://shop_images/uifaces-human-avatar_1.jpg",
             "name": "Cody",
-            "role": "Dietitian"
+            "role": "Dietitian",
+            "position_x": "70",
+            "position_y": "15"
           }
         },
         "team_member_Uq3dzC": {
@@ -486,7 +490,9 @@
           "settings": {
             "avatar": "shopify://shop_images/4240806b872670d82295b502afe3ec8c7e7098e2.png",
             "name": "Aubrey",
-            "role": "Psychologist"
+            "role": "Psychologist",
+            "position_x": "10",
+            "position_y": "65"
           }
         },
         "team_member_fqNMtT": {
@@ -494,7 +500,9 @@
           "settings": {
             "avatar": "shopify://shop_images/uifaces-human-avatar.jpg",
             "name": "Ronald",
-            "role": "Personal Trainer"
+            "role": "Personal Trainer",
+            "position_x": "65",
+            "position_y": "65"
           }
         }
       },
@@ -507,7 +515,6 @@
       "name": "Team Section",
       "settings": {
         "color_scheme": "scheme-1",
-        "background_color": "rgba(0,0,0,0)",
         "text_color": "#1a1a1a",
         "card_background": "#ffffff",
         "orbit_color": "#a8d5cc",
