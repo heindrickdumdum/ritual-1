@@ -42,6 +42,7 @@
         {%- comment -%} Orbit Rings {%- endcomment -%}
         <div class="team-section__orbit-ring team-section__orbit-ring--1"></div>
         <div class="team-section__orbit-ring team-section__orbit-ring--2"></div>
+        <div class="team-section__orbit-ring team-section__orbit-ring--3"></div>
 
         {%- comment -%} Team Members {%- endcomment -%}
         {%- for block in section.blocks -%}
@@ -70,7 +71,7 @@
 </div>
 
 <style>
-  .team-section__wrapper {
+  #shopify-section-{{ section.id }} .team-section__wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
@@ -78,30 +79,30 @@
     margin: 0 auto;
   }
 
-  .team-section__content {
+  #shopify-section-{{ section.id }} .team-section__content {
     padding: 2rem 0;
   }
 
-  .team-section__heading {
+  #shopify-section-{{ section.id }} .team-section__heading {
     font-weight: 500;
     line-height: 1.2;
     margin: 0 0 1.5rem 0;
   }
 
-  .team-section__description {
+  #shopify-section-{{ section.id }} .team-section__description {
     font-size: 1.25rem;
     line-height: 1.6;
     color: #535862;
   }
 
-  .team-section__orbit {
+  #shopify-section-{{ section.id }} .team-section__orbit {
     position: relative;
     width: 100%;
     aspect-ratio: 1;
     margin: 0 auto;
   }
 
-  .team-section__center {
+  #shopify-section-{{ section.id }} .team-section__center {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -118,17 +119,17 @@
     border: 12px solid var(--orbit-color, #BCD9D6);
   }
 
-  .team-section__center img {
+  #shopify-section-{{ section.id }} .team-section__center img {
     max-width: 70%;
     height: auto;
   }
 
-  .team-section__center-placeholder {
+  #shopify-section-{{ section.id }} .team-section__center-placeholder {
     font-size: 1.5rem;
     font-weight: 500;
   }
 
-  .team-section__orbit-ring {
+  #shopify-section-{{ section.id }} .team-section__orbit-ring {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -138,103 +139,108 @@
     opacity: 0.4;
   }
 
-  .team-section__orbit-ring--1 {
-    width: 65%;
-    height: 65%;
+  #shopify-section-{{ section.id }} .team-section__orbit-ring--1 {
+    width: 70%;
+    height: 70%;
   }
 
-  .team-section__orbit-ring--2 {
+  #shopify-section-{{ section.id }} .team-section__orbit-ring--2 {
     width: 90%;
     height: 90%;
   }
 
-  .team-section__member {
+  #shopify-section-{{ section.id }} .team-section__orbit-ring--3 {
+    width: 50%;
+    height: 50%;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__member {
     position: absolute;
     z-index: 3;
   }
 
-  .team-section__member-card {
-    background: var(--card-background, #fff);
+  #shopify-section-{{ section.id }} .team-section__member-card {
+    background: #F7F7F4;
     border-radius: 12px;
-    padding: 1.25rem 1.5rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    padding: 1rem;
+    box-shadow: 0px 12px 16px -4px rgba(10, 13, 18, 0.08), 0px 4px 6px -2px rgba(10, 13, 18, 0.03), 0px 2px 2px -1px rgba(10, 13, 18, 0.04);
     text-align: center;
     min-width: 140px;
   }
 
-  .team-section__avatar {
-    width: 80px;
-    height: 80px;
+  #shopify-section-{{ section.id }} .team-section__avatar {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
     margin: 0 auto 0.75rem;
     background: #e5e5e5;
   }
 
-  .team-section__avatar--placeholder {
+  #shopify-section-{{ section.id }} .team-section__avatar--placeholder {
     background: #e5e5e5;
   }
 
-  .team-section__name {
+  #shopify-section-{{ section.id }} .team-section__name {
     font-size: 1rem;
     font-weight: 500;
     margin: 0 0 0.25rem 0;
   }
 
-  .team-section__role {
-    font-size: 0.875rem;
+  #shopify-section-{{ section.id }} .team-section__role {
+    font-size: 0.75rem;
     margin: 0;
   }
 
   @media (max-width: 991px) {
-    .team-section__wrapper {
+    #shopify-section-{{ section.id }} .team-section__wrapper {
       grid-template-columns: 1fr;
       gap: 3rem;
     }
 
-    .team-section__heading {
+    #shopify-section-{{ section.id }} .team-section__heading {
       font-size: 2rem;
     }
 
-    .team-section__orbit {
+    #shopify-section-{{ section.id }} .team-section__orbit {
       max-width: 500px;
     }
 
-    .team-section__center {
+    #shopify-section-{{ section.id }} .team-section__center {
       width: 150px;
       height: 150px;
     }
   }
 
   @media (max-width: 767px) {
-    .team-section__heading {
+    #shopify-section-{{ section.id }} .team-section__heading {
       font-size: 1.75rem;
     }
 
-    .team-section__orbit {
+    #shopify-section-{{ section.id }} .team-section__orbit {
       max-width: 400px;
     }
 
-    .team-section__center {
+    #shopify-section-{{ section.id }} .team-section__center {
       width: 120px;
       height: 120px;
     }
 
-    .team-section__member-card {
+    #shopify-section-{{ section.id }} .team-section__member-card {
       padding: 1rem 1.25rem;
       min-width: 120px;
     }
 
-    .team-section__avatar {
+    #shopify-section-{{ section.id }} .team-section__avatar {
       width: 60px;
       height: 60px;
     }
 
-    .team-section__name {
+    #shopify-section-{{ section.id }} .team-section__name {
       font-size: 0.9rem;
     }
 
-    .team-section__role {
+    #shopify-section-{{ section.id }} .team-section__role {
       font-size: 0.8rem;
     }
   }
