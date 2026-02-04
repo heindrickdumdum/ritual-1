@@ -471,7 +471,7 @@
             "avatar": "shopify://shop_images/1cdef0657f45d3128f729f078ae13cc177047172.png",
             "name": "Soham",
             "role": "Doctor",
-            "position_x": "15",
+            "position_x": "5",
             "position_y": "5"
           }
         },
@@ -492,7 +492,7 @@
             "name": "Aubrey",
             "role": "Psychologist",
             "position_x": "10",
-            "position_y": "65"
+            "position_y": "60"
           }
         },
         "team_member_fqNMtT": {
