@@ -8,7 +8,7 @@
   }
 {%- endstyle -%}
 
-<div class="team-section color-{{ section.settings.color_scheme }}" style="padding-top: var(--padding-top); padding-bottom: var(--padding-bottom);">
+<div class="team-section section section--page-width color-{{ section.settings.color_scheme }}" style="padding-top: var(--padding-top); padding-bottom: var(--padding-bottom);">
   <div class="container">
     <div class="team-section__wrapper">
       {%- comment -%} Left Content {%- endcomment -%}
@@ -75,7 +75,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
-    max-width: 1200px;
     margin: 0 auto;
   }
 
@@ -87,21 +86,18 @@
     font-weight: 500;
     line-height: 1.2;
     margin: 0 0 1.5rem 0;
-    color: var(--text-color, #1a1a1a);
   }
 
   .team-section__description {
     font-size: 1.25rem;
     line-height: 1.6;
-    color: var(--text-color, #6b6b6b);
-    max-width: 500px;
+    color: #535862;
   }
 
   .team-section__orbit {
     position: relative;
     width: 100%;
     aspect-ratio: 1;
-    max-width: 600px;
     margin: 0 auto;
   }
 
@@ -110,8 +106,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     background: var(--card-background, #fff);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -119,7 +115,7 @@
     align-items: center;
     justify-content: center;
     z-index: 2;
-    border: 3px solid var(--orbit-color, #a8d5cc);
+    border: 12px solid var(--orbit-color, #BCD9D6);
   }
 
   .team-section__center img {
@@ -130,7 +126,6 @@
   .team-section__center-placeholder {
     font-size: 1.5rem;
     font-weight: 500;
-    color: var(--text-color, #1a1a1a);
   }
 
   .team-section__orbit-ring {
@@ -139,7 +134,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    border: 2px dashed var(--orbit-color, #a8d5cc);
+    border: 2px dashed var(--orbit-color, #BCD9D6);
     opacity: 0.4;
   }
 
@@ -184,12 +179,10 @@
     font-size: 1rem;
     font-weight: 500;
     margin: 0 0 0.25rem 0;
-    color: var(--text-color, #1a1a1a);
   }
 
   .team-section__role {
     font-size: 0.875rem;
-    color: #6b6b6b;
     margin: 0;
   }
 
@@ -277,7 +270,7 @@
       "type": "color",
       "id": "orbit_color",
       "label": "Orbit Ring Color",
-      "default": "#a8d5cc"
+      "default": "#BCD9D6"
     },
     {
       "type": "header",
