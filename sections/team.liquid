@@ -1,0 +1,461 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-background: {{ section.settings.background_color }};
+    --text-color: {{ section.settings.text_color }};
+    --card-background: {{ section.settings.card_background }};
+    --orbit-color: {{ section.settings.orbit_color }};
+    --padding-top: {{ section.settings.padding_top }}px;
+    --padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<div class="team-section" style="background-color: var(--section-background); padding-top: var(--padding-top); padding-bottom: var(--padding-bottom);">
+  <div class="container">
+    <div class="team-section__wrapper">
+      {%- comment -%} Left Content {%- endcomment -%}
+      <div class="team-section__content">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="team-section__heading">
+            {{ section.settings.heading }}
+          </h2>
+        {%- endif -%}
+
+        {%- if section.settings.description != blank -%}
+          <div class="team-section__description">
+            {{ section.settings.description }}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Right Team Orbit {%- endcomment -%}
+      <div class="team-section__orbit">
+        {%- comment -%} Center Logo {%- endcomment -%}
+        <div class="team-section__center">
+          {%- if section.settings.center_logo != blank -%}
+            <img src="{{ section.settings.center_logo | image_url: width: 200 }}" alt="{{ section.settings.center_logo_alt }}" loading="lazy">
+          {%- else -%}
+            <div class="team-section__center-placeholder">
+              <span>rituall</span>
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- comment -%} Orbit Rings {%- endcomment -%}
+        <div class="team-section__orbit-ring team-section__orbit-ring--1"></div>
+        <div class="team-section__orbit-ring team-section__orbit-ring--2"></div>
+
+        {%- comment -%} Team Members {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'team_member' -%}
+              <div class="team-section__member team-section__member--{{ forloop.index }}" {{ block.shopify_attributes }}>
+                <div class="team-section__member-card">
+                  {%- if block.settings.avatar != blank -%}
+                    <img src="{{ block.settings.avatar | image_url: width: 120 }}" alt="{{ block.settings.name }}" class="team-section__avatar" loading="lazy">
+                  {%- else -%}
+                    <div class="team-section__avatar team-section__avatar--placeholder"></div>
+                  {%- endif -%}
+                  {%- if block.settings.name != blank -%}
+                    <h3 class="team-section__name">{{ block.settings.name }}</h3>
+                  {%- endif -%}
+                  {%- if block.settings.role != blank -%}
+                    <p class="team-section__role">{{ block.settings.role }}</p>
+                  {%- endif -%}
+                </div>
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .team-section__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .team-section__content {
+    padding: 2rem 0;
+  }
+
+  .team-section__heading {
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0 0 1.5rem 0;
+    color: var(--text-color, #1a1a1a);
+  }
+
+  .team-section__description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color, #6b6b6b);
+    max-width: 500px;
+  }
+
+  .team-section__orbit {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .team-section__center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: var(--card-background, #fff);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    border: 3px solid var(--orbit-color, #a8d5cc);
+  }
+
+  .team-section__center img {
+    max-width: 70%;
+    height: auto;
+  }
+
+  .team-section__center-placeholder {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-color, #1a1a1a);
+  }
+
+  .team-section__orbit-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 2px dashed var(--orbit-color, #a8d5cc);
+    opacity: 0.4;
+  }
+
+  .team-section__orbit-ring--1 {
+    width: 65%;
+    height: 65%;
+  }
+
+  .team-section__orbit-ring--2 {
+    width: 90%;
+    height: 90%;
+  }
+
+  .team-section__member {
+    position: absolute;
+    z-index: 3;
+  }
+
+  .team-section__member--1 {
+    top: 5%;
+    left: 15%;
+  }
+
+  .team-section__member--2 {
+    top: 5%;
+    right: 5%;
+  }
+
+  .team-section__member--3 {
+    bottom: 15%;
+    left: 10%;
+  }
+
+  .team-section__member--4 {
+    bottom: 10%;
+    right: 0%;
+  }
+
+  .team-section__member-card {
+    background: var(--card-background, #fff);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    min-width: 140px;
+  }
+
+  .team-section__avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 0.75rem;
+    background: #e5e5e5;
+  }
+
+  .team-section__avatar--placeholder {
+    background: #e5e5e5;
+  }
+
+  .team-section__name {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 0 0.25rem 0;
+    color: var(--text-color, #1a1a1a);
+  }
+
+  .team-section__role {
+    font-size: 0.875rem;
+    color: #6b6b6b;
+    margin: 0;
+  }
+
+  @media (max-width: 991px) {
+    .team-section__wrapper {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .team-section__heading {
+      font-size: 2rem;
+    }
+
+    .team-section__orbit {
+      max-width: 500px;
+    }
+
+    .team-section__center {
+      width: 150px;
+      height: 150px;
+    }
+
+    .team-section__member--1 {
+      top: 8%;
+      left: 10%;
+    }
+
+    .team-section__member--2 {
+      top: 8%;
+      right: 0%;
+    }
+
+    .team-section__member--3 {
+      bottom: 15%;
+      left: 5%;
+    }
+
+    .team-section__member--4 {
+      bottom: 15%;
+      right: -5%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .team-section__heading {
+      font-size: 1.75rem;
+    }
+
+    .team-section__orbit {
+      max-width: 400px;
+    }
+
+    .team-section__center {
+      width: 120px;
+      height: 120px;
+    }
+
+    .team-section__member-card {
+      padding: 1rem 1.25rem;
+      min-width: 120px;
+    }
+
+    .team-section__avatar {
+      width: 60px;
+      height: 60px;
+    }
+
+    .team-section__name {
+      font-size: 0.9rem;
+    }
+
+    .team-section__role {
+      font-size: 0.8rem;
+    }
+
+    .team-section__member--1 {
+      top: 5%;
+      left: 5%;
+    }
+
+    .team-section__member--2 {
+      top: 5%;
+      right: -5%;
+    }
+
+    .team-section__member--3 {
+      bottom: 12%;
+      left: 0%;
+    }
+
+    .team-section__member--4 {
+      bottom: 12%;
+      right: -10%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Team Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f5f3ef"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "orbit_color",
+      "label": "Orbit Ring Color",
+      "default": "#a8d5cc"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Meet the Treatment Team"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "At rituall, we believe that expert support makes all the difference. With guidance from our doctors, dietitians, and rituall-Coaches, you get a structured approach to long-term result."
+    },
+    {
+      "type": "header",
+      "content": "Center Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "center_logo",
+      "label": "Center Logo"
+    },
+    {
+      "type": "text",
+      "id": "center_logo_alt",
+      "label": "Logo Alt Text",
+      "default": "rituall"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "team_member",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Avatar Image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Team Member"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role",
+          "default": "Role"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Team Section",
+      "blocks": [
+        {
+          "type": "team_member",
+          "settings": {
+            "name": "Soham",
+            "role": "Doctor"
+          }
+        },
+        {
+          "type": "team_member",
+          "settings": {
+            "name": "Cody",
+            "role": "Dietitian"
+          }
+        },
+        {
+          "type": "team_member",
+          "settings": {
+            "name": "Aubrey",
+            "role": "Psychologist"
+          }
+        },
+        {
+          "type": "team_member",
+          "settings": {
+            "name": "Ronald",
+            "role": "Personal Trainer"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
