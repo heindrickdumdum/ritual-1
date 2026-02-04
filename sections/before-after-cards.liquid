@@ -62,7 +62,7 @@
   #shopify-section-{{ section.id }} .before-after-card__images {
     display: flex;
     gap: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
   }
 
   #shopify-section-{{ section.id }} .before-after-card__image-wrapper {
@@ -70,7 +70,6 @@
     position: relative;
     aspect-ratio: 49 / 60;
     border-radius: 12px;
-    overflow: hidden;
     background: #E5E5E0;
   }
 
@@ -82,15 +81,16 @@
 
   #shopify-section-{{ section.id }} .before-after-card__image-label {
     position: absolute;
-    bottom: 0.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.9);
-    padding: 0.25rem 0.75rem;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    color: rgb(var(--color-foreground));
-    font-weight: 700;
+    bottom: -2.375rem;
+    width: 196px;
+    height: 20px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 145%;
+    color: #717680;
+    text-align: center;
+
   }
 
   #shopify-section-{{ section.id }} .before-after-card__title {
