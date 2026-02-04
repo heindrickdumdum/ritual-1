@@ -459,6 +459,57 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
+    },
+    "team_BrVXLJ": {
+      "type": "team",
+      "blocks": {
+        "team_member_7HPzCX": {
+          "type": "team_member",
+          "settings": {
+            "name": "Soham",
+            "role": "Doctor"
+          }
+        },
+        "team_member_7c6iP9": {
+          "type": "team_member",
+          "settings": {
+            "name": "Cody",
+            "role": "Dietitian"
+          }
+        },
+        "team_member_Uq3dzC": {
+          "type": "team_member",
+          "settings": {
+            "name": "Aubrey",
+            "role": "Psychologist"
+          }
+        },
+        "team_member_fqNMtT": {
+          "type": "team_member",
+          "settings": {
+            "name": "Ronald",
+            "role": "Personal Trainer"
+          }
+        }
+      },
+      "block_order": [
+        "team_member_7HPzCX",
+        "team_member_7c6iP9",
+        "team_member_Uq3dzC",
+        "team_member_fqNMtT"
+      ],
+      "name": "Team Section",
+      "settings": {
+        "background_color": "#f5f3ef",
+        "text_color": "#1a1a1a",
+        "card_background": "#ffffff",
+        "orbit_color": "#a8d5cc",
+        "heading": "Meet the Treatment Team",
+        "description": "At rituall, we believe that expert support makes all the difference. With guidance from our doctors, dietitians, and rituall-Coaches, you get a structured approach to long-term result.",
+        "center_logo_alt": "rituall",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
@@ -467,6 +518,7 @@
     "why_choose_iTHzJJ",
     "how_it_works_mYkb9q",
     "before_after_cards_N73PB4",
-    "price_section_aN4BeH"
+    "price_section_aN4BeH",
+    "team_BrVXLJ"
   ]
 }
