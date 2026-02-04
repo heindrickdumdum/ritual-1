@@ -9,7 +9,7 @@
   }
 {%- endstyle -%}
 
-<div class="team-section" style="background-color: var(--section-background); padding-top: var(--padding-top); padding-bottom: var(--padding-bottom);">
+<div class="team-section color-{{ section.settings.color_scheme }}" style="background-color: var(--section-background); padding-top: var(--padding-top); padding-bottom: var(--padding-bottom);">
   <div class="container">
     <div class="team-section__wrapper">
       {%- comment -%} Left Content {%- endcomment -%}
@@ -313,6 +313,12 @@
 {
   "name": "Team Section",
   "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
     {
       "type": "header",
       "content": "Colors"
