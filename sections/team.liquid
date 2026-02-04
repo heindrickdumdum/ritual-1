@@ -47,7 +47,7 @@
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'team_member' -%}
-              <div class="team-section__member team-section__member--{{ forloop.index }}" {{ block.shopify_attributes }}>
+              <div class="team-section__member" style="top: {{ block.settings.position_y }}%; left: {{ block.settings.position_x }}%;" {{ block.shopify_attributes }}>
                 <div class="team-section__member-card">
                   {%- if block.settings.avatar != blank -%}
                     <img src="{{ block.settings.avatar | image_url: width: 120 }}" alt="{{ block.settings.name }}" class="team-section__avatar" loading="lazy">
@@ -159,26 +159,6 @@
     z-index: 3;
   }
 
-  .team-section__member--1 {
-    top: 5%;
-    left: 15%;
-  }
-
-  .team-section__member--2 {
-    top: 5%;
-    right: 5%;
-  }
-
-  .team-section__member--3 {
-    bottom: 15%;
-    left: 10%;
-  }
-
-  .team-section__member--4 {
-    bottom: 10%;
-    right: 0%;
-  }
-
   .team-section__member-card {
     background: var(--card-background, #fff);
     border-radius: 12px;
@@ -232,26 +212,6 @@
       width: 150px;
       height: 150px;
     }
-
-    .team-section__member--1 {
-      top: 8%;
-      left: 10%;
-    }
-
-    .team-section__member--2 {
-      top: 8%;
-      right: 0%;
-    }
-
-    .team-section__member--3 {
-      bottom: 15%;
-      left: 5%;
-    }
-
-    .team-section__member--4 {
-      bottom: 15%;
-      right: -5%;
-    }
   }
 
   @media (max-width: 767px) {
@@ -284,26 +244,6 @@
 
     .team-section__role {
       font-size: 0.8rem;
-    }
-
-    .team-section__member--1 {
-      top: 5%;
-      left: 5%;
-    }
-
-    .team-section__member--2 {
-      top: 5%;
-      right: -5%;
-    }
-
-    .team-section__member--3 {
-      bottom: 12%;
-      left: 0%;
-    }
-
-    .team-section__member--4 {
-      bottom: 12%;
-      right: -10%;
     }
   }
 </style>
@@ -417,6 +357,24 @@
           "id": "role",
           "label": "Role",
           "default": "Role"
+        },
+        {
+          "type": "header",
+          "content": "Position"
+        },
+        {
+          "type": "text",
+          "id": "position_x",
+          "label": "Horizontal Position (X)",
+          "info": "Enter percentage value (e.g., 15 for 15%)",
+          "default": "15"
+        },
+        {
+          "type": "text",
+          "id": "position_y",
+          "label": "Vertical Position (Y)",
+          "info": "Enter percentage value (e.g., 5 for 5%)",
+          "default": "5"
         }
       ]
     }
@@ -429,28 +387,36 @@
           "type": "team_member",
           "settings": {
             "name": "Soham",
-            "role": "Doctor"
+            "role": "Doctor",
+            "position_x": "15",
+            "position_y": "5"
           }
         },
         {
           "type": "team_member",
           "settings": {
             "name": "Cody",
-            "role": "Dietitian"
+            "role": "Dietitian",
+            "position_x": "75",
+            "position_y": "5"
           }
         },
         {
           "type": "team_member",
           "settings": {
             "name": "Aubrey",
-            "role": "Psychologist"
+            "role": "Psychologist",
+            "position_x": "10",
+            "position_y": "70"
           }
         },
         {
           "type": "team_member",
           "settings": {
             "name": "Ronald",
-            "role": "Personal Trainer"
+            "role": "Personal Trainer",
+            "position_x": "80",
+            "position_y": "75"
           }
         }
       ]
