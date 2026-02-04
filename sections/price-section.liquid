@@ -96,11 +96,32 @@
 
         {%- if section.settings.show_payment_icons -%}
           <div class="price-section__payment-icons">
-            {%- for type in shop.enabled_payment_types limit: section.settings.payment_icons_limit -%}
-              <div class="price-section__payment-icon">
-                {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-              </div>
-            {%- endfor -%}
+            {%- if section.settings.payment_icon_type == 'dynamic' -%}
+              {%- for type in shop.enabled_payment_types limit: section.settings.payment_icons_limit -%}
+                <div class="price-section__payment-icon">
+                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                </div>
+              {%- endfor -%}
+            {%- else -%}
+              {%- if section.settings.payment_icon_1 != blank -%}
+                <img src="{{ section.settings.payment_icon_1 | image_url: width: 100 }}" alt="{{ section.settings.payment_icon_1_alt }}" width="50" height="32" loading="lazy">
+              {%- endif -%}
+              {%- if section.settings.payment_icon_2 != blank -%}
+                <img src="{{ section.settings.payment_icon_2 | image_url: width: 100 }}" alt="{{ section.settings.payment_icon_2_alt }}" width="50" height="32" loading="lazy">
+              {%- endif -%}
+              {%- if section.settings.payment_icon_3 != blank -%}
+                <img src="{{ section.settings.payment_icon_3 | image_url: width: 100 }}" alt="{{ section.settings.payment_icon_3_alt }}" width="50" height="32" loading="lazy">
+              {%- endif -%}
+              {%- if section.settings.payment_icon_4 != blank -%}
+                <img src="{{ section.settings.payment_icon_4 | image_url: width: 100 }}" alt="{{ section.settings.payment_icon_4_alt }}" width="50" height="32" loading="lazy">
+              {%- endif -%}
+              {%- if section.settings.payment_icon_5 != blank -%}
+                <img src="{{ section.settings.payment_icon_5 | image_url: width: 100 }}" alt="{{ section.settings.payment_icon_5_alt }}" width="50" height="32" loading="lazy">
+              {%- endif -%}
+              {%- if section.settings.payment_icon_6 != blank -%}
+                <img src="{{ section.settings.payment_icon_6 | image_url: width: 100 }}" alt="{{ section.settings.payment_icon_6_alt }}" width="50" height="32" loading="lazy">
+              {%- endif -%}
+            {%- endif -%}
           </div>
         {%- endif -%}
       </div>
@@ -267,6 +288,12 @@
     opacity: 0.7;
   }
 
+  .price-section__payment-icons img {
+    height: 28px;
+    width: auto;
+    opacity: 0.7;
+  }
+
   @media (max-width: 991px) {
     .price-section__wrapper {
       grid-template-columns: 1fr;
@@ -421,8 +448,23 @@
       "type": "checkbox",
       "id": "show_payment_icons",
       "label": "Show Payment Icons",
-      "info": "Displays payment methods enabled in your store settings",
       "default": true
+    },
+    {
+      "type": "radio",
+      "id": "payment_icon_type",
+      "label": "Payment Icon Type",
+      "options": [
+        {
+          "value": "dynamic",
+          "label": "Dynamic (from store settings)"
+        },
+        {
+          "value": "custom",
+          "label": "Custom (upload images)"
+        }
+      ],
+      "default": "dynamic"
     },
     {
       "type": "range",
@@ -430,8 +472,82 @@
       "min": 3,
       "max": 10,
       "step": 1,
-      "label": "Maximum Icons to Display",
+      "label": "Maximum Icons to Display (Dynamic only)",
       "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Custom Payment Icons"
+    },
+    {
+      "type": "paragraph",
+      "content": "Upload custom payment icons (only used when 'Custom' is selected above)"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_1",
+      "label": "Payment Icon 1"
+    },
+    {
+      "type": "text",
+      "id": "payment_icon_1_alt",
+      "label": "Payment Icon 1 Alt Text",
+      "default": "Payment Method"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_2",
+      "label": "Payment Icon 2"
+    },
+    {
+      "type": "text",
+      "id": "payment_icon_2_alt",
+      "label": "Payment Icon 2 Alt Text",
+      "default": "Payment Method"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_3",
+      "label": "Payment Icon 3"
+    },
+    {
+      "type": "text",
+      "id": "payment_icon_3_alt",
+      "label": "Payment Icon 3 Alt Text",
+      "default": "Payment Method"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_4",
+      "label": "Payment Icon 4"
+    },
+    {
+      "type": "text",
+      "id": "payment_icon_4_alt",
+      "label": "Payment Icon 4 Alt Text",
+      "default": "Payment Method"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_5",
+      "label": "Payment Icon 5"
+    },
+    {
+      "type": "text",
+      "id": "payment_icon_5_alt",
+      "label": "Payment Icon 5 Alt Text",
+      "default": "Payment Method"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_6",
+      "label": "Payment Icon 6"
+    },
+    {
+      "type": "text",
+      "id": "payment_icon_6_alt",
+      "label": "Payment Icon 6 Alt Text",
+      "default": "Payment Method"
     },
     {
       "type": "header",
