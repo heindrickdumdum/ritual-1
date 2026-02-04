@@ -500,7 +500,8 @@
       ],
       "name": "Team Section",
       "settings": {
-        "background_color": "#f5f3ef",
+        "color_scheme": "scheme-1",
+        "background_color": "rgba(0,0,0,0)",
         "text_color": "#1a1a1a",
         "card_background": "#ffffff",
         "orbit_color": "#a8d5cc",
