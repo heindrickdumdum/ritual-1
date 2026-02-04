@@ -1,6 +1,5 @@
 {%- style -%}
   #shopify-section-{{ section.id }} {
-    --section-background: {{ section.settings.background_color }};
     --text-color: {{ section.settings.text_color }};
     --card-background: {{ section.settings.card_background }};
     --orbit-color: {{ section.settings.orbit_color }};
@@ -9,7 +8,7 @@
   }
 {%- endstyle -%}
 
-<div class="team-section color-{{ section.settings.color_scheme }}" style="background-color: var(--section-background); padding-top: var(--padding-top); padding-bottom: var(--padding-bottom);">
+<div class="team-section color-{{ section.settings.color_scheme }}" style="padding-top: var(--padding-top); padding-bottom: var(--padding-bottom);">
   <div class="container">
     <div class="team-section__wrapper">
       {%- comment -%} Left Content {%- endcomment -%}
@@ -322,12 +321,6 @@
     {
       "type": "header",
       "content": "Colors"
-    },
-    {
-      "type": "color",
-      "id": "background_color",
-      "label": "Background Color",
-      "default": "#f5f3ef"
     },
     {
       "type": "color",
