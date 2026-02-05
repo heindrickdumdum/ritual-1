@@ -664,6 +664,63 @@
         "padding_top": 120,
         "padding_bottom": 120
       }
+    },
+    "faq_section_7zEPdk": {
+      "type": "faq-section",
+      "blocks": {
+        "faq_item_mqthHC": {
+          "type": "faq_item",
+          "settings": {
+            "question": "When will I start seeing results?",
+            "answer": "Most users notice visible improvement within 3-6 months of consistent use."
+          }
+        },
+        "faq_item_kHFqAF": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What affects women's hair growth?",
+            "answer": "Various factors including hormones, stress, nutrition, and genetics can affect hair growth."
+          }
+        },
+        "faq_item_m7Yrmn": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Will hair grow on other parts of my body?",
+            "answer": "Our formula is specifically designed to target scalp hair growth only."
+          }
+        },
+        "faq_item_9KbMkg": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are the main differences in formulas between Nutrafol Men, and Women's Balance?",
+            "answer": "Each formula is tailored to address the unique hormonal and nutritional needs of different demographics."
+          }
+        },
+        "faq_item_BWDHaw": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How is Nutrafol different from other hair growth products?",
+            "answer": "Our approach combines science-backed ingredients with personalized recommendations for comprehensive hair wellness."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_mqthHC",
+        "faq_item_kHFqAF",
+        "faq_item_m7Yrmn",
+        "faq_item_9KbMkg",
+        "faq_item_BWDHaw"
+      ],
+      "name": "FAQ Section",
+      "settings": {
+        "title": "Got Questions? We've Got Answers.",
+        "show_contact_card": true,
+        "contact_title": "Email support",
+        "contact_email": "support@yourbrand.com",
+        "color_scheme": "",
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
     }
   },
   "order": [
@@ -674,6 +731,7 @@
     "before_after_cards_N73PB4",
     "price_section_aN4BeH",
     "team_BrVXLJ",
-    "customer_reviews_3LGy3J"
+    "customer_reviews_3LGy3J",
+    "faq_section_7zEPdk"
   ]
 }
