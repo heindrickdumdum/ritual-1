@@ -28,21 +28,20 @@
   }
 
   #shopify-section-{{ section.id }} .customer-reviews__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    column-count: 3;
+    column-gap: 1.5rem;
     margin-bottom: 3rem;
   }
 
   @media (max-width: 989px) {
     #shopify-section-{{ section.id }} .customer-reviews__grid {
-      grid-template-columns: repeat(2, 1fr);
+      column-count: 2;
     }
   }
 
   @media (max-width: 749px) {
     #shopify-section-{{ section.id }} .customer-reviews__grid {
-      grid-template-columns: 1fr;
+      column-count: 1;
     }
   }
 
@@ -51,6 +50,8 @@
     border-radius: 16px;
     padding: 1.5rem;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
   }
 
   #shopify-section-{{ section.id }} .review-card__header {
