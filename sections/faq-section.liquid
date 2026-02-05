@@ -1,0 +1,357 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  #shopify-section-{{ section.id }} .faq-section {
+    padding-top: var(--section-padding-top);
+    padding-bottom: var(--section-padding-bottom);
+  }
+
+  #shopify-section-{{ section.id }} .faq-section__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  @media (max-width: 989px) {
+    #shopify-section-{{ section.id }} .faq-section__wrapper {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .faq-section__left {
+    position: sticky;
+    top: 2rem;
+  }
+
+  #shopify-section-{{ section.id }} .faq-section__title {
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0 0 2rem 0;
+    color: rgb(var(--color-foreground));
+  }
+
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} .faq-section__title {
+      font-size: 2rem;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .faq-section__contact-card {
+    background: #F7F7F5;
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  #shopify-section-{{ section.id }} .faq-section__contact-icon {
+    width: 48px;
+    height: 48px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .faq-section__contact-icon svg {
+    width: 24px;
+    height: 24px;
+    color: #4A9B8E;
+  }
+
+  #shopify-section-{{ section.id }} .faq-section__contact-info h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 0 0.25rem 0;
+    color: rgb(var(--color-foreground));
+  }
+
+  #shopify-section-{{ section.id }} .faq-section__contact-info p {
+    font-size: 0.875rem;
+    margin: 0;
+    color: rgba(var(--color-foreground), 0.6);
+  }
+
+  #shopify-section-{{ section.id }} .faq-section__contact-info a {
+    color: rgba(var(--color-foreground), 0.6);
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .faq-section__contact-info a:hover {
+    color: #4A9B8E;
+  }
+
+  #shopify-section-{{ section.id }} .faq-section__accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #shopify-section-{{ section.id }} .faq-accordion-item {
+    border-bottom: 1px solid #E9EAEB;
+    padding-bottom: 1.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .faq-accordion-item:last-child {
+    border-bottom: none;
+  }
+
+  #shopify-section-{{ section.id }} .faq-accordion-item__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  #shopify-section-{{ section.id }} .faq-accordion-item__question {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin: 0;
+    color: rgb(var(--color-foreground));
+  }
+
+  #shopify-section-{{ section.id }} .faq-accordion-item__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .faq-accordion-item.is-open .faq-accordion-item__icon {
+    transform: rotate(180deg);
+  }
+
+  #shopify-section-{{ section.id }} .faq-accordion-item__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .faq-accordion-item.is-open .faq-accordion-item__content {
+    max-height: 500px;
+    padding-top: 1rem;
+  }
+
+  #shopify-section-{{ section.id }} .faq-accordion-item__answer {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    color: rgba(var(--color-foreground), 0.7);
+  }
+{%- endstyle -%}
+
+<div class="faq-section section section--page-width color-{{ section.settings.color_scheme }}">
+  <div class="container">
+    <div class="faq-section__wrapper">
+      <div class="faq-section__left">
+        {%- if section.settings.title != blank -%}
+          <h2 class="faq-section__title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.show_contact_card -%}
+          <div class="faq-section__contact-card">
+            <div class="faq-section__contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+              </svg>
+            </div>
+            <div class="faq-section__contact-info">
+              <h3>{{ section.settings.contact_title }}</h3>
+              <p><a href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a></p>
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="faq-section__right">
+        <div class="faq-section__accordion">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'faq_item' -%}
+              <div class="faq-accordion-item{% if forloop.first %} is-open{% endif %}" {{ block.shopify_attributes }} data-faq-item>
+                <button class="faq-accordion-item__header" type="button" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" data-faq-toggle>
+                  <h3 class="faq-accordion-item__question">{{ block.settings.question }}</h3>
+                  <svg class="faq-accordion-item__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="faq-accordion-item__content" data-faq-content>
+                  <p class="faq-accordion-item__answer">{{ block.settings.answer }}</p>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('[data-faq-item]');
+    
+    faqItems.forEach(item => {
+      const toggle = item.querySelector('[data-faq-toggle]');
+      
+      toggle.addEventListener('click', () => {
+        const isOpen = item.classList.contains('is-open');
+        
+        if (isOpen) {
+          item.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        } else {
+          item.classList.add('is-open');
+          toggle.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Got Questions? We've Got Answers."
+    },
+    {
+      "type": "header",
+      "content": "Contact Card"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_contact_card",
+      "label": "Show contact card",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "contact_title",
+      "label": "Contact title",
+      "default": "Email support"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact email",
+      "default": "support@yourbrand.com"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Question goes here?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Answer goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Section",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "When will I start seeing results?",
+            "answer": "Most users notice visible improvement within 3-6 months of consistent use."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What affects women's hair growth?",
+            "answer": "Various factors including hormones, stress, nutrition, and genetics can affect hair growth."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Will hair grow on other parts of my body?",
+            "answer": "Our formula is specifically designed to target scalp hair growth only."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are the main differences in formulas between Nutrafol Men, and Women's Balance?",
+            "answer": "Each formula is tailored to address the unique hormonal and nutritional needs of different demographics."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How is Nutrafol different from other hair growth products?",
+            "answer": "Our approach combines science-backed ingredients with personalized recommendations for comprehensive hair wellness."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
