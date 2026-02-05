@@ -4,6 +4,7 @@
   #shopify-section-{{ section.id }} {
     --section-padding-top: {{ section.settings.padding-block-start }}px;
     --section-padding-bottom: {{ section.settings.padding-block-end }}px;
+    overflow: hidden;
   }
 
   #shopify-section-{{ section.id }} .section {
@@ -28,7 +29,7 @@
   }
 
   #shopify-section-{{ section.id }} .before-after-carousel__wrapper {
-    overflow: hidden;
+    /* overflow: hidden; */
     margin: 0 60px;
   }
 
@@ -323,11 +324,26 @@
       const cards = track.querySelectorAll('.before-after-card');
       
       let currentIndex = 0;
-      const cardWidth = 300 + 24; // card width + gap
-      const visibleCards = Math.floor(carousel.offsetWidth / cardWidth);
-      const maxIndex = Math.max(0, cards.length - visibleCards);
+      
+      function calculateCardWidth() {
+        if (cards.length === 0) return 0;
+        const cardWidth = cards[0].offsetWidth;
+        const trackStyle = window.getComputedStyle(track);
+        const gap = parseFloat(trackStyle.gap) || 24;
+        return cardWidth + gap;
+      }
+      
+      function calculateMaxIndex() {
+        const wrapperWidth = carousel.querySelector('.before-after-carousel__wrapper').offsetWidth;
+        const cardWidth = calculateCardWidth();
+        if (cardWidth === 0) return 0;
+        const visibleCards = Math.floor(wrapperWidth / cardWidth);
+        return Math.max(0, cards.length - visibleCards);
+      }
 
       function updateCarousel() {
+        const cardWidth = calculateCardWidth();
+        const maxIndex = calculateMaxIndex();
         const offset = currentIndex * cardWidth;
         track.style.transform = `translateX(-${offset}px)`;
         
@@ -348,6 +364,7 @@
       });
 
       nextBtn.addEventListener('click', () => {
+        const maxIndex = calculateMaxIndex();
         if (currentIndex < maxIndex) {
           currentIndex++;
           updateCarousel();
