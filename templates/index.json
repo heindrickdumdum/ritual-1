@@ -713,7 +713,7 @@
       ],
       "name": "FAQ Section",
       "settings": {
-        "title": "Got Questions? We've Got Answers.",
+        "title": "<p>Got Questions?</p><p>We've Got Answers.</p>",
         "show_contact_card": true,
         "contact_title": "Email support",
         "contact_email": "support@yourbrand.com",
