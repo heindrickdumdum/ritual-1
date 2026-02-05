@@ -522,6 +522,94 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
+    },
+    "customer_reviews_3LGy3J": {
+      "type": "customer-reviews",
+      "blocks": {
+        "review_JTixri": {
+          "type": "review",
+          "settings": {
+            "name": "Warren",
+            "review_text": "Very easy and professional experience. Quick response from the doctor and easy ordering, billing and shipped and delivered on time. Hassle free."
+          }
+        },
+        "review_KmDjiH": {
+          "type": "review",
+          "settings": {
+            "name": "Samantha",
+            "review_text": "Within an hour . . . a doctor contacted me to make sure that particular medication was what I wanted. Doctor was friendly and knowledgeable. Within minutes . . . being confirmed my order was put through and I received my medication after 2 days."
+          }
+        },
+        "review_LRfWMR": {
+          "type": "review",
+          "settings": {
+            "name": "Paul",
+            "review_text": "The whole process of signing up with Felix, the online visit, and getting my prescription in the mail was very easy and very convenient."
+          }
+        },
+        "review_9cPDBW": {
+          "type": "review",
+          "settings": {
+            "name": "Matt",
+            "review_text": "Rituall gets you into contact with doctors discreetly online to address personal matters that you'd rather not go to a doctor in person to see, you get the prescription best suited to your needs, and they'll deliver it to your local pharmacy or even your house!"
+          }
+        },
+        "review_zPh4DF": {
+          "type": "review",
+          "settings": {
+            "name": "Tim",
+            "review_text": "Great service and products. Everything always arrived in a timely manner."
+          }
+        },
+        "review_W4CAXx": {
+          "type": "review",
+          "settings": {
+            "name": "Rowen",
+            "review_text": "Super convenient, and amazing customer service! The team always responds +++ fast and answers every question and concern. Very pleased with Rituall!"
+          }
+        },
+        "review_CXHeQ8": {
+          "type": "review",
+          "settings": {
+            "name": "Nicole",
+            "review_text": "Very quick and easy to do. Can ask the doctor any questions about the medication."
+          }
+        },
+        "review_CEPUpr": {
+          "type": "review",
+          "settings": {
+            "name": "Maren",
+            "review_text": "Simple, respectful, professional with good follow up and guidance, and fast service and delivery."
+          }
+        },
+        "review_W6XM4X": {
+          "type": "review",
+          "settings": {
+            "name": "Lindsey",
+            "review_text": "Comprehensive and informative consultations. The app is user-friendly and the support team is always available to assist!"
+          }
+        }
+      },
+      "block_order": [
+        "review_JTixri",
+        "review_KmDjiH",
+        "review_LRfWMR",
+        "review_9cPDBW",
+        "review_zPh4DF",
+        "review_W4CAXx",
+        "review_CXHeQ8",
+        "review_CEPUpr",
+        "review_W6XM4X"
+      ],
+      "name": "Customer Reviews",
+      "settings": {
+        "title": "Loved by 1.5m+ Customers",
+        "button_text": "View All Reviews",
+        "button_url": "",
+        "color_scheme": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
@@ -531,6 +619,7 @@
     "how_it_works_mYkb9q",
     "before_after_cards_N73PB4",
     "price_section_aN4BeH",
-    "team_BrVXLJ"
+    "team_BrVXLJ",
+    "customer_reviews_3LGy3J"
   ]
 }
