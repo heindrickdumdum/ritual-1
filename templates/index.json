@@ -356,7 +356,7 @@
         "testimonial_card_i9UjHp": {
           "type": "testimonial_card",
           "settings": {
-            "title": "Customer's Story",
+            "title": "Story",
             "treatment": "Treatment name",
             "duration": "3 months"
           }
@@ -364,15 +364,7 @@
         "testimonial_card_L6e8FE": {
           "type": "testimonial_card",
           "settings": {
-            "title": "Customer's Story",
-            "treatment": "Treatment name",
-            "duration": "3 months"
-          }
-        },
-        "testimonial_card_EX8qk7": {
-          "type": "testimonial_card",
-          "settings": {
-            "title": "Customer's Story",
+            "title": "Customer 2",
             "treatment": "Treatment name",
             "duration": "3 months"
           }
@@ -385,14 +377,19 @@
         "testimonial_card_4KkhKL",
         "testimonial_card_tkeYQH",
         "testimonial_card_i9UjHp",
-        "testimonial_card_L6e8FE",
-        "testimonial_card_EX8qk7"
+        "testimonial_card_L6e8FE"
       ],
       "name": "Before After Cards",
       "settings": {
         "title": "Results You'll Love - Here's the Proof",
         "button_text": "Start Your Free Consultation",
         "button_url": "shopify://collections",
+        "before_label": "Before",
+        "after_label": "After",
+        "treatment_label": "Treatment",
+        "duration_label": "Duration",
+        "previous_button_label": "Previous",
+        "next_button_label": "Next",
         "section_width": "full-width",
         "color_scheme": "",
         "padding-block-start": 48,
