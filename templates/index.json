@@ -588,6 +588,41 @@
             "name": "Lindsey",
             "review_text": "Comprehensive and informative consultations. The app is user-friendly and the support team is always available to assist!"
           }
+        },
+        "review_aJXbD3": {
+          "type": "review",
+          "settings": {
+            "name": "Customer Name",
+            "review_text": "Great service and products. Everything always arrived in a timely manner."
+          }
+        },
+        "review_WxXaiw": {
+          "type": "review",
+          "settings": {
+            "name": "Customer Name",
+            "review_text": "Great service and products. Everything always arrived in a timely manner."
+          }
+        },
+        "review_EG3MAd": {
+          "type": "review",
+          "settings": {
+            "name": "Customer Name",
+            "review_text": "Great service and products. Everything always arrived in a timely manner."
+          }
+        },
+        "review_hdJAiK": {
+          "type": "review",
+          "settings": {
+            "name": "Customer Name",
+            "review_text": "Great service and products. Everything always arrived in a timely manner."
+          }
+        },
+        "review_wqHp7F": {
+          "type": "review",
+          "settings": {
+            "name": "Customer Name",
+            "review_text": "Great service and products. Everything always arrived in a timely manner."
+          }
         }
       },
       "block_order": [
@@ -599,7 +634,12 @@
         "review_W4CAXx",
         "review_CXHeQ8",
         "review_CEPUpr",
-        "review_W6XM4X"
+        "review_W6XM4X",
+        "review_aJXbD3",
+        "review_WxXaiw",
+        "review_EG3MAd",
+        "review_hdJAiK",
+        "review_wqHp7F"
       ],
       "name": "Customer Reviews",
       "settings": {
