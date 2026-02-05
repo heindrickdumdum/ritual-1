@@ -47,7 +47,7 @@
   #shopify-section-{{ section.id }} .before-after-card {
     flex: 0 0 432px;
     background: #F7F7F5;
-    border-radius: 16px;
+    border-radius: 20px;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -234,10 +234,10 @@
                           loading: 'lazy',
                           width: block.settings.before_image.width,
                           height: block.settings.before_image.height,
-                          alt: 'Before'
+                          alt: section.settings.before_label
                       }}
                     {%- endif -%}
-                    <span class="before-after-card__image-label">Before</span>
+                    <span class="before-after-card__image-label">{{ section.settings.before_label }}</span>
                   </div>
                   <div class="before-after-card__image-wrapper">
                     {%- if block.settings.after_image != blank -%}
@@ -248,10 +248,10 @@
                           loading: 'lazy',
                           width: block.settings.after_image.width,
                           height: block.settings.after_image.height,
-                          alt: 'After'
+                          alt: section.settings.after_label
                       }}
                     {%- endif -%}
-                    <span class="before-after-card__image-label">After</span>
+                    <span class="before-after-card__image-label">{{ section.settings.after_label }}</span>
                   </div>
                 </div>
 
@@ -262,14 +262,14 @@
                 <div class="before-after-card__details">
                   {%- if block.settings.treatment != blank -%}
                     <div class="before-after-card__detail detail--treatment">
-                      <span class="before-after-card__detail-label">Treatment</span>
+                      <span class="before-after-card__detail-label">{{ section.settings.treatment_label }}</span>
                       <span class="before-after-card__detail-value">{{ block.settings.treatment }}</span>
                     </div>
                   {%- endif -%}
 
                   {%- if block.settings.duration != blank -%}
                     <div class="before-after-card__detail detail--duration">
-                      <span class="before-after-card__detail-label">Duration</span>
+                      <span class="before-after-card__detail-label">{{ section.settings.duration_label }}</span>
                       <span class="before-after-card__detail-value">{{ block.settings.duration }}</span>
                     </div>
                   {%- endif -%}
@@ -282,13 +282,13 @@
 
       <div class="tw-py-8">
         <div class="tw-flex tw-items-center tw-relative tw-mt-8 tw-max-w-[1360px] tw-mx-auto">
-        <button class="before-after-carousel__nav before-after-carousel__nav--prev" data-carousel-prev aria-label="Previous">
+        <button class="before-after-carousel__nav before-after-carousel__nav--prev" data-carousel-prev aria-label="{{ section.settings.previous_button_label }}">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
 
-        <button class="before-after-carousel__nav before-after-carousel__nav--next" data-carousel-next aria-label="Next">
+        <button class="before-after-carousel__nav before-after-carousel__nav--next" data-carousel-next aria-label="{{ section.settings.next_button_label }}">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
@@ -386,6 +386,46 @@
       "type": "url",
       "id": "button_url",
       "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Labels"
+    },
+    {
+      "type": "text",
+      "id": "before_label",
+      "label": "Before label",
+      "default": "Before"
+    },
+    {
+      "type": "text",
+      "id": "after_label",
+      "label": "After label",
+      "default": "After"
+    },
+    {
+      "type": "text",
+      "id": "treatment_label",
+      "label": "Treatment label",
+      "default": "Treatment"
+    },
+    {
+      "type": "text",
+      "id": "duration_label",
+      "label": "Duration label",
+      "default": "Duration"
+    },
+    {
+      "type": "text",
+      "id": "previous_button_label",
+      "label": "Previous button label",
+      "default": "Previous"
+    },
+    {
+      "type": "text",
+      "id": "next_button_label",
+      "label": "Next button label",
+      "default": "Next"
     },
     {
       "type": "header",
