@@ -29,12 +29,15 @@
   }
 
   #shopify-section-{{ section.id }} .faq-section__title {
-    font-size: 2.5rem;
-    font-weight: 400;
-    line-height: 1.2;
-    margin: 0 0 2rem 0;
-    color: rgb(var(--color-foreground));
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+
   }
+
+    #shopify-section-{{ section.id }} .faq-section__title p {
+        margin: 0;
+        line-height: normal;
+    }
 
   @media (max-width: 749px) {
     #shopify-section-{{ section.id }} .faq-section__title {
@@ -46,7 +49,7 @@
     background: #F7F7F5;
     border-radius: 16px;
     padding: 1.5rem;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 1rem;
   }
@@ -239,7 +242,7 @@
       "type": "richtext",
       "id": "title",
       "label": "Heading",
-      "default": "<p>Got Questions? We've Got Answers.</p>"
+      "default": "<p>Got Questions? dWe've Got Answers.</p>"
     },
     {
       "type": "header",
