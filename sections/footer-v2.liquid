@@ -1,31 +1,12 @@
 <style>
+  #shopify-section-{{ section.id }} {
+    --padding-top: {{ section.settings.padding_top }}px;
+    --padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
   #shopify-section-{{ section.id }} .footer {
-    background-color: #F5F3EE;
-    padding: 3rem 0;
-  }
-
-  @media (min-width: 768px) {
-    #shopify-section-{{ section.id }} .footer {
-      padding: 4rem 0;
-    }
-  }
-
-  #shopify-section-{{ section.id }} .footer .section {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-
-  @media (min-width: 768px) {
-    #shopify-section-{{ section.id }} .footer .section {
-      padding: 0 1.5rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    #shopify-section-{{ section.id }} .footer .section {
-      padding: 0 2rem;
-    }
+    padding-top: var(--padding-top);
+    padding-bottom: var(--padding-bottom);
   }
 
   #shopify-section-{{ section.id }} .footer .footer-contents {
@@ -44,7 +25,7 @@
 
   @media (min-width: 1024px) {
     #shopify-section-{{ section.id }} .footer .footer-contents {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 4rem;
     }
   }
@@ -256,7 +237,7 @@
   }
 </style>
 
-<footer class="footer bg-[#F5F3EE] py-12 md:py-16">
+<footer class="footer">
 <div class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}">
     <div class="footer-contents">
       
@@ -302,63 +283,66 @@
         {%- endif -%}
       </div>
 
-      {%- comment -%} Help Links Section {%- endcomment -%}
-      {%- if section.settings.show_help_section -%}
-        <div class="help-links-section">
-          {%- if section.settings.help_heading != blank -%}
-            <h4 class="text-[13px] md:text-sm font-semibold text-[#1a1a1a] mb-4">
-              {{ section.settings.help_heading }}
-            </h4>
-          {%- endif -%}
-          
-          {%- if section.settings.help_menu != blank -%}
-            {%- assign help_menu = linklists[section.settings.help_menu] -%}
-            {%- if help_menu.links.size > 0 -%}
-              <ul class="space-y-2.5">
-                {%- for link in help_menu.links -%}
-                  <li>
-                    <a 
-                      href="{{ link.url }}" 
-                      class="text-[13px] md:text-sm text-[#666666] hover:text-[#1a1a1a] transition-colors leading-relaxed"
-                    >
-                      {{ link.title }}
-                    </a>
-                  </li>
-                {%- endfor -%}
-              </ul>
+      {%- comment -%} Links Column (Help + Company) {%- endcomment -%}
+      <div class="links-column tw-flex tw-gap-8 md:tw-gap-10">
+        {%- comment -%} Help Links Section {%- endcomment -%}
+        {%- if section.settings.show_help_section -%}
+          <div class="help-links-section mb-8 md:mb-10">
+            {%- if section.settings.help_heading != blank -%}
+              <h4 class="text-[13px] md:text-sm font-semibold text-[#1a1a1a] mb-4">
+                {{ section.settings.help_heading }}
+              </h4>
             {%- endif -%}
-          {%- endif -%}
-        </div>
-      {%- endif -%}
+            
+            {%- if section.settings.help_menu != blank -%}
+              {%- assign help_menu = linklists[section.settings.help_menu] -%}
+              {%- if help_menu.links.size > 0 -%}
+                <ul class="space-y-2.5">
+                  {%- for link in help_menu.links -%}
+                    <li>
+                      <a 
+                        href="{{ link.url }}" 
+                        class="text-[13px] md:text-sm text-[#666666] hover:text-[#1a1a1a] transition-colors leading-relaxed"
+                      >
+                        {{ link.title }}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
 
-      {%- comment -%} Company Links Section {%- endcomment -%}
-      {%- if section.settings.show_company_section -%}
-        <div class="company-links-section">
-          {%- if section.settings.company_heading != blank -%}
-            <h4 class="text-[13px] md:text-sm font-semibold text-[#1a1a1a] mb-4">
-              {{ section.settings.company_heading }}
-            </h4>
-          {%- endif -%}
-          
-          {%- if section.settings.company_menu != blank -%}
-            {%- assign company_menu = linklists[section.settings.company_menu] -%}
-            {%- if company_menu.links.size > 0 -%}
-              <ul class="space-y-2.5">
-                {%- for link in company_menu.links -%}
-                  <li>
-                    <a 
-                      href="{{ link.url }}" 
-                      class="text-[13px] md:text-sm text-[#666666] hover:text-[#1a1a1a] transition-colors leading-relaxed"
-                    >
-                      {{ link.title }}
-                    </a>
-                  </li>
-                {%- endfor -%}
-              </ul>
+        {%- comment -%} Company Links Section {%- endcomment -%}
+        {%- if section.settings.show_company_section -%}
+          <div class="company-links-section">
+            {%- if section.settings.company_heading != blank -%}
+              <h4 class="text-[13px] md:text-sm font-semibold text-[#1a1a1a] mb-4">
+                {{ section.settings.company_heading }}
+              </h4>
             {%- endif -%}
-          {%- endif -%}
-        </div>
-      {%- endif -%}
+            
+            {%- if section.settings.company_menu != blank -%}
+              {%- assign company_menu = linklists[section.settings.company_menu] -%}
+              {%- if company_menu.links.size > 0 -%}
+                <ul class="space-y-2.5">
+                  {%- for link in company_menu.links -%}
+                    <li>
+                      <a 
+                        href="{{ link.url }}" 
+                        class="text-[13px] md:text-sm text-[#666666] hover:text-[#1a1a1a] transition-colors leading-relaxed"
+                      >
+                        {{ link.title }}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
     </div>
 
     {%- comment -%} Payment Icons {%- endcomment -%}
@@ -469,6 +453,36 @@
     {
       "type": "header",
       "content": "Section Settings"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section width",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "narrow",
+          "label": "Narrow"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        },
+        {
+          "value": "full",
+          "label": "Full width"
+        }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
     },
     {
       "type": "color",
