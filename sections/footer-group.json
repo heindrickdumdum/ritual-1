@@ -153,111 +153,6 @@
     "footer_v2_AmFQiT": {
       "type": "footer-v2",
       "blocks": {
-        "help_link_zNy4Lz": {
-          "type": "help_link",
-          "settings": {
-            "text": "Nutrafol Men",
-            "link": ""
-          }
-        },
-        "help_link_a4eYtb": {
-          "type": "help_link",
-          "settings": {
-            "text": "Nutrafol Men + DHT Inhibitor",
-            "link": ""
-          }
-        },
-        "help_link_qKptzj": {
-          "type": "help_link",
-          "settings": {
-            "text": "Nutrafol Men + Hair Serum",
-            "link": ""
-          }
-        },
-        "help_link_gjRwtW": {
-          "type": "help_link",
-          "settings": {
-            "text": "The Science",
-            "link": ""
-          }
-        },
-        "help_link_GCQwYL": {
-          "type": "help_link",
-          "settings": {
-            "text": "Ingredients",
-            "link": ""
-          }
-        },
-        "help_link_nyaLQG": {
-          "type": "help_link",
-          "settings": {
-            "text": "Clinical Studies",
-            "link": ""
-          }
-        },
-        "help_link_FNJ7g3": {
-          "type": "help_link",
-          "settings": {
-            "text": "Results",
-            "link": ""
-          }
-        },
-        "help_link_wYjrCQ": {
-          "type": "help_link",
-          "settings": {
-            "text": "FAQ",
-            "link": ""
-          }
-        },
-        "company_link_kbYkLd": {
-          "type": "company_link",
-          "settings": {
-            "text": "Contact",
-            "link": ""
-          }
-        },
-        "company_link_pYMBcw": {
-          "type": "company_link",
-          "settings": {
-            "text": "Press",
-            "link": ""
-          }
-        },
-        "company_link_xiYACx": {
-          "type": "company_link",
-          "settings": {
-            "text": "Careers",
-            "link": ""
-          }
-        },
-        "company_link_NaeHgw": {
-          "type": "company_link",
-          "settings": {
-            "text": "Our Story",
-            "link": ""
-          }
-        },
-        "company_link_9WfEbR": {
-          "type": "company_link",
-          "settings": {
-            "text": "Our Service",
-            "link": ""
-          }
-        },
-        "company_link_BqrHqP": {
-          "type": "company_link",
-          "settings": {
-            "text": "Become a Partner",
-            "link": ""
-          }
-        },
-        "company_link_dJf6EJ": {
-          "type": "company_link",
-          "settings": {
-            "text": "Social Purpose",
-            "link": ""
-          }
-        },
         "payment_icon_4rBGez": {
           "type": "payment_icon",
           "settings": {
@@ -330,21 +225,6 @@
         }
       },
       "block_order": [
-        "help_link_zNy4Lz",
-        "help_link_a4eYtb",
-        "help_link_qKptzj",
-        "help_link_gjRwtW",
-        "help_link_GCQwYL",
-        "help_link_nyaLQG",
-        "help_link_FNJ7g3",
-        "help_link_wYjrCQ",
-        "company_link_kbYkLd",
-        "company_link_pYMBcw",
-        "company_link_xiYACx",
-        "company_link_NaeHgw",
-        "company_link_9WfEbR",
-        "company_link_BqrHqP",
-        "company_link_dJf6EJ",
         "payment_icon_4rBGez",
         "payment_icon_RTdNfP",
         "payment_icon_D7XT3p",
@@ -364,11 +244,14 @@
         "newsletter_description": "You'll receive news, discounts, and helpful tips to take care of your skin and hair with lots of love.",
         "newsletter_placeholder": "Email",
         "help_heading": "We help you with...",
+        "help_menu": "we-help-you-with",
         "company_heading": "Company",
+        "company_menu": "company",
         "show_payment_icons": true,
         "show_social_icons": true,
         "copyright_text": "© 2025 Ritual Wellness Inc. All Rights Reserved.",
-        "show_logo": true
+        "show_logo": true,
+        "logo_image": "shopify://shop_images/Logo.svg"
       }
     },
     "footer_utilities_jLGE8U": {
