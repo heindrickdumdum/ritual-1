@@ -1,9 +1,6 @@
 <style>
   #shopify-section-{{ section.id }} .personalized-care-section {
-    --padding-block-start: {{ section.settings.padding_block_start }}rem;
-    --padding-block-end: {{ section.settings.padding_block_end }}rem;
-    padding-top: var(--padding-block-start);
-    padding-bottom: var(--padding-block-end);
+
     overflow: hidden;
     position: relative;
   }
@@ -12,12 +9,17 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
-    align-items: center;
+    align-items: end;
   }
 
   /* Left Content */
   #shopify-section-{{ section.id }} .personalized-care-content {
+    --padding-block-start: {{ section.settings.padding_block_start }}rem;
+    --padding-block-end: {{ section.settings.padding_block_end }}rem;
+    padding-top: var(--padding-block-start);
+    padding-bottom: var(--padding-block-end);
     max-width: 540px;
+    
   }
 
   #shopify-section-{{ section.id }} .personalized-care-heading {
@@ -140,7 +142,7 @@
 
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div class="personalized-care-section color-{{ section.settings.color_scheme }}">
-  <div class="page-width">
+  <div class="section section--page-width color-{{ section.settings.color_scheme }}">
     <div class="personalized-care-grid">
       <!-- Left Column - Customizable Content -->
       <div class="personalized-care-content">
@@ -197,7 +199,6 @@
 {
   "name": "Personalized Care",
   "tag": "section",
-  "class": "section",
   "settings": [
     {
       "type": "header",
