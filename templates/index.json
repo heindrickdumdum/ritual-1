@@ -730,7 +730,8 @@
         "description": "<p>At Ritual, we make it simple to get hair care that's truly made for you. From your first quiz to your ongoing routine, every recommendation is tailored to your goals, lifestyle, and needs. As your body changes, your plan adapts—so you always know what to use, when, and why.</p>",
         "button_label": "App Store",
         "button_link": "",
-        "background_color": "#4a9d95",
+        "phone_mockup_image": "shopify://shop_images/Phone_mockup.png",
+        "color_scheme": "scheme-2",
         "padding_block_start": 5,
         "padding_block_end": 5
       }
