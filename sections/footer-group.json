@@ -63,6 +63,7 @@
                 "type_preset": "h4",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
+                "font_weight": "",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -88,6 +89,7 @@
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
+                "font_weight": "",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -115,9 +117,9 @@
             "width": "fill",
             "custom_width": 100,
             "inherit_color_scheme": true,
+            "color_scheme": "",
             "heading": "",
             "heading_preset": "h3",
-            "color_scheme": "",
             "border_style": "all",
             "border_width": 1,
             "border_radius": 100,
@@ -146,6 +148,227 @@
         "color_scheme": "scheme-1",
         "padding-block-start": 30,
         "padding-block-end": 30
+      }
+    },
+    "footer_v2_AmFQiT": {
+      "type": "footer-v2",
+      "blocks": {
+        "help_link_zNy4Lz": {
+          "type": "help_link",
+          "settings": {
+            "text": "Nutrafol Men",
+            "link": ""
+          }
+        },
+        "help_link_a4eYtb": {
+          "type": "help_link",
+          "settings": {
+            "text": "Nutrafol Men + DHT Inhibitor",
+            "link": ""
+          }
+        },
+        "help_link_qKptzj": {
+          "type": "help_link",
+          "settings": {
+            "text": "Nutrafol Men + Hair Serum",
+            "link": ""
+          }
+        },
+        "help_link_gjRwtW": {
+          "type": "help_link",
+          "settings": {
+            "text": "The Science",
+            "link": ""
+          }
+        },
+        "help_link_GCQwYL": {
+          "type": "help_link",
+          "settings": {
+            "text": "Ingredients",
+            "link": ""
+          }
+        },
+        "help_link_nyaLQG": {
+          "type": "help_link",
+          "settings": {
+            "text": "Clinical Studies",
+            "link": ""
+          }
+        },
+        "help_link_FNJ7g3": {
+          "type": "help_link",
+          "settings": {
+            "text": "Results",
+            "link": ""
+          }
+        },
+        "help_link_wYjrCQ": {
+          "type": "help_link",
+          "settings": {
+            "text": "FAQ",
+            "link": ""
+          }
+        },
+        "company_link_kbYkLd": {
+          "type": "company_link",
+          "settings": {
+            "text": "Contact",
+            "link": ""
+          }
+        },
+        "company_link_pYMBcw": {
+          "type": "company_link",
+          "settings": {
+            "text": "Press",
+            "link": ""
+          }
+        },
+        "company_link_xiYACx": {
+          "type": "company_link",
+          "settings": {
+            "text": "Careers",
+            "link": ""
+          }
+        },
+        "company_link_NaeHgw": {
+          "type": "company_link",
+          "settings": {
+            "text": "Our Story",
+            "link": ""
+          }
+        },
+        "company_link_9WfEbR": {
+          "type": "company_link",
+          "settings": {
+            "text": "Our Service",
+            "link": ""
+          }
+        },
+        "company_link_BqrHqP": {
+          "type": "company_link",
+          "settings": {
+            "text": "Become a Partner",
+            "link": ""
+          }
+        },
+        "company_link_dJf6EJ": {
+          "type": "company_link",
+          "settings": {
+            "text": "Social Purpose",
+            "link": ""
+          }
+        },
+        "payment_icon_4rBGez": {
+          "type": "payment_icon",
+          "settings": {
+            "icon_name": "Klarna"
+          }
+        },
+        "payment_icon_RTdNfP": {
+          "type": "payment_icon",
+          "settings": {
+            "icon_name": "Visa"
+          }
+        },
+        "payment_icon_D7XT3p": {
+          "type": "payment_icon",
+          "settings": {
+            "icon_name": "Mastercard"
+          }
+        },
+        "payment_icon_yCA4Qz": {
+          "type": "payment_icon",
+          "settings": {
+            "icon_name": "Discover"
+          }
+        },
+        "payment_icon_gjUDMA": {
+          "type": "payment_icon",
+          "settings": {
+            "icon_name": "Google Pay"
+          }
+        },
+        "payment_icon_hRyATH": {
+          "type": "payment_icon",
+          "settings": {
+            "icon_name": "Apple Pay"
+          }
+        },
+        "payment_icon_XcEkpJ": {
+          "type": "payment_icon",
+          "settings": {
+            "icon_name": "PayPal"
+          }
+        },
+        "social_icon_wY97UV": {
+          "type": "social_icon",
+          "settings": {
+            "platform": "instagram",
+            "url": ""
+          }
+        },
+        "social_icon_7iF68f": {
+          "type": "social_icon",
+          "settings": {
+            "platform": "tiktok",
+            "url": ""
+          }
+        },
+        "social_icon_Nd8gVH": {
+          "type": "social_icon",
+          "settings": {
+            "platform": "facebook",
+            "url": ""
+          }
+        },
+        "social_icon_aMyPBB": {
+          "type": "social_icon",
+          "settings": {
+            "platform": "linkedin",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "help_link_zNy4Lz",
+        "help_link_a4eYtb",
+        "help_link_qKptzj",
+        "help_link_gjRwtW",
+        "help_link_GCQwYL",
+        "help_link_nyaLQG",
+        "help_link_FNJ7g3",
+        "help_link_wYjrCQ",
+        "company_link_kbYkLd",
+        "company_link_pYMBcw",
+        "company_link_xiYACx",
+        "company_link_NaeHgw",
+        "company_link_9WfEbR",
+        "company_link_BqrHqP",
+        "company_link_dJf6EJ",
+        "payment_icon_4rBGez",
+        "payment_icon_RTdNfP",
+        "payment_icon_D7XT3p",
+        "payment_icon_yCA4Qz",
+        "payment_icon_gjUDMA",
+        "payment_icon_hRyATH",
+        "payment_icon_XcEkpJ",
+        "social_icon_wY97UV",
+        "social_icon_7iF68f",
+        "social_icon_Nd8gVH",
+        "social_icon_aMyPBB"
+      ],
+      "name": "Footer V2",
+      "settings": {
+        "show_newsletter_form": true,
+        "newsletter_heading": "Subscribe and get your 20% discount!",
+        "newsletter_description": "You'll receive news, discounts, and helpful tips to take care of your skin and hair with lots of love.",
+        "newsletter_placeholder": "Email",
+        "help_heading": "We help you with...",
+        "company_heading": "Company",
+        "show_payment_icons": true,
+        "show_social_icons": true,
+        "copyright_text": "© 2025 Ritual Wellness Inc. All Rights Reserved.",
+        "show_logo": true
       }
     },
     "footer_utilities_jLGE8U": {
@@ -206,6 +429,7 @@
   },
   "order": [
     "footer_m9NzUG",
+    "footer_v2_AmFQiT",
     "footer_utilities_jLGE8U"
   ]
 }
