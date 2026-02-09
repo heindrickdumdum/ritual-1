@@ -1,14 +1,7 @@
 <style>
   #shopify-section-{{ section.id }} .personalized-care-section {
-    {% if section.settings.background_color != blank %}
-      background: {{ section.settings.background_color }};
-    {% endif %}
     --padding-block-start: {{ section.settings.padding_block_start }}rem;
     --padding-block-end: {{ section.settings.padding_block_end }}rem;
-    --text-color: {{ section.settings.text_color }};
-    --heading-color: {{ section.settings.heading_color }};
-    --button-bg: {{ section.settings.button_background }};
-    --button-text: {{ section.settings.button_text_color }};
     padding-top: var(--padding-block-start);
     padding-bottom: var(--padding-block-end);
     overflow: hidden;
@@ -24,7 +17,6 @@
 
   /* Left Content */
   #shopify-section-{{ section.id }} .personalized-care-content {
-    color: var(--text-color);
     max-width: 540px;
   }
 
@@ -34,7 +26,6 @@
     line-height: 1.2;
     margin: 0 0 24px 0;
     letter-spacing: -0.02em;
-    color: var(--heading-color);
   }
 
   #shopify-section-{{ section.id }} .personalized-care-description {
@@ -52,22 +43,21 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: var(--button-bg);
-    color: var(--button-text);
+    background: rgba(var(--color-foreground), 0.1);
+    color: rgb(var(--color-foreground));
     padding: 14px 28px;
     border-radius: 8px;
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
+    border: 1px solid rgba(var(--color-foreground), 0.2);
   }
 
   #shopify-section-{{ section.id }} .app-store-button:hover {
-    opacity: 0.9;
+    background: rgba(var(--color-foreground), 0.15);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   #shopify-section-{{ section.id }} .app-store-icon {
@@ -93,7 +83,7 @@
     width: 100%;
     max-width: 500px;
     aspect-ratio: 1;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(var(--color-foreground), 0.05);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -148,7 +138,8 @@
   }
 </style>
 
-<div class="personalized-care-section">
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div class="personalized-care-section color-{{ section.settings.color_scheme }}">
   <div class="page-width">
     <div class="personalized-care-grid">
       <!-- Left Column - Customizable Content -->
@@ -250,34 +241,10 @@
       "content": "Color Scheme"
     },
     {
-      "type": "color",
-      "id": "background_color",
-      "label": "Background color",
-      "default": "#4a9d95"
-    },
-    {
-      "type": "color",
-      "id": "heading_color",
-      "label": "Heading color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "button_background",
-      "label": "Button background",
-      "default": "rgba(0, 0, 0, 0.3)"
-    },
-    {
-      "type": "color",
-      "id": "button_text_color",
-      "label": "Button text color",
-      "default": "#ffffff"
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
     },
     {
       "type": "header",
