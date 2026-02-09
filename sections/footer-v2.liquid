@@ -1,7 +1,5 @@
-{{ 'base.css' | asset_url | stylesheet_tag }}
-
 <footer class="footer bg-[#F5F3EE] py-12 md:py-16">
-  <div class="container mx-auto px-4 md:px-6 lg:px-8">
+<div class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
       
       {%- comment -%} Newsletter Section {%- endcomment -%}
@@ -54,20 +52,23 @@
           </h4>
         {%- endif -%}
         
-        <ul class="space-y-2">
-          {%- for block in section.blocks -%}
-            {%- if block.type == 'help_link' -%}
-              <li>
-                <a 
-                  href="{{ block.settings.link }}" 
-                  class="text-sm text-gray-600 hover:text-gray-900 transition-colors"
-                >
-                  {{ block.settings.text }}
-                </a>
-              </li>
-            {%- endif -%}
-          {%- endfor -%}
-        </ul>
+        {%- if section.settings.help_menu != blank -%}
+          {%- assign help_menu = linklists[section.settings.help_menu] -%}
+          {%- if help_menu.links.size > 0 -%}
+            <ul class="space-y-2">
+              {%- for link in help_menu.links -%}
+                <li>
+                  <a 
+                    href="{{ link.url }}" 
+                    class="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    {{ link.title }}
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        {%- endif -%}
       </div>
 
       {%- comment -%} Company Links Section {%- endcomment -%}
@@ -78,20 +79,23 @@
           </h4>
         {%- endif -%}
         
-        <ul class="space-y-2">
-          {%- for block in section.blocks -%}
-            {%- if block.type == 'company_link' -%}
-              <li>
-                <a 
-                  href="{{ block.settings.link }}" 
-                  class="text-sm text-gray-600 hover:text-gray-900 transition-colors"
-                >
-                  {{ block.settings.text }}
-                </a>
-              </li>
-            {%- endif -%}
-          {%- endfor -%}
-        </ul>
+        {%- if section.settings.company_menu != blank -%}
+          {%- assign company_menu = linklists[section.settings.company_menu] -%}
+          {%- if company_menu.links.size > 0 -%}
+            <ul class="space-y-2">
+              {%- for link in company_menu.links -%}
+                <li>
+                  <a 
+                    href="{{ link.url }}" 
+                    class="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    {{ link.title }}
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        {%- endif -%}
       </div>
     </div>
 
@@ -237,6 +241,12 @@
       "default": "We help you with..."
     },
     {
+      "type": "link_list",
+      "id": "help_menu",
+      "label": "Help menu",
+      "info": "Select a menu to display help links"
+    },
+    {
       "type": "header",
       "content": "Company Links Section"
     },
@@ -245,6 +255,12 @@
       "id": "company_heading",
       "label": "Company section heading",
       "default": "Company"
+    },
+    {
+      "type": "link_list",
+      "id": "company_menu",
+      "label": "Company menu",
+      "info": "Select a menu to display company links"
     },
     {
       "type": "header",
@@ -289,40 +305,6 @@
     }
   ],
   "blocks": [
-    {
-      "type": "help_link",
-      "name": "Help Link",
-      "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Link text",
-          "default": "Link text"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Link URL"
-        }
-      ]
-    },
-    {
-      "type": "company_link",
-      "name": "Company Link",
-      "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Link text",
-          "default": "Link text"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Link URL"
-        }
-      ]
-    },
     {
       "type": "payment_icon",
       "name": "Payment Icon",
@@ -392,111 +374,6 @@
     {
       "name": "Footer V2",
       "blocks": [
-        {
-          "type": "help_link",
-          "settings": {
-            "text": "Nutrafol Men",
-            "link": ""
-          }
-        },
-        {
-          "type": "help_link",
-          "settings": {
-            "text": "Nutrafol Men + DHT Inhibitor",
-            "link": ""
-          }
-        },
-        {
-          "type": "help_link",
-          "settings": {
-            "text": "Nutrafol Men + Hair Serum",
-            "link": ""
-          }
-        },
-        {
-          "type": "help_link",
-          "settings": {
-            "text": "The Science",
-            "link": ""
-          }
-        },
-        {
-          "type": "help_link",
-          "settings": {
-            "text": "Ingredients",
-            "link": ""
-          }
-        },
-        {
-          "type": "help_link",
-          "settings": {
-            "text": "Clinical Studies",
-            "link": ""
-          }
-        },
-        {
-          "type": "help_link",
-          "settings": {
-            "text": "Results",
-            "link": ""
-          }
-        },
-        {
-          "type": "help_link",
-          "settings": {
-            "text": "FAQ",
-            "link": ""
-          }
-        },
-        {
-          "type": "company_link",
-          "settings": {
-            "text": "Contact",
-            "link": ""
-          }
-        },
-        {
-          "type": "company_link",
-          "settings": {
-            "text": "Press",
-            "link": ""
-          }
-        },
-        {
-          "type": "company_link",
-          "settings": {
-            "text": "Careers",
-            "link": ""
-          }
-        },
-        {
-          "type": "company_link",
-          "settings": {
-            "text": "Our Story",
-            "link": ""
-          }
-        },
-        {
-          "type": "company_link",
-          "settings": {
-            "text": "Our Service",
-            "link": ""
-          }
-        },
-        {
-          "type": "company_link",
-          "settings": {
-            "text": "Become a Partner",
-            "link": ""
-          }
-        },
-        {
-          "type": "company_link",
-          "settings": {
-            "text": "Social Purpose",
-            "link": ""
-          }
-        },
         {
           "type": "payment_icon",
           "settings": {
