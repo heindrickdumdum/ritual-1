@@ -1,17 +1,275 @@
+<style>
+  #shopify-section-{{ section.id }} .footer {
+    background-color: #F5F3EE;
+    padding: 3rem 0;
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .footer {
+      padding: 4rem 0;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .footer .section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .footer .section {
+      padding: 0 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} .footer .section {
+      padding: 0 2rem;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .footer .footer-contents {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .footer .footer-contents {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #shopify-section-{{ section.id }} .footer .footer-contents {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4rem;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .footer .newsletter-section h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .footer .newsletter-section h3 {
+      font-size: 1.25rem;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .footer .newsletter-section p {
+    font-size: 0.8125rem;
+    color: #666666;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .footer .newsletter-section p {
+      font-size: 0.875rem;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .footer .newsletter-form {
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .footer .newsletter-form input[type="email"] {
+    width: 100%;
+    padding: 0.625rem 0;
+    font-size: 0.8125rem;
+    border: none;
+    border-bottom: 1px solid #D1D1D1;
+    background: transparent;
+    color: #1a1a1a;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .footer .newsletter-form input[type="email"] {
+      font-size: 0.875rem;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .footer .newsletter-form input[type="email"]::placeholder {
+    color: #999999;
+  }
+
+  #shopify-section-{{ section.id }} .footer .newsletter-form input[type="email"]:focus {
+    border-bottom-color: #1a1a1a;
+  }
+
+  #shopify-section-{{ section.id }} .footer .newsletter-form button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4A9B8E;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  #shopify-section-{{ section.id }} .footer .newsletter-form button:hover {
+    color: #3d8275;
+  }
+
+  #shopify-section-{{ section.id }} .footer .help-links-section h4,
+  #shopify-section-{{ section.id }} .footer .company-links-section h4 {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .footer .help-links-section h4,
+    #shopify-section-{{ section.id }} .footer .company-links-section h4 {
+      font-size: 0.875rem;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .footer .help-links-section ul,
+  #shopify-section-{{ section.id }} .footer .company-links-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .footer .help-links-section li,
+  #shopify-section-{{ section.id }} .footer .company-links-section li {
+    margin-bottom: 0.625rem;
+  }
+
+  #shopify-section-{{ section.id }} .footer .help-links-section a,
+  #shopify-section-{{ section.id }} .footer .company-links-section a {
+    font-size: 0.8125rem;
+    color: #666666;
+    text-decoration: none;
+    line-height: 1.6;
+    transition: color 0.3s;
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .footer .help-links-section a,
+    #shopify-section-{{ section.id }} .footer .company-links-section a {
+      font-size: 0.875rem;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .footer .help-links-section a:hover,
+  #shopify-section-{{ section.id }} .footer .company-links-section a:hover {
+    color: #1a1a1a;
+  }
+
+  #shopify-section-{{ section.id }} .footer .payment-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .footer .payment-icon {
+    background: white;
+    border-radius: 0.375rem;
+    padding: 0.375rem 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  #shopify-section-{{ section.id }} .footer .payment-icon img {
+    height: 1rem;
+    width: auto;
+  }
+
+  #shopify-section-{{ section.id }} .footer .payment-icon span {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #666666;
+  }
+
+  #shopify-section-{{ section.id }} .footer .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .footer .social-icons a {
+    color: #1a1a1a;
+    transition: color 0.3s;
+  }
+
+  #shopify-section-{{ section.id }} .footer .social-icons a:hover {
+    color: #4A9B8E;
+  }
+
+  #shopify-section-{{ section.id }} .footer .copyright {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  #shopify-section-{{ section.id }} .footer .copyright p {
+    font-size: 0.75rem;
+    color: #666666;
+  }
+
+  #shopify-section-{{ section.id }} .footer .footer-logo {
+    display: flex;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .footer .footer-logo img {
+    height: 2.5rem;
+    width: auto;
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .footer .footer-logo img {
+      height: 3.5rem;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .footer .footer-logo h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .footer .footer-logo h2 {
+      font-size: 2.25rem;
+    }
+  }
+</style>
+
 <footer class="footer bg-[#F5F3EE] py-12 md:py-16">
 <div class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="footer-contents">
       
       {%- comment -%} Newsletter Section {%- endcomment -%}
       <div class="newsletter-section">
         {%- if section.settings.newsletter_heading != blank -%}
-          <h3 class="text-xl md:text-2xl font-medium text-gray-900 mb-3">
+          <h3 class="text-lg md:text-xl font-semibold text-[#1a1a1a] mb-3 leading-tight">
             {{ section.settings.newsletter_heading }}
           </h3>
         {%- endif -%}
         
         {%- if section.settings.newsletter_description != blank -%}
-          <p class="text-sm text-gray-600 mb-6">
+          <p class="text-[13px] md:text-sm text-[#666666] mb-6 leading-relaxed">
             {{ section.settings.newsletter_description }}
           </p>
         {%- endif -%}
@@ -24,14 +282,14 @@
                 <input
                   type="email"
                   name="contact[email]"
-                  class="w-full px-0 py-3 text-sm border-0 border-b border-gray-300 bg-transparent focus:outline-none focus:border-gray-900 transition-colors"
+                  class="w-full px-0 py-2.5 text-[13px] md:text-sm border-0 border-b border-[#D1D1D1] bg-transparent focus:outline-none focus:border-[#1a1a1a] transition-colors text-[#1a1a1a] placeholder:text-[#999999]"
                   placeholder="{{ section.settings.newsletter_placeholder | default: 'Email' }}"
                   aria-label="{{ section.settings.newsletter_placeholder | default: 'Email' }}"
                   required
                 >
                 <button
                   type="submit"
-                  class="absolute right-0 top-1/2 -translate-y-1/2 text-[#4A9B8E] hover:text-[#3A8B7E] transition-colors"
+                  class="absolute right-0 top-1/2 -translate-y-1/2 text-[#4A9B8E] hover:text-[#3d8275] transition-colors"
                   aria-label="Subscribe"
                 >
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,7 +305,7 @@
       {%- comment -%} Help Links Section {%- endcomment -%}
       <div class="help-links-section">
         {%- if section.settings.help_heading != blank -%}
-          <h4 class="text-sm font-medium text-gray-900 mb-4">
+          <h4 class="text-[13px] md:text-sm font-semibold text-[#1a1a1a] mb-4">
             {{ section.settings.help_heading }}
           </h4>
         {%- endif -%}
@@ -55,12 +313,12 @@
         {%- if section.settings.help_menu != blank -%}
           {%- assign help_menu = linklists[section.settings.help_menu] -%}
           {%- if help_menu.links.size > 0 -%}
-            <ul class="space-y-2">
+            <ul class="space-y-2.5">
               {%- for link in help_menu.links -%}
                 <li>
                   <a 
                     href="{{ link.url }}" 
-                    class="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                    class="text-[13px] md:text-sm text-[#666666] hover:text-[#1a1a1a] transition-colors leading-relaxed"
                   >
                     {{ link.title }}
                   </a>
@@ -74,7 +332,7 @@
       {%- comment -%} Company Links Section {%- endcomment -%}
       <div class="company-links-section">
         {%- if section.settings.company_heading != blank -%}
-          <h4 class="text-sm font-medium text-gray-900 mb-4">
+          <h4 class="text-[13px] md:text-sm font-semibold text-[#1a1a1a] mb-4">
             {{ section.settings.company_heading }}
           </h4>
         {%- endif -%}
@@ -82,12 +340,12 @@
         {%- if section.settings.company_menu != blank -%}
           {%- assign company_menu = linklists[section.settings.company_menu] -%}
           {%- if company_menu.links.size > 0 -%}
-            <ul class="space-y-2">
+            <ul class="space-y-2.5">
               {%- for link in company_menu.links -%}
                 <li>
                   <a 
                     href="{{ link.url }}" 
-                    class="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                    class="text-[13px] md:text-sm text-[#666666] hover:text-[#1a1a1a] transition-colors leading-relaxed"
                   >
                     {{ link.title }}
                   </a>
@@ -101,19 +359,19 @@
 
     {%- comment -%} Payment Icons {%- endcomment -%}
     {%- if section.settings.show_payment_icons -%}
-      <div class="payment-icons flex justify-center items-center gap-3 mb-6 flex-wrap">
+      <div class="payment-icons flex justify-center items-center gap-2.5 mb-6 flex-wrap">
         {%- for block in section.blocks -%}
           {%- if block.type == 'payment_icon' -%}
-            <div class="payment-icon bg-white rounded px-3 py-2 flex items-center justify-center">
+            <div class="payment-icon bg-white rounded-md px-3 py-1.5 flex items-center justify-center shadow-sm">
               {%- if block.settings.icon_image != blank -%}
                 <img 
                   src="{{ block.settings.icon_image | image_url: width: 50 }}" 
                   alt="{{ block.settings.icon_name }}"
                   loading="lazy"
-                  class="h-5 w-auto"
+                  class="h-4 w-auto"
                 >
               {%- else -%}
-                <span class="text-xs font-medium text-gray-600">{{ block.settings.icon_name }}</span>
+                <span class="text-xs font-medium text-[#666666]">{{ block.settings.icon_name }}</span>
               {%- endif -%}
             </div>
           {%- endif -%}
@@ -123,14 +381,14 @@
 
     {%- comment -%} Social Icons {%- endcomment -%}
     {%- if section.settings.show_social_icons -%}
-      <div class="social-icons flex justify-center items-center gap-4 mb-6">
+      <div class="social-icons flex justify-center items-center gap-5 mb-6">
         {%- for block in section.blocks -%}
           {%- if block.type == 'social_icon' -%}
             <a 
               href="{{ block.settings.url }}" 
               target="_blank" 
               rel="noopener noreferrer"
-              class="text-gray-900 hover:text-[#4A9B8E] transition-colors"
+              class="text-[#1a1a1a] hover:text-[#4A9B8E] transition-colors"
               aria-label="{{ block.settings.platform }}"
             >
               {%- case block.settings.platform -%}
@@ -172,7 +430,7 @@
     {%- comment -%} Copyright {%- endcomment -%}
     {%- if section.settings.copyright_text != blank -%}
       <div class="copyright text-center mb-8">
-        <p class="text-xs text-gray-600">
+        <p class="text-xs text-[#666666]">
           {{ section.settings.copyright_text }}
         </p>
       </div>
@@ -183,13 +441,13 @@
       <div class="footer-logo flex justify-center">
         {%- if section.settings.logo_image != blank -%}
           <img 
-            src="{{ section.settings.logo_image | image_url: width: 300 }}" 
+            src="{{ section.settings.logo_image | image_url: width: 400 }}" 
             alt="{{ shop.name }}"
             loading="lazy"
-            class="h-12 md:h-16 w-auto"
+            class="h-10 md:h-14 w-auto"
           >
         {%- else -%}
-          <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
+          <h2 class="text-3xl md:text-4xl font-bold text-[#1a1a1a]">
             {{ shop.name }}
           </h2>
         {%- endif -%}
