@@ -721,6 +721,19 @@
         "padding_top": 120,
         "padding_bottom": 120
       }
+    },
+    "personalized_care_tJ7GnD": {
+      "type": "personalized-care",
+      "name": "Personalized Care",
+      "settings": {
+        "heading": "Personalized Care at Every Step",
+        "description": "<p>At Ritual, we make it simple to get hair care that's truly made for you. From your first quiz to your ongoing routine, every recommendation is tailored to your goals, lifestyle, and needs. As your body changes, your plan adapts—so you always know what to use, when, and why.</p>",
+        "button_label": "App Store",
+        "button_link": "",
+        "background_color": "#4a9d95",
+        "padding_block_start": 5,
+        "padding_block_end": 5
+      }
     }
   },
   "order": [
@@ -732,6 +745,7 @@
     "price_section_aN4BeH",
     "team_BrVXLJ",
     "customer_reviews_3LGy3J",
-    "faq_section_7zEPdk"
+    "faq_section_7zEPdk",
+    "personalized_care_tJ7GnD"
   ]
 }
