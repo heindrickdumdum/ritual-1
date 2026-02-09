@@ -43,6 +43,18 @@
   gap: 1.5rem
 }
 
+.tw-gap-2 {
+  gap: 0.5rem
+}
+
+.tw-rounded {
+  border-radius: 0.25rem
+}
+
+.tw-rounded-lg {
+  border-radius: 0.5rem
+}
+
 .tw-border-r-\[1px\] {
   border-right-width: 1px
 }
@@ -60,6 +72,11 @@
 .tw-py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem
+}
+
+.tw-px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem
 }
 
 .tw-pr-6 {

@@ -18,22 +18,20 @@
     --padding-block-end: {{ section.settings.padding_block_end }}rem;
     padding-top: var(--padding-block-start);
     padding-bottom: var(--padding-block-end);
-    max-width: 540px;
+    max-width: 580px;
     
   }
 
   #shopify-section-{{ section.id }} .personalized-care-heading {
-    font-size: 48px;
-    font-weight: 400;
-    line-height: 1.2;
-    margin: 0 0 24px 0;
-    letter-spacing: -0.02em;
+    line-height: normal;
+        font-weight: 500;
+            letter-spacing: -0.02em;
   }
 
   #shopify-section-{{ section.id }} .personalized-care-description {
-    font-size: 16px;
+    font-size: 1.25rem;
     line-height: 1.6;
-    margin: 0 0 32px 0;
+    margin: 0 0 2.5rem 0;
     opacity: 0.95;
   }
 
@@ -136,7 +134,7 @@
         {% if section.settings.button_label != blank %}
           <a 
             href="{{ section.settings.button_link }}" 
-            class="button button--primary"
+            class="button button--primary tw-flex tw-items-center tw-gap-2 tw-rounded-lg tw-px-8"
             {% if section.settings.button_link == blank %}
               role="link" aria-disabled="true"
             {% endif %}
