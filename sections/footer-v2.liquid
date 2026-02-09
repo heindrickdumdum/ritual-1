@@ -290,7 +290,7 @@
                 <button
                   type="submit"
                   class="absolute right-0 top-1/2 -translate-y-1/2 text-[#4A9B8E] hover:text-[#3d8275] transition-colors"
-                  aria-label="Subscribe"
+                  aria-label="{{ section.settings.newsletter_button_label | default: 'Subscribe' }}"
                 >
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -303,58 +303,62 @@
       </div>
 
       {%- comment -%} Help Links Section {%- endcomment -%}
-      <div class="help-links-section">
-        {%- if section.settings.help_heading != blank -%}
-          <h4 class="text-[13px] md:text-sm font-semibold text-[#1a1a1a] mb-4">
-            {{ section.settings.help_heading }}
-          </h4>
-        {%- endif -%}
-        
-        {%- if section.settings.help_menu != blank -%}
-          {%- assign help_menu = linklists[section.settings.help_menu] -%}
-          {%- if help_menu.links.size > 0 -%}
-            <ul class="space-y-2.5">
-              {%- for link in help_menu.links -%}
-                <li>
-                  <a 
-                    href="{{ link.url }}" 
-                    class="text-[13px] md:text-sm text-[#666666] hover:text-[#1a1a1a] transition-colors leading-relaxed"
-                  >
-                    {{ link.title }}
-                  </a>
-                </li>
-              {%- endfor -%}
-            </ul>
+      {%- if section.settings.show_help_section -%}
+        <div class="help-links-section">
+          {%- if section.settings.help_heading != blank -%}
+            <h4 class="text-[13px] md:text-sm font-semibold text-[#1a1a1a] mb-4">
+              {{ section.settings.help_heading }}
+            </h4>
           {%- endif -%}
-        {%- endif -%}
-      </div>
+          
+          {%- if section.settings.help_menu != blank -%}
+            {%- assign help_menu = linklists[section.settings.help_menu] -%}
+            {%- if help_menu.links.size > 0 -%}
+              <ul class="space-y-2.5">
+                {%- for link in help_menu.links -%}
+                  <li>
+                    <a 
+                      href="{{ link.url }}" 
+                      class="text-[13px] md:text-sm text-[#666666] hover:text-[#1a1a1a] transition-colors leading-relaxed"
+                    >
+                      {{ link.title }}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
 
       {%- comment -%} Company Links Section {%- endcomment -%}
-      <div class="company-links-section">
-        {%- if section.settings.company_heading != blank -%}
-          <h4 class="text-[13px] md:text-sm font-semibold text-[#1a1a1a] mb-4">
-            {{ section.settings.company_heading }}
-          </h4>
-        {%- endif -%}
-        
-        {%- if section.settings.company_menu != blank -%}
-          {%- assign company_menu = linklists[section.settings.company_menu] -%}
-          {%- if company_menu.links.size > 0 -%}
-            <ul class="space-y-2.5">
-              {%- for link in company_menu.links -%}
-                <li>
-                  <a 
-                    href="{{ link.url }}" 
-                    class="text-[13px] md:text-sm text-[#666666] hover:text-[#1a1a1a] transition-colors leading-relaxed"
-                  >
-                    {{ link.title }}
-                  </a>
-                </li>
-              {%- endfor -%}
-            </ul>
+      {%- if section.settings.show_company_section -%}
+        <div class="company-links-section">
+          {%- if section.settings.company_heading != blank -%}
+            <h4 class="text-[13px] md:text-sm font-semibold text-[#1a1a1a] mb-4">
+              {{ section.settings.company_heading }}
+            </h4>
           {%- endif -%}
-        {%- endif -%}
-      </div>
+          
+          {%- if section.settings.company_menu != blank -%}
+            {%- assign company_menu = linklists[section.settings.company_menu] -%}
+            {%- if company_menu.links.size > 0 -%}
+              <ul class="space-y-2.5">
+                {%- for link in company_menu.links -%}
+                  <li>
+                    <a 
+                      href="{{ link.url }}" 
+                      class="text-[13px] md:text-sm text-[#666666] hover:text-[#1a1a1a] transition-colors leading-relaxed"
+                    >
+                      {{ link.title }}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
     </div>
 
     {%- comment -%} Payment Icons {%- endcomment -%}
@@ -428,7 +432,7 @@
     {%- endif -%}
 
     {%- comment -%} Copyright {%- endcomment -%}
-    {%- if section.settings.copyright_text != blank -%}
+    {%- if section.settings.show_copyright and section.settings.copyright_text != blank -%}
       <div class="copyright text-center mb-8">
         <p class="text-xs text-[#666666]">
           {{ section.settings.copyright_text }}
@@ -459,7 +463,39 @@
 {% schema %}
 {
   "name": "Footer V2",
+  "tag": "section",
+  "class": "footer-section",
   "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#F5F3EE"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 48
+    },
     {
       "type": "header",
       "content": "Newsletter Section"
@@ -489,8 +525,20 @@
       "default": "Email"
     },
     {
+      "type": "text",
+      "id": "newsletter_button_label",
+      "label": "Button aria label",
+      "default": "Subscribe"
+    },
+    {
       "type": "header",
       "content": "Help Links Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_help_section",
+      "label": "Show help section",
+      "default": true
     },
     {
       "type": "text",
@@ -509,6 +557,12 @@
       "content": "Company Links Section"
     },
     {
+      "type": "checkbox",
+      "id": "show_company_section",
+      "label": "Show company section",
+      "default": true
+    },
+    {
       "type": "text",
       "id": "company_heading",
       "label": "Company section heading",
@@ -522,13 +576,17 @@
     },
     {
       "type": "header",
-      "content": "Payment & Social"
+      "content": "Payment Icons"
     },
     {
       "type": "checkbox",
       "id": "show_payment_icons",
       "label": "Show payment icons",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "Social Icons"
     },
     {
       "type": "checkbox",
@@ -539,6 +597,12 @@
     {
       "type": "header",
       "content": "Copyright"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_copyright",
+      "label": "Show copyright",
+      "default": true
     },
     {
       "type": "text",
@@ -559,7 +623,8 @@
     {
       "type": "image_picker",
       "id": "logo_image",
-      "label": "Logo image"
+      "label": "Logo image",
+      "info": "Recommended size: 400px wide"
     }
   ],
   "blocks": [
