@@ -141,6 +141,7 @@
         "group_H6VpwJ",
         "email_signup_crihX7"
       ],
+      "disabled": true,
       "name": "t:names.footer",
       "settings": {
         "section_width": "page-width",
@@ -239,16 +240,23 @@
       ],
       "name": "Footer V2",
       "settings": {
+        "background_color": "#f5f3ee",
+        "padding_top": 100,
+        "padding_bottom": 100,
         "show_newsletter_form": true,
         "newsletter_heading": "Subscribe and get your 20% discount!",
         "newsletter_description": "You'll receive news, discounts, and helpful tips to take care of your skin and hair with lots of love.",
         "newsletter_placeholder": "Email",
+        "newsletter_button_label": "Subscribe",
+        "show_help_section": true,
         "help_heading": "We help you with...",
         "help_menu": "we-help-you-with",
+        "show_company_section": true,
         "company_heading": "Company",
         "company_menu": "company",
         "show_payment_icons": true,
         "show_social_icons": true,
+        "show_copyright": true,
         "copyright_text": "© 2025 Ritual Wellness Inc. All Rights Reserved.",
         "show_logo": true,
         "logo_image": "shopify://shop_images/Logo.svg"
