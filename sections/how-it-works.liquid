@@ -29,14 +29,14 @@
   #shopify-section-{{ section.id }} .how-it-works-steps {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    row-gap: 2rem;
+    column-gap: 1rem;
   }
 
   #shopify-section-{{ section.id }} .how-it-works-step {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 548px;
     gap: 3rem;
-    align-items: center;
   }
 
   @media (max-width: 989px) {
@@ -47,7 +47,9 @@
   }
 
   #shopify-section-{{ section.id }} .how-it-works-step__content {
-    /* max-width: 500px; */
+    max-width: 732px;
+    border-top: 1px solid #E9EAEB;
+    padding-top: 2rem;
   }
 
   #shopify-section-{{ section.id }} .how-it-works-step__label {
@@ -69,6 +71,9 @@
     line-height: normal;
     margin: 0;
   }
+    #shopify-section-{{ section.id }} .how-it-works-step__image--wrapper {
+      
+    }
 
   #shopify-section-{{ section.id }} .how-it-works-step__image {
     width: 100%;
@@ -124,18 +129,20 @@
             {%- endif -%}
           </div>
 
-          <div class="how-it-works-step__image">
-            {%- if block.settings.image != blank -%}
-              {{
-                block.settings.image
-                | image_url: width: 800
-                | image_tag:
-                  loading: 'lazy',
-                  width: block.settings.image.width,
-                  height: block.settings.image.height,
-                  alt: block.settings.image.alt
-              }}
-            {%- endif -%}
+          <div class="how-it-works-step__image--wrapper tw-flex tw-justify-end">
+            <div class="how-it-works-step__image">
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 800
+                  | image_tag:
+                    loading: 'lazy',
+                    width: block.settings.image.width,
+                    height: block.settings.image.height,
+                    alt: block.settings.image.alt
+                }}
+              {%- endif -%}
+            </div>
           </div>
         </article>
       {%- endfor -%}
