@@ -23,6 +23,10 @@
   max-width: 1360px
 }
 
+.tw-max-w-\[29rem\] {
+  max-width: 29rem
+}
+
 .tw-flex-1 {
   flex: 1 1 0%
 }
@@ -31,12 +35,12 @@
   flex: none
 }
 
-.tw-flex-col {
-  flex-direction: column
-}
-
 .tw-items-center {
   align-items: center
+}
+
+.tw-justify-end {
+  justify-content: flex-end
 }
 
 .tw-justify-center {
@@ -53,6 +57,10 @@
 
 .tw-gap-8 {
   gap: 2rem
+}
+
+.tw-gap-20 {
+  gap: 5rem
 }
 
 .tw-rounded-lg {

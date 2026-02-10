@@ -31,30 +31,22 @@
   }
 
   #shopify-section-{{ section.id }} .footer .newsletter-section h3 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 0.75rem;
-    line-height: 1.4;
-  }
+    /* Body_desktop/md/Bold */
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: normal;
 
-  @media (min-width: 768px) {
-    #shopify-section-{{ section.id }} .footer .newsletter-section h3 {
-      font-size: 1.25rem;
-    }
+    /* Brand/900 */
+    color: #061312;
+
   }
 
   #shopify-section-{{ section.id }} .footer .newsletter-section p {
-    font-size: 0.8125rem;
-    color: #666666;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-  }
-
-  @media (min-width: 768px) {
-    #shopify-section-{{ section.id }} .footer .newsletter-section p {
-      font-size: 0.875rem;
-    }
+    font-style: normal;
+    font-weight: 450;
+    font-size: 14px;
+    line-height: normal;
   }
 
   #shopify-section-{{ section.id }} .footer .newsletter-form {
@@ -64,19 +56,12 @@
   #shopify-section-{{ section.id }} .footer .newsletter-form input[type="email"] {
     width: 100%;
     padding: 0.625rem 0;
-    font-size: 0.8125rem;
     border: none;
     border-bottom: 1px solid #D1D1D1;
     background: transparent;
     color: #1a1a1a;
     outline: none;
     transition: border-color 0.3s;
-  }
-
-  @media (min-width: 768px) {
-    #shopify-section-{{ section.id }} .footer .newsletter-form input[type="email"] {
-      font-size: 0.875rem;
-    }
   }
 
   #shopify-section-{{ section.id }} .footer .newsletter-form input[type="email"]::placeholder {
@@ -105,7 +90,7 @@
 
   #shopify-section-{{ section.id }} .footer .help-links-section h4,
   #shopify-section-{{ section.id }} .footer .company-links-section h4 {
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     font-weight: 600;
     color: #1a1a1a;
     margin-bottom: 1rem;
@@ -242,7 +227,7 @@
     <div class="footer-contents">
       
       {%- comment -%} Newsletter Section {%- endcomment -%}
-      <div class="newsletter-section">
+      <div class="newsletter-section tw-max-w-[29rem]">
         {%- if section.settings.newsletter_heading != blank -%}
           <h3 class="text-lg md:text-xl font-semibold text-[#1a1a1a] mb-3 leading-tight">
             {{ section.settings.newsletter_heading }}
@@ -250,7 +235,7 @@
         {%- endif -%}
         
         {%- if section.settings.newsletter_description != blank -%}
-          <p class="text-[13px] md:text-sm text-[#666666] mb-6 leading-relaxed">
+          <p class="mb-6 leading-relaxed">
             {{ section.settings.newsletter_description }}
           </p>
         {%- endif -%}
@@ -284,7 +269,7 @@
       </div>
 
       {%- comment -%} Links Column (Help + Company) {%- endcomment -%}
-      <div class="links-column tw-flex tw-gap-8 md:tw-gap-10">
+      <div class="links-column tw-flex tw-justify-end tw-gap-20">
         {%- comment -%} Help Links Section {%- endcomment -%}
         {%- if section.settings.show_help_section -%}
           <div class="help-links-section mb-8 md:mb-10">
