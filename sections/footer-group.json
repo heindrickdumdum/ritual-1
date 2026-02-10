@@ -157,43 +157,50 @@
         "payment_icon_4rBGez": {
           "type": "payment_icon",
           "settings": {
-            "icon_name": "Klarna"
+            "icon_name": "Klarna",
+            "icon_image": "shopify://shop_images/klarna-grey.svg"
           }
         },
         "payment_icon_RTdNfP": {
           "type": "payment_icon",
           "settings": {
-            "icon_name": "Visa"
+            "icon_name": "Visa",
+            "icon_image": "shopify://shop_images/visa-grey.svg"
           }
         },
         "payment_icon_D7XT3p": {
           "type": "payment_icon",
           "settings": {
-            "icon_name": "Mastercard"
+            "icon_name": "Mastercard",
+            "icon_image": "shopify://shop_images/mastercard-grey.svg"
           }
         },
         "payment_icon_yCA4Qz": {
           "type": "payment_icon",
           "settings": {
-            "icon_name": "Discover"
+            "icon_name": "Amex",
+            "icon_image": "shopify://shop_images/amex-grey.svg"
           }
         },
         "payment_icon_gjUDMA": {
           "type": "payment_icon",
           "settings": {
-            "icon_name": "Google Pay"
+            "icon_name": "Shop Pay",
+            "icon_image": "shopify://shop_images/pay-grey.svg"
           }
         },
         "payment_icon_hRyATH": {
           "type": "payment_icon",
           "settings": {
-            "icon_name": "Apple Pay"
+            "icon_name": "Apple Pay",
+            "icon_image": "shopify://shop_images/apple-pay-grey.svg"
           }
         },
         "payment_icon_XcEkpJ": {
           "type": "payment_icon",
           "settings": {
-            "icon_name": "PayPal"
+            "icon_name": "PayPal",
+            "icon_image": "shopify://shop_images/paypal-grey.svg"
           }
         },
         "social_icon_wY97UV": {
