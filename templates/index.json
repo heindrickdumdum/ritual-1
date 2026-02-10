@@ -453,8 +453,8 @@
         "next_button_label": "Next",
         "section_width": "full-width",
         "color_scheme": "",
-        "padding-block-start": 100,
-        "padding-block-end": 100
+        "padding-block-start": 160,
+        "padding-block-end": 160
       }
     },
     "price_section_aN4BeH": {
@@ -722,8 +722,8 @@
         "button_text": "View All Reviews",
         "button_url": "shopify://policies/privacy-policy",
         "color_scheme": "scheme-3",
-        "padding_top": 120,
-        "padding_bottom": 120
+        "padding-block-start": 160,
+        "padding-block-end": 160
       }
     },
     "faq_section_7zEPdk": {
@@ -793,8 +793,8 @@
         "button_link": "shopify://collections/all",
         "phone_mockup_image": "shopify://shop_images/Phone_mockup.png",
         "color_scheme": "scheme-4",
-        "padding_block_start": 5,
-        "padding_block_end": 5
+        "padding-block-start": 100,
+        "padding-block-end": 100
       }
     }
   },
