@@ -304,8 +304,8 @@
         "description": "Simple steps to personalized wellness solutions",
         "section_width": "page-width",
         "color_scheme": "scheme-3",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 100,
+        "padding-block-end": 100
       }
     },
     "before_after_cards_N73PB4": {
@@ -392,8 +392,8 @@
         "next_button_label": "Next",
         "section_width": "full-width",
         "color_scheme": "",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 100,
+        "padding-block-end": 100
       }
     },
     "price_section_aN4BeH": {
@@ -455,8 +455,8 @@
         "payment_icon_4_alt": "Amex",
         "payment_icon_5_alt": "Payment Method",
         "payment_icon_6_alt": "Payment Method",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 120,
+        "padding_bottom": 120
       }
     },
     "team_BrVXLJ": {
@@ -519,8 +519,8 @@
         "description": "At rituall, we believe that expert support makes all the difference. With guidance from our doctors, dietitians, and rituall-Coaches, you get a structured approach to long-term result.",
         "center_logo": "shopify://shop_images/Logo.svg",
         "center_logo_alt": "Ritual1",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 120,
+        "padding_bottom": 120
       }
     },
     "customer_reviews_3LGy3J": {
