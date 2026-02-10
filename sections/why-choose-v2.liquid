@@ -18,7 +18,6 @@
     font-weight: 400;
     margin: 0 0 1rem;
     color: rgb(var(--color-foreground));
-    font-size: 2.5rem;
   }
 
   #shopify-section-{{ section.id }} .why-choose-header__title .highlight {
@@ -26,8 +25,8 @@
   }
 
   #shopify-section-{{ section.id }} .why-choose-header__description {
-    font-size: 1.125rem;
-    color: rgba(var(--color-foreground), 0.6);
+    font-size: 1.25rem;
+    color: rgba(var(--color-foreground), 0.7);
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
@@ -77,12 +76,11 @@
     font-weight: 500;
     margin: 0 0 0.75rem;
     color: rgb(var(--color-foreground));
-    font-size: 1.5rem;
   }
 
   #shopify-section-{{ section.id }} .why-choose-card__description {
-    font-size: 1rem;
-    color: #535862;
+    font-size: 1.125rem;
+    color: #535862; /* Gray/600 */
     line-height: 1.6;
     margin: 0;
   }
@@ -113,26 +111,22 @@
     padding: 2rem;
     text-align: center;
     font-style: italic;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 200px;
   }
 
   #shopify-section-{{ section.id }} .why-choose-testimonial__quote {
     color: rgb(var(--color-foreground));
-    line-height: 1.5;
+    line-height: normal;
     margin: 0 0 1rem;
     font-weight: normal;
     font-style: italic;
-    font-size: 1.25rem;
   }
 
   #shopify-section-{{ section.id }} .why-choose-testimonial__author {
-    font-size: 1rem;
+    font-size: 1.125rem;
     color: rgba(var(--color-foreground), 0.6);
     font-style: normal;
+    /* Gray/600 */
+    color: #535862;
   }
 {%- endstyle -%}
 
@@ -219,9 +213,11 @@
               {%- when 'testimonial' -%}
                 <div class="why-choose-testimonial" {{ block.shopify_attributes }}>
                   {%- if block.settings.quote != blank -%}
-                    <blockquote class="why-choose-testimonial__quote">
-                      "{{ block.settings.quote }}"
-                    </blockquote>
+                     <h3>
+                        <blockquote class="why-choose-testimonial__quote">
+                          "{{ block.settings.quote }}"
+                        </blockquote>
+                      </h3>
                   {%- endif -%}
                   
                   {%- if block.settings.author != blank -%}
