@@ -247,9 +247,11 @@
       ],
       "name": "Footer V2",
       "settings": {
+        "section_width": "default",
+        "color_scheme": "",
         "background_color": "#f5f3ee",
-        "padding_top": 100,
-        "padding_bottom": 100,
+        "padding-block-start": 160,
+        "padding-block-end": 160,
         "show_newsletter_form": true,
         "newsletter_heading": "Subscribe and get your 20% discount!",
         "newsletter_description": "You'll receive news, discounts, and helpful tips to take care of your skin and hair with lots of love.",

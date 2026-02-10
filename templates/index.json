@@ -322,8 +322,8 @@
         "description": "We combine medical expertise with personalized care to deliver results you can trust",
         "section_width": "page-width",
         "color_scheme": "",
-        "padding_top": 100,
-        "padding_bottom": 100
+        "padding-block-start": 160,
+        "padding-block-end": 160
       }
     },
     "how_it_works_mYkb9q": {
@@ -516,8 +516,8 @@
         "payment_icon_4_alt": "Amex",
         "payment_icon_5_alt": "Payment Method",
         "payment_icon_6_alt": "Payment Method",
-        "padding_top": 120,
-        "padding_bottom": 120
+        "padding-block-start": 160,
+        "padding-block-end": 160
       }
     },
     "team_BrVXLJ": {
@@ -580,8 +580,8 @@
         "description": "At rituall, we believe that expert support makes all the difference. With guidance from our doctors, dietitians, and rituall-Coaches, you get a structured approach to long-term result.",
         "center_logo": "shopify://shop_images/Logo.svg",
         "center_logo_alt": "Ritual1",
-        "padding_top": 120,
-        "padding_bottom": 120
+        "padding-block-start": 160,
+        "padding-block-end": 160
       }
     },
     "customer_reviews_3LGy3J": {
@@ -779,8 +779,8 @@
         "contact_title": "Email support",
         "contact_email": "support@yourbrand.com",
         "color_scheme": "",
-        "padding_top": 120,
-        "padding_bottom": 120
+        "padding-block-start": 160,
+        "padding-block-end": 160
       }
     },
     "personalized_care_tJ7GnD": {
