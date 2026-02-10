@@ -265,6 +265,63 @@
         "padding-block-end": 100
       }
     },
+    "why_choose_v2_cYnAW9": {
+      "type": "why-choose-v2",
+      "blocks": {
+        "feature_card_cHqXK8": {
+          "type": "feature_card",
+          "settings": {
+            "column": "left",
+            "title": "Treatment that comes to you",
+            "description": "Skip the trip to your doctor's office and the line at your local pharmacy. Access treatment on any device, plus free shipping on all medication.",
+            "link": ""
+          }
+        },
+        "testimonial_tzVwQG": {
+          "type": "testimonial",
+          "settings": {
+            "column": "left",
+            "quote": "If I had to sum up my experience, I would use the word transformational.",
+            "author": "Yves, a Ritual1 patient"
+          }
+        },
+        "feature_card_Ybg3je": {
+          "type": "feature_card",
+          "settings": {
+            "column": "right",
+            "title": "Clinically proven treatments",
+            "description": "Access prescription medications, supported by science and supported by our experienced healthcare practitioners.",
+            "link": ""
+          }
+        },
+        "feature_card_VJArFp": {
+          "type": "feature_card",
+          "settings": {
+            "column": "right",
+            "title": "Truly compassionate care",
+            "description": "No judgment, no stigma. Instead, a practitioner who's there for you when you need them.",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_card_cHqXK8",
+        "testimonial_tzVwQG",
+        "feature_card_Ybg3je",
+        "feature_card_VJArFp"
+      ],
+      "name": "Why Choose V2",
+      "settings": {
+        "title": "Why Choose Ritual1",
+        "highlight_word": "Ritual1",
+        "highlight_color": "#4A9B8E",
+        "description": "We combine medical expertise with personalized care to deliver results you can trust",
+        "section_width": "page-width",
+        "color_scheme": "",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
     "how_it_works_mYkb9q": {
       "type": "how-it-works",
       "blocks": {
@@ -741,6 +798,7 @@
     "hero_jVaWmY",
     "featured_cards_Urq7eN",
     "why_choose_iTHzJJ",
+    "why_choose_v2_cYnAW9",
     "how_it_works_mYkb9q",
     "before_after_cards_N73PB4",
     "price_section_aN4BeH",
