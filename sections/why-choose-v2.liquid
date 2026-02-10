@@ -1,0 +1,507 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  #shopify-section-{{ section.id }} .section {
+    padding-top: var(--section-padding-top);
+    padding-bottom: var(--section-padding-bottom);
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-header__title {
+    font-weight: 400;
+    margin: 0 0 1rem;
+    color: rgb(var(--color-foreground));
+    font-size: 2.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-header__title .highlight {
+    color: {{ section.settings.highlight_color }};
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-header__description {
+    font-size: 1.125rem;
+    color: rgba(var(--color-foreground), 0.6);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 989px) {
+    #shopify-section-{{ section.id }} .why-choose-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-card {
+    background: #F7F7F5;
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-card__link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-card__content {
+    margin-bottom: 1.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-card__title {
+    font-weight: 500;
+    margin: 0 0 0.75rem;
+    color: rgb(var(--color-foreground));
+    font-size: 1.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-card__description {
+    font-size: 1rem;
+    color: #535862;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-card__image {
+    width: 100%;
+    height: 250px;
+    background: #E5E5E0;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: auto;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-testimonial {
+    background: #F7F7F5;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    font-style: italic;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-testimonial__quote {
+    color: rgb(var(--color-foreground));
+    line-height: 1.5;
+    margin: 0 0 1rem;
+    font-weight: normal;
+    font-style: italic;
+    font-size: 1.25rem;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-testimonial__author {
+    font-size: 1rem;
+    color: rgba(var(--color-foreground), 0.6);
+    font-style: normal;
+  }
+{%- endstyle -%}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}">
+  <div class="container">
+    {%- if section.settings.title != blank or section.settings.description != blank -%}
+      <div class="why-choose-header">
+        {%- if section.settings.title != blank -%}
+          <h2 class="why-choose-header__title">
+            {%- liquid
+              if section.settings.highlight_word != blank
+                assign title_parts = section.settings.title | split: section.settings.highlight_word
+                echo title_parts[0]
+                echo '<span class="highlight">'
+                echo section.settings.highlight_word
+                echo '</span>'
+                echo title_parts[1]
+              else
+                echo section.settings.title
+              endif
+            -%}
+          </h2>
+        {%- endif -%}
+        
+        {%- if section.settings.description != blank -%}
+          <p class="why-choose-header__description">{{ section.settings.description }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="why-choose-grid">
+      {%- comment -%} Left Column {%- endcomment -%}
+      <div class="why-choose-column">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.column == 'left' -%}
+            {%- case block.type -%}
+              {%- when 'feature_card' -%}
+                {%- liquid
+                  assign card_id = 'why-choose-card-' | append: block.id
+                -%}
+                <article class="why-choose-card" {{ block.shopify_attributes }}>
+                  {%- if block.settings.link != blank -%}
+                    <a 
+                      href="{{ block.settings.link }}" 
+                      class="why-choose-card__link"
+                      aria-labelledby="{{ card_id }}"
+                    >
+                      <span class="visually-hidden">{{ block.settings.title }}</span>
+                    </a>
+                  {%- endif -%}
+
+                  <div class="why-choose-card__content">
+                    {%- if block.settings.title != blank -%}
+                      <h3 class="why-choose-card__title" id="{{ card_id }}">
+                        {{ block.settings.title }}
+                      </h3>
+                    {%- endif -%}
+                    
+                    {%- if block.settings.description != blank -%}
+                      <p class="why-choose-card__description">
+                        {{ block.settings.description }}
+                      </p>
+                    {%- endif -%}
+                  </div>
+
+                  {%- if block.settings.image != blank -%}
+                    <div class="why-choose-card__image">
+                      {{
+                        block.settings.image
+                        | image_url: width: 800
+                        | image_tag:
+                          loading: 'lazy',
+                          width: block.settings.image.width,
+                          height: block.settings.image.height,
+                          alt: block.settings.image.alt
+                      }}
+                    </div>
+                  {%- else -%}
+                    <div class="why-choose-card__image"></div>
+                  {%- endif -%}
+                </article>
+
+              {%- when 'testimonial' -%}
+                <div class="why-choose-testimonial" {{ block.shopify_attributes }}>
+                  {%- if block.settings.quote != blank -%}
+                    <blockquote class="why-choose-testimonial__quote">
+                      "{{ block.settings.quote }}"
+                    </blockquote>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.author != blank -%}
+                    <cite class="why-choose-testimonial__author">
+                      {{ block.settings.author }}
+                    </cite>
+                  {%- endif -%}
+                </div>
+            {%- endcase -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} Right Column {%- endcomment -%}
+      <div class="why-choose-column">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.column == 'right' -%}
+            {%- case block.type -%}
+              {%- when 'feature_card' -%}
+                {%- liquid
+                  assign card_id = 'why-choose-card-' | append: block.id
+                -%}
+                <article class="why-choose-card" {{ block.shopify_attributes }}>
+                  {%- if block.settings.link != blank -%}
+                    <a 
+                      href="{{ block.settings.link }}" 
+                      class="why-choose-card__link"
+                      aria-labelledby="{{ card_id }}"
+                    >
+                      <span class="visually-hidden">{{ block.settings.title }}</span>
+                    </a>
+                  {%- endif -%}
+
+                  <div class="why-choose-card__content">
+                    {%- if block.settings.title != blank -%}
+                      <h3 class="why-choose-card__title" id="{{ card_id }}">
+                        {{ block.settings.title }}
+                      </h3>
+                    {%- endif -%}
+                    
+                    {%- if block.settings.description != blank -%}
+                      <p class="why-choose-card__description">
+                        {{ block.settings.description }}
+                      </p>
+                    {%- endif -%}
+                  </div>
+
+                  {%- if block.settings.image != blank -%}
+                    <div class="why-choose-card__image">
+                      {{
+                        block.settings.image
+                        | image_url: width: 800
+                        | image_tag:
+                          loading: 'lazy',
+                          width: block.settings.image.width,
+                          height: block.settings.image.height,
+                          alt: block.settings.image.alt
+                      }}
+                    </div>
+                  {%- else -%}
+                    <div class="why-choose-card__image"></div>
+                  {%- endif -%}
+                </article>
+
+              {%- when 'testimonial' -%}
+                <div class="why-choose-testimonial" {{ block.shopify_attributes }}>
+                  {%- if block.settings.quote != blank -%}
+                    <blockquote class="why-choose-testimonial__quote">
+                      "{{ block.settings.quote }}"
+                    </blockquote>
+                  {%- endif -%}
+                  
+                  {%- if block.settings.author != blank -%}
+                    <cite class="why-choose-testimonial__author">
+                      {{ block.settings.author }}
+                    </cite>
+                  {%- endif -%}
+                </div>
+            {%- endcase -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Why Choose V2",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Why Choose Ritual1"
+    },
+    {
+      "type": "text",
+      "id": "highlight_word",
+      "label": "Highlight word",
+      "info": "Enter a word from the heading to highlight with a custom color",
+      "default": "Ritual1"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight color",
+      "default": "#4A9B8E"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "We combine medical expertise with personalized care to deliver results you can trust"
+    },
+    {
+      "type": "header",
+      "content": "Section Layout"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "Page width"
+        },
+        {
+          "value": "full-width",
+          "label": "Full width"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_card",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "column",
+          "label": "Column",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Feature description text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "select",
+          "id": "column",
+          "label": "Column",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "If I had to sum up my experience, I would use the word transformational."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "Yves, a Ritual1 patient"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Choose V2",
+      "blocks": [
+        {
+          "type": "feature_card",
+          "settings": {
+            "column": "left",
+            "title": "Treatment that comes to you",
+            "description": "Skip the trip to your doctor's office and the line at your local pharmacy. Access treatment on any device, plus free shipping on all medication."
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "column": "left",
+            "quote": "If I had to sum up my experience, I would use the word transformational.",
+            "author": "Yves, a Ritual1 patient"
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "column": "right",
+            "title": "Clinically proven treatments",
+            "description": "Access prescription medications, supported by science and supported by our experienced healthcare practitioners."
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "column": "right",
+            "title": "Truly compassionate care",
+            "description": "No judgment, no stigma. Instead, a practitioner who's there for you when you need them."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
