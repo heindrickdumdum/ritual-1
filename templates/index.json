@@ -261,8 +261,8 @@
         "description": "We combine medical expertise with personalized care to deliver results you can trust",
         "section_width": "page-width",
         "color_scheme": "",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 100,
+        "padding-block-end": 100
       }
     },
     "how_it_works_mYkb9q": {
