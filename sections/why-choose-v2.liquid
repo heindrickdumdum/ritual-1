@@ -1,7 +1,7 @@
 {%- style -%}
   #shopify-section-{{ section.id }} {
-    --section-padding-top: {{ section.settings.padding_top }}px;
-    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --section-padding-top: {{ section.settings.padding-block-start }}px;
+    --section-padding-bottom: {{ section.settings.padding-block-end }}px;
   }
 
   #shopify-section-{{ section.id }} .section {
@@ -362,27 +362,27 @@
     },
     {
       "type": "header",
-      "content": "Padding"
+      "content": "t:content.padding"
     },
     {
       "type": "range",
-      "id": "padding_top",
-      "label": "Top padding",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
       "min": 0,
-      "max": 100,
-      "step": 4,
+      "max": 200,
+      "step": 5,
       "unit": "px",
-      "default": 48
+      "default": 100
     },
     {
       "type": "range",
-      "id": "padding_bottom",
-      "label": "Bottom padding",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
       "min": 0,
-      "max": 100,
-      "step": 4,
+      "max": 200,
+      "step": 5,
       "unit": "px",
-      "default": 48
+      "default": 100
     }
   ],
   "blocks": [
