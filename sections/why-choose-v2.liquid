@@ -96,6 +96,11 @@
     margin-top: auto;
   }
 
+  #shopify-section-{{ section.id }} .why-choose-card__image--full-height {
+    height: 100%;
+    flex: 1;
+  }
+
   #shopify-section-{{ section.id }} .why-choose-card__image img {
     width: 100%;
     height: 100%;
@@ -195,7 +200,7 @@
                   </div>
 
                   {%- if block.settings.image != blank -%}
-                    <div class="why-choose-card__image">
+                    <div class="why-choose-card__image{% if block.settings.full_height_image %} why-choose-card__image--full-height{% endif %}">
                       {{
                         block.settings.image
                         | image_url: width: 800
@@ -207,7 +212,7 @@
                       }}
                     </div>
                   {%- else -%}
-                    <div class="why-choose-card__image"></div>
+                    <div class="why-choose-card__image{% if block.settings.full_height_image %} why-choose-card__image--full-height{% endif %}"></div>
                   {%- endif -%}
                 </article>
 
@@ -265,7 +270,7 @@
                   </div>
 
                   {%- if block.settings.image != blank -%}
-                    <div class="why-choose-card__image">
+                    <div class="why-choose-card__image{% if block.settings.full_height_image %} why-choose-card__image--full-height{% endif %}">
                       {{
                         block.settings.image
                         | image_url: width: 800
@@ -277,7 +282,7 @@
                       }}
                     </div>
                   {%- else -%}
-                    <div class="why-choose-card__image"></div>
+                    <div class="why-choose-card__image{% if block.settings.full_height_image %} why-choose-card__image--full-height{% endif %}"></div>
                   {%- endif -%}
                 </article>
 
@@ -426,6 +431,13 @@
           "type": "url",
           "id": "link",
           "label": "Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "full_height_image",
+          "label": "Full height image",
+          "info": "Make the image fill 100% of the remaining card height",
+          "default": false
         }
       ]
     },
