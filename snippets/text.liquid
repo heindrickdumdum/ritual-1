@@ -130,6 +130,7 @@
     max-inline-size: min(100%, var(--max-width, 100%));
     text-align: var(--text-align, var(--text-align-default));
     text-wrap: var(--text-wrap);
+    line-height: var(--line-height);
   }
 
   .text-block:not(.text-block--full-width).rte,
@@ -215,5 +216,10 @@
   .custom-color,
   .custom-color > :is(h1, h2, h3, h4, h5, h6, p, *) {
     color: var(--color);
+  }
+
+  .custom-typography,
+  .custom-typography > :is(h1, h2, h3, h4, h5, h6, p, *) {
+    line-height: var(--line-height);
   }
 {% endstylesheet %}
