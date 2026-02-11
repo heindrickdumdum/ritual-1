@@ -69,14 +69,13 @@
     --font-family: {{ settings.font }};
     --text-transform: {{ settings.case }};
     --text-wrap: {{ settings.wrap | default: 'pretty' }};
-    {% if settings.type_preset == 'custom' and settings.font_size == blank %}
-      --line-height--display: var(--line-height--display-{{ settings.line_height }});
-      --line-height--heading: var(--line-height--heading-{{ settings.line_height }});
-      --line-height--body: var(--line-height--body-{{ settings.line_height }});
-    {% else %}
-      --line-height: var(--line-height--{{ type }}-{{ settings.line_height }});
+    {% if settings.line_height != blank %}
+      --line-height: {{ settings.line_height }};
     {% endif %}
     --letter-spacing: var(--letter-spacing--{{ type }}-{{ settings.letter_spacing }});
+  {%- endif -%}
+  {%- if preset != 'custom' and settings.line_height != blank -%}
+    --line-height: {{ settings.line_height }};
   {%- endif -%}
 {%- endcapture -%}
 {{- variables | strip | strip_newlines -}}
