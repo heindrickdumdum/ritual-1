@@ -52,7 +52,7 @@
             "font": "var(--font-body--family)",
             "font_size": "1rem",
             "font_weight": "",
-            "line_height": "normal",
+            "line_height": "1.25",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
