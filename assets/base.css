@@ -818,6 +818,10 @@ body,
 
 /* Typography presets */
 
+.text-block > p {
+  line-height: var(--line-height) !important;
+}
+
 h1,
 .h1.h1,
 .text-block.h1 > * {
