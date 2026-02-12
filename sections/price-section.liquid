@@ -33,9 +33,10 @@
               {%- case block.type -%}
                 {%- when 'feature' -%}
                   <li class="price-section__feature" {{ block.shopify_attributes }}>
-                    <svg class="price-section__checkmark" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M16.6667 5L7.5 14.1667L3.33334 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.00098 13.9995L8.50098 17.4995L19.001 6.49951" stroke="#26736D" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
+
                     <span>{{ block.settings.text }}</span>
                   </li>
               {%- endcase -%}
@@ -78,9 +79,10 @@
             {%- for feature in card_features -%}
               {%- if feature != blank -%}
                 <li class="price-section__card-feature">
-                  <svg class="price-section__checkmark" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M16.6667 5L7.5 14.1667L3.33334 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5.00098 13.9995L8.50098 17.4995L19.001 6.49951" stroke="#26736D" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
+
                   <span>{{ feature }}</span>
                 </li>
               {%- endif -%}
@@ -145,7 +147,7 @@
 
   .price-section__heading {
     font-weight: 500;
-    line-height: 1.2;
+    line-height: normal;
     margin: 0 0 1.5rem 0;
     color: var(--text-color, #1a1a1a);
   }
@@ -160,7 +162,7 @@
   .price-section__features {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 2rem;
     list-style: none;
     padding: 0;
     margin: 0 0 2.5rem 0;
@@ -169,16 +171,16 @@
   .price-section__feature {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.95rem;
+    gap: 0.75rem;
+    font-size: 1rem;
+    font-weight: 500;
     color: var(--text-color, #1a1a1a);
   }
 
   .price-section__checkmark {
     flex-shrink: 0;
     padding: 6px;
-    color: #181D27;
-    background-color: #E3E3DE;
+    color: #26736D;
     border-radius: 20px;
     width: 28px;
     height: 28px;
