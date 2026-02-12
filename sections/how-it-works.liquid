@@ -11,13 +11,6 @@
     padding-bottom: var(--section-padding-bottom);
   }
 
-  @media (max-width: 749px) {
-    #shopify-section-{{ section.id }} {
-      --section-padding-top: var(--section-padding-top-mobile);
-      --section-padding-bottom: var(--section-padding-bottom-mobile);
-    }
-  }
-
   #shopify-section-{{ section.id }} .how-it-works-header {
     text-align: center;
     margin-bottom: 4rem;
@@ -48,13 +41,6 @@
     gap: 3rem;
   }
 
-  @media (max-width: 989px) {
-    #shopify-section-{{ section.id }} .how-it-works-step {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-  }
-
   #shopify-section-{{ section.id }} .how-it-works-step__content {
     max-width: 732px;
     border-top: 1px solid #E9EAEB;
@@ -76,13 +62,14 @@
 
   #shopify-section-{{ section.id }} .how-it-works-step__description {
     font-size: 1.125rem;
-    color: #535862; /* Gray/600 */
+    color: #535862;
     line-height: normal;
     margin: 0;
   }
-    #shopify-section-{{ section.id }} .how-it-works-step__image--wrapper {
-      
-    }
+
+  #shopify-section-{{ section.id }} .how-it-works-step__image--wrapper {
+    
+  }
 
   #shopify-section-{{ section.id }} .how-it-works-step__image {
     width: 100%;
@@ -93,16 +80,144 @@
     overflow: hidden;
   }
 
+  #shopify-section-{{ section.id }} .how-it-works-step__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Mobile carousel styles */
+  #shopify-section-{{ section.id }} .how-it-works-carousel {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .how-it-works-carousel__wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .how-it-works-carousel__track {
+    display: flex;
+    gap: 1rem;
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 1rem;
+  }
+
+  #shopify-section-{{ section.id }} .how-it-works-carousel__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .how-it-works-carousel__slide {
+    flex: 0 0 calc(100% - 2rem);
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .how-it-works-carousel__slide .how-it-works-step__content {
+    border-top: none;
+    padding-top: 0;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .how-it-works-carousel__slide .how-it-works-step__image {
+    height: 280px;
+    max-width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .how-it-works-carousel__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  #shopify-section-{{ section.id }} .how-it-works-carousel__button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: #E5E5E0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .how-it-works-carousel__button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  #shopify-section-{{ section.id }} .how-it-works-carousel__button--next {
+    background: #4A9B8E;
+  }
+
+  #shopify-section-{{ section.id }} .how-it-works-carousel__button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .how-it-works-carousel__button--next svg {
+    stroke: white;
+  }
+
+  #shopify-section-{{ section.id }} .how-it-works-carousel__progress {
+    flex: 1;
+    height: 4px;
+    background: #E5E5E0;
+    border-radius: 2px;
+    overflow: hidden;
+    max-width: 180px;
+  }
+
+  #shopify-section-{{ section.id }} .how-it-works-carousel__progress-bar {
+    height: 100%;
+    background: #181D27;
+    transition: width 0.3s ease;
+    width: 0%;
+  }
+
   @media (max-width: 989px) {
+    #shopify-section-{{ section.id }} .how-it-works-step {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
     #shopify-section-{{ section.id }} .how-it-works-step__image {
       height: 250px;
     }
   }
 
-  #shopify-section-{{ section.id }} .how-it-works-step__image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      --section-padding-top: var(--section-padding-top-mobile);
+      --section-padding-bottom: var(--section-padding-bottom-mobile);
+    }
+
+    #shopify-section-{{ section.id }} .how-it-works-header {
+      margin-bottom: 2rem;
+      text-align: left;
+      padding: 0 1rem;
+    }
+
+    #shopify-section-{{ section.id }} .how-it-works-header__description {
+      font-size: 1rem;
+    }
+
+    #shopify-section-{{ section.id }} .how-it-works-steps {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .how-it-works-carousel {
+      display: block;
+    }
   }
 {%- endstyle -%}
 
@@ -121,6 +236,7 @@
       </div>
     {%- endif -%}
 
+    {%- comment -%} Desktop layout {%- endcomment -%}
     <div class="how-it-works-steps">
       {%- for block in section.blocks -%}
         <article class="how-it-works-step" {{ block.shopify_attributes }}>
@@ -156,8 +272,126 @@
         </article>
       {%- endfor -%}
     </div>
+
+    {%- comment -%} Mobile carousel layout {%- endcomment -%}
+    <div class="how-it-works-carousel">
+      <div class="how-it-works-carousel__wrapper">
+        <div class="how-it-works-carousel__track" data-carousel-track>
+          {%- for block in section.blocks -%}
+            <div class="how-it-works-carousel__slide" {{ block.shopify_attributes }}>
+              <div class="how-it-works-step__content">
+                {%- if block.settings.label != blank -%}
+                  <p class="how-it-works-step__label">{{ block.settings.label }}</p>
+                {%- endif -%}
+                
+                {%- if block.settings.title != blank -%}
+                  <h3 class="how-it-works-step__title">{{ block.settings.title }}</h3>
+                {%- endif -%}
+                
+                {%- if block.settings.description != blank -%}
+                  <p class="how-it-works-step__description">{{ block.settings.description }}</p>
+                {%- endif -%}
+              </div>
+
+              <div class="how-it-works-step__image">
+                {%- if block.settings.image != blank -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 800
+                    | image_tag:
+                      loading: 'lazy',
+                      width: block.settings.image.width,
+                      height: block.settings.image.height,
+                      alt: block.settings.image.alt
+                  }}
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <div class="how-it-works-carousel__navigation">
+        <button class="how-it-works-carousel__button how-it-works-carousel__button--prev" data-carousel-prev aria-label="Previous slide">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <div class="how-it-works-carousel__progress">
+          <div class="how-it-works-carousel__progress-bar" data-carousel-progress></div>
+        </div>
+
+        <button class="how-it-works-carousel__button how-it-works-carousel__button--next" data-carousel-next aria-label="Next slide">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
+
+<script>
+  (function() {
+    const track = document.querySelector('[data-carousel-track]');
+    if (!track) return;
+
+    const slides = track.querySelectorAll('.how-it-works-carousel__slide');
+    const prevBtn = document.querySelector('[data-carousel-prev]');
+    const nextBtn = document.querySelector('[data-carousel-next]');
+    const progressBar = document.querySelector('[data-carousel-progress]');
+    
+    let currentIndex = 0;
+    const maxIndex = slides.length - 1;
+
+    function updateCarousel() {
+      const slideWidth = slides[0].offsetWidth + 16; // slide width + gap
+      track.scrollTo({
+        left: slideWidth * currentIndex,
+        behavior: 'smooth'
+      });
+
+      // Update progress bar
+      const progress = maxIndex > 0 ? (currentIndex / maxIndex) * 100 : 100;
+      progressBar.style.width = `${progress}%`;
+
+      // Update buttons
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex === maxIndex;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < maxIndex) {
+        currentIndex++;
+        updateCarousel();
+      }
+    });
+
+    // Handle scroll snap
+    track.addEventListener('scroll', () => {
+      const slideWidth = slides[0].offsetWidth + 16;
+      const newIndex = Math.round(track.scrollLeft / slideWidth);
+      if (newIndex !== currentIndex) {
+        currentIndex = newIndex;
+        const progress = maxIndex > 0 ? (currentIndex / maxIndex) * 100 : 100;
+        progressBar.style.width = `${progress}%`;
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === maxIndex;
+      }
+    });
+
+    // Initialize
+    updateCarousel();
+  })();
+</script>
 
 {% schema %}
 {
