@@ -79,9 +79,11 @@
             {%- for feature in card_features -%}
               {%- if feature != blank -%}
                 <li class="price-section__card-feature">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5.00098 13.9995L8.50098 17.4995L19.001 6.49951" stroke="#26736D" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 14C0 6.26801 6.26801 0 14 0C21.732 0 28 6.26801 28 14C28 21.732 21.732 28 14 28C6.26801 28 0 21.732 0 14Z" fill="#E3E3DE"/>
+                <path d="M9.33484 15.333L11.6682 17.6663L18.6682 10.333" stroke="#181D27" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
 
                   <span>{{ feature }}</span>
                 </li>
@@ -153,10 +155,10 @@
   }
 
   .price-section__description {
-    font-size: 1rem;
+    font-size: 1.25rem;
     line-height: 1.6;
     margin: 0 0 2rem 0;
-    color: var(--text-color, #6b6b6b);
+    color: #535862;
   }
 
   .price-section__features {
@@ -218,6 +220,11 @@
 
   .price-section__trust-text p {
     margin: 0;
+        color: #535862;
+  }
+
+  .price-section__trust-text p strong {
+    color: var(--text-color);
   }
 
   .price-section__card {
@@ -260,7 +267,7 @@
   .price-section__card-feature {
     display: flex;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: 1rem;
     font-size: 1.125rem;
     color: #1a1a1a;
     font-weight: 500;
@@ -275,7 +282,7 @@
     padding: 1rem 2rem;
     border-radius: 8px;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 700;
     text-decoration: none;
     transition: opacity 0.2s ease;
     margin-bottom: 1rem;
