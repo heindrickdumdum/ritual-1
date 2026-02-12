@@ -148,8 +148,10 @@
         "gradient_direction": "to bottom",
         "blurred_reflection": false,
         "reflection_opacity": 75,
-        "padding-block-start": 12,
-        "padding-block-end": 12
+        "padding-block-start": 180,
+        "padding-block-end": 180,
+        "padding-block-start-mobile": 65,
+        "padding-block-end-mobile": 65
       }
     },
     "featured_cards_Urq7eN": {
@@ -206,7 +208,9 @@
         "section_width": "page-width",
         "color_scheme": "scheme-3",
         "padding-block-start": 0,
-        "padding-block-end": 100
+        "padding-block-end": 100,
+        "padding-block-start-mobile": 65,
+        "padding-block-end-mobile": 65
       }
     },
     "why_choose_iTHzJJ": {
@@ -517,7 +521,9 @@
         "payment_icon_5_alt": "Payment Method",
         "payment_icon_6_alt": "Payment Method",
         "padding-block-start": 160,
-        "padding-block-end": 160
+        "padding-block-end": 160,
+        "padding-block-start-mobile": 65,
+        "padding-block-end-mobile": 65
       }
     },
     "team_BrVXLJ": {
@@ -581,7 +587,9 @@
         "center_logo": "shopify://shop_images/Logo.svg",
         "center_logo_alt": "Ritual1",
         "padding-block-start": 160,
-        "padding-block-end": 160
+        "padding-block-end": 160,
+        "padding-block-start-mobile": 65,
+        "padding-block-end-mobile": 65
       }
     },
     "customer_reviews_3LGy3J": {
@@ -723,7 +731,9 @@
         "button_url": "shopify://policies/privacy-policy",
         "color_scheme": "scheme-3",
         "padding-block-start": 160,
-        "padding-block-end": 160
+        "padding-block-end": 160,
+        "padding-block-start-mobile": 65,
+        "padding-block-end-mobile": 65
       }
     },
     "faq_section_7zEPdk": {
@@ -780,7 +790,9 @@
         "contact_email": "support@yourbrand.com",
         "color_scheme": "",
         "padding-block-start": 160,
-        "padding-block-end": 160
+        "padding-block-end": 160,
+        "padding-block-start-mobile": 65,
+        "padding-block-end-mobile": 65
       }
     },
     "personalized_care_tJ7GnD": {
@@ -794,7 +806,9 @@
         "phone_mockup_image": "shopify://shop_images/Phone_mockup.png",
         "color_scheme": "scheme-4",
         "padding-block-start": 100,
-        "padding-block-end": 100
+        "padding-block-end": 100,
+        "padding-block-start-mobile": 65,
+        "padding-block-end-mobile": 65
       }
     }
   },
