@@ -7,6 +7,15 @@
     --price-color: {{ section.settings.price_color }};
     --padding-top: {{ section.settings.padding-block-start }}px;
     --padding-bottom: {{ section.settings.padding-block-end }}px;
+    --padding-top-mobile: {{ section.settings.padding-block-start-mobile }}px;
+    --padding-bottom-mobile: {{ section.settings.padding-block-end-mobile }}px;
+  }
+
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} {
+      --padding-top: var(--padding-top-mobile);
+      --padding-bottom: var(--padding-bottom-mobile);
+    }
   }
 {%- endstyle -%}
 
@@ -598,6 +607,26 @@
       "step": 5,
       "unit": "px",
       "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start-mobile",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 65
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end-mobile",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 65
     }
   ],
   "blocks": [

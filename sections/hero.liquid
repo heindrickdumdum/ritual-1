@@ -1,7 +1,16 @@
 <style>
   #shopify-section-{{ section.id }} .section {
-    --padding-block-start: {{ section.settings.padding-block-start }}rem;
-    --padding-block-end: {{ section.settings.padding-block-end }}rem;
+    --padding-block-start: {{ section.settings.padding-block-start }}px;
+    --padding-block-end: {{ section.settings.padding-block-end }}px;
+    --padding-block-start-mobile: {{ section.settings.padding-block-start-mobile }}px;
+    --padding-block-end-mobile: {{ section.settings.padding-block-end-mobile }}px;
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .section {
+      --padding-block-start: var(--padding-block-start-mobile);
+      --padding-block-end: var(--padding-block-end-mobile);
+    }
   }
 
   #shopify-section-{{ section.id }} .hero__content-wrapper {
@@ -1287,20 +1296,40 @@
       "id": "padding-block-start",
       "label": "t:settings.top",
       "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "rem",
-      "default": 0
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 180
     },
     {
       "type": "range",
       "id": "padding-block-end",
       "label": "t:settings.bottom",
       "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "rem",
-      "default": 0
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 180 
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start-mobile",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 65
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end-mobile",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 65
     }
   ],
   "presets": [
