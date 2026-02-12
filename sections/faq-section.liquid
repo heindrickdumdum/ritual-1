@@ -140,11 +140,23 @@
     width: 24px;
     height: 24px;
     flex-shrink: 0;
-    transition: transform 0.3s ease;
+    transition: opacity 0.3s ease;
   }
 
-  #shopify-section-{{ section.id }} .faq-accordion-item.is-open .faq-accordion-item__icon {
-    transform: rotate(180deg);
+  #shopify-section-{{ section.id }} .faq-accordion-item__icon--plus {
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .faq-accordion-item__icon--minus {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .faq-accordion-item.is-open .faq-accordion-item__icon--plus {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .faq-accordion-item.is-open .faq-accordion-item__icon--minus {
+    display: block;
   }
 
   #shopify-section-{{ section.id }} .faq-accordion-item__content {
@@ -204,9 +216,15 @@
               <div class="faq-accordion-item{% if forloop.first %} is-open{% endif %}" {{ block.shopify_attributes }} data-faq-item>
                 <button class="faq-accordion-item__header" type="button" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" data-faq-toggle>
                   <h3 class="faq-accordion-item__question">{{ block.settings.question }}</h3>
-                  <svg class="faq-accordion-item__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                  
+                  <svg class="faq-accordion-item__icon faq-accordion-item__icon--plus" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 3.33301V16.6663M16.6667 9.99967H3.33337" stroke="#181D27" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
+
+                  <svg class="faq-accordion-item__icon faq-accordion-item__icon--minus" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16.6693 10H3.33594" stroke="#181D27" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+
                 </button>
                 <div class="faq-accordion-item__content" data-faq-content>
                   <div class="faq-accordion-item__content-inner">
