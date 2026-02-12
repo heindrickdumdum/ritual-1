@@ -114,7 +114,7 @@
             "font_weight": "700",
             "width": "fit-content",
             "custom_width": 100,
-            "width_mobile": "fit-content",
+            "width_mobile": "custom",
             "custom_width_mobile": 100
           },
           "blocks": {}
@@ -159,7 +159,7 @@
         "padding-block-start": 180,
         "padding-block-end": 180,
         "padding-block-start-mobile": 65,
-        "padding-block-end-mobile": 65
+        "padding-block-end-mobile": 160
       }
     },
     "featured_cards_Urq7eN": {
