@@ -46,17 +46,20 @@
   }
 
   #shopify-section-{{ section.id }} .faq-section__contact-card {
-    background: #F7F7F5;
-    border-radius: 16px;
-    padding: 1.5rem;
     display: inline-flex;
+    flex-direction: row;
     align-items: center;
-    gap: 1rem;
+    padding: 32px 48px;
+    gap: 20px;
+    background: #F7F7F4;
+    box-shadow: 0px 4px 6px -1px rgba(10, 13, 18, 0.1), 0px 2px 4px -2px rgba(10, 13, 18, 0.06);
+    border-radius: 12px;
+
   }
 
   #shopify-section-{{ section.id }} .faq-section__contact-icon {
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     background: #FFFFFF;
     border-radius: 12px;
     display: flex;
@@ -66,27 +69,32 @@
   }
 
   #shopify-section-{{ section.id }} .faq-section__contact-icon svg {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     color: #4A9B8E;
   }
 
   #shopify-section-{{ section.id }} .faq-section__contact-info h3 {
     font-size: 1rem;
-    font-weight: 500;
-    margin: 0 0 0.25rem 0;
-    color: rgb(var(--color-foreground));
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-foreground);
   }
 
   #shopify-section-{{ section.id }} .faq-section__contact-info p {
-    font-size: 0.875rem;
+    font-size: 1.25rem;
+    font-weight: 700;
     margin: 0;
     color: rgba(var(--color-foreground), 0.6);
+    line-height: normal;
   }
 
   #shopify-section-{{ section.id }} .faq-section__contact-info a {
     color: rgba(var(--color-foreground), 0.6);
     text-decoration: none;
+    font-size: 1rem;
+    font-weight: 450;
+    color: #535862;
   }
 
   #shopify-section-{{ section.id }} .faq-section__contact-info a:hover {
@@ -125,7 +133,7 @@
     font-size: 1.125rem;
     font-weight: 500;
     margin: 0;
-    color: rgb(var(--color-foreground));
+    color: var(--color-foreground);
   }
 
   #shopify-section-{{ section.id }} .faq-accordion-item__icon {
@@ -159,7 +167,7 @@
     font-size: 1rem;
     line-height: 1.6;
     margin: 0;
-    color: rgba(var(--color-foreground), 0.7);
+    color: #535862;
   }
 {%- endstyle -%}
 
@@ -174,13 +182,16 @@
         {%- if section.settings.show_contact_card -%}
           <div class="faq-section__contact-card">
             <div class="faq-section__contact-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-              </svg>
+             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.66406 6.66699L11.8814 11.8998C15.249 13.8117 16.7458 13.8117 20.1134 11.8998L29.3307 6.66699" stroke="#26736D" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M13.9974 25.9997C13.3757 25.9915 12.7532 25.9797 12.1292 25.9639C7.93117 25.8585 5.83217 25.8057 4.32401 24.2909C2.81584 22.7761 2.77225 20.7313 2.68509 16.6415C2.65706 15.3265 2.65705 14.0193 2.68508 12.7042C2.77225 8.61451 2.81582 6.56965 4.324 5.05486C5.83217 3.54007 7.93117 3.48731 12.1292 3.38178C14.7165 3.31674 17.2783 3.31675 19.8657 3.38179C24.0637 3.48733 26.1626 3.5401 27.6707 5.05489C29.179 6.56966 29.2226 8.61453 29.3097 12.7043C29.3226 13.3097 29.3295 13.595 29.3306 13.9997" stroke="#26736D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M25.3359 22.667C25.3359 23.7715 24.4405 24.667 23.3359 24.667C22.2314 24.667 21.3359 23.7715 21.3359 22.667C21.3359 21.5625 22.2314 20.667 23.3359 20.667C24.4405 20.667 25.3359 21.5625 25.3359 22.667ZM25.3359 22.667V23.3337C25.3359 24.4382 26.2314 25.3337 27.3359 25.3337C28.4405 25.3337 29.3359 24.4382 29.3359 23.3337V22.667C29.3359 19.3533 26.6497 16.667 23.3359 16.667C20.0222 16.667 17.3359 19.3533 17.3359 22.667C17.3359 25.9807 20.0222 28.667 23.3359 28.667" stroke="#26736D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
             </div>
             <div class="faq-section__contact-info">
-              <h3>{{ section.settings.contact_title }}</h3>
-              <p><a href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a></p>
+              <h3 class="faq-section__contact-title">{{ section.settings.contact_title }}</h3>
+              <p><a class="faq-section__contact-email" href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a></p>
             </div>
           </div>
         {%- endif -%}
