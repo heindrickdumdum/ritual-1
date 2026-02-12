@@ -452,7 +452,7 @@
         "previous_button_label": "Previous",
         "next_button_label": "Next",
         "section_width": "full-width",
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "padding-block-start": 160,
         "padding-block-end": 160
       }
@@ -486,10 +486,10 @@
       ],
       "name": "Price Section",
       "settings": {
-        "background_color": "#f5f3ef",
-        "card_background": "#ffffff",
-        "text_color": "#1a1a1a",
-        "price_color": "#1a1a1a",
+        "background_color": "rgba(0,0,0,0)",
+        "card_background": "rgba(0,0,0,0)",
+        "text_color": "#181d27",
+        "price_color": "#181d27",
         "button_color": "#2d7a6e",
         "heading": "Personalised Treatments for Your Body, Skin, and Hair",
         "description": "Science-aware formulations tailored to your hair goals and routine. Thoughtfully created to support consistency, track progress over time, and fit calmly into your daily life.",
