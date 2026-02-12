@@ -165,7 +165,7 @@
     gap: 2rem;
     list-style: none;
     padding: 0;
-    margin: 0 0 2.5rem 0;
+    margin: 0 0 3rem 0;
   }
 
   .price-section__feature {
@@ -199,16 +199,19 @@
   }
 
   .price-section__avatars img {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    border: 2px solid var(--section-background, #fff);
+    {% comment %} border: 2px solid var(--section-background, #fff); {% endcomment %}
     margin-left: -0.5rem;
     object-fit: cover;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0px 1px 2px -1px rgba(10, 13, 18, 0.1);
+    filter: drop-shadow(0px 1px 3px rgba(10, 13, 18, 0.1));
   }
 
   .price-section__trust-text {
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin: 0;
     color: var(--text-color, #6b6b6b);
   }
