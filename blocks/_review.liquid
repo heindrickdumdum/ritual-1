@@ -36,6 +36,15 @@
   assign stats_font_weight = block.settings.stats_font_weight | default: '400'
   assign rating_font_weight = block.settings.rating_font_weight | default: '600'
   
+  # Mobile Typography
+  assign heading_font_size_mobile = block.settings.heading_font_size_mobile | default: 18
+  assign heading_font_weight_mobile = block.settings.heading_font_weight_mobile
+  assign stats_font_size_mobile = block.settings.stats_font_size_mobile | default: 18
+  assign stats_font_weight_mobile = block.settings.stats_font_weight_mobile
+  assign rating_font_weight_mobile = block.settings.rating_font_weight_mobile
+  assign text_alignment_mobile = block.settings.text_alignment_mobile
+  assign content_alignment_mobile = block.settings.content_alignment_mobile
+  
   # Style settings - Stars
   assign star_size = block.settings.star_size | default: 36
   assign star_spacing = block.settings.star_spacing | default: 4
@@ -58,7 +67,7 @@
   endif
 -%}
 
-<div class="review-summary-block" {{ block.shopify_attributes }} style="background-color: {{ bg_color }}; padding: {{ padding_top }}px {{ padding_right }}px {{ padding_bottom }}px {{ padding_left }}px;">
+<div class="review-summary-block" {{ block.shopify_attributes }} style="background-color: {{ bg_color }}; padding: {{ padding_top }}px {{ padding_right }}px {{ padding_bottom }}px {{ padding_left }}px; --heading-font-size-mobile: {{ heading_font_size_mobile }}px; --stats-font-size-mobile: {{ stats_font_size_mobile }}px;">
   <div class="review-summary-block__container" style="gap: {{ element_spacing }}px; justify-content: {{ content_alignment }}; text-align: {{ text_alignment }};">
     <p class="review-summary-block__heading hidden--mobile" style="color: {{ text_color }}; font-size: {{ heading_font_size }}px; font-weight: {{ heading_font_weight }};">{{ heading }}</p>
     
@@ -130,10 +139,43 @@
     font-weight: 600;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 749px) {
     .review-summary-block__container {
       font-size: 0.9em;
     }
+    
+    .review-summary-block__heading {
+      font-size: var(--heading-font-size-mobile, {{ heading_font_size }}px) !important;
+      {% if heading_font_weight_mobile != blank %}
+      font-weight: {{ heading_font_weight_mobile }} !important;
+      {% endif %}
+    }
+    
+    .review-summary-block__stats {
+      font-size: var(--stats-font-size-mobile, {{ stats_font_size }}px) !important;
+      {% if stats_font_weight_mobile != blank %}
+      font-weight: {{ stats_font_weight_mobile }} !important;
+      {% endif %}
+    }
+    
+    .review-summary-block__rating,
+    .review-summary-block__count {
+      {% if rating_font_weight_mobile != blank %}
+      font-weight: {{ rating_font_weight_mobile }} !important;
+      {% endif %}
+    }
+    
+    {% if text_alignment_mobile != blank %}
+    .review-summary-block__container {
+      text-align: {{ text_alignment_mobile }} !important;
+    }
+    {% endif %}
+    
+    {% if content_alignment_mobile != blank %}
+    .review-summary-block__container {
+      justify-content: {{ content_alignment_mobile }} !important;
+    }
+    {% endif %}
   }
 </style>
 
@@ -308,6 +350,95 @@
       ],
       "default": "600",
       "info": "Weight for 4.8 and 52"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 12,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight_mobile",
+      "label": "Heading Font Weight (Mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light"},
+        {"value": "400", "label": "Normal"},
+        {"value": "500", "label": "Medium"},
+        {"value": "600", "label": "Semibold"},
+        {"value": "700", "label": "Bold"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "range",
+      "id": "stats_font_size_mobile",
+      "min": 12,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Stats Font Size (Mobile)",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "stats_font_weight_mobile",
+      "label": "Stats Font Weight (Mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light"},
+        {"value": "400", "label": "Normal"},
+        {"value": "500", "label": "Medium"},
+        {"value": "600", "label": "Semibold"},
+        {"value": "700", "label": "Bold"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "rating_font_weight_mobile",
+      "label": "Rating Numbers Font Weight (Mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "400", "label": "Normal"},
+        {"value": "500", "label": "Medium"},
+        {"value": "600", "label": "Semibold"},
+        {"value": "700", "label": "Bold"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "text_alignment_mobile",
+      "label": "Text Alignment (Mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "left", "label": "Left"},
+        {"value": "center", "label": "Center"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "content_alignment_mobile",
+      "label": "Content Alignment (Mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "flex-start", "label": "Left"},
+        {"value": "center", "label": "Center"},
+        {"value": "flex-end", "label": "Right"}
+      ],
+      "default": ""
     },
     {
       "type": "header",
