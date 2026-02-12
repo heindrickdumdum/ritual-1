@@ -48,11 +48,15 @@
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
-            "type_preset": "h1",
+            "type_preset": "custom",
             "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "font_weight": "",
+            "font_size": "3.5rem",
+            "font_weight": "500",
             "line_height": "1.25",
+            "font_size_mobile": "2rem",
+            "alignment_mobile": "center",
+            "font_weight_mobile": "700",
+            "line_height_mobile": "",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
@@ -80,6 +84,10 @@
             "font_size": "1.5rem",
             "font_weight": "400",
             "line_height": "normal",
+            "font_size_mobile": "1.125rem",
+            "alignment_mobile": "center",
+            "font_weight_mobile": "",
+            "line_height_mobile": "",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
@@ -327,7 +335,9 @@
         "section_width": "page-width",
         "color_scheme": "",
         "padding-block-start": 160,
-        "padding-block-end": 160
+        "padding-block-end": 160,
+        "padding-block-start-mobile": 65,
+        "padding-block-end-mobile": 65
       }
     },
     "how_it_works_mYkb9q": {
@@ -370,7 +380,9 @@
         "section_width": "page-width",
         "color_scheme": "scheme-3",
         "padding-block-start": 160,
-        "padding-block-end": 160
+        "padding-block-end": 160,
+        "padding-block-start-mobile": 65,
+        "padding-block-end-mobile": 65
       }
     },
     "before_after_cards_N73PB4": {
@@ -458,7 +470,9 @@
         "section_width": "full-width",
         "color_scheme": "scheme-1",
         "padding-block-start": 160,
-        "padding-block-end": 160
+        "padding-block-end": 160,
+        "padding-block-start-mobile": 65,
+        "padding-block-end-mobile": 65
       }
     },
     "price_section_aN4BeH": {
