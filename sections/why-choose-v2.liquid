@@ -66,6 +66,7 @@
 
   #shopify-section-{{ section.id }} .why-choose-card__content {
     margin-bottom: 1.5rem;
+    text-align: var(--card-text-align, left);
   }
 
   #shopify-section-{{ section.id }} .why-choose-card__title {
@@ -105,7 +106,7 @@
     background: #F7F7F5;
     border-radius: 16px;
     padding: 2rem;
-    text-align: center;
+    text-align: var(--testimonial-text-align, center);
     font-style: italic;
   }
 
@@ -135,6 +136,14 @@
     #shopify-section-{{ section.id }} {
       --section-padding-top: var(--section-padding-top-mobile);
       --section-padding-bottom: var(--section-padding-bottom-mobile);
+    }
+
+    #shopify-section-{{ section.id }} .why-choose-header {
+      margin-bottom: 2.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .why-choose-card {
+      padding: 1.25rem;
     }
     
     {% if section.settings.header_title_font_size_mobile != blank %}
@@ -214,6 +223,14 @@
       font-weight: {{ section.settings.testimonial_author_font_weight_mobile }};
     }
     {% endif %}
+
+    #shopify-section-{{ section.id }} .why-choose-testimonial {
+      text-align: var(--testimonial-text-align-mobile, var(--testimonial-text-align, center));
+    }
+
+    #shopify-section-{{ section.id }} .why-choose-card__content {
+      text-align: var(--card-text-align-mobile, var(--card-text-align, left));
+    }
   }
 {%- endstyle -%}
 
@@ -255,7 +272,7 @@
                 {%- liquid
                   assign card_id = 'why-choose-card-' | append: block.id
                 -%}
-                <article class="why-choose-card" {{ block.shopify_attributes }}>
+                <article class="why-choose-card" {{ block.shopify_attributes }} style="--card-text-align: {{ block.settings.text_alignment }}; {% if block.settings.text_alignment_mobile != blank %}--card-text-align-mobile: {{ block.settings.text_alignment_mobile }};{% endif %}">
                   {%- if block.settings.link != blank -%}
                     <a 
                       href="{{ block.settings.link }}" 
@@ -298,7 +315,7 @@
                 </article>
 
               {%- when 'testimonial' -%}
-                <div class="why-choose-testimonial" {{ block.shopify_attributes }}>
+                <div class="why-choose-testimonial" {{ block.shopify_attributes }} style="--testimonial-text-align: {{ block.settings.text_alignment }}; {% if block.settings.text_alignment_mobile != blank %}--testimonial-text-align-mobile: {{ block.settings.text_alignment_mobile }};{% endif %}">
                   {%- if block.settings.quote != blank -%}
                      <h3>
                         <blockquote class="why-choose-testimonial__quote">
@@ -327,7 +344,7 @@
                 {%- liquid
                   assign card_id = 'why-choose-card-' | append: block.id
                 -%}
-                <article class="why-choose-card" {{ block.shopify_attributes }}>
+                <article class="why-choose-card" {{ block.shopify_attributes }} style="--card-text-align: {{ block.settings.text_alignment }}; {% if block.settings.text_alignment_mobile != blank %}--card-text-align-mobile: {{ block.settings.text_alignment_mobile }};{% endif %}">
                   {%- if block.settings.link != blank -%}
                     <a 
                       href="{{ block.settings.link }}" 
@@ -370,7 +387,7 @@
                 </article>
 
               {%- when 'testimonial' -%}
-                <div class="why-choose-testimonial" {{ block.shopify_attributes }}>
+                <div class="why-choose-testimonial" {{ block.shopify_attributes }} style="--testimonial-text-align: {{ block.settings.text_alignment }}; {% if block.settings.text_alignment_mobile != blank %}--testimonial-text-align-mobile: {{ block.settings.text_alignment_mobile }};{% endif %}">
                   {%- if block.settings.quote != blank -%}
                     <blockquote class="why-choose-testimonial__quote">
                       "{{ block.settings.quote }}"
@@ -701,6 +718,29 @@
           "label": "Full height image",
           "info": "Make the image fill 100% of the remaining card height",
           "default": false
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text Alignment",
+          "options": [
+            {"value": "left", "label": "Left"},
+            {"value": "center", "label": "Center"},
+            {"value": "right", "label": "Right"}
+          ],
+          "default": "left"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment_mobile",
+          "label": "Text Alignment (Mobile)",
+          "options": [
+            {"value": "", "label": "Default"},
+            {"value": "left", "label": "Left"},
+            {"value": "center", "label": "Center"},
+            {"value": "right", "label": "Right"}
+          ],
+          "default": ""
         }
       ]
     },
@@ -735,6 +775,29 @@
           "id": "author",
           "label": "Author",
           "default": "Yves, a Ritual1 patient"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text Alignment",
+          "options": [
+            {"value": "left", "label": "Left"},
+            {"value": "center", "label": "Center"},
+            {"value": "right", "label": "Right"}
+          ],
+          "default": "center"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment_mobile",
+          "label": "Text Alignment (Mobile)",
+          "options": [
+            {"value": "", "label": "Default"},
+            {"value": "left", "label": "Left"},
+            {"value": "center", "label": "Center"},
+            {"value": "right", "label": "Right"}
+          ],
+          "default": ""
         }
       ]
     }
