@@ -66,6 +66,18 @@
       --text-corner-radius: {{ block_settings.corner_radius }}px;
       --text-padding: max(var(--padding-2xs), calc((var(--text-corner-radius) + var(--padding-xs)) * (1 - cos(45deg))));
     {% endif %}
+    {% if block_settings.font_size_mobile != blank %}
+      --font-size-mobile: {{ block_settings.font_size_mobile }};
+    {% endif %}
+    {% if block_settings.alignment_mobile != blank %}
+      --text-align-mobile: {{ block_settings.alignment_mobile }};
+    {% endif %}
+    {% if block_settings.font_weight_mobile != blank %}
+      --font-weight-mobile: {{ block_settings.font_weight_mobile }};
+    {% endif %}
+    {% if block_settings.line_height_mobile != blank %}
+      --line-height-mobile: {{ block_settings.line_height_mobile }};
+    {% endif %}
   "
 
   {{ block.shopify_attributes }}
@@ -221,5 +233,22 @@
   .custom-typography,
   .custom-typography > :is(h1, h2, h3, h4, h5, h6, p, *) {
     line-height: var(--line-height);
+  }
+
+  @media (max-width: 749px) {
+    .text-block > * {
+      font-size: var(--font-size-mobile, var(--font-size));
+      text-align: var(--text-align-mobile, var(--text-align, var(--text-align-default)));
+      line-height: var(--line-height-mobile, var(--line-height));
+    }
+
+    .custom-font-size > :is(h1, h2, h3, h4, h5, h6, p, *) {
+      font-size: var(--font-size-mobile, var(--font-size));
+    }
+
+    .custom-typography > :is(h1, h2, h3, h4, h5, h6, p, *) {
+      font-weight: var(--font-weight-mobile, var(--font-weight));
+      line-height: var(--line-height-mobile, var(--line-height));
+    }
   }
 {% endstylesheet %}
