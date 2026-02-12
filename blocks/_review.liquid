@@ -60,7 +60,7 @@
 
 <div class="review-summary-block" {{ block.shopify_attributes }} style="background-color: {{ bg_color }}; padding: {{ padding_top }}px {{ padding_right }}px {{ padding_bottom }}px {{ padding_left }}px;">
   <div class="review-summary-block__container" style="gap: {{ element_spacing }}px; justify-content: {{ content_alignment }}; text-align: {{ text_alignment }};">
-    <p class="review-summary-block__heading" style="color: {{ text_color }}; font-size: {{ heading_font_size }}px; font-weight: {{ heading_font_weight }};">{{ heading }}</p>
+    <p class="review-summary-block__heading hidden--mobile" style="color: {{ text_color }}; font-size: {{ heading_font_size }}px; font-weight: {{ heading_font_weight }};">{{ heading }}</p>
     
     <div class="review-summary-block__stars" role="img" aria-label="{{ rating }} out of 5 stars" style="gap: {{ star_spacing }}px;">
       {%- for i in (1..5) -%}
@@ -133,12 +133,6 @@
   @media screen and (max-width: 768px) {
     .review-summary-block__container {
       font-size: 0.9em;
-    }
-  }
-
-  @media screen and (max-width: 480px) {
-    .review-summary-block__container {
-      flex-direction: column;
     }
   }
 </style>
