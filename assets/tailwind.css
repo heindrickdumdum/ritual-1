@@ -11,6 +11,10 @@
   margin-top: 2rem
 }
 
+.tw-mb-0 {
+  margin-bottom: 0px
+}
+
 .tw-flex {
   display: flex
 }

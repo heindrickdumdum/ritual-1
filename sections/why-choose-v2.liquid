@@ -138,11 +138,23 @@
       --section-padding-bottom: var(--section-padding-bottom-mobile);
     }
 
+    #shopify-section-{{ section.id }} .why-choose-grid {
+      gap: 1rem;
+    }
+
     #shopify-section-{{ section.id }} .why-choose-header {
       margin-bottom: 2.5rem;
     }
 
     #shopify-section-{{ section.id }} .why-choose-card {
+      padding: 1.25rem;
+    }
+
+    #shopify-section-{{ section.id }} .why-choose-column {
+      gap: 1rem;
+    }
+
+    #shopify-section-{{ section.id }} .why-choose-testimonial {
       padding: 1.25rem;
     }
     
@@ -317,7 +329,7 @@
               {%- when 'testimonial' -%}
                 <div class="why-choose-testimonial" {{ block.shopify_attributes }} style="--testimonial-text-align: {{ block.settings.text_alignment }}; {% if block.settings.text_alignment_mobile != blank %}--testimonial-text-align-mobile: {{ block.settings.text_alignment_mobile }};{% endif %}">
                   {%- if block.settings.quote != blank -%}
-                     <h3>
+                     <h3 class="tw-mb-0">
                         <blockquote class="why-choose-testimonial__quote">
                           "{{ block.settings.quote }}"
                         </blockquote>
