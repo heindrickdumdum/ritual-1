@@ -57,7 +57,7 @@
                 <img src="{{ section.settings.avatar_3 | image_url: width: 48 }}" alt="" width="48" height="48" loading="lazy">
               {%- endif -%}
             </div>
-            <p class="price-section__trust-text">{{ section.settings.trust_text }}</p>
+            <div class="price-section__trust-text">{{ section.settings.trust_text }}</div>
           </div>
         {%- endif -%}
       </div>
@@ -211,6 +211,10 @@
     font-size: 0.9rem;
     margin: 0;
     color: var(--text-color, #6b6b6b);
+  }
+
+  .price-section__trust-text p {
+    margin: 0;
   }
 
   .price-section__card {
@@ -417,10 +421,10 @@
       "label": "Avatar 3"
     },
     {
-      "type": "text",
+      "type": "richtext",
       "id": "trust_text",
       "label": "Trust Text",
-      "default": "Trusted by 2,400+ members"
+      "default": "<p>Trusted by 2,400+ members</p>"
     },
     {
       "type": "header",
