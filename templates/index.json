@@ -295,7 +295,9 @@
             "title": "Treatment that comes to you",
             "description": "Skip the trip to your doctor's office and the line at your local pharmacy. Access treatment on any device, plus free shipping on all medication.",
             "link": "",
-            "full_height_image": true
+            "full_height_image": true,
+            "text_alignment": "left",
+            "text_alignment_mobile": ""
           }
         },
         "testimonial_tzVwQG": {
@@ -303,7 +305,9 @@
           "settings": {
             "column": "left",
             "quote": "If I had to sum up my experience, I would use the word transformational.",
-            "author": "Yves, a Ritual1 patient"
+            "author": "Yves, a Ritual1 patient",
+            "text_alignment": "center",
+            "text_alignment_mobile": "left"
           }
         },
         "feature_card_Ybg3je": {
@@ -313,7 +317,9 @@
             "title": "Clinically proven treatments",
             "description": "Access prescription medications, supported by science and supported by our experienced healthcare practitioners.",
             "link": "",
-            "full_height_image": false
+            "full_height_image": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": ""
           }
         },
         "feature_card_VJArFp": {
@@ -323,7 +329,9 @@
             "title": "Truly compassionate care",
             "description": "No judgment, no stigma. Instead, a practitioner who's there for you when you need them.",
             "link": "",
-            "full_height_image": false
+            "full_height_image": false,
+            "text_alignment": "left",
+            "text_alignment_mobile": ""
           }
         }
       },
