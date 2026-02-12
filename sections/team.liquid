@@ -3,6 +3,7 @@
     --text-color: {{ section.settings.text_color }};
     --card-background: {{ section.settings.card_background }};
     --orbit-color: {{ section.settings.orbit_color }};
+    --orbit-color--outer: #D5D7DA;
     --padding-top: {{ section.settings.padding-block-start }}px;
     --padding-bottom: {{ section.settings.padding-block-end }}px;
   }
@@ -135,7 +136,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    border: 2px dashed var(--orbit-color, #BCD9D6);
+    border: 2px dashed var(--orbit-color--outer, #BCD9D6);
     opacity: 0.4;
   }
 
