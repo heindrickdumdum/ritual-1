@@ -25,7 +25,7 @@
 
   #shopify-section-{{ section.id }} .before-after-carousel {
     position: relative;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
   }
 
   #shopify-section-{{ section.id }} .before-after-carousel__wrapper {
@@ -50,14 +50,20 @@
     background: #F7F7F5;
     border-radius: 20px;
     padding: 1rem;
+    padding-bottom: 1.5rem;
     display: flex;
     flex-direction: column;
+
   }
 
   @media (max-width: 749px) {
     #shopify-section-{{ section.id }} .before-after-card {
       flex: 0 0 260px;
     }
+  }
+
+  #shopify-section-{{ section.id }} .before-after-card__content {
+    padding: 0.5rem;
   }
 
   #shopify-section-{{ section.id }} .before-after-card__images {
@@ -83,7 +89,7 @@
 
   #shopify-section-{{ section.id }} .before-after-card__image-label {
     position: absolute;
-    bottom: -2.375rem;
+    bottom: -1.75rem;
     width: 196px;
     height: 20px;
     font-style: normal;
@@ -122,6 +128,10 @@
     border-color: #E9EAEB;
    }
 
+  #shopify-section-{{ section.id }} .before-after-card__detail.detail--duration {
+    padding-bottom: 0;
+  }
+
   #shopify-section-{{ section.id }} .before-after-card__detail-label {
     color: rgba(var(--color-foreground), 0.6);
   }
@@ -135,8 +145,8 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     background: #4A9B8E;
     border: none;
@@ -154,7 +164,7 @@
   }
 
   #shopify-section-{{ section.id }} .before-after-carousel__nav:disabled {
-    opacity: 0.3;
+    /* opacity: 0.3; */
     cursor: not-allowed;
     background: #F7F7F4;
     border: 1px solid #D5D7DA;
@@ -196,7 +206,7 @@
 
   #shopify-section-{{ section.id }} .before-after-cta__button {
     display: inline-block;
-    background: #4A9B8E;
+    background: #26736D;
     color: white;
     padding: 1rem 2rem;
     border-radius: 8px;
@@ -256,24 +266,26 @@
                   </div>
                 </div>
 
-                {%- if block.settings.title != blank -%}
-                  <h3 class="before-after-card__title">{{ block.settings.title }}</h3>
-                {%- endif -%}
-
-                <div class="before-after-card__details">
-                  {%- if block.settings.treatment != blank -%}
-                    <div class="before-after-card__detail detail--treatment">
-                      <span class="before-after-card__detail-label">{{ section.settings.treatment_label }}</span>
-                      <span class="before-after-card__detail-value">{{ block.settings.treatment }}</span>
-                    </div>
+                <div class="before-after-card__content">
+                  {%- if block.settings.title != blank -%}
+                    <h3 class="before-after-card__title">{{ block.settings.title }}</h3>
                   {%- endif -%}
 
-                  {%- if block.settings.duration != blank -%}
-                    <div class="before-after-card__detail detail--duration">
-                      <span class="before-after-card__detail-label">{{ section.settings.duration_label }}</span>
-                      <span class="before-after-card__detail-value">{{ block.settings.duration }}</span>
-                    </div>
-                  {%- endif -%}
+                  <div class="before-after-card__details">
+                    {%- if block.settings.treatment != blank -%}
+                      <div class="before-after-card__detail detail--treatment">
+                        <span class="before-after-card__detail-label">{{ section.settings.treatment_label }}</span>
+                        <span class="before-after-card__detail-value">{{ block.settings.treatment }}</span>
+                      </div>
+                    {%- endif -%}
+
+                    {%- if block.settings.duration != blank -%}
+                      <div class="before-after-card__detail detail--duration">
+                        <span class="before-after-card__detail-label">{{ section.settings.duration_label }}</span>
+                        <span class="before-after-card__detail-value">{{ block.settings.duration }}</span>
+                      </div>
+                    {%- endif -%}
+                  </div>
                 </div>
               </article>
             {%- endif -%}
