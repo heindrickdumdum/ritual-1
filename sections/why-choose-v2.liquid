@@ -11,91 +11,6 @@
     padding-bottom: var(--section-padding-bottom);
   }
 
-  @media (max-width: 749px) {
-    #shopify-section-{{ section.id }} {
-      --section-padding-top: var(--section-padding-top-mobile);
-      --section-padding-bottom: var(--section-padding-bottom-mobile);
-    }
-    
-    {% if section.settings.header_title_font_size_mobile != blank %}
-    #shopify-section-{{ section.id }} .why-choose-header__title {
-      font-size: {{ section.settings.header_title_font_size_mobile }}px;
-    }
-    {% endif %}
-    
-    {% if section.settings.header_title_font_weight_mobile != blank %}
-    #shopify-section-{{ section.id }} .why-choose-header__title {
-      font-weight: {{ section.settings.header_title_font_weight_mobile }};
-    }
-    {% endif %}
-    
-    {% if section.settings.header_description_font_size_mobile != blank %}
-    #shopify-section-{{ section.id }} .why-choose-header__description {
-      font-size: {{ section.settings.header_description_font_size_mobile }}px;
-    }
-    {% endif %}
-    
-    {% if section.settings.header_description_font_weight_mobile != blank %}
-    #shopify-section-{{ section.id }} .why-choose-header__description {
-      font-weight: {{ section.settings.header_description_font_weight_mobile }};
-    }
-    {% endif %}
-    
-    {% if section.settings.header_text_alignment_mobile != blank %}
-    #shopify-section-{{ section.id }} .why-choose-header {
-      text-align: {{ section.settings.header_text_alignment_mobile }};
-    }
-    {% endif %}
-    
-    {% if section.settings.card_title_font_size_mobile != blank %}
-    #shopify-section-{{ section.id }} .why-choose-card__title {
-      font-size: {{ section.settings.card_title_font_size_mobile }}px;
-    }
-    {% endif %}
-    
-    {% if section.settings.card_title_font_weight_mobile != blank %}
-    #shopify-section-{{ section.id }} .why-choose-card__title {
-      font-weight: {{ section.settings.card_title_font_weight_mobile }};
-    }
-    {% endif %}
-    
-    {% if section.settings.card_description_font_size_mobile != blank %}
-    #shopify-section-{{ section.id }} .why-choose-card__description {
-      font-size: {{ section.settings.card_description_font_size_mobile }}px;
-    }
-    {% endif %}
-    
-    {% if section.settings.card_description_font_weight_mobile != blank %}
-    #shopify-section-{{ section.id }} .why-choose-card__description {
-      font-weight: {{ section.settings.card_description_font_weight_mobile }};
-    }
-    {% endif %}
-    
-    {% if section.settings.testimonial_quote_font_size_mobile != blank %}
-    #shopify-section-{{ section.id }} .why-choose-testimonial__quote {
-      font-size: {{ section.settings.testimonial_quote_font_size_mobile }}px;
-    }
-    {% endif %}
-    
-    {% if section.settings.testimonial_quote_font_weight_mobile != blank %}
-    #shopify-section-{{ section.id }} .why-choose-testimonial__quote {
-      font-weight: {{ section.settings.testimonial_quote_font_weight_mobile }};
-    }
-    {% endif %}
-    
-    {% if section.settings.testimonial_author_font_size_mobile != blank %}
-    #shopify-section-{{ section.id }} .why-choose-testimonial__author {
-      font-size: {{ section.settings.testimonial_author_font_size_mobile }}px;
-    }
-    {% endif %}
-    
-    {% if section.settings.testimonial_author_font_weight_mobile != blank %}
-    #shopify-section-{{ section.id }} .why-choose-testimonial__author {
-      font-weight: {{ section.settings.testimonial_author_font_weight_mobile }};
-    }
-    {% endif %}
-  }
-
   #shopify-section-{{ section.id }} .why-choose-header {
     text-align: center;
     margin-bottom: 3rem;
@@ -124,12 +39,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
     align-items: start;
-  }
-
-  @media (max-width: 989px) {
-    #shopify-section-{{ section.id }} .why-choose-grid {
-      grid-template-columns: 1fr;
-    }
   }
 
   #shopify-section-{{ section.id }} .why-choose-column {
@@ -214,6 +123,97 @@
     font-style: normal;
     /* Gray/600 */
     color: #535862;
+  }
+
+  @media (max-width: 989px) {
+    #shopify-section-{{ section.id }} .why-choose-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      --section-padding-top: var(--section-padding-top-mobile);
+      --section-padding-bottom: var(--section-padding-bottom-mobile);
+    }
+    
+    {% if section.settings.header_title_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .why-choose-header__title {
+      font-size: {{ section.settings.header_title_font_size_mobile }}px;
+    }
+    {% endif %}
+    
+    {% if section.settings.header_title_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .why-choose-header__title {
+      font-weight: {{ section.settings.header_title_font_weight_mobile }};
+    }
+    {% endif %}
+    
+    {% if section.settings.header_description_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .why-choose-header__description {
+      font-size: {{ section.settings.header_description_font_size_mobile }}px;
+    }
+    {% endif %}
+    
+    {% if section.settings.header_description_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .why-choose-header__description {
+      font-weight: {{ section.settings.header_description_font_weight_mobile }};
+    }
+    {% endif %}
+    
+    {% if section.settings.header_text_alignment_mobile != blank %}
+    #shopify-section-{{ section.id }} .why-choose-header {
+      text-align: {{ section.settings.header_text_alignment_mobile }};
+    }
+    {% endif %}
+    
+    {% if section.settings.card_title_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .why-choose-card__title {
+      font-size: {{ section.settings.card_title_font_size_mobile }}px;
+    }
+    {% endif %}
+    
+    {% if section.settings.card_title_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .why-choose-card__title {
+      font-weight: {{ section.settings.card_title_font_weight_mobile }};
+    }
+    {% endif %}
+    
+    {% if section.settings.card_description_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .why-choose-card__description {
+      font-size: {{ section.settings.card_description_font_size_mobile }}px;
+    }
+    {% endif %}
+    
+    {% if section.settings.card_description_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .why-choose-card__description {
+      font-weight: {{ section.settings.card_description_font_weight_mobile }};
+    }
+    {% endif %}
+    
+    {% if section.settings.testimonial_quote_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .why-choose-testimonial__quote {
+      font-size: {{ section.settings.testimonial_quote_font_size_mobile }}px;
+    }
+    {% endif %}
+    
+    {% if section.settings.testimonial_quote_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .why-choose-testimonial__quote {
+      font-weight: {{ section.settings.testimonial_quote_font_weight_mobile }};
+    }
+    {% endif %}
+    
+    {% if section.settings.testimonial_author_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .why-choose-testimonial__author {
+      font-size: {{ section.settings.testimonial_author_font_size_mobile }}px;
+    }
+    {% endif %}
+    
+    {% if section.settings.testimonial_author_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .why-choose-testimonial__author {
+      font-weight: {{ section.settings.testimonial_author_font_weight_mobile }};
+    }
+    {% endif %}
   }
 {%- endstyle -%}
 
