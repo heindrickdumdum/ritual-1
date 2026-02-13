@@ -23,6 +23,7 @@
   }
 
   #shopify-section-{{ section.id }} .how-it-works-header__description {
+    line-height: normal;
     font-size: 1.25rem;
     color: rgba(var(--color-foreground), 0.6);
     margin: 0;
@@ -103,7 +104,7 @@
     overflow-x: auto;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    padding: 0 1rem;
+    /* padding: 0 1rem; */
   }
 
   #shopify-section-{{ section.id }} .how-it-works-carousel__track::-webkit-scrollbar {
@@ -115,10 +116,10 @@
     scroll-snap-align: center;
     display: flex;
     flex-direction: column;
+    max-width: 360px;
   }
 
   #shopify-section-{{ section.id }} .how-it-works-carousel__slide .how-it-works-step__content {
-    border-top: none;
     padding-top: 0;
     max-width: 100%;
     margin-bottom: 1.5rem;
@@ -133,7 +134,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 1rem;
     margin-top: 2rem;
   }
 
@@ -174,7 +175,7 @@
     background: #E5E5E0;
     border-radius: 2px;
     overflow: hidden;
-    max-width: 180px;
+    /* max-width: 180px; */
   }
 
   #shopify-section-{{ section.id }} .how-it-works-carousel__progress-bar {
@@ -202,9 +203,25 @@
     }
 
     #shopify-section-{{ section.id }} .how-it-works-header {
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
       text-align: left;
       padding: 0 1rem;
+    }
+
+    #shopify-section-{{ section.id }} .how-it-works-header__title {
+      line-height: normal;
+      margin-bottom: 0.75rem;
+    }
+
+    #shopify-section-{{ section.id }} .how-it-works-carousel__slide .how-it-works-step__content {
+      padding: 0;
+      padding-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    #shopify-section-{{ section.id }} .how-it-works-step__title,
+    #shopify-section-{{ section.id }} .how-it-works-step__label {
+      margin-bottom: 8px;
     }
 
     {% if section.settings.header_title_font_size_mobile != blank %}
@@ -276,7 +293,7 @@
 {%- endstyle -%}
 
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
-<div class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}">
+<div class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }} tw-overflow-x-hidden">
   <div class="container">
     {%- if section.settings.title != blank or section.settings.description != blank -%}
       <div class="how-it-works-header">
@@ -329,8 +346,8 @@
 
     {%- comment -%} Mobile carousel layout {%- endcomment -%}
     <div class="how-it-works-carousel">
-      <div class="how-it-works-carousel__wrapper">
-        <div class="how-it-works-carousel__track" data-carousel-track>
+      <div class="how-it-works-carousel__wrapper tw-overflow-x-visible">
+        <div class="how-it-works-carousel__track tw-overflow-x-visible" data-carousel-track>
           {%- for block in section.blocks -%}
             <div class="how-it-works-carousel__slide" {{ block.shopify_attributes }}>
               <div class="how-it-works-step__content">

@@ -63,6 +63,14 @@
   gap: 1.5rem
 }
 
+.tw-overflow-x-hidden {
+  overflow-x: hidden
+}
+
+.tw-overflow-x-visible {
+  overflow-x: visible
+}
+
 .tw-rounded-lg {
   border-radius: 0.5rem
 }
