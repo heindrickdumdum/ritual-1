@@ -207,9 +207,63 @@
       padding: 0 1rem;
     }
 
-    #shopify-section-{{ section.id }} .how-it-works-header__description {
-      font-size: 1rem;
+    {% if section.settings.header_title_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .how-it-works-header__title {
+      font-size: {{ section.settings.header_title_font_size_mobile }}px;
     }
+    {% endif %}
+
+    {% if section.settings.header_title_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .how-it-works-header__title {
+      font-weight: {{ section.settings.header_title_font_weight_mobile }};
+    }
+    {% endif %}
+
+    #shopify-section-{{ section.id }} .how-it-works-header__description {
+      font-size: {{ section.settings.header_description_font_size_mobile | default: 16 }}px;
+    }
+
+    {% if section.settings.header_description_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .how-it-works-header__description {
+      font-weight: {{ section.settings.header_description_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.step_label_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .how-it-works-step__label {
+      font-size: {{ section.settings.step_label_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.step_label_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .how-it-works-step__label {
+      font-weight: {{ section.settings.step_label_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.step_title_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .how-it-works-step__title {
+      font-size: {{ section.settings.step_title_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.step_title_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .how-it-works-step__title {
+      font-weight: {{ section.settings.step_title_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.step_description_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .how-it-works-step__description {
+      font-size: {{ section.settings.step_description_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.step_description_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .how-it-works-step__description {
+      font-weight: {{ section.settings.step_description_font_weight_mobile }};
+    }
+    {% endif %}
 
     #shopify-section-{{ section.id }} .how-it-works-steps {
       display: none;
@@ -473,12 +527,136 @@
     {
       "type": "range",
       "id": "padding-block-end-mobile",
-      "label": "t:settings.bottom",
+      "label": "Bottom (Mobile)",
       "min": 0,
       "max": 200,
       "step": 5,
       "unit": "px",
       "default": 65
+    },
+    {
+      "type": "header",
+      "content": "Mobile Typography"
+    },
+    {
+      "type": "range",
+      "id": "header_title_font_size_mobile",
+      "min": 12,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Header Title Font Size (Mobile)",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "header_title_font_weight_mobile",
+      "label": "Header Title Font Weight (Mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "range",
+      "id": "header_description_font_size_mobile",
+      "min": 12,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Header Description Font Size (Mobile)",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "header_description_font_weight_mobile",
+      "label": "Header Description Font Weight (Mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "range",
+      "id": "step_label_font_size_mobile",
+      "min": 12,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Step Label Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "step_label_font_weight_mobile",
+      "label": "Step Label Font Weight (Mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "range",
+      "id": "step_title_font_size_mobile",
+      "min": 12,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Step Title Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "step_title_font_weight_mobile",
+      "label": "Step Title Font Weight (Mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "range",
+      "id": "step_description_font_size_mobile",
+      "min": 12,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Step Description Font Size (Mobile)",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "step_description_font_weight_mobile",
+      "label": "Step Description Font Weight (Mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
     }
   ],
   "blocks": [
