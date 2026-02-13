@@ -410,7 +410,17 @@
         "padding-block-start": 160,
         "padding-block-end": 160,
         "padding-block-start-mobile": 65,
-        "padding-block-end-mobile": 65
+        "padding-block-end-mobile": 65,
+        "header_title_font_size_mobile": 24,
+        "header_title_font_weight_mobile": "700",
+        "header_description_font_size_mobile": 16,
+        "header_description_font_weight_mobile": "500",
+        "step_label_font_size_mobile": 14,
+        "step_label_font_weight_mobile": "500",
+        "step_title_font_size_mobile": 20,
+        "step_title_font_weight_mobile": "700",
+        "step_description_font_size_mobile": 14,
+        "step_description_font_weight_mobile": "500"
       }
     },
     "before_after_cards_N73PB4": {
