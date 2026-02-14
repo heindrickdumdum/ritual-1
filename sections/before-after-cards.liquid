@@ -39,12 +39,12 @@
 
   #shopify-section-{{ section.id }} .before-after-carousel__wrapper {
     /* overflow: hidden; */
-    margin: 0 60px;
+    /* margin: 0 60px; */
   }
 
   @media (max-width: 749px) {
     #shopify-section-{{ section.id }} .before-after-carousel__wrapper {
-      margin: 0 40px;
+      /* margin: 0 40px; */
     }
   }
 
@@ -230,7 +230,7 @@
 {%- endstyle -%}
 
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
-<div class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}">
+<div class="section  color-{{ section.settings.color_scheme }}">
   <div class="container">
     {%- if section.settings.title != blank -%}
       <div class="before-after-header">
@@ -238,88 +238,90 @@
       </div>
     {%- endif -%}
 
-    <div class="before-after-carousel" data-carousel>
-      <div class="before-after-carousel__wrapper">
-        <div class="before-after-carousel__track" data-carousel-track>
-          {%- for block in section.blocks -%}
-            {%- if block.type == 'testimonial_card' -%}
-              <article class="before-after-card" {{ block.shopify_attributes }}>
-                <div class="before-after-card__images">
-                  <div class="before-after-card__image-wrapper">
-                    {%- if block.settings.before_image != blank -%}
-                      {{
-                        block.settings.before_image
-                        | image_url: width: 400
-                        | image_tag:
-                          loading: 'lazy',
-                          width: block.settings.before_image.width,
-                          height: block.settings.before_image.height,
-                          alt: section.settings.before_label
-                      }}
-                    {%- endif -%}
-                    <span class="before-after-card__image-label">{{ section.settings.before_label }}</span>
+    <div class="section--{{ section.settings.section_width }}">
+      <div class="before-after-carousel" data-carousel>
+        <div class="before-after-carousel__wrapper">
+          <div class="before-after-carousel__track" data-carousel-track>
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'testimonial_card' -%}
+                <article class="before-after-card" {{ block.shopify_attributes }}>
+                  <div class="before-after-card__images">
+                    <div class="before-after-card__image-wrapper">
+                      {%- if block.settings.before_image != blank -%}
+                        {{
+                          block.settings.before_image
+                          | image_url: width: 400
+                          | image_tag:
+                            loading: 'lazy',
+                            width: block.settings.before_image.width,
+                            height: block.settings.before_image.height,
+                            alt: section.settings.before_label
+                        }}
+                      {%- endif -%}
+                      <span class="before-after-card__image-label">{{ section.settings.before_label }}</span>
+                    </div>
+                    <div class="before-after-card__image-wrapper">
+                      {%- if block.settings.after_image != blank -%}
+                        {{
+                          block.settings.after_image
+                          | image_url: width: 400
+                          | image_tag:
+                            loading: 'lazy',
+                            width: block.settings.after_image.width,
+                            height: block.settings.after_image.height,
+                            alt: section.settings.after_label
+                        }}
+                      {%- endif -%}
+                      <span class="before-after-card__image-label">{{ section.settings.after_label }}</span>
+                    </div>
                   </div>
-                  <div class="before-after-card__image-wrapper">
-                    {%- if block.settings.after_image != blank -%}
-                      {{
-                        block.settings.after_image
-                        | image_url: width: 400
-                        | image_tag:
-                          loading: 'lazy',
-                          width: block.settings.after_image.width,
-                          height: block.settings.after_image.height,
-                          alt: section.settings.after_label
-                      }}
-                    {%- endif -%}
-                    <span class="before-after-card__image-label">{{ section.settings.after_label }}</span>
-                  </div>
-                </div>
 
-                <div class="before-after-card__content">
-                  {%- if block.settings.title != blank -%}
-                    <h3 class="before-after-card__title">{{ block.settings.title }}</h3>
-                  {%- endif -%}
-
-                  <div class="before-after-card__details">
-                    {%- if block.settings.treatment != blank -%}
-                      <div class="before-after-card__detail detail--treatment">
-                        <span class="before-after-card__detail-label">{{ section.settings.treatment_label }}</span>
-                        <span class="before-after-card__detail-value">{{ block.settings.treatment }}</span>
-                      </div>
+                  <div class="before-after-card__content">
+                    {%- if block.settings.title != blank -%}
+                      <h3 class="before-after-card__title">{{ block.settings.title }}</h3>
                     {%- endif -%}
 
-                    {%- if block.settings.duration != blank -%}
-                      <div class="before-after-card__detail detail--duration">
-                        <span class="before-after-card__detail-label">{{ section.settings.duration_label }}</span>
-                        <span class="before-after-card__detail-value">{{ block.settings.duration }}</span>
-                      </div>
-                    {%- endif -%}
+                    <div class="before-after-card__details">
+                      {%- if block.settings.treatment != blank -%}
+                        <div class="before-after-card__detail detail--treatment">
+                          <span class="before-after-card__detail-label">{{ section.settings.treatment_label }}</span>
+                          <span class="before-after-card__detail-value">{{ block.settings.treatment }}</span>
+                        </div>
+                      {%- endif -%}
+
+                      {%- if block.settings.duration != blank -%}
+                        <div class="before-after-card__detail detail--duration">
+                          <span class="before-after-card__detail-label">{{ section.settings.duration_label }}</span>
+                          <span class="before-after-card__detail-value">{{ block.settings.duration }}</span>
+                        </div>
+                      {%- endif -%}
+                    </div>
                   </div>
-                </div>
-              </article>
-            {%- endif -%}
-          {%- endfor -%}
+                </article>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
         </div>
-      </div>
 
-      <div class="tw-py-8">
-        <div class="tw-flex tw-items-center tw-relative tw-mt-8 tw-max-w-[1360px] tw-mx-auto">
-        <button class="before-after-carousel__nav before-after-carousel__nav--prev" data-carousel-prev aria-label="{{ section.settings.previous_button_label }}">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
+        <div class="tw-py-8">
+          <div class="tw-flex tw-items-center tw-relative tw-mt-8 tw-max-w-[1360px] tw-mx-auto">
+          <button class="before-after-carousel__nav before-after-carousel__nav--prev" data-carousel-prev aria-label="{{ section.settings.previous_button_label }}">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
 
-        <button class="before-after-carousel__nav before-after-carousel__nav--next" data-carousel-next aria-label="{{ section.settings.next_button_label }}">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
+          <button class="before-after-carousel__nav before-after-carousel__nav--next" data-carousel-next aria-label="{{ section.settings.next_button_label }}">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
 
-        <div class="before-after-carousel__progress tw-w-full">
-          <div class="before-after-carousel__progress-bar" data-carousel-progress></div>
+          <div class="before-after-carousel__progress tw-w-full">
+            <div class="before-after-carousel__progress-bar" data-carousel-progress></div>
+          </div>
         </div>
-      </div>
+        </div>
       </div>
     </div>
 
@@ -369,7 +371,7 @@
         track.style.transform = `translateX(-${offset}px)`;
         
         // Update progress bar
-        const progress = maxIndex > 0 ? (currentIndex / maxIndex) * 100 : 100;
+        const progress = maxIndex > 0 ? ((currentIndex + 1) / (maxIndex + 1)) * 100 : 100;
         progressBar.style.width = `${progress}%`;
         
         // Update button states
