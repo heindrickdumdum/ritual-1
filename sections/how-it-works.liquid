@@ -187,7 +187,7 @@
 
   @media (max-width: 989px) {
     #shopify-section-{{ section.id }} .how-it-works-step {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
     }
 
@@ -205,7 +205,6 @@
     #shopify-section-{{ section.id }} .how-it-works-header {
       margin-bottom: 2.5rem;
       text-align: left;
-      padding: 0 1rem;
     }
 
     #shopify-section-{{ section.id }} .how-it-works-header__title {
@@ -433,7 +432,7 @@
       });
 
       // Update progress bar
-      const progress = maxIndex > 0 ? (currentIndex / maxIndex) * 100 : 100;
+      const progress = maxIndex > 0 ? ((currentIndex + 1) / slides.length) * 100 : 100;
       progressBar.style.width = `${progress}%`;
 
       // Update buttons
@@ -461,7 +460,7 @@
       const newIndex = Math.round(track.scrollLeft / slideWidth);
       if (newIndex !== currentIndex) {
         currentIndex = newIndex;
-        const progress = maxIndex > 0 ? (currentIndex / maxIndex) * 100 : 100;
+        const progress = maxIndex > 0 ? ((currentIndex + 1) / slides.length) * 100 : 100;
         progressBar.style.width = `${progress}%`;
         prevBtn.disabled = currentIndex === 0;
         nextBtn.disabled = currentIndex === maxIndex;
