@@ -40,90 +40,6 @@
   }
   {% endif %}
 
-  @media (max-width: 749px) {
-    #shopify-section-{{ section.id }} {
-      --section-padding-top: var(--section-padding-top-mobile);
-      --section-padding-bottom: var(--section-padding-bottom-mobile);
-    }
-  }
-
-  @media (max-width: 749px) {
-    #shopify-section-{{ section.id }} .customer-reviews__title {
-      font-size: 2rem;
-    }
-
-    {% if section.settings.title_font_size_mobile != blank %}
-    #shopify-section-{{ section.id }} .customer-reviews__title {
-      font-size: {{ section.settings.title_font_size_mobile }}px;
-    }
-    {% endif %}
-
-    {% if section.settings.title_font_weight_mobile != blank %}
-    #shopify-section-{{ section.id }} .customer-reviews__title {
-      font-weight: {{ section.settings.title_font_weight_mobile }};
-    }
-    {% endif %}
-
-    {% if section.settings.title_line_height_mobile != blank %}
-    #shopify-section-{{ section.id }} .customer-reviews__title {
-      line-height: {{ section.settings.title_line_height_mobile }};
-    }
-    {% endif %}
-
-    {% if section.settings.name_font_size_mobile != blank %}
-    #shopify-section-{{ section.id }} .review-card__name {
-      font-size: {{ section.settings.name_font_size_mobile }}px;
-    }
-    {% endif %}
-
-    {% if section.settings.name_font_weight_mobile != blank %}
-    #shopify-section-{{ section.id }} .review-card__name {
-      font-weight: {{ section.settings.name_font_weight_mobile }};
-    }
-    {% endif %}
-
-    {% if section.settings.name_line_height_mobile != blank %}
-    #shopify-section-{{ section.id }} .review-card__name {
-      line-height: {{ section.settings.name_line_height_mobile }};
-    }
-    {% endif %}
-
-    {% if section.settings.review_text_font_size_mobile != blank %}
-    #shopify-section-{{ section.id }} .review-card__text {
-      font-size: {{ section.settings.review_text_font_size_mobile }}px;
-    }
-    {% endif %}
-
-    {% if section.settings.review_text_font_weight_mobile != blank %}
-    #shopify-section-{{ section.id }} .review-card__text {
-      font-weight: {{ section.settings.review_text_font_weight_mobile }};
-    }
-    {% endif %}
-
-    {% if section.settings.review_text_line_height_mobile != blank %}
-    #shopify-section-{{ section.id }} .review-card__text {
-      line-height: {{ section.settings.review_text_line_height_mobile }};
-    }
-    {% endif %}
-
-    {% if section.settings.button_font_size_mobile != blank %}
-    #shopify-section-{{ section.id }} .customer-reviews__button {
-      font-size: {{ section.settings.button_font_size_mobile }}px;
-    }
-    {% endif %}
-
-    {% if section.settings.button_font_weight_mobile != blank %}
-    #shopify-section-{{ section.id }} .customer-reviews__button {
-      font-weight: {{ section.settings.button_font_weight_mobile }};
-    }
-    {% endif %}
-
-    {% if section.settings.button_line_height_mobile != blank %}
-    #shopify-section-{{ section.id }} .customer-reviews__button {
-      line-height: {{ section.settings.button_line_height_mobile }};
-    }
-    {% endif %}
-  }
 
   #shopify-section-{{ section.id }} .customer-reviews__grid {
     position: relative;
@@ -132,17 +48,6 @@
     margin-bottom: 5rem;
   }
 
-  @media (max-width: 989px) {
-    #shopify-section-{{ section.id }} .customer-reviews__grid {
-      column-count: 2;
-    }
-  }
-
-  @media (max-width: 749px) {
-    #shopify-section-{{ section.id }} .customer-reviews__grid {
-      column-count: 1;
-    }
-  }
 
   #shopify-section-{{ section.id }} .review-card {
     background: #FFFFFF;
@@ -304,6 +209,119 @@
     flex-grow: 0;
     z-index: 3;
 
+  }
+
+  @media (max-width: 989px) {
+    #shopify-section-{{ section.id }} .customer-reviews__grid {
+      column-count: 2;
+    }
+  }
+
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      --section-padding-top: var(--section-padding-top-mobile);
+      --section-padding-bottom: var(--section-padding-bottom-mobile);
+    }
+
+    #shopify-section-{{ section.id }} .customer-reviews__title {
+      font-size: 2rem;
+    }
+
+    #shopify-section-{{ section.id }} .customer-reviews__header {
+      margin-bottom: 2.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .review-card {
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    #shopify-section-{{ section.id }} .review-card__header {
+      gap: 0.75rem;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    #shopify-section-{{ section.id }} .customer-reviews__button {
+      width: 100%;
+    }
+
+    {% if section.settings.title_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .customer-reviews__title {
+      font-size: {{ section.settings.title_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.title_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .customer-reviews__title {
+      font-weight: {{ section.settings.title_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.title_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .customer-reviews__title {
+      line-height: {{ section.settings.title_line_height_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.name_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .review-card__name {
+      font-size: {{ section.settings.name_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.name_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .review-card__name {
+      font-weight: {{ section.settings.name_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.name_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .review-card__name {
+      line-height: {{ section.settings.name_line_height_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.review_text_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .review-card__text {
+      font-size: {{ section.settings.review_text_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.review_text_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .review-card__text {
+      font-weight: {{ section.settings.review_text_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.review_text_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .review-card__text {
+      line-height: {{ section.settings.review_text_line_height_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.button_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .customer-reviews__button {
+      font-size: {{ section.settings.button_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.button_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .customer-reviews__button {
+      font-weight: {{ section.settings.button_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.button_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .customer-reviews__button {
+      line-height: {{ section.settings.button_line_height_mobile }};
+    }
+    {% endif %}
+
+    #shopify-section-{{ section.id }} .customer-reviews__grid {
+      column-count: 1;
+      margin-bottom: 2.5rem;
+    }
   }
 {%- endstyle -%}
 
