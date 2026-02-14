@@ -39,10 +39,34 @@
     color: rgb(var(--color-foreground));
   }
 
+  {% if section.settings.heading_font_weight != blank %}
+  #shopify-section-{{ section.id }} .before-after-header__title {
+    font-weight: {{ section.settings.heading_font_weight }};
+  }
+  {% endif %}
+
+  {% if section.settings.heading_line_height != blank %}
+  #shopify-section-{{ section.id }} .before-after-header__title {
+    line-height: {{ section.settings.heading_line_height }};
+  }
+  {% endif %}
+
   @media (max-width: 749px) {
     #shopify-section-{{ section.id }} .before-after-header__title {
       font-size: var(--heading-font-size-mobile);
     }
+
+    {% if section.settings.heading_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .before-after-header__title {
+      font-weight: {{ section.settings.heading_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.heading_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .before-after-header__title {
+      line-height: {{ section.settings.heading_line_height_mobile }};
+    }
+    {% endif %}
   }
 
   #shopify-section-{{ section.id }} .before-after-carousel {
@@ -130,10 +154,34 @@
     color: rgb(var(--color-foreground));
   }
 
+  {% if section.settings.card_title_font_weight != blank %}
+  #shopify-section-{{ section.id }} .before-after-card__title {
+    font-weight: {{ section.settings.card_title_font_weight }};
+  }
+  {% endif %}
+
+  {% if section.settings.card_title_line_height != blank %}
+  #shopify-section-{{ section.id }} .before-after-card__title {
+    line-height: {{ section.settings.card_title_line_height }};
+  }
+  {% endif %}
+
   @media (max-width: 749px) {
     #shopify-section-{{ section.id }} .before-after-card__title {
       font-size: var(--card-title-font-size-mobile);
     }
+
+    {% if section.settings.card_title_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .before-after-card__title {
+      font-weight: {{ section.settings.card_title_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.card_title_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .before-after-card__title {
+      line-height: {{ section.settings.card_title_line_height_mobile }};
+    }
+    {% endif %}
   }
 
   #shopify-section-{{ section.id }} .before-after-card__details {
@@ -149,10 +197,34 @@
     padding: 1rem 0;
   }
 
+  {% if section.settings.detail_font_weight != blank %}
+  #shopify-section-{{ section.id }} .before-after-card__detail {
+    font-weight: {{ section.settings.detail_font_weight }};
+  }
+  {% endif %}
+
+  {% if section.settings.detail_line_height != blank %}
+  #shopify-section-{{ section.id }} .before-after-card__detail {
+    line-height: {{ section.settings.detail_line_height }};
+  }
+  {% endif %}
+
   @media (max-width: 749px) {
     #shopify-section-{{ section.id }} .before-after-card__detail {
       font-size: var(--detail-font-size-mobile);
     }
+
+    {% if section.settings.detail_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .before-after-card__detail {
+      font-weight: {{ section.settings.detail_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.detail_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .before-after-card__detail {
+      line-height: {{ section.settings.detail_line_height_mobile }};
+    }
+    {% endif %}
   }
 
    #shopify-section-{{ section.id }} .before-after-card__detail.detail--treatment {
@@ -532,6 +604,39 @@
       "default": 32
     },
     {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Heading font weight",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "heading_line_height",
+      "label": "Heading line height",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "1", "label": "1.0 (Extra Tight)"},
+        {"value": "1.15", "label": "1.15 (Tight)"},
+        {"value": "1.25", "label": "1.25"},
+        {"value": "1.35", "label": "1.35"},
+        {"value": "1.5", "label": "1.5 (Normal)"},
+        {"value": "1.65", "label": "1.65"},
+        {"value": "1.75", "label": "1.75"},
+        {"value": "2", "label": "2.0 (Extra Loose)"},
+        {"value": "2.25", "label": "2.25"},
+        {"value": "2.5", "label": "2.5"}
+      ],
+      "default": ""
+    },
+    {
       "type": "range",
       "id": "heading_font_size_mobile",
       "label": "Heading font size (mobile)",
@@ -540,6 +645,39 @@
       "step": 1,
       "unit": "px",
       "default": 24
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight_mobile",
+      "label": "Heading font weight (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "heading_line_height_mobile",
+      "label": "Heading line height (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "1", "label": "1.0 (Extra Tight)"},
+        {"value": "1.15", "label": "1.15 (Tight)"},
+        {"value": "1.25", "label": "1.25"},
+        {"value": "1.35", "label": "1.35"},
+        {"value": "1.5", "label": "1.5 (Normal)"},
+        {"value": "1.65", "label": "1.65"},
+        {"value": "1.75", "label": "1.75"},
+        {"value": "2", "label": "2.0 (Extra Loose)"},
+        {"value": "2.25", "label": "2.25"},
+        {"value": "2.5", "label": "2.5"}
+      ],
+      "default": ""
     },
     {
       "type": "range",
@@ -552,6 +690,39 @@
       "default": 24
     },
     {
+      "type": "select",
+      "id": "card_title_font_weight",
+      "label": "Card title font weight",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "card_title_line_height",
+      "label": "Card title line height",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "1", "label": "1.0 (Extra Tight)"},
+        {"value": "1.15", "label": "1.15 (Tight)"},
+        {"value": "1.25", "label": "1.25"},
+        {"value": "1.35", "label": "1.35"},
+        {"value": "1.5", "label": "1.5 (Normal)"},
+        {"value": "1.65", "label": "1.65"},
+        {"value": "1.75", "label": "1.75"},
+        {"value": "2", "label": "2.0 (Extra Loose)"},
+        {"value": "2.25", "label": "2.25"},
+        {"value": "2.5", "label": "2.5"}
+      ],
+      "default": ""
+    },
+    {
       "type": "range",
       "id": "card_title_font_size_mobile",
       "label": "Card title font size (mobile)",
@@ -560,6 +731,39 @@
       "step": 1,
       "unit": "px",
       "default": 18
+    },
+    {
+      "type": "select",
+      "id": "card_title_font_weight_mobile",
+      "label": "Card title font weight (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "card_title_line_height_mobile",
+      "label": "Card title line height (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "1", "label": "1.0 (Extra Tight)"},
+        {"value": "1.15", "label": "1.15 (Tight)"},
+        {"value": "1.25", "label": "1.25"},
+        {"value": "1.35", "label": "1.35"},
+        {"value": "1.5", "label": "1.5 (Normal)"},
+        {"value": "1.65", "label": "1.65"},
+        {"value": "1.75", "label": "1.75"},
+        {"value": "2", "label": "2.0 (Extra Loose)"},
+        {"value": "2.25", "label": "2.25"},
+        {"value": "2.5", "label": "2.5"}
+      ],
+      "default": ""
     },
     {
       "type": "range",
@@ -572,6 +776,39 @@
       "default": 14
     },
     {
+      "type": "select",
+      "id": "detail_font_weight",
+      "label": "Detail text font weight",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "detail_line_height",
+      "label": "Detail text line height",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "1", "label": "1.0 (Extra Tight)"},
+        {"value": "1.15", "label": "1.15 (Tight)"},
+        {"value": "1.25", "label": "1.25"},
+        {"value": "1.35", "label": "1.35"},
+        {"value": "1.5", "label": "1.5 (Normal)"},
+        {"value": "1.65", "label": "1.65"},
+        {"value": "1.75", "label": "1.75"},
+        {"value": "2", "label": "2.0 (Extra Loose)"},
+        {"value": "2.25", "label": "2.25"},
+        {"value": "2.5", "label": "2.5"}
+      ],
+      "default": ""
+    },
+    {
       "type": "range",
       "id": "detail_font_size_mobile",
       "label": "Detail text font size (mobile)",
@@ -580,6 +817,39 @@
       "step": 0.5,
       "unit": "px",
       "default": 12
+    },
+    {
+      "type": "select",
+      "id": "detail_font_weight_mobile",
+      "label": "Detail text font weight (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "detail_line_height_mobile",
+      "label": "Detail text line height (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "1", "label": "1.0 (Extra Tight)"},
+        {"value": "1.15", "label": "1.15 (Tight)"},
+        {"value": "1.25", "label": "1.25"},
+        {"value": "1.35", "label": "1.35"},
+        {"value": "1.5", "label": "1.5 (Normal)"},
+        {"value": "1.65", "label": "1.65"},
+        {"value": "1.75", "label": "1.75"},
+        {"value": "2", "label": "2.0 (Extra Loose)"},
+        {"value": "2.25", "label": "2.25"},
+        {"value": "2.5", "label": "2.5"}
+      ],
+      "default": ""
     },
     {
       "type": "header",
