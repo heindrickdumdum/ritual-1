@@ -99,6 +99,7 @@
     padding-bottom: 1.5rem;
     display: flex;
     flex-direction: column;
+    min-width: 22.5rem; /* 360px */
 
   }
 
@@ -182,6 +183,10 @@
       line-height: {{ section.settings.card_title_line_height_mobile }};
     }
     {% endif %}
+
+    #shopify-section-{{ section.id }} .before-after-carousel__track {
+      gap: 0.75rem;
+    }
   }
 
   #shopify-section-{{ section.id }} .before-after-card__details {
