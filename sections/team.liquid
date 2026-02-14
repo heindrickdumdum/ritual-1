@@ -287,12 +287,17 @@
     #shopify-section-{{ section.id }} .team-section__center {
       width: 150px;
       height: 150px;
+      border-width: 7.5px;
     }
   }
 
   @media (max-width: 767px) {
     #shopify-section-{{ section.id }} .team-section__heading {
       font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+    #shopify-section-{{ section.id }} .team-section__wrapper {
+      gap: 2.5rem;
     }
 
     {% if section.settings.heading_font_size_mobile != blank %}
@@ -323,13 +328,15 @@
     }
 
     #shopify-section-{{ section.id }} .team-section__member-card {
-      padding: 1rem 1.25rem;
-      min-width: 120px;
+      padding: 0.75rem;
+      min-width: 88px;
+      border-radius: 8px;
     }
 
     #shopify-section-{{ section.id }} .team-section__avatar {
-      width: 60px;
-      height: 60px;
+      width: 64px;
+      height: 64px;
+      margin-bottom: 0.5rem;
     }
 
     #shopify-section-{{ section.id }} .team-section__name {
