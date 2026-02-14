@@ -459,16 +459,45 @@
       
       function calculateMaxIndex() {
         const wrapperWidth = carousel.querySelector('.before-after-carousel__wrapper').offsetWidth;
+        const trackWidth = track.scrollWidth;
+        
+        // If all content fits in the container, no scrolling is needed
+        if (trackWidth <= wrapperWidth) {
+          return 0;
+        }
+        
         const cardWidth = calculateCardWidth();
         if (cardWidth === 0) return 0;
+        
+        // Calculate how many cards are visible at once
         const visibleCards = Math.floor(wrapperWidth / cardWidth);
+        
+        // maxIndex is the number of cards minus the visible cards
+        // This ensures we navigate through all cards without skipping
         return Math.max(0, cards.length - visibleCards);
       }
 
       function updateCarousel() {
+        const wrapperWidth = carousel.querySelector('.before-after-carousel__wrapper').offsetWidth;
+        const trackWidth = track.scrollWidth;
+        const allItemsVisible = trackWidth <= wrapperWidth;
+        
+        // If all items are visible, don't apply any transform
+        if (allItemsVisible) {
+          track.style.transform = 'translateX(0px)';
+          progressBar.style.width = '100%';
+          prevBtn.disabled = true;
+          nextBtn.disabled = true;
+          return;
+        }
+        
         const cardWidth = calculateCardWidth();
         const maxIndex = calculateMaxIndex();
-        const offset = currentIndex * cardWidth;
+        const maxOffset = Math.max(0, trackWidth - wrapperWidth);
+        
+        // Use card-based navigation, but cap at maxOffset to prevent empty space
+        const offset = Math.min(currentIndex * cardWidth, maxOffset);
+        
         track.style.transform = `translateX(-${offset}px)`;
         
         // Update progress bar
