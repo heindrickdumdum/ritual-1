@@ -22,6 +22,24 @@
     color: rgb(var(--color-foreground));
   }
 
+  {% if section.settings.title_font_size != blank %}
+  #shopify-section-{{ section.id }} .customer-reviews__title {
+    font-size: {{ section.settings.title_font_size }}px;
+  }
+  {% endif %}
+
+  {% if section.settings.title_font_weight != blank %}
+  #shopify-section-{{ section.id }} .customer-reviews__title {
+    font-weight: {{ section.settings.title_font_weight }};
+  }
+  {% endif %}
+
+  {% if section.settings.title_line_height != blank %}
+  #shopify-section-{{ section.id }} .customer-reviews__title {
+    line-height: {{ section.settings.title_line_height }};
+  }
+  {% endif %}
+
   @media (max-width: 749px) {
     #shopify-section-{{ section.id }} {
       --section-padding-top: var(--section-padding-top-mobile);
@@ -33,6 +51,78 @@
     #shopify-section-{{ section.id }} .customer-reviews__title {
       font-size: 2rem;
     }
+
+    {% if section.settings.title_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .customer-reviews__title {
+      font-size: {{ section.settings.title_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.title_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .customer-reviews__title {
+      font-weight: {{ section.settings.title_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.title_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .customer-reviews__title {
+      line-height: {{ section.settings.title_line_height_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.name_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .review-card__name {
+      font-size: {{ section.settings.name_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.name_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .review-card__name {
+      font-weight: {{ section.settings.name_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.name_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .review-card__name {
+      line-height: {{ section.settings.name_line_height_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.review_text_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .review-card__text {
+      font-size: {{ section.settings.review_text_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.review_text_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .review-card__text {
+      font-weight: {{ section.settings.review_text_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.review_text_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .review-card__text {
+      line-height: {{ section.settings.review_text_line_height_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.button_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .customer-reviews__button {
+      font-size: {{ section.settings.button_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.button_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .customer-reviews__button {
+      font-weight: {{ section.settings.button_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.button_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .customer-reviews__button {
+      line-height: {{ section.settings.button_line_height_mobile }};
+    }
+    {% endif %}
   }
 
   #shopify-section-{{ section.id }} .customer-reviews__grid {
@@ -102,6 +192,24 @@
     color: rgb(var(--color-foreground));
   }
 
+  {% if section.settings.name_font_size != blank %}
+  #shopify-section-{{ section.id }} .review-card__name {
+    font-size: {{ section.settings.name_font_size }}px;
+  }
+  {% endif %}
+
+  {% if section.settings.name_font_weight != blank %}
+  #shopify-section-{{ section.id }} .review-card__name {
+    font-weight: {{ section.settings.name_font_weight }};
+  }
+  {% endif %}
+
+  {% if section.settings.name_line_height != blank %}
+  #shopify-section-{{ section.id }} .review-card__name {
+    line-height: {{ section.settings.name_line_height }};
+  }
+  {% endif %}
+
   #shopify-section-{{ section.id }} .review-card__rating {
     display: flex;
     gap: 0.25rem;
@@ -121,6 +229,24 @@
     margin: 0;
   }
 
+  {% if section.settings.review_text_font_size != blank %}
+  #shopify-section-{{ section.id }} .review-card__text {
+    font-size: {{ section.settings.review_text_font_size }}px;
+  }
+  {% endif %}
+
+  {% if section.settings.review_text_font_weight != blank %}
+  #shopify-section-{{ section.id }} .review-card__text {
+    font-weight: {{ section.settings.review_text_font_weight }};
+  }
+  {% endif %}
+
+  {% if section.settings.review_text_line_height != blank %}
+  #shopify-section-{{ section.id }} .review-card__text {
+    line-height: {{ section.settings.review_text_line_height }};
+  }
+  {% endif %}
+
   #shopify-section-{{ section.id }} .customer-reviews__cta {
     text-align: center;
   }
@@ -137,6 +263,24 @@
     font-size: 1rem;
     transition: all 0.3s ease;
   }
+
+  {% if section.settings.button_font_size != blank %}
+  #shopify-section-{{ section.id }} .customer-reviews__button {
+    font-size: {{ section.settings.button_font_size }}px;
+  }
+  {% endif %}
+
+  {% if section.settings.button_font_weight != blank %}
+  #shopify-section-{{ section.id }} .customer-reviews__button {
+    font-weight: {{ section.settings.button_font_weight }};
+  }
+  {% endif %}
+
+  {% if section.settings.button_line_height != blank %}
+  #shopify-section-{{ section.id }} .customer-reviews__button {
+    line-height: {{ section.settings.button_line_height }};
+  }
+  {% endif %}
 
   #shopify-section-{{ section.id }} .customer-reviews__button:hover {
     background: #F7F7F4;
@@ -239,6 +383,370 @@
       "type": "url",
       "id": "button_url",
       "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "header",
+      "content": "Title"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title font size",
+      "min": 12,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Title font weight",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "title_line_height",
+      "label": "Title line height",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "1", "label": "1.0 (Extra Tight)"},
+        {"value": "1.15", "label": "1.15 (Tight)"},
+        {"value": "1.25", "label": "1.25"},
+        {"value": "1.35", "label": "1.35"},
+        {"value": "1.5", "label": "1.5 (Normal)"},
+        {"value": "1.65", "label": "1.65"},
+        {"value": "1.75", "label": "1.75"},
+        {"value": "2", "label": "2.0 (Extra Loose)"},
+        {"value": "2.25", "label": "2.25"},
+        {"value": "2.5", "label": "2.5"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title font size (mobile)",
+      "min": 12,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight_mobile",
+      "label": "Title font weight (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "title_line_height_mobile",
+      "label": "Title line height (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "1", "label": "1.0 (Extra Tight)"},
+        {"value": "1.15", "label": "1.15 (Tight)"},
+        {"value": "1.25", "label": "1.25"},
+        {"value": "1.35", "label": "1.35"},
+        {"value": "1.5", "label": "1.5 (Normal)"},
+        {"value": "1.65", "label": "1.65"},
+        {"value": "1.75", "label": "1.75"},
+        {"value": "2", "label": "2.0 (Extra Loose)"},
+        {"value": "2.25", "label": "2.25"},
+        {"value": "2.5", "label": "2.5"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "header",
+      "content": "Review Name"
+    },
+    {
+      "type": "range",
+      "id": "name_font_size",
+      "label": "Name font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "name_font_weight",
+      "label": "Name font weight",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "name_line_height",
+      "label": "Name line height",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "1", "label": "1.0 (Extra Tight)"},
+        {"value": "1.15", "label": "1.15 (Tight)"},
+        {"value": "1.25", "label": "1.25"},
+        {"value": "1.35", "label": "1.35"},
+        {"value": "1.5", "label": "1.5 (Normal)"},
+        {"value": "1.65", "label": "1.65"},
+        {"value": "1.75", "label": "1.75"},
+        {"value": "2", "label": "2.0 (Extra Loose)"},
+        {"value": "2.25", "label": "2.25"},
+        {"value": "2.5", "label": "2.5"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "range",
+      "id": "name_font_size_mobile",
+      "label": "Name font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "name_font_weight_mobile",
+      "label": "Name font weight (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "name_line_height_mobile",
+      "label": "Name line height (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "1", "label": "1.0 (Extra Tight)"},
+        {"value": "1.15", "label": "1.15 (Tight)"},
+        {"value": "1.25", "label": "1.25"},
+        {"value": "1.35", "label": "1.35"},
+        {"value": "1.5", "label": "1.5 (Normal)"},
+        {"value": "1.65", "label": "1.65"},
+        {"value": "1.75", "label": "1.75"},
+        {"value": "2", "label": "2.0 (Extra Loose)"},
+        {"value": "2.25", "label": "2.25"},
+        {"value": "2.5", "label": "2.5"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "header",
+      "content": "Review Text"
+    },
+    {
+      "type": "range",
+      "id": "review_text_font_size",
+      "label": "Review text font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "review_text_font_weight",
+      "label": "Review text font weight",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "review_text_line_height",
+      "label": "Review text line height",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "1", "label": "1.0 (Extra Tight)"},
+        {"value": "1.15", "label": "1.15 (Tight)"},
+        {"value": "1.25", "label": "1.25"},
+        {"value": "1.35", "label": "1.35"},
+        {"value": "1.5", "label": "1.5 (Normal)"},
+        {"value": "1.65", "label": "1.65"},
+        {"value": "1.75", "label": "1.75"},
+        {"value": "2", "label": "2.0 (Extra Loose)"},
+        {"value": "2.25", "label": "2.25"},
+        {"value": "2.5", "label": "2.5"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "range",
+      "id": "review_text_font_size_mobile",
+      "label": "Review text font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "review_text_font_weight_mobile",
+      "label": "Review text font weight (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "review_text_line_height_mobile",
+      "label": "Review text line height (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "1", "label": "1.0 (Extra Tight)"},
+        {"value": "1.15", "label": "1.15 (Tight)"},
+        {"value": "1.25", "label": "1.25"},
+        {"value": "1.35", "label": "1.35"},
+        {"value": "1.5", "label": "1.5 (Normal)"},
+        {"value": "1.65", "label": "1.65"},
+        {"value": "1.75", "label": "1.75"},
+        {"value": "2", "label": "2.0 (Extra Loose)"},
+        {"value": "2.25", "label": "2.25"},
+        {"value": "2.5", "label": "2.5"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Button font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "button_font_weight",
+      "label": "Button font weight",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "button_line_height",
+      "label": "Button line height",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "1", "label": "1.0 (Extra Tight)"},
+        {"value": "1.15", "label": "1.15 (Tight)"},
+        {"value": "1.25", "label": "1.25"},
+        {"value": "1.35", "label": "1.35"},
+        {"value": "1.5", "label": "1.5 (Normal)"},
+        {"value": "1.65", "label": "1.65"},
+        {"value": "1.75", "label": "1.75"},
+        {"value": "2", "label": "2.0 (Extra Loose)"},
+        {"value": "2.25", "label": "2.25"},
+        {"value": "2.5", "label": "2.5"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "range",
+      "id": "button_font_size_mobile",
+      "label": "Button font size (mobile)",
+      "min": 10,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "button_font_weight_mobile",
+      "label": "Button font weight (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "button_line_height_mobile",
+      "label": "Button line height (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "1", "label": "1.0 (Extra Tight)"},
+        {"value": "1.15", "label": "1.15 (Tight)"},
+        {"value": "1.25", "label": "1.25"},
+        {"value": "1.35", "label": "1.35"},
+        {"value": "1.5", "label": "1.5 (Normal)"},
+        {"value": "1.65", "label": "1.65"},
+        {"value": "1.75", "label": "1.75"},
+        {"value": "2", "label": "2.0 (Extra Loose)"},
+        {"value": "2.25", "label": "2.25"},
+        {"value": "2.5", "label": "2.5"}
+      ],
+      "default": ""
     },
     {
       "type": "header",
