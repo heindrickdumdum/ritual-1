@@ -20,11 +20,12 @@
     padding-bottom: var(--section-padding-bottom);
   }
 
-  @media (max-width: 749px) {
-    #shopify-section-{{ section.id }} {
-      --section-padding-top: var(--section-padding-top-mobile);
-      --section-padding-bottom: var(--section-padding-bottom-mobile);
-    }
+  #shopify-section-{{ section.id }} .before-after-carousel__nav--wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
   }
 
   #shopify-section-{{ section.id }} .before-after-header {
@@ -51,24 +52,6 @@
   }
   {% endif %}
 
-  @media (max-width: 749px) {
-    #shopify-section-{{ section.id }} .before-after-header__title {
-      font-size: var(--heading-font-size-mobile);
-    }
-
-    {% if section.settings.heading_font_weight_mobile != blank %}
-    #shopify-section-{{ section.id }} .before-after-header__title {
-      font-weight: {{ section.settings.heading_font_weight_mobile }};
-    }
-    {% endif %}
-
-    {% if section.settings.heading_line_height_mobile != blank %}
-    #shopify-section-{{ section.id }} .before-after-header__title {
-      line-height: {{ section.settings.heading_line_height_mobile }};
-    }
-    {% endif %}
-  }
-
   #shopify-section-{{ section.id }} .before-after-carousel {
     position: relative;
     margin-bottom: 5rem;
@@ -77,12 +60,6 @@
   #shopify-section-{{ section.id }} .before-after-carousel__wrapper {
     /* overflow: hidden; */
     /* margin: 0 60px; */
-  }
-
-  @media (max-width: 749px) {
-    #shopify-section-{{ section.id }} .before-after-carousel__wrapper {
-      /* margin: 0 40px; */
-    }
   }
 
   #shopify-section-{{ section.id }} .before-after-carousel__track {
@@ -100,13 +77,6 @@
     display: flex;
     flex-direction: column;
     min-width: 22.5rem; /* 360px */
-
-  }
-
-  @media (max-width: 749px) {
-    #shopify-section-{{ section.id }} .before-after-card {
-      flex: 0 0 260px;
-    }
   }
 
   #shopify-section-{{ section.id }} .before-after-card__content {
@@ -145,7 +115,6 @@
     line-height: 145%;
     color: #717680;
     text-align: center;
-
   }
 
   #shopify-section-{{ section.id }} .before-after-card__title {
@@ -166,28 +135,6 @@
     line-height: {{ section.settings.card_title_line_height }};
   }
   {% endif %}
-
-  @media (max-width: 749px) {
-    #shopify-section-{{ section.id }} .before-after-card__title {
-      font-size: var(--card-title-font-size-mobile);
-    }
-
-    {% if section.settings.card_title_font_weight_mobile != blank %}
-    #shopify-section-{{ section.id }} .before-after-card__title {
-      font-weight: {{ section.settings.card_title_font_weight_mobile }};
-    }
-    {% endif %}
-
-    {% if section.settings.card_title_line_height_mobile != blank %}
-    #shopify-section-{{ section.id }} .before-after-card__title {
-      line-height: {{ section.settings.card_title_line_height_mobile }};
-    }
-    {% endif %}
-
-    #shopify-section-{{ section.id }} .before-after-carousel__track {
-      gap: 0.75rem;
-    }
-  }
 
   #shopify-section-{{ section.id }} .before-after-card__details {
     display: flex;
@@ -214,29 +161,11 @@
   }
   {% endif %}
 
-  @media (max-width: 749px) {
-    #shopify-section-{{ section.id }} .before-after-card__detail {
-      font-size: var(--detail-font-size-mobile);
-    }
-
-    {% if section.settings.detail_font_weight_mobile != blank %}
-    #shopify-section-{{ section.id }} .before-after-card__detail {
-      font-weight: {{ section.settings.detail_font_weight_mobile }};
-    }
-    {% endif %}
-
-    {% if section.settings.detail_line_height_mobile != blank %}
-    #shopify-section-{{ section.id }} .before-after-card__detail {
-      line-height: {{ section.settings.detail_line_height_mobile }};
-    }
-    {% endif %}
-  }
-
-   #shopify-section-{{ section.id }} .before-after-card__detail.detail--treatment {
+  #shopify-section-{{ section.id }} .before-after-card__detail.detail--treatment {
     border-width: 1px 0px;
     border-style: solid;
     border-color: #E9EAEB;
-   }
+  }
 
   #shopify-section-{{ section.id }} .before-after-card__detail.detail--duration {
     padding-bottom: 0;
@@ -252,9 +181,9 @@
   }
 
   #shopify-section-{{ section.id }} .before-after-carousel__nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    /* position: absolute; */
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
     width: 52px;
     height: 52px;
     border-radius: 50%;
@@ -327,6 +256,75 @@
 
   #shopify-section-{{ section.id }} .before-after-cta__button:hover {
     opacity: 0.9;
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      --section-padding-top: var(--section-padding-top-mobile);
+      --section-padding-bottom: var(--section-padding-bottom-mobile);
+    }
+
+    #shopify-section-{{ section.id }} .before-after-header__title {
+      font-size: var(--heading-font-size-mobile);
+    }
+
+    {% if section.settings.heading_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .before-after-header__title {
+      font-weight: {{ section.settings.heading_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.heading_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .before-after-header__title {
+      line-height: {{ section.settings.heading_line_height_mobile }};
+    }
+    {% endif %}
+
+    #shopify-section-{{ section.id }} .before-after-carousel__track {
+      gap: 0.75rem;
+    }
+
+    #shopify-section-{{ section.id }} .before-after-card {
+      flex: 0 0 260px;
+    }
+
+    #shopify-section-{{ section.id }} .before-after-card__title {
+      font-size: var(--card-title-font-size-mobile);
+    }
+
+    {% if section.settings.card_title_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .before-after-card__title {
+      font-weight: {{ section.settings.card_title_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.card_title_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .before-after-card__title {
+      line-height: {{ section.settings.card_title_line_height_mobile }};
+    }
+    {% endif %}
+
+    #shopify-section-{{ section.id }} .before-after-card__detail {
+      font-size: var(--detail-font-size-mobile);
+    }
+
+    {% if section.settings.detail_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .before-after-card__detail {
+      font-weight: {{ section.settings.detail_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.detail_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .before-after-card__detail {
+      line-height: {{ section.settings.detail_line_height_mobile }};
+    }
+    {% endif %}
+
+    #shopify-section-{{ section.id }} .before-after-carousel__nav {
+      width: 48px;
+      height: 48px;
+    }
   }
 {%- endstyle -%}
 
@@ -405,22 +403,29 @@
         </div>
 
         <div class="tw-py-8">
-          <div class="tw-flex tw-items-center tw-relative tw-mt-8 tw-max-w-[1360px] tw-mx-auto">
-          <button class="before-after-carousel__nav before-after-carousel__nav--prev" data-carousel-prev aria-label="{{ section.settings.previous_button_label }}">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          <button class="before-after-carousel__nav before-after-carousel__nav--next" data-carousel-next aria-label="{{ section.settings.next_button_label }}">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+          <div class="before-after-carousel__nav--wrapper tw-flex tw-items-center tw-relative tw-mt-8 tw-max-w-[1360px] tw-mx-auto">
+          <div>
+            <button class="before-after-carousel__nav before-after-carousel__nav--prev" data-carousel-prev aria-label="{{ section.settings.previous_button_label }}">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+          </div>
 
           <div class="before-after-carousel__progress tw-w-full">
             <div class="before-after-carousel__progress-bar" data-carousel-progress></div>
           </div>
+
+          <div>
+            <button class="before-after-carousel__nav before-after-carousel__nav--next" data-carousel-next aria-label="{{ section.settings.next_button_label }}">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+          </div>
+
+          
         </div>
         </div>
       </div>
