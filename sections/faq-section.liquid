@@ -54,6 +54,80 @@
     }
   }
 
+  @media (max-width: 749px) {
+    {% if section.settings.title_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-section__title {
+      font-size: {{ section.settings.title_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.title_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-section__title {
+      font-weight: {{ section.settings.title_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.title_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-section__title {
+      line-height: {{ section.settings.title_line_height_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.question_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-accordion-item__question {
+      font-size: {{ section.settings.question_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.question_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-accordion-item__question {
+      font-weight: {{ section.settings.question_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.question_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-accordion-item__question {
+      line-height: {{ section.settings.question_line_height_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.answer_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-accordion-item__answer {
+      font-size: {{ section.settings.answer_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.answer_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-accordion-item__answer {
+      font-weight: {{ section.settings.answer_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.answer_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-accordion-item__answer {
+      line-height: {{ section.settings.answer_line_height_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.contact_title_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-section__contact-info h3 {
+      font-size: {{ section.settings.contact_title_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.contact_text_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-section__contact-info p {
+      font-size: {{ section.settings.contact_text_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.contact_link_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-section__contact-info a {
+      font-size: {{ section.settings.contact_link_font_size_mobile }}px;
+    }
+    {% endif %}
+  }
+
   #shopify-section-{{ section.id }} .faq-section__contact-card {
     display: inline-flex;
     flex-direction: row;
@@ -303,6 +377,169 @@
       "id": "contact_email",
       "label": "Contact email",
       "default": "support@yourbrand.com"
+    },
+    {
+      "type": "header",
+      "content": "Typography (mobile)"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title font size (mobile)",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight_mobile",
+      "label": "Title font weight (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "title_line_height_mobile",
+      "label": "Title line height (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "1", "label": "1.0 (Extra Tight)"},
+        {"value": "1.15", "label": "1.15 (Tight)"},
+        {"value": "1.25", "label": "1.25"},
+        {"value": "1.35", "label": "1.35"},
+        {"value": "1.5", "label": "1.5 (Normal)"},
+        {"value": "1.65", "label": "1.65"},
+        {"value": "1.75", "label": "1.75"},
+        {"value": "2", "label": "2.0 (Extra Loose)"},
+        {"value": "2.25", "label": "2.25"},
+        {"value": "2.5", "label": "2.5"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "range",
+      "id": "question_font_size_mobile",
+      "label": "Question font size (mobile)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "question_font_weight_mobile",
+      "label": "Question font weight (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "question_line_height_mobile",
+      "label": "Question line height (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "1", "label": "1.0 (Extra Tight)"},
+        {"value": "1.15", "label": "1.15 (Tight)"},
+        {"value": "1.25", "label": "1.25"},
+        {"value": "1.35", "label": "1.35"},
+        {"value": "1.5", "label": "1.5 (Normal)"},
+        {"value": "1.65", "label": "1.65"},
+        {"value": "1.75", "label": "1.75"},
+        {"value": "2", "label": "2.0 (Extra Loose)"},
+        {"value": "2.25", "label": "2.25"},
+        {"value": "2.5", "label": "2.5"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "range",
+      "id": "answer_font_size_mobile",
+      "label": "Answer font size (mobile)",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "select",
+      "id": "answer_font_weight_mobile",
+      "label": "Answer font weight (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "300", "label": "Light (300)"},
+        {"value": "400", "label": "Normal (400)"},
+        {"value": "500", "label": "Medium (500)"},
+        {"value": "600", "label": "Semibold (600)"},
+        {"value": "700", "label": "Bold (700)"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "answer_line_height_mobile",
+      "label": "Answer line height (mobile)",
+      "options": [
+        {"value": "", "label": "Default"},
+        {"value": "1", "label": "1.0 (Extra Tight)"},
+        {"value": "1.15", "label": "1.15 (Tight)"},
+        {"value": "1.25", "label": "1.25"},
+        {"value": "1.35", "label": "1.35"},
+        {"value": "1.5", "label": "1.5 (Normal)"},
+        {"value": "1.65", "label": "1.65"},
+        {"value": "1.75", "label": "1.75"},
+        {"value": "2", "label": "2.0 (Extra Loose)"},
+        {"value": "2.25", "label": "2.25"},
+        {"value": "2.5", "label": "2.5"}
+      ],
+      "default": ""
+    },
+    {
+      "type": "range",
+      "id": "contact_title_font_size_mobile",
+      "label": "Contact title font size (mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "contact_text_font_size_mobile",
+      "label": "Contact text font size (mobile)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "contact_link_font_size_mobile",
+      "label": "Contact link font size (mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 15
     },
     {
       "type": "header",
