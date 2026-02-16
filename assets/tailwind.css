@@ -99,6 +99,23 @@
   padding-bottom: 2rem
 }
 
+.tw-py-\[0\] {
+  padding-top: 0;
+  padding-bottom: 0
+}
+
 .tw-pr-6 {
   padding-right: 1.5rem
+}
+
+@media (min-width: 640px) {
+  .sm\:tw-py-\[0\] {
+    padding-top: 0;
+    padding-bottom: 0
+  }
+
+  .sm\:tw-py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem
+  }
 }

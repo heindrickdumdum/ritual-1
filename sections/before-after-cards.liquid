@@ -60,6 +60,7 @@
   #shopify-section-{{ section.id }} .before-after-carousel__wrapper {
     /* overflow: hidden; */
     /* margin: 0 60px; */
+    margin-bottom: 0.5rem;
   }
 
   #shopify-section-{{ section.id }} .before-after-carousel__track {
@@ -321,6 +322,19 @@
     }
     {% endif %}
 
+    #shopify-section-{{ section.id }} .before-after-carousel {
+      margin-bottom: 2.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .before-after-header {
+      text-align: left;
+      margin-bottom: 2.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .before-after-carousel__nav--wrapper {
+      margin-top: 0;
+    }
+
     #shopify-section-{{ section.id }} .before-after-carousel__nav {
       width: 48px;
       height: 48px;
@@ -402,7 +416,7 @@
           </div>
         </div>
 
-        <div class="tw-py-8">
+        <div class="sm:tw-py-8 tw-py-[0]">
           <div class="before-after-carousel__nav--wrapper tw-flex tw-items-center tw-relative tw-mt-8 tw-max-w-[1360px] tw-mx-auto">
           <div>
             <button class="before-after-carousel__nav before-after-carousel__nav--prev" data-carousel-prev aria-label="{{ section.settings.previous_button_label }}">
