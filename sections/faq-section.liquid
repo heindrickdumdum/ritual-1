@@ -18,13 +18,6 @@
     align-items: start;
   }
 
-  @media (max-width: 989px) {
-    #shopify-section-{{ section.id }} .faq-section__wrapper {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-  }
-
   #shopify-section-{{ section.id }} .faq-section__left {
     position: sticky;
     top: 2rem;
@@ -33,99 +26,11 @@
   #shopify-section-{{ section.id }} .faq-section__title {
     font-weight: 500;
     margin-bottom: 2.5rem;
-
   }
 
-  @media (max-width: 749px) {
-    #shopify-section-{{ section.id }} {
-      --section-padding-top: var(--section-padding-top-mobile);
-      --section-padding-bottom: var(--section-padding-bottom-mobile);
-    }
-  }
-
-    #shopify-section-{{ section.id }} .faq-section__title p {
-        margin: 0;
-        line-height: normal;
-    }
-
-  @media (max-width: 749px) {
-    #shopify-section-{{ section.id }} .faq-section__title {
-      font-size: 2rem;
-    }
-  }
-
-  @media (max-width: 749px) {
-    {% if section.settings.title_font_size_mobile != blank %}
-    #shopify-section-{{ section.id }} .faq-section__title {
-      font-size: {{ section.settings.title_font_size_mobile }}px;
-    }
-    {% endif %}
-
-    {% if section.settings.title_font_weight_mobile != blank %}
-    #shopify-section-{{ section.id }} .faq-section__title {
-      font-weight: {{ section.settings.title_font_weight_mobile }};
-    }
-    {% endif %}
-
-    {% if section.settings.title_line_height_mobile != blank %}
-    #shopify-section-{{ section.id }} .faq-section__title {
-      line-height: {{ section.settings.title_line_height_mobile }};
-    }
-    {% endif %}
-
-    {% if section.settings.question_font_size_mobile != blank %}
-    #shopify-section-{{ section.id }} .faq-accordion-item__question {
-      font-size: {{ section.settings.question_font_size_mobile }}px;
-    }
-    {% endif %}
-
-    {% if section.settings.question_font_weight_mobile != blank %}
-    #shopify-section-{{ section.id }} .faq-accordion-item__question {
-      font-weight: {{ section.settings.question_font_weight_mobile }};
-    }
-    {% endif %}
-
-    {% if section.settings.question_line_height_mobile != blank %}
-    #shopify-section-{{ section.id }} .faq-accordion-item__question {
-      line-height: {{ section.settings.question_line_height_mobile }};
-    }
-    {% endif %}
-
-    {% if section.settings.answer_font_size_mobile != blank %}
-    #shopify-section-{{ section.id }} .faq-accordion-item__answer {
-      font-size: {{ section.settings.answer_font_size_mobile }}px;
-    }
-    {% endif %}
-
-    {% if section.settings.answer_font_weight_mobile != blank %}
-    #shopify-section-{{ section.id }} .faq-accordion-item__answer {
-      font-weight: {{ section.settings.answer_font_weight_mobile }};
-    }
-    {% endif %}
-
-    {% if section.settings.answer_line_height_mobile != blank %}
-    #shopify-section-{{ section.id }} .faq-accordion-item__answer {
-      line-height: {{ section.settings.answer_line_height_mobile }};
-    }
-    {% endif %}
-
-    {% if section.settings.contact_title_font_size_mobile != blank %}
-    #shopify-section-{{ section.id }} .faq-section__contact-info h3 {
-      font-size: {{ section.settings.contact_title_font_size_mobile }}px;
-    }
-    {% endif %}
-
-    {% if section.settings.contact_text_font_size_mobile != blank %}
-    #shopify-section-{{ section.id }} .faq-section__contact-info p {
-      font-size: {{ section.settings.contact_text_font_size_mobile }}px;
-    }
-    {% endif %}
-
-    {% if section.settings.contact_link_font_size_mobile != blank %}
-    #shopify-section-{{ section.id }} .faq-section__contact-info a {
-      font-size: {{ section.settings.contact_link_font_size_mobile }}px;
-    }
-    {% endif %}
+  #shopify-section-{{ section.id }} .faq-section__title p {
+    margin: 0;
+    line-height: normal;
   }
 
   #shopify-section-{{ section.id }} .faq-section__contact-card {
@@ -137,7 +42,6 @@
     background: #F7F7F4;
     box-shadow: 0px 4px 6px -1px rgba(10, 13, 18, 0.1), 0px 2px 4px -2px rgba(10, 13, 18, 0.06);
     border-radius: 12px;
-
   }
 
   #shopify-section-{{ section.id }} .faq-section__contact-icon {
@@ -263,6 +167,98 @@
     line-height: 1.6;
     margin: 0;
     color: #535862;
+  }
+
+  /* Tablet Styles */
+  @media (max-width: 989px) {
+    #shopify-section-{{ section.id }} .faq-section__wrapper {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      --section-padding-top: var(--section-padding-top-mobile);
+      --section-padding-bottom: var(--section-padding-bottom-mobile);
+    }
+
+    #shopify-section-{{ section.id }} .faq-section__title {
+      font-size: 2rem;
+    }
+
+    {% if section.settings.title_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-section__title {
+      font-size: {{ section.settings.title_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.title_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-section__title {
+      font-weight: {{ section.settings.title_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.title_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-section__title {
+      line-height: {{ section.settings.title_line_height_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.question_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-accordion-item__question {
+      font-size: {{ section.settings.question_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.question_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-accordion-item__question {
+      font-weight: {{ section.settings.question_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.question_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-accordion-item__question {
+      line-height: {{ section.settings.question_line_height_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.answer_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-accordion-item__answer {
+      font-size: {{ section.settings.answer_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.answer_font_weight_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-accordion-item__answer {
+      font-weight: {{ section.settings.answer_font_weight_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.answer_line_height_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-accordion-item__answer {
+      line-height: {{ section.settings.answer_line_height_mobile }};
+    }
+    {% endif %}
+
+    {% if section.settings.contact_title_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-section__contact-info h3 {
+      font-size: {{ section.settings.contact_title_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.contact_text_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-section__contact-info p {
+      font-size: {{ section.settings.contact_text_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    {% if section.settings.contact_link_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .faq-section__contact-info a {
+      font-size: {{ section.settings.contact_link_font_size_mobile }}px;
+    }
+    {% endif %}
   }
 {%- endstyle -%}
 
