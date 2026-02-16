@@ -197,7 +197,9 @@
     position: absolute;
     width: 100%;
     height: 160px;
-    left: calc(50% - 1360px/2);
+    /* left: calc(50% - 1360px/2); */
+    left: 0;
+    right: 0;
     bottom: 0px;
 
     background: linear-gradient(0deg, #F7F7F4 0%, rgba(247, 247, 244, 0) 100%);
@@ -228,6 +230,7 @@
 
     #shopify-section-{{ section.id }} .customer-reviews__header {
       margin-bottom: 2.5rem;
+      text-align: left;
     }
 
     #shopify-section-{{ section.id }} .review-card {
