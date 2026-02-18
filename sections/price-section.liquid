@@ -383,7 +383,7 @@
 
   #shopify-section-{{ section.id }} .price-section__card-feature {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 1rem;
     font-size: 1.125rem;
     color: #1a1a1a;
@@ -479,9 +479,6 @@
       gap: 1.5rem;
     }
 
-    #shopify-section-{{ section.id }} .price-section__heading {
-
-    }
 
     #shopify-section-{{ section.id }} .price-section__card {
       padding: 1.5rem 1.25rem;
@@ -503,6 +500,7 @@
     #shopify-section-{{ section.id }} .price-section__heading {
       font-size: 1.75rem;
       margin-bottom: 0.75rem;
+      line-height: 32px;
     }
 
     #shopify-section-{{ section.id }} .price-section__description {
@@ -519,6 +517,12 @@
 
     #shopify-section-{{ section.id }} .price-section__button {
       margin-bottom: 0;
+      line-height: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .price-section__trust-text p {
+          font-weight: 500;
+              line-height: 24px;
     }
 
     {% if section.settings.heading_font_size_mobile != blank %}
@@ -561,6 +565,10 @@
     }
     {% endif %}
 
+    #shopify-section-{{ section.id }} .price-section__feature {
+      line-height: 24px;
+    }
+
     {% if section.settings.feature_font_size_mobile != blank %}
     #shopify-section-{{ section.id }} .price-section__feature {
       font-size: {{ section.settings.feature_font_size_mobile }}px;
@@ -597,6 +605,12 @@
     }
     {% endif %}
 
+    #shopify-section-{{ section.id }} .price-section__original-price {
+      font-weight: 500;
+      line-height: 24px;
+      color: #535862;
+    }
+
     {% if section.settings.original_price_font_size_mobile != blank %}
     #shopify-section-{{ section.id }} .price-section__original-price {
       font-size: {{ section.settings.original_price_font_size_mobile }}px;
@@ -615,6 +629,10 @@
     }
     {% endif %}
 
+    #shopify-section-{{ section.id }} .price-section__price {
+      letter-spacing: -0.02em;
+    }
+
     {% if section.settings.price_font_size_mobile != blank %}
     #shopify-section-{{ section.id }} .price-section__price {
       font-size: {{ section.settings.price_font_size_mobile }}px;
@@ -632,6 +650,16 @@
       line-height: {{ section.settings.price_line_height_mobile }};
     }
     {% endif %}
+
+    #shopify-section-{{ section.id }} .price-section__card-feature {
+      gap: 0.75rem;
+    }
+
+    #shopify-section-{{ section.id }} .price-section__card-feature svg {
+      width: 24px;
+      height: 28px;
+    }
+
 
     {% if section.settings.card_feature_font_size_mobile != blank %}
     #shopify-section-{{ section.id }} .price-section__card-feature {
