@@ -143,12 +143,13 @@
     height: 48px;
     border-radius: 50%;
     border: none;
-    background: #E5E5E0;
+    background: #F7F7F4;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    border: 1px solid #D5D7DA;
   }
 
   #shopify-section-{{ section.id }} .how-it-works-carousel__button:disabled {
@@ -222,6 +223,10 @@
       margin-bottom: 1rem;
     }
 
+    #shopify-section-{{ section.id }} .how-it-works-carousel__progress {
+      height: 2px;
+    }
+
     #shopify-section-{{ section.id }} .how-it-works-step__title,
     #shopify-section-{{ section.id }} .how-it-works-step__label {
       margin-bottom: 8px;
@@ -240,6 +245,11 @@
     {% endif %}
 
     #shopify-section-{{ section.id }} .how-it-works-header__description {
+      line-height: 24px;
+      color: #535862;
+    }
+
+    #shopify-section-{{ section.id }} .how-it-works-header__description {
       font-size: {{ section.settings.header_description_font_size_mobile | default: 16 }}px;
     }
 
@@ -249,6 +259,10 @@
     }
     {% endif %}
 
+    #shopify-section-{{ section.id }} .how-it-works-step__label {
+      line-height: 24px;
+          color: #535862;
+    }
     {% if section.settings.step_label_font_size_mobile != blank %}
     #shopify-section-{{ section.id }} .how-it-works-step__label {
       font-size: {{ section.settings.step_label_font_size_mobile }}px;
@@ -261,6 +275,9 @@
     }
     {% endif %}
 
+    #shopify-section-{{ section.id }} .how-it-works-step__title {
+      line-height: 28px;
+    }
     {% if section.settings.step_title_font_size_mobile != blank %}
     #shopify-section-{{ section.id }} .how-it-works-step__title {
       font-size: {{ section.settings.step_title_font_size_mobile }}px;
@@ -272,6 +289,10 @@
       font-weight: {{ section.settings.step_title_font_weight_mobile }};
     }
     {% endif %}
+
+    #shopify-section-{{ section.id }} .how-it-works-step__description {
+      line-height: 24px;
+    }
 
     {% if section.settings.step_description_font_size_mobile != blank %}
     #shopify-section-{{ section.id }} .how-it-works-step__description {

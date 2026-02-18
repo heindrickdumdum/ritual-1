@@ -92,7 +92,7 @@
   }
 
   #shopify-section-{{ section.id }} .why-choose-card__image--full-height {
-    height: 100%;
+    /* height: 100%; */
     flex: 1;
   }
 
@@ -138,6 +138,26 @@
       --section-padding-bottom: var(--section-padding-bottom-mobile);
     }
 
+    #shopify-section-{{ section.id }} .why-choose-header__description {
+      line-height: 1.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .why-choose-card__description {
+          line-height: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .why-choose-card__image--full-height {
+      flex: none;
+    }
+
+    #shopify-section-{{ section.id }} .why-choose-header__title {
+      line-height: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .why-choose-card__title {
+      line-height: 28px;
+    }
+
     #shopify-section-{{ section.id }} .why-choose-grid {
       gap: 1rem;
     }
@@ -156,6 +176,10 @@
 
     #shopify-section-{{ section.id }} .why-choose-testimonial {
       padding: 1.25rem;
+    }
+
+    #shopify-section-{{ section.id }} .why-choose-testimonial__quote {
+      line-height: 32px;
     }
     
     {% if section.settings.header_title_font_size_mobile != blank %}
@@ -242,6 +266,7 @@
 
     #shopify-section-{{ section.id }} .why-choose-card__content {
       text-align: var(--card-text-align-mobile, var(--card-text-align, left));
+      margin-bottom: 1rem;
     }
   }
 {%- endstyle -%}
