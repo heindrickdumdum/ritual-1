@@ -9,6 +9,7 @@
     padding-top: var(--section-padding-top);
     padding-bottom: var(--section-padding-bottom);
     background-color: var(--section-background-color);
+    gap: 40px;
   }
 
   #shopify-section-{{ section.id }} .contact-section__header {
@@ -39,17 +40,17 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
-    margin-bottom: 4rem;
+    gap: 16px;
   }
 
   #shopify-section-{{ section.id }} .contact-section__button {
-    padding: 0.75rem 1.5rem;
+    padding: 16px 32px;
     border: 1px solid var(--color-foreground);
     background: transparent;
     color: var(--color-foreground);
-    font-size: 0.95rem;
-    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 700;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -73,10 +74,10 @@
   }
 
   #shopify-section-{{ section.id }} .contact-section__how-to-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0 0 2rem 0;
-    color: var(--color-foreground);
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.36;
+    color: #181D27;
   }
 
   #shopify-section-{{ section.id }} .contact-section__how-to {
@@ -94,9 +95,12 @@
   }
 
   #shopify-section-{{ section.id }} .contact-section__method-item {
+    background: white;
+    border-radius: 20px;
     display: flex;
     align-items: flex-start;
     padding: 32px;
+    gap: 32px;
   }
 
   #shopify-section-{{ section.id }} .contact-section__method-icon {
@@ -157,7 +161,7 @@
   }
 
   #shopify-section-{{ section.id }} .contact-section__image-placeholder {
-    background: #E8E8E8;
+    background: #E3E3DE;
     border-radius: 12px;
     min-height: 400px;
     width: 100%;
@@ -186,7 +190,7 @@
     }
 
     #shopify-section-{{ section.id }} .contact-section__content {
-      gap: 2rem;
+      gap: 24px;
     }
 
     #shopify-section-{{ section.id }} .contact-section__image-placeholder {
@@ -216,7 +220,6 @@
 
   <div class="contact-section__content">
     <h2 class="contact-section__how-to-title">{{ section.settings.how_to_title }}</h2>
-
     <div class="contact-section__how-to">
       <div class="contact-section__methods">
         {% for block in section.blocks %}
