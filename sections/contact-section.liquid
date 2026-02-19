@@ -9,7 +9,12 @@
     padding-top: var(--section-padding-top);
     padding-bottom: var(--section-padding-bottom);
     background-color: var(--section-background-color);
+    display: flex;
+    flex-direction: column;
     gap: 40px;
+    max-width: var(--full-page-grid-central-column-width);
+    margin-inline: auto;
+    padding-inline: var(--page-margin);
   }
 
   #shopify-section-{{ section.id }} .contact-section__header {
@@ -83,7 +88,7 @@
   #shopify-section-{{ section.id }} .contact-section__how-to {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 80px;
     align-items: center;
     margin-bottom: 0;
   }
@@ -101,6 +106,15 @@
     align-items: flex-start;
     padding: 32px;
     gap: 32px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__method-item:hover {
+    box-shadow: 0px 4px 12px rgba(10, 13, 18, 0.1);
+    transform: translateY(-2px);
   }
 
   #shopify-section-{{ section.id }} .contact-section__method-icon {
@@ -145,8 +159,8 @@
   }
 
   #shopify-section-{{ section.id }} .contact-section__method-arrow {
-    width: 40px;
-    height: 40px;
+    width: 56px;
+    height: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -155,15 +169,15 @@
     color: var(--color-background);
   }
 
-  #shopify-section-{{ section.id }} .contact-section__method-arrow svg {
-    width: 20px;
-    height: 20px;
+  #shopify-section-{{ section.id }} .contact-section__method-arrow img {
+    width: 24px;
+    height: 24px;
   }
 
   #shopify-section-{{ section.id }} .contact-section__image-placeholder {
     background: #E3E3DE;
     border-radius: 12px;
-    min-height: 400px;
+    height: 100%;
     width: 100%;
   }
 
@@ -196,26 +210,30 @@
     #shopify-section-{{ section.id }} .contact-section__image-placeholder {
       min-height: 300px;
     }
+
+    #shopify-section-{{ section.id }} .contact-section__method-item {
+      gap: 16px;
+    }
   }
 {%- endstyle -%}
 
-<div class="contact-section section">
+<div class="contact-section">
   <div class="contact-section__header">
     <h1 class="contact-section__title">{{ section.settings.title }}</h1>
     <p class="contact-section__description">{{ section.settings.description }}</p>
+  </div>
 
-    <div class="contact-section__buttons">
-      {% for block in section.blocks %}
-        {% if block.type == 'button' %}
-          <a
-            href="{{ block.settings.button_link }}"
-            class="contact-section__button {% if forloop.first %}is-active{% endif %}"
-          >
-            {{ block.settings.button_text }}
-          </a>
-        {% endif %}
-      {% endfor %}
-    </div>
+  <div class="contact-section__buttons">
+    {% for block in section.blocks %}
+      {% if block.type == 'button' %}
+        <a
+          href="{{ block.settings.button_link }}"
+          class="contact-section__button {% if forloop.first %}is-active{% endif %}"
+        >
+          {{ block.settings.button_text }}
+        </a>
+      {% endif %}
+    {% endfor %}
   </div>
 
   <div class="contact-section__content">
@@ -224,7 +242,7 @@
       <div class="contact-section__methods">
         {% for block in section.blocks %}
           {% if block.type == 'contact_method' %}
-            <div class="contact-section__method-item">
+            <a href="{{ block.settings.method_link }}" class="contact-section__method-item">
               <div class="contact-section__method-icon">
                 {% case block.settings.icon_type %}
                   {% when 'chat' %}
@@ -244,24 +262,16 @@
               <div class="contact-section__method-content">
                 <h3 class="contact-section__method-title">{{ block.settings.method_title }}</h3>
                 <p class="contact-section__method-description">
-                  {% if block.settings.method_link %}
-                    <a href="{{ block.settings.method_link }}" class="contact-section__method-link">
-                      {{ block.settings.method_description }}
-                    </a>
-                  {% else %}
-                    {{ block.settings.method_description }}
-                  {% endif %}
+                  {{ block.settings.method_description }}
                 </p>
               </div>
 
               {% if block.settings.show_arrow %}
                 <div class="contact-section__method-arrow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
+                  <img src="{{ 'icon-contact-arrow-right.svg' | asset_url }}" alt="Arrow" width="20" height="20">
                 </div>
               {% endif %}
-            </div>
+            </a>
           {% endif %}
         {% endfor %}
       </div>
@@ -317,17 +327,17 @@
       "step": 10,
       "unit": "px",
       "label": "Padding Top",
-      "default": 60
+      "default": 80
     },
     {
       "type": "range",
       "id": "padding_bottom",
       "min": 0,
-      "max": 100,
+      "max": 160,
       "step": 10,
       "unit": "px",
       "label": "Padding Bottom",
-      "default": 60
+      "default": 160
     },
     {
       "type": "color",
