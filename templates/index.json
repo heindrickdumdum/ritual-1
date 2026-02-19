@@ -653,8 +653,11 @@
             "avatar": "{{ metaobjects.doctor[\"dr-priya-nair-md\"].profile_image.value }}",
             "name": "{{ metaobjects.doctor[\"dr-priya-nair-md\"].first_name.value }}",
             "role": "{{ metaobjects.doctor[\"dr-priya-nair-md\"].title_short.value }}",
-            "popup_title": "Team Member",
-            "popup_role": "Test",
+            "popup_title": "Team Member{{ metaobjects.doctor[\"dr-priya-nair-md\"].name.value }}",
+            "popup_role": "Test{{ metaobjects.doctor[\"dr-priya-nair-md\"].title.value }}",
+            "popup_bio": "{{ metaobjects.doctor[\"dr-priya-nair-md\"].bio | metafield_tag }}",
+            "areas_of_expertise": "{{ metaobjects.doctor[\"dr-priya-nair-md\"].areas_of_expertise | metafield_tag }}",
+            "philosophy": "{{ metaobjects.doctor[\"dr-priya-nair-md\"].philosophy | metafield_tag }}",
             "position_x": "5",
             "position_y": "6"
           }
@@ -665,11 +668,11 @@
             "avatar": "{{ metaobjects.doctor[\"dr-daniel-cho-md\"].profile_image.value }}",
             "name": "{{ metaobjects.doctor[\"dr-daniel-cho-md\"].first_name.value }}",
             "role": "{{ metaobjects.doctor[\"dr-daniel-cho-md\"].title_short.value }}",
-            "popup_title": "Team Member",
-            "popup_role": "",
-            "popup_bio": "",
-            "areas_of_expertise": "",
-            "philosophy": "",
+            "popup_title": "Team Member{{ metaobjects.doctor[\"dr-daniel-cho-md\"].name.value }}",
+            "popup_role": "{{ metaobjects.doctor[\"dr-daniel-cho-md\"].title.value }}",
+            "popup_bio": "{{ metaobjects.doctor[\"dr-daniel-cho-md\"].bio | metafield_tag }}",
+            "areas_of_expertise": "{{ metaobjects.doctor[\"dr-daniel-cho-md\"].areas_of_expertise | metafield_tag }}",
+            "philosophy": "{{ metaobjects.doctor[\"dr-daniel-cho-md\"].philosophy | metafield_tag }}",
             "position_x": "70",
             "position_y": "15"
           }
@@ -1092,7 +1095,8 @@
         "how_to_title": "How to contact us",
         "show_image": true,
         "padding_top": 60,
-        "padding_bottom": 60
+        "padding_bottom": 60,
+        "background_color": "#f7f7f4"
       }
     }
   },
