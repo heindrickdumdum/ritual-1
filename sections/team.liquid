@@ -81,53 +81,61 @@
                 </div>
                 
                 {%- comment -%} Team Member Popup {%- endcomment -%}
-                <div class="team-section__popup">
-                  <div class="team-section__popup-arrow"></div>
-                  <div class="team-section__popup-content">
+                <div class="team-section__modal-trigger" data-team-member="{{ block.settings.popup_title }}"></div>
+
+                {%- comment -%} Modal Overlay {%- endcomment -%}
+                <div class="team-section__modal-overlay" data-modal="{{ block.settings.popup_title }}"></div>
+
+                {%- comment -%} Modal {%- endcomment -%}
+                <div class="team-section__modal" data-modal="{{ block.settings.popup_title }}">
+                  <div class="team-section__modal-content">
+                    {%- comment -%} Close Button {%- endcomment -%}
+                    <button class="team-section__modal-close" aria-label="Close" data-close="{{ block.settings.popup_title }}">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      </svg>
+                    </button>
+
                     {%- comment -%} Profile Image {%- endcomment -%}
                     {%- if block.settings.avatar != blank -%}
-                      <img src="{{ block.settings.avatar | image_url: width: 200 }}" alt="{{ block.settings.name }}" class="team-section__popup-image" loading="lazy">
+                      <img src="{{ block.settings.avatar | image_url: width: 300 }}" alt="{{ block.settings.name }}" class="team-section__modal-image" loading="lazy">
                     {%- endif -%}
                     
                     {%- comment -%} Name {%- endcomment -%}
                     {%- if block.settings.popup_title != blank -%}
-                      <h4 class="team-section__popup-title">{{ block.settings.popup_title }}</h4>
+                      <h2 class="team-section__modal-title">{{ block.settings.popup_title }}</h2>
                     {%- endif -%}
                     
                     {%- comment -%} Title/Role {%- endcomment -%}
                     {%- if block.settings.popup_role != blank -%}
-                      <p class="team-section__popup-role">{{ block.settings.popup_role }}</p>
+                      <p class="team-section__modal-role">{{ block.settings.popup_role }}</p>
                     {%- endif -%}
                     
-                    {%- comment -%} Bio {%- endcomment -%}
-                    {%- if block.settings.popup_bio != blank -%}
-                      <div class="team-section__popup-section">
-                        <p class="team-section__popup-bio">{{ block.settings.popup_bio }}</p>
-                      </div>
-                    {%- endif -%}
-                    
-                    {%- comment -%} Areas of Expertise {%- endcomment -%}
-                    {%- if block.settings.areas_of_expertise != blank -%}
-                      <div class="team-section__popup-section">
-                        <h5 class="team-section__popup-section-title">Areas of Expertise</h5>
-                        <ul class="team-section__popup-list">
-                          {%- assign expertise_items = block.settings.areas_of_expertise | split: "" -%}
-                          {%- for item in expertise_items -%}
-                            {%- if item != blank -%}
-                              <li>{{ item | strip }}</li>
-                            {%- endif -%}
-                          {%- endfor -%}
-                        </ul>
-                      </div>
-                    {%- endif -%}
-                    
-                    {%- comment -%} Philosophy {%- endcomment -%}
-                    {%- if block.settings.philosophy != blank -%}
-                      <div class="team-section__popup-section">
-                        <h5 class="team-section__popup-section-title">Philosophy</h5>
-                        <p class="team-section__popup-philosophy">{{ block.settings.philosophy }}</p>
-                      </div>
-                    {%- endif -%}
+                    <div class="team-section__modal-body">
+                      {%- comment -%} Bio {%- endcomment -%}
+                      {%- if block.settings.popup_bio != blank -%}
+                        <div class="team-section__modal-section">
+                          <h3 class="team-section__modal-section-title">About {{ block.settings.popup_title }}</h3>
+                          {{ block.settings.popup_bio }}
+                        </div>
+                      {%- endif -%}
+                      
+                      {%- comment -%} Areas of Expertise {%- endcomment -%}
+                      {%- if block.settings.areas_of_expertise != blank -%}
+                        <div class="team-section__modal-section">
+                          <h3 class="team-section__modal-section-title">Areas of Expertise</h3>
+                          {{ block.settings.areas_of_expertise }}
+                        </div>
+                      {%- endif -%}
+                      
+                      {%- comment -%} Philosophy {%- endcomment -%}
+                      {%- if block.settings.philosophy != blank -%}
+                        <div class="team-section__modal-section">
+                          <h3 class="team-section__modal-section-title">Philosophy</h3>
+                          {{ block.settings.philosophy }}
+                        </div>
+                      {%- endif -%}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -268,126 +276,150 @@
     cursor: pointer;
   }
 
-  {%- comment -%} Team Member Popup Styles {%- endcomment -%}
-  #shopify-section-{{ section.id }} .team-section__popup {
-    position: absolute;
-    bottom: 100%;
+  {%- comment -%} Team Member Modal Styles {%- endcomment -%}
+  #shopify-section-{{ section.id }} .team-section__modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 99;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__modal-overlay--active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__modal {
+    position: fixed;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%) scale(0.9);
+    transform: translate(-50%, -50%) scale(0.9);
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    background: #F7F7F4;
+    background: #FFFFFF;
     border-radius: 12px;
-    padding: 1.25rem;
-    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
-    min-width: 280px;
-    max-width: 320px;
-    margin-bottom: 16px;
-    z-index: 10;
+    max-width: 500px;
+    width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0px 12px 40px rgba(0, 0, 0, 0.2);
+    z-index: 100;
   }
 
-  #shopify-section-{{ section.id }} .team-section__popup--active {
+  #shopify-section-{{ section.id }} .team-section__modal--active {
     opacity: 1;
     pointer-events: auto;
-    transform: translateX(-50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
   }
 
-  #shopify-section-{{ section.id }} .team-section__popup-arrow {
+  #shopify-section-{{ section.id }} .team-section__modal-content {
+    padding: 2.5rem 2rem;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__modal-close {
     position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-top: 8px solid #F7F7F4;
-  }
-
-  #shopify-section-{{ section.id }} .team-section__popup-content {
-    padding-top: 0.5rem;
-  }
-
-  #shopify-section-{{ section.id }} .team-section__popup-title {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin: 0 0 0.75rem 0;
-    line-height: 1.4;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
     color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
   }
 
-  #shopify-section-{{ section.id }} .team-section__popup-description {
-    font-size: 0.9375rem;
-    line-height: 1.5;
-    margin: 0 0 0.75rem 0;
-    color: #535862;
+  #shopify-section-{{ section.id }} .team-section__modal-close:hover {
+    color: #26736D;
   }
 
-  #shopify-section-{{ section.id }} .team-section__popup-metafield {
-    font-size: 0.875rem;
-    line-height: 1.6;
-    color: #666;
-  }
-
-  #shopify-section-{{ section.id }} .team-section__popup-image {
-    width: 140px;
-    height: 140px;
+  #shopify-section-{{ section.id }} .team-section__modal-image {
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    margin: 0 auto 1rem;
+    margin: 0 auto 1.5rem;
     display: block;
     background: #e5e5e5;
   }
 
-  #shopify-section-{{ section.id }} .team-section__popup-role {
-    font-size: 0.9375rem;
-    line-height: 1.5;
-    margin: 0 0 0.75rem 0;
-    color: #26736D;
-    font-weight: 500;
-  }
-
-  #shopify-section-{{ section.id }} .team-section__popup-bio {
-    font-size: 0.9375rem;
-    line-height: 1.6;
-    margin: 0;
-    color: #535862;
-  }
-
-  #shopify-section-{{ section.id }} .team-section__popup-section {
-    margin-top: 1rem;
-  }
-
-  #shopify-section-{{ section.id }} .team-section__popup-section-title {
-    font-size: 0.875rem;
+  #shopify-section-{{ section.id }} .team-section__modal-title {
+    font-size: 1.5rem;
     font-weight: 600;
     margin: 0 0 0.5rem 0;
     line-height: 1.4;
     color: #1a1a1a;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    text-align: center;
   }
 
-  #shopify-section-{{ section.id }} .team-section__popup-list {
+  #shopify-section-{{ section.id }} .team-section__modal-role {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0 0 1.5rem 0;
+    color: #26736D;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__modal-body {
+    border-top: 1px solid #e5e5e5;
+    padding-top: 1.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__modal-section {
+    margin-bottom: 2rem;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__modal-section:last-child {
+    margin-bottom: 0;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__modal-section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    line-height: 1.4;
+    color: #1a1a1a;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__modal-section p {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin: 0 0 0.75rem 0;
+    color: #535862;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__modal-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__modal-section ul {
     list-style: disc;
     padding-left: 1.25rem;
     margin: 0;
   }
 
-  #shopify-section-{{ section.id }} .team-section__popup-list li {
-    font-size: 0.875rem;
+  #shopify-section-{{ section.id }} .team-section__modal-section ul li {
+    font-size: 0.9375rem;
     line-height: 1.6;
     color: #535862;
-    margin-bottom: 0.375rem;
+    margin-bottom: 0.5rem;
   }
 
-  #shopify-section-{{ section.id }} .team-section__popup-philosophy {
-    font-size: 0.875rem;
-    line-height: 1.6;
-    margin: 0;
-    color: #535862;
-    font-style: italic;
+  #shopify-section-{{ section.id }} .team-section__modal-section ul li:last-child {
+    margin-bottom: 0;
   }
 
   #shopify-section-{{ section.id }} .team-section__avatar {
@@ -582,6 +614,60 @@
       line-height: {{ section.settings.description_line_height_mobile }};
     }
     {% endif %}
+
+    /* Modal responsive styles */
+    #shopify-section-{{ section.id }} .team-section__modal {
+      max-width: 95vw;
+      width: 95vw;
+      max-height: 90vh;
+    }
+
+    #shopify-section-{{ section.id }} .team-section__modal-content {
+      padding: 2rem 1.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .team-section__modal-close {
+      width: 28px;
+      height: 28px;
+      top: 1rem;
+      right: 1rem;
+    }
+
+    #shopify-section-{{ section.id }} .team-section__modal-image {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 1.25rem;
+    }
+
+    #shopify-section-{{ section.id }} .team-section__modal-title {
+      font-size: 1.25rem;
+    }
+
+    #shopify-section-{{ section.id }} .team-section__modal-role {
+      font-size: 0.875rem;
+      margin-bottom: 1.25rem;
+    }
+
+    #shopify-section-{{ section.id }} .team-section__modal-body {
+      padding-top: 1.25rem;
+    }
+
+    #shopify-section-{{ section.id }} .team-section__modal-section {
+      margin-bottom: 1.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .team-section__modal-section-title {
+      font-size: 0.9375rem;
+      margin-bottom: 0.75rem;
+    }
+
+    #shopify-section-{{ section.id }} .team-section__modal-section p {
+      font-size: 0.875rem;
+    }
+
+    #shopify-section-{{ section.id }} .team-section__modal-section ul li {
+      font-size: 0.875rem;
+    }
   }
 </style>
 

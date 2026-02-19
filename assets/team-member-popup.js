@@ -1,73 +1,94 @@
-class TeamMemberPopup {
+class TeamMemberModal {
   constructor() {
-    this.activePopup = null;
+    this.activeModal = null;
+    this.activeOverlay = null;
     this.init();
   }
 
   init() {
-    document.addEventListener('click', (e) => this.handleClick(e));
-    // Close popup when clicking outside
+    // Open modal on card click
     document.addEventListener('click', (e) => {
-      if (this.activePopup && !e.target.closest('.team-section__member-card') && !e.target.closest('.team-section__popup')) {
-        this.closePopup();
+      const memberCard = e.target.closest('.team-section__member-card');
+      if (memberCard) {
+        e.stopPropagation();
+        const member = memberCard.closest('.team-section__member');
+        if (member) {
+          this.openModal(member);
+        }
+      }
+    });
+
+    // Close modal on close button click
+    document.addEventListener('click', (e) => {
+      const closeBtn = e.target.closest('.team-section__modal-close');
+      if (closeBtn) {
+        this.closeModal();
+      }
+    });
+
+    // Close modal on overlay click
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('team-section__modal-overlay--active')) {
+        this.closeModal();
+      }
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.activeModal) {
+        this.closeModal();
       }
     });
   }
 
-  handleClick(e) {
-    const memberCard = e.target.closest('.team-section__member-card');
-    if (!memberCard) return;
-
-    e.stopPropagation();
-    
-    const member = memberCard.closest('.team-section__member');
-    if (!member) return;
-
-    // Close existing popup if any
-    if (this.activePopup) {
-      this.closePopup();
+  openModal(memberElement) {
+    // Close existing modal if any
+    if (this.activeModal) {
+      this.closeModal();
     }
 
-    // Open new popup
-    this.openPopup(member);
-  }
+    const modal = memberElement.querySelector('.team-section__modal');
+    const overlay = memberElement.querySelector('.team-section__modal-overlay');
 
-  openPopup(memberElement) {
-    const popup = memberElement.querySelector('.team-section__popup');
-    if (!popup) return;
+    if (!modal || !overlay) return;
 
-    popup.classList.add('team-section__popup--active');
-    this.activePopup = popup;
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
 
-    // Position popup to avoid overflow
-    this.positionPopup(popup, memberElement);
-  }
+    // Show overlay and modal
+    overlay.classList.add('team-section__modal-overlay--active');
+    modal.classList.add('team-section__modal--active');
 
-  closePopup() {
-    if (this.activePopup) {
-      this.activePopup.classList.remove('team-section__popup--active');
-      this.activePopup = null;
+    this.activeModal = modal;
+    this.activeOverlay = overlay;
+
+    // Focus the close button for accessibility
+    const closeBtn = modal.querySelector('.team-section__modal-close');
+    if (closeBtn) {
+      setTimeout(() => closeBtn.focus(), 100);
     }
   }
 
-  positionPopup(popup, memberElement) {
-    // Get member card position
-    const card = memberElement.querySelector('.team-section__member-card');
-    const rect = card.getBoundingClientRect();
-    
-    // Default position is below the card
-    const gap = 12;
-    const topOffset = rect.bottom - memberElement.getBoundingClientRect().top + gap;
-    
-    popup.style.top = topOffset + 'px';
+  closeModal() {
+    if (!this.activeModal || !this.activeOverlay) return;
+
+    // Restore body scroll
+    document.body.style.overflow = '';
+
+    // Hide overlay and modal
+    this.activeOverlay.classList.remove('team-section__modal-overlay--active');
+    this.activeModal.classList.remove('team-section__modal--active');
+
+    this.activeModal = null;
+    this.activeOverlay = null;
   }
 }
 
-// Initialize popup functionality
+// Initialize when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
-    new TeamMemberPopup();
+    new TeamMemberModal();
   });
 } else {
-  new TeamMemberPopup();
+  new TeamMemberModal();
 }
