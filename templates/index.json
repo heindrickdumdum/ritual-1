@@ -1011,8 +1011,92 @@
     },
     "contact_section_MMdcDx": {
       "type": "contact-section",
+      "blocks": {
+        "button_QfCfBG": {
+          "type": "button",
+          "settings": {
+            "button_text": "Button",
+            "button_link": ""
+          }
+        },
+        "button_V3B4XT": {
+          "type": "button",
+          "settings": {
+            "button_text": "Button",
+            "button_link": ""
+          }
+        },
+        "button_NKnRLh": {
+          "type": "button",
+          "settings": {
+            "button_text": "Button",
+            "button_link": ""
+          }
+        },
+        "button_qYAqYx": {
+          "type": "button",
+          "settings": {
+            "button_text": "Button",
+            "button_link": ""
+          }
+        },
+        "button_dQQBea": {
+          "type": "button",
+          "settings": {
+            "button_text": "Button",
+            "button_link": ""
+          }
+        },
+        "contact_method_nbWqbd": {
+          "type": "contact_method",
+          "settings": {
+            "icon_type": "chat",
+            "method_title": "Chat",
+            "method_description": "Send us a message",
+            "method_link": "",
+            "show_arrow": true
+          }
+        },
+        "contact_method_i37zAK": {
+          "type": "contact_method",
+          "settings": {
+            "icon_type": "chat",
+            "method_title": "Chat",
+            "method_description": "Send us a message",
+            "method_link": "",
+            "show_arrow": true
+          }
+        },
+        "contact_method_nfdLVt": {
+          "type": "contact_method",
+          "settings": {
+            "icon_type": "chat",
+            "method_title": "Chat",
+            "method_description": "Send us a message",
+            "method_link": "",
+            "show_arrow": true
+          }
+        }
+      },
+      "block_order": [
+        "button_QfCfBG",
+        "button_V3B4XT",
+        "button_NKnRLh",
+        "button_qYAqYx",
+        "button_dQQBea",
+        "contact_method_nbWqbd",
+        "contact_method_i37zAK",
+        "contact_method_nfdLVt"
+      ],
       "name": "Contact Section",
-      "settings": {}
+      "settings": {
+        "title": "Contact",
+        "description": "You talk and we listen. That's how we live every day, and it's what gets us out of bed in the morning. Our customer service team is always ready to answer all your questions! From help with your order to tips on the best ski resorts to visit.",
+        "how_to_title": "How to contact us",
+        "show_image": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
