@@ -65,12 +65,21 @@
                   {%- else -%}
                     <div class="team-section__avatar team-section__avatar--placeholder"></div>
                   {%- endif -%}
-                  {%- if block.settings.name != blank -%}
-                    <h3 class="team-section__name">{{ block.settings.name }}</h3>
-                  {%- endif -%}
-                  {%- if block.settings.role != blank -%}
-                    <p class="team-section__role">{{ block.settings.role }}</p>
-                  {%- endif -%}
+
+
+                  <div class="tw-flex tw-items-center tw-justify-between">
+                    <div>
+                      {%- if block.settings.name != blank -%}
+                        <h3 class="team-section__name">{{ block.settings.name }}</h3>
+                      {%- endif -%}
+                      {%- if block.settings.role != blank -%}
+                        <p class="team-section__role">{{ block.settings.role }}</p>
+                      {%- endif -%}
+                    </div>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.16663 2.5L10.6009 6.93432C10.9134 7.24673 10.9134 7.75327 10.6009 8.06569L6.16663 12.5" stroke="#26736D" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </div>
                 </div>
               </div>
           {%- endcase -%}
@@ -206,7 +215,6 @@
     border-radius: 12px;
     padding: 1rem;
     box-shadow: 0px 12px 16px -4px rgba(10, 13, 18, 0.08), 0px 4px 6px -2px rgba(10, 13, 18, 0.03), 0px 2px 2px -1px rgba(10, 13, 18, 0.04);
-    text-align: center;
     min-width: 140px;
   }
 
@@ -226,7 +234,8 @@
   #shopify-section-{{ section.id }} .team-section__name {
     font-size: 1rem;
     font-weight: 500;
-    margin: 0 0 0.25rem 0;
+    margin: 0;
+    line-height: 1.5;
   }
 
   {% if section.settings.member_name_font_size != blank %}
@@ -250,6 +259,7 @@
   #shopify-section-{{ section.id }} .team-section__role {
     font-size: 0.75rem;
     margin: 0;
+    line-height: 135%;
   }
 
   {% if section.settings.member_role_font_size != blank %}
