@@ -111,8 +111,7 @@
                       <div class="team-section__popup-section">
                         <h5 class="team-section__popup-section-title">Areas of Expertise</h5>
                         <ul class="team-section__popup-list">
-                          {%- assign expertise_items = block.settings.areas_of_expertise | split: "
-" -%}
+                          {%- assign expertise_items = block.settings.areas_of_expertise | split: "" -%}
                           {%- for item in expertise_items -%}
                             {%- if item != blank -%}
                               <li>{{ item | strip }}</li>
