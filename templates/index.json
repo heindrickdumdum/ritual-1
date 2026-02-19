@@ -1015,35 +1015,35 @@
         "button_QfCfBG": {
           "type": "button",
           "settings": {
-            "button_text": "Button",
+            "button_text": "Contact",
             "button_link": ""
           }
         },
         "button_V3B4XT": {
           "type": "button",
           "settings": {
-            "button_text": "Button",
+            "button_text": "Returns",
             "button_link": ""
           }
         },
         "button_NKnRLh": {
           "type": "button",
           "settings": {
-            "button_text": "Button",
+            "button_text": "Terms & Conditions",
             "button_link": ""
           }
         },
         "button_qYAqYx": {
           "type": "button",
           "settings": {
-            "button_text": "Button",
+            "button_text": "Privacy Policy",
             "button_link": ""
           }
         },
         "button_dQQBea": {
           "type": "button",
           "settings": {
-            "button_text": "Button",
+            "button_text": "Reviews",
             "button_link": ""
           }
         },
@@ -1061,8 +1061,8 @@
           "type": "contact_method",
           "settings": {
             "icon_type": "messenger",
-            "method_title": "Chat",
-            "method_description": "Send us a message",
+            "method_title": "Messenger",
+            "method_description": "Talk to us on messenger",
             "method_link": "",
             "show_arrow": true
           }
@@ -1071,8 +1071,8 @@
           "type": "contact_method",
           "settings": {
             "icon_type": "email",
-            "method_title": "Chat",
-            "method_description": "Send us a message",
+            "method_title": "E-mail",
+            "method_description": "support@ritual1.com",
             "method_link": "",
             "show_arrow": true
           }
