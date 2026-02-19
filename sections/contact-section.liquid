@@ -5,16 +5,20 @@
     --section-background-color: {{ section.settings.background_color }};
   }
 
-  #shopify-section-{{ section.id }} .contact-section {
+  #shopify-section-{{ section.id }} .contact-section-wrapper {
+    width: 100%;
+    background-color: var(--section-background-color);
     padding-top: var(--section-padding-top);
     padding-bottom: var(--section-padding-bottom);
-    background-color: var(--section-background-color);
+  }
+
+  #shopify-section-{{ section.id }} .contact-section {
     display: flex;
     flex-direction: column;
     gap: 40px;
+    width: 100%;
     max-width: var(--full-page-grid-central-column-width);
     margin-inline: auto;
-    padding-inline: var(--page-margin);
   }
 
   #shopify-section-{{ section.id }} .contact-section__header {
@@ -76,12 +80,14 @@
   #shopify-section-{{ section.id }} .contact-section__content {
     display: flex;
     flex-direction: column;
+    gap: 24px;
   }
 
   #shopify-section-{{ section.id }} .contact-section__how-to-title {
     font-size: 32px;
     font-weight: 500;
     line-height: 1.36;
+    margin: 0;
     color: #181D27;
   }
 
@@ -132,19 +138,24 @@
   }
 
   #shopify-section-{{ section.id }} .contact-section__method-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     flex: 1;
   }
 
   #shopify-section-{{ section.id }} .contact-section__method-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin: 0 0 0.5rem 0;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 150%;
+    margin: 0;
     color: var(--color-foreground);
   }
 
   #shopify-section-{{ section.id }} .contact-section__method-description {
-    font-size: 0.95rem;
-    color: rgba(var(--color-foreground), 0.7);
+    font-size: 16px;
+    line-height: 150%;
+    color: #535862;
     margin: 0;
   }
 
@@ -182,29 +193,62 @@
   }
 
   @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .contact-section {
+      max-width: none;
+    }
+
+    #shopify-section-{{ section.id }} .contact-section__header {
+      gap: 12px;
+    }
+
     #shopify-section-{{ section.id }} .contact-section__title {
-      font-size: 44px;
-      line-height: 1.36;
-      letter-spacing: -0.02;
+      align-self: flex-start;
+      font-size: 24px;
+      line-height: 32px;
+      letter-spacing: -0.02em;
+    }
+
+    #shopify-section-{{ section.id }} .contact-section__description {
+      text-align: left;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
     }
 
     #shopify-section-{{ section.id }} .contact-section__buttons {
-      flex-direction: column;
-      align-items: center;
+      justify-content: left;
+      gap: 8px;
     }
 
     #shopify-section-{{ section.id }} .contact-section__button {
-      width: 100%;
-      max-width: 300px;
+      padding: 12px 24px;
+    }
+
+    #shopify-section-{{ section.id }} .contact-section__how-to-title {
+      font-size: 20px;
+      line-height: 28px;
+      font-weight: 800;
     }
 
     #shopify-section-{{ section.id }} .contact-section__how-to {
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 40px;
     }
 
     #shopify-section-{{ section.id }} .contact-section__content {
-      gap: 24px;
+      gap: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .contact-section__method-title {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 145%;
+    }
+
+    #shopify-section-{{ section.id }} .contact-section__method-description {
+      font-size: 14px;
+      line-height: 24px;
+
     }
 
     #shopify-section-{{ section.id }} .contact-section__image-placeholder {
@@ -212,76 +256,100 @@
     }
 
     #shopify-section-{{ section.id }} .contact-section__method-item {
+      padding: 20px;
       gap: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .contact-section__method-content {
+      gap: 0;
+    }
+
+    #shopify-section-{{ section.id }} .contact-section__method-arrow {
+      width: 44px;
+      height: 44px;
+      padding: 12px;
+      align-self: center;
+    }
+
+    #shopify-section-{{ section.id }} .contact-section__method-arrow img {
+      width: 20px;
+      height: 20px;
     }
   }
 {%- endstyle -%}
 
-<div class="contact-section">
-  <div class="contact-section__header">
-    <h1 class="contact-section__title">{{ section.settings.title }}</h1>
-    <p class="contact-section__description">{{ section.settings.description }}</p>
-  </div>
+<div class="contact-section-wrapper section">
+  <div class="contact-section">
+    <div class="contact-section__header">
+      <h2 class="contact-section__title">{{ section.settings.title }}</h2>
+      <p class="contact-section__description">{{ section.settings.description }}</p>
+    </div>
 
-  <div class="contact-section__buttons">
-    {% for block in section.blocks %}
-      {% if block.type == 'button' %}
-        <a
-          href="{{ block.settings.button_link }}"
-          class="contact-section__button {% if forloop.first %}is-active{% endif %}"
-        >
-          {{ block.settings.button_text }}
-        </a>
-      {% endif %}
-    {% endfor %}
-  </div>
+    <div class="contact-section__buttons">
+      {% for block in section.blocks %}
+        {% if block.type == 'button' %}
+          <a
+            href="{{ block.settings.button_link }}"
+            class="contact-section__button {% if forloop.first %}is-active{% endif %}"
+          >
+            {{ block.settings.button_text }}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
 
-  <div class="contact-section__content">
-    <h2 class="contact-section__how-to-title">{{ section.settings.how_to_title }}</h2>
-    <div class="contact-section__how-to">
-      <div class="contact-section__methods">
-        {% for block in section.blocks %}
-          {% if block.type == 'contact_method' %}
-            <a href="{{ block.settings.method_link }}" class="contact-section__method-item">
-              <div class="contact-section__method-icon">
-                {% case block.settings.icon_type %}
-                  {% when 'chat' %}
-                    <img src="{{ 'icon-contact-circlepeople.png' | asset_url }}" alt="Chat Icon" width="64" height="64">
-                  {% when 'messenger' %}
-                    <img
-                      src="{{ 'icon-contact-messenger.svg' | asset_url }}"
-                      alt="Messenger Icon"
-                      width="64"
-                      height="64"
-                    >
-                  {% when 'email' %}
-                    <img src="{{ 'icon-contact-email.svg' | asset_url }}" alt="Email Icon" width="64" height="64">
-                {% endcase %}
-              </div>
-
-              <div class="contact-section__method-content">
-                <h3 class="contact-section__method-title">{{ block.settings.method_title }}</h3>
-                <p class="contact-section__method-description">
-                  {{ block.settings.method_description }}
-                </p>
-              </div>
-
-              {% if block.settings.show_arrow %}
-                <div class="contact-section__method-arrow">
-                  <img src="{{ 'icon-contact-arrow-right.svg' | asset_url }}" alt="Arrow" width="20" height="20">
+    <div class="contact-section__content">
+      <h3 class="contact-section__how-to-title">{{ section.settings.how_to_title }}</h3>
+      <div class="contact-section__how-to">
+        <div class="contact-section__methods">
+          {% for block in section.blocks %}
+            {% if block.type == 'contact_method' %}
+              <a href="{{ block.settings.method_link }}" class="contact-section__method-item">
+                <div class="contact-section__method-icon">
+                  {% case block.settings.icon_type %}
+                    {% when 'chat' %}
+                      <img
+                        src="{{ 'icon-contact-circlepeople.png' | asset_url }}"
+                        alt="Chat Icon"
+                        width="64"
+                        height="64"
+                      >
+                    {% when 'messenger' %}
+                      <img
+                        src="{{ 'icon-contact-messenger.svg' | asset_url }}"
+                        alt="Messenger Icon"
+                        width="64"
+                        height="64"
+                      >
+                    {% when 'email' %}
+                      <img src="{{ 'icon-contact-email.svg' | asset_url }}" alt="Email Icon" width="64" height="64">
+                  {% endcase %}
                 </div>
-              {% endif %}
-            </a>
-          {% endif %}
-        {% endfor %}
-      </div>
-      {% if section.settings.show_image %}
-        <div class="contact-section__image-placeholder">
-          {% if section.settings.image %}
-            {{ section.settings.image | image_url: width: 600 | image_tag }}
-          {% endif %}
+
+                <div class="contact-section__method-content">
+                  <h3 class="contact-section__method-title">{{ block.settings.method_title }}</h3>
+                  <p class="contact-section__method-description">
+                    {{ block.settings.method_description }}
+                  </p>
+                </div>
+
+                {% if block.settings.show_arrow %}
+                  <div class="contact-section__method-arrow">
+                    <img src="{{ 'icon-contact-arrow-right.svg' | asset_url }}" alt="Arrow" width="20" height="20">
+                  </div>
+                {% endif %}
+              </a>
+            {% endif %}
+          {% endfor %}
         </div>
-      {% endif %}
+        {% if section.settings.show_image %}
+          <div class="contact-section__image-placeholder">
+            {% if section.settings.image %}
+              {{ section.settings.image | image_url: width: 600 | image_tag }}
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
     </div>
   </div>
 </div>
