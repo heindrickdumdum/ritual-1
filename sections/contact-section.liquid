@@ -2,11 +2,13 @@
   #shopify-section-{{ section.id }} {
     --section-padding-top: {{ section.settings.padding_top }}px;
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --section-background-color: {{ section.settings.background_color }};
   }
 
   #shopify-section-{{ section.id }} .contact-section {
     padding-top: var(--section-padding-top);
     padding-bottom: var(--section-padding-bottom);
+    background-color: var(--section-background-color);
   }
 
   #shopify-section-{{ section.id }} .contact-section__header {
@@ -66,14 +68,8 @@
   }
 
   #shopify-section-{{ section.id }} .contact-section__content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
-
-  #shopify-section-{{ section.id }} .contact-section__how-to {
-    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
   }
 
   #shopify-section-{{ section.id }} .contact-section__how-to-title {
@@ -83,16 +79,24 @@
     color: var(--color-foreground);
   }
 
+  #shopify-section-{{ section.id }} .contact-section__how-to {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-bottom: 0;
+  }
+
   #shopify-section-{{ section.id }} .contact-section__methods {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 16px;
   }
 
   #shopify-section-{{ section.id }} .contact-section__method-item {
     display: flex;
     align-items: flex-start;
-    gap: 1.5rem;
+    padding: 32px;
   }
 
   #shopify-section-{{ section.id }} .contact-section__method-icon {
@@ -176,8 +180,12 @@
       max-width: 300px;
     }
 
-    #shopify-section-{{ section.id }} .contact-section__content {
+    #shopify-section-{{ section.id }} .contact-section__how-to {
       grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    #shopify-section-{{ section.id }} .contact-section__content {
       gap: 2rem;
     }
 
@@ -187,7 +195,7 @@
   }
 {%- endstyle -%}
 
-<div class="contact-section">
+<div class="contact-section section">
   <div class="contact-section__header">
     <h1 class="contact-section__title">{{ section.settings.title }}</h1>
     <p class="contact-section__description">{{ section.settings.description }}</p>
@@ -207,9 +215,9 @@
   </div>
 
   <div class="contact-section__content">
-    <div class="contact-section__how-to">
-      <h2 class="contact-section__how-to-title">{{ section.settings.how_to_title }}</h2>
+    <h2 class="contact-section__how-to-title">{{ section.settings.how_to_title }}</h2>
 
+    <div class="contact-section__how-to">
       <div class="contact-section__methods">
         {% for block in section.blocks %}
           {% if block.type == 'contact_method' %}
@@ -254,15 +262,14 @@
           {% endif %}
         {% endfor %}
       </div>
+      {% if section.settings.show_image %}
+        <div class="contact-section__image-placeholder">
+          {% if section.settings.image %}
+            {{ section.settings.image | image_url: width: 600 | image_tag }}
+          {% endif %}
+        </div>
+      {% endif %}
     </div>
-
-    {% if section.settings.show_image %}
-      <div class="contact-section__image-placeholder">
-        {% if section.settings.image %}
-          {{ section.settings.image | image_url: width: 600 | image_tag }}
-        {% endif %}
-      </div>
-    {% endif %}
   </div>
 </div>
 
@@ -318,6 +325,12 @@
       "unit": "px",
       "label": "Padding Bottom",
       "default": 60
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F7F7F4"
     }
   ],
   "blocks": [
