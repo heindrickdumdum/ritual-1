@@ -1008,6 +1008,11 @@
         "padding-block-start-mobile": 65,
         "padding-block-end-mobile": 65
       }
+    },
+    "contact_section_MMdcDx": {
+      "type": "contact-section",
+      "name": "Contact Section",
+      "settings": {}
     }
   },
   "order": [
@@ -1021,6 +1026,7 @@
     "team_BrVXLJ",
     "customer_reviews_3LGy3J",
     "faq_section_7zEPdk",
-    "personalized_care_tJ7GnD"
+    "personalized_care_tJ7GnD",
+    "contact_section_MMdcDx"
   ]
 }
