@@ -1,11 +1,465 @@
-<div>Empty section. Please add content to this section.</div>
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  #shopify-section-{{ section.id }} .contact-section {
+    padding-top: var(--section-padding-top);
+    padding-bottom: var(--section-padding-bottom);
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: #181D27;
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__description {
+    font-size: 20px;
+    line-height: 1.4;
+    color: #535862;
+    max-width: 700px;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__button {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--color-foreground);
+    background: transparent;
+    color: var(--color-foreground);
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__button:hover {
+    background: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__button.is-active {
+    background: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__how-to {
+    margin-bottom: 0;
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__how-to-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 2rem 0;
+    color: var(--color-foreground);
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__methods {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__method-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__method-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__method-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__method-content {
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__method-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: var(--color-foreground);
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__method-description {
+    font-size: 0.95rem;
+    color: rgba(var(--color-foreground), 0.7);
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__method-link {
+    color: rgba(var(--color-foreground), 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__method-link:hover {
+    color: var(--color-foreground);
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__method-arrow {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-foreground);
+    border-radius: 50%;
+    color: var(--color-background);
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__method-arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .contact-section__image-placeholder {
+    background: #E8E8E8;
+    border-radius: 12px;
+    min-height: 400px;
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .contact-section__title {
+      font-size: 44px;
+      line-height: 1.36;
+      letter-spacing: -0.02;
+    }
+
+    #shopify-section-{{ section.id }} .contact-section__buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .contact-section__button {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    #shopify-section-{{ section.id }} .contact-section__content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    #shopify-section-{{ section.id }} .contact-section__image-placeholder {
+      min-height: 300px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="contact-section">
+  <div class="contact-section__header">
+    <h1 class="contact-section__title">{{ section.settings.title }}</h1>
+    <p class="contact-section__description">{{ section.settings.description }}</p>
+
+    <div class="contact-section__buttons">
+      {% for block in section.blocks %}
+        {% if block.type == 'button' %}
+          <a
+            href="{{ block.settings.button_link }}"
+            class="contact-section__button {% if forloop.first %}is-active{% endif %}"
+          >
+            {{ block.settings.button_text }}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="contact-section__content">
+    <div class="contact-section__how-to">
+      <h2 class="contact-section__how-to-title">{{ section.settings.how_to_title }}</h2>
+
+      <div class="contact-section__methods">
+        {% for block in section.blocks %}
+          {% if block.type == 'contact_method' %}
+            <div class="contact-section__method-item">
+              <div class="contact-section__method-icon">
+                {% case block.settings.icon_type %}
+                  {% when 'chat' %}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                  {% when 'messenger' %}
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"></path>
+                    </svg>
+                  {% when 'email' %}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                {% endcase %}
+              </div>
+
+              <div class="contact-section__method-content">
+                <h3 class="contact-section__method-title">{{ block.settings.method_title }}</h3>
+                <p class="contact-section__method-description">
+                  {% if block.settings.method_link %}
+                    <a href="{{ block.settings.method_link }}" class="contact-section__method-link">
+                      {{ block.settings.method_description }}
+                    </a>
+                  {% else %}
+                    {{ block.settings.method_description }}
+                  {% endif %}
+                </p>
+              </div>
+
+              {% if block.settings.show_arrow %}
+                <div class="contact-section__method-arrow">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    {% if section.settings.show_image %}
+      <div class="contact-section__image-placeholder">
+        {% if section.settings.image %}
+          {{ section.settings.image | image_url: width: 600 | image_tag }}
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
 
 {% schema %}
 {
   "name": "Contact Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Contact"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "You talk and we listen. That's how we live every day, and it's what gets us out of bed in the morning. Our customer service team is always ready to answer all your questions! From help with your order to tips on the best ski resorts to visit."
+    },
+    {
+      "type": "text",
+      "id": "how_to_title",
+      "label": "How To Contact Us Title",
+      "default": "How to contact us"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show Image",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "button",
+      "name": "Navigation Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Button"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    },
+    {
+      "type": "contact_method",
+      "name": "Contact Method",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon Type",
+          "options": [
+            {
+              "value": "chat",
+              "label": "Chat"
+            },
+            {
+              "value": "messenger",
+              "label": "Messenger"
+            },
+            {
+              "value": "email",
+              "label": "Email"
+            }
+          ],
+          "default": "chat"
+        },
+        {
+          "type": "text",
+          "id": "method_title",
+          "label": "Title",
+          "default": "Chat"
+        },
+        {
+          "type": "text",
+          "id": "method_description",
+          "label": "Description",
+          "default": "Send us a message"
+        },
+        {
+          "type": "url",
+          "id": "method_link",
+          "label": "Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_arrow",
+          "label": "Show Arrow",
+          "default": true
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Contact Section"
+      "name": "Contact Section",
+      "blocks": [
+        {
+          "type": "button",
+          "settings": {
+            "button_text": "Contact",
+            "button_link": "#"
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "button_text": "Returns",
+            "button_link": "#"
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "button_text": "Terms and Conditions",
+            "button_link": "#"
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "button_text": "Privacy Policy",
+            "button_link": "#"
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "button_text": "Reviews",
+            "button_link": "#"
+          }
+        },
+        {
+          "type": "contact_method",
+          "settings": {
+            "icon_type": "chat",
+            "method_title": "Chat",
+            "method_description": "Send us a message",
+            "method_link": "#",
+            "show_arrow": true
+          }
+        },
+        {
+          "type": "contact_method",
+          "settings": {
+            "icon_type": "messenger",
+            "method_title": "Messenger",
+            "method_description": "Talk to us on messenger",
+            "method_link": "#",
+            "show_arrow": true
+          }
+        },
+        {
+          "type": "contact_method",
+          "settings": {
+            "icon_type": "email",
+            "method_title": "E-mail",
+            "method_description": "support@ritual.com",
+            "method_link": "mailto:support@ritual.com",
+            "show_arrow": true
+          }
+        }
+      ]
     }
   ]
 }
