@@ -1,85 +1,85 @@
-class TeamMemberModal {
+class TeamMemberDrawer {
   constructor() {
-    this.activeModal = null;
+    this.activeDrawer = null;
     this.activeOverlay = null;
     this.init();
   }
 
   init() {
-    // Open modal on card click
+    // Open drawer on card click
     document.addEventListener('click', (e) => {
       const memberCard = e.target.closest('.team-section__member-card');
       if (memberCard) {
         e.stopPropagation();
         const member = memberCard.closest('.team-section__member');
         if (member) {
-          this.openModal(member);
+          this.openDrawer(member);
         }
       }
     });
 
-    // Close modal on close button click
+    // Close drawer on close button click
     document.addEventListener('click', (e) => {
       const closeBtn = e.target.closest('.team-section__modal-close');
       if (closeBtn) {
-        this.closeModal();
+        this.closeDrawer();
       }
     });
 
-    // Close modal on overlay click
+    // Close drawer on overlay click
     document.addEventListener('click', (e) => {
       if (e.target.classList.contains('team-section__modal-overlay--active')) {
-        this.closeModal();
+        this.closeDrawer();
       }
     });
 
-    // Close modal on Escape key
+    // Close drawer on Escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && this.activeModal) {
-        this.closeModal();
+      if (e.key === 'Escape' && this.activeDrawer) {
+        this.closeDrawer();
       }
     });
   }
 
-  openModal(memberElement) {
-    // Close existing modal if any
-    if (this.activeModal) {
-      this.closeModal();
+  openDrawer(memberElement) {
+    // Close existing drawer if any
+    if (this.activeDrawer) {
+      this.closeDrawer();
     }
 
-    const modal = memberElement.querySelector('.team-section__modal');
+    const drawer = memberElement.querySelector('.team-section__modal');
     const overlay = memberElement.querySelector('.team-section__modal-overlay');
 
-    if (!modal || !overlay) return;
+    if (!drawer || !overlay) return;
 
     // Prevent body scroll
     document.body.style.overflow = 'hidden';
 
-    // Show overlay and modal
+    // Show overlay and drawer
     overlay.classList.add('team-section__modal-overlay--active');
-    modal.classList.add('team-section__modal--active');
+    drawer.classList.add('team-section__modal--active');
 
-    this.activeModal = modal;
+    this.activeDrawer = drawer;
     this.activeOverlay = overlay;
 
     // Focus the close button for accessibility
-    const closeBtn = modal.querySelector('.team-section__modal-close');
+    const closeBtn = drawer.querySelector('.team-section__modal-close');
     if (closeBtn) {
       setTimeout(() => closeBtn.focus(), 100);
     }
   }
 
-  closeModal() {
-    if (!this.activeModal || !this.activeOverlay) return;
+  closeDrawer() {
+    if (!this.activeDrawer || !this.activeOverlay) return;
 
     // Restore body scroll
     document.body.style.overflow = '';
 
-    // Hide overlay and modal
+    // Hide overlay and drawer
     this.activeOverlay.classList.remove('team-section__modal-overlay--active');
-    this.activeModal.classList.remove('team-section__modal--active');
+    this.activeDrawer.classList.remove('team-section__modal--active');
 
-    this.activeModal = null;
+    this.activeDrawer = null;
     this.activeOverlay = null;
   }
 }
@@ -87,8 +87,8 @@ class TeamMemberModal {
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
-    new TeamMemberModal();
+    new TeamMemberDrawer();
   });
 } else {
-  new TeamMemberModal();
+  new TeamMemberDrawer();
 }
