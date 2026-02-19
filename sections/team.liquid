@@ -79,6 +79,29 @@
                     </svg>
                   </div>
                 </div>
+                
+                {%- comment -%} Team Member Popup {%- endcomment -%}
+                <div class="team-section__popup">
+                  <div class="team-section__popup-arrow"></div>
+                  <div class="team-section__popup-content">
+                    {%- if block.settings.popup_title != blank -%}
+                      <h4 class="team-section__popup-title">{{ block.settings.popup_title }}</h4>
+                    {%- endif -%}
+                    
+                    {%- if block.settings.popup_description != blank -%}
+                      <p class="team-section__popup-description">{{ block.settings.popup_description }}</p>
+                    {%- endif -%}
+                    
+                    {%- if block.settings.metafield_namespace != blank and block.settings.metafield_key != blank -%}
+                      {%- assign metafield_value = block.settings[block.settings.metafield_namespace].metafields[block.settings.metafield_key] -%}
+                      {%- if metafield_value != blank -%}
+                        <div class="team-section__popup-metafield">
+                          {{ metafield_value }}
+                        </div>
+                      {%- endif -%}
+                    {%- endif -%}
+                  </div>
+                </div>
               </div>
           {%- endcase -%}
         {%- endfor -%}
@@ -215,6 +238,68 @@
     box-shadow: 0px 12px 16px -4px rgba(10, 13, 18, 0.08), 0px 4px 6px -2px rgba(10, 13, 18, 0.03), 0px 2px 2px -1px rgba(10, 13, 18, 0.04);
     min-width: 140px;
     cursor: pointer;
+  }
+
+  {%- comment -%} Team Member Popup Styles {%- endcomment -%}
+  #shopify-section-{{ section.id }} .team-section__popup {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    background: #F7F7F4;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
+    min-width: 280px;
+    max-width: 320px;
+    margin-bottom: 16px;
+    z-index: 10;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__popup--active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) scale(1);
+  }
+
+  #shopify-section-{{ section.id }} .team-section__popup-arrow {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #F7F7F4;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__popup-content {
+    padding-top: 0.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__popup-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.4;
+    color: #1a1a1a;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__popup-description {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    margin: 0 0 0.75rem 0;
+    color: #535862;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__popup-metafield {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #666;
   }
 
   #shopify-section-{{ section.id }} .team-section__avatar {
@@ -411,6 +496,8 @@
     {% endif %}
   }
 </style>
+
+<script src="{{ 'team-member-popup.js' | asset_url }}" defer></script>
 
 {% schema %}
 {
@@ -908,6 +995,22 @@
         },
         {
           "type": "header",
+          "content": "Popup Information"
+        },
+        {
+          "type": "text",
+          "id": "popup_title",
+          "label": "Popup Title",
+          "default": "Team Member"
+        },
+        {
+          "type": "textarea",
+          "id": "popup_description",
+          "label": "Popup Description",
+          "placeholder": "Enter description that will appear in the popup"
+        },
+        {
+          "type": "header",
           "content": "Position"
         },
         {
@@ -936,6 +1039,8 @@
           "settings": {
             "name": "Soham",
             "role": "Doctor",
+            "popup_title": "Soham Patel, MD",
+            "popup_description": "Medical Advisor — Hair & Scalp Health",
             "position_x": "15",
             "position_y": "5"
           }
@@ -945,6 +1050,8 @@
           "settings": {
             "name": "Cody",
             "role": "Dietitian",
+            "popup_title": "Cody Specialist",
+            "popup_description": "Nutritional Advisor",
             "position_x": "75",
             "position_y": "5"
           }
@@ -954,6 +1061,8 @@
           "settings": {
             "name": "Aubrey",
             "role": "Psychologist",
+            "popup_title": "Aubrey Expert",
+            "popup_description": "Mental Health Specialist",
             "position_x": "10",
             "position_y": "70"
           }
@@ -963,6 +1072,8 @@
           "settings": {
             "name": "Ronald",
             "role": "Personal Trainer",
+            "popup_title": "Ronald Coach",
+            "popup_description": "Fitness & Wellness Coach",
             "position_x": "80",
             "position_y": "75"
           }
