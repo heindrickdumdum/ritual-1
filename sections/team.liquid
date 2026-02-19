@@ -84,21 +84,50 @@
                 <div class="team-section__popup">
                   <div class="team-section__popup-arrow"></div>
                   <div class="team-section__popup-content">
+                    {%- comment -%} Profile Image {%- endcomment -%}
+                    {%- if block.settings.avatar != blank -%}
+                      <img src="{{ block.settings.avatar | image_url: width: 200 }}" alt="{{ block.settings.name }}" class="team-section__popup-image" loading="lazy">
+                    {%- endif -%}
+                    
+                    {%- comment -%} Name {%- endcomment -%}
                     {%- if block.settings.popup_title != blank -%}
                       <h4 class="team-section__popup-title">{{ block.settings.popup_title }}</h4>
                     {%- endif -%}
                     
-                    {%- if block.settings.popup_description != blank -%}
-                      <p class="team-section__popup-description">{{ block.settings.popup_description }}</p>
+                    {%- comment -%} Title/Role {%- endcomment -%}
+                    {%- if block.settings.popup_role != blank -%}
+                      <p class="team-section__popup-role">{{ block.settings.popup_role }}</p>
                     {%- endif -%}
                     
-                    {%- if block.settings.metafield_namespace != blank and block.settings.metafield_key != blank -%}
-                      {%- assign metafield_value = block.settings[block.settings.metafield_namespace].metafields[block.settings.metafield_key] -%}
-                      {%- if metafield_value != blank -%}
-                        <div class="team-section__popup-metafield">
-                          {{ metafield_value }}
-                        </div>
-                      {%- endif -%}
+                    {%- comment -%} Bio {%- endcomment -%}
+                    {%- if block.settings.popup_bio != blank -%}
+                      <div class="team-section__popup-section">
+                        <p class="team-section__popup-bio">{{ block.settings.popup_bio }}</p>
+                      </div>
+                    {%- endif -%}
+                    
+                    {%- comment -%} Areas of Expertise {%- endcomment -%}
+                    {%- if block.settings.areas_of_expertise != blank -%}
+                      <div class="team-section__popup-section">
+                        <h5 class="team-section__popup-section-title">Areas of Expertise</h5>
+                        <ul class="team-section__popup-list">
+                          {%- assign expertise_items = block.settings.areas_of_expertise | split: "
+" -%}
+                          {%- for item in expertise_items -%}
+                            {%- if item != blank -%}
+                              <li>{{ item | strip }}</li>
+                            {%- endif -%}
+                          {%- endfor -%}
+                        </ul>
+                      </div>
+                    {%- endif -%}
+                    
+                    {%- comment -%} Philosophy {%- endcomment -%}
+                    {%- if block.settings.philosophy != blank -%}
+                      <div class="team-section__popup-section">
+                        <h5 class="team-section__popup-section-title">Philosophy</h5>
+                        <p class="team-section__popup-philosophy">{{ block.settings.philosophy }}</p>
+                      </div>
                     {%- endif -%}
                   </div>
                 </div>
@@ -300,6 +329,66 @@
     font-size: 0.875rem;
     line-height: 1.6;
     color: #666;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__popup-image {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+    display: block;
+    background: #e5e5e5;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__popup-role {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    margin: 0 0 0.75rem 0;
+    color: #26736D;
+    font-weight: 500;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__popup-bio {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin: 0;
+    color: #535862;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__popup-section {
+    margin-top: 1rem;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__popup-section-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__popup-list {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__popup-list li {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #535862;
+    margin-bottom: 0.375rem;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__popup-philosophy {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin: 0;
+    color: #535862;
+    font-style: italic;
   }
 
   #shopify-section-{{ section.id }} .team-section__avatar {
@@ -1000,14 +1089,32 @@
         {
           "type": "text",
           "id": "popup_title",
-          "label": "Popup Title",
+          "label": "Name",
           "default": "Team Member"
         },
         {
+          "type": "text",
+          "id": "popup_role",
+          "label": "Title",
+          "placeholder": "e.g., Medical Advisor"
+        },
+        {
           "type": "textarea",
-          "id": "popup_description",
-          "label": "Popup Description",
-          "placeholder": "Enter description that will appear in the popup"
+          "id": "popup_bio",
+          "label": "Bio",
+          "placeholder": "Enter biography that will appear in the popup"
+        },
+        {
+          "type": "textarea",
+          "id": "areas_of_expertise",
+          "label": "Areas of Expertise",
+          "placeholder": "Enter each area on a new line\nExample:\nAndrogenetic hair thinning\nScalp inflammation & irritation"
+        },
+        {
+          "type": "textarea",
+          "id": "philosophy",
+          "label": "Philosophy",
+          "placeholder": "Enter philosophy statement"
         },
         {
           "type": "header",
@@ -1040,7 +1147,10 @@
             "name": "Soham",
             "role": "Doctor",
             "popup_title": "Soham Patel, MD",
-            "popup_description": "Medical Advisor — Hair & Scalp Health",
+            "popup_role": "Medical Advisor — Hair & Scalp Health",
+            "popup_bio": "Dr. Soham specializes in hair thinning, scalp inflammation, and long-term follicle health. His work focuses on early intervention strategies and evidence-based topical therapies to improve hair density and reduce shedding progression. At Rituall, he oversees clinical protocols and ensures every formulation aligns with dermatological safety standards.",
+            "areas_of_expertise": "Androgenetic hair thinning\nScalp inflammation & irritation\nLong-term topical treatment safety\nEarly-stage hair loss intervention",
+            "philosophy": "Hair regrowth isn't about quick fixes. It's about consistency, scalp health, and proven ingredients that support the follicle cycle.",
             "position_x": "15",
             "position_y": "5"
           }
@@ -1051,7 +1161,10 @@
             "name": "Cody",
             "role": "Dietitian",
             "popup_title": "Cody Specialist",
-            "popup_description": "Nutritional Advisor",
+            "popup_role": "Nutritional Advisor",
+            "popup_bio": "Cody is a registered dietitian who designs personalized nutrition plans that support hair health from within. With expertise in metabolic health and nutrient optimization, Cody ensures clients receive comprehensive support for sustainable results.",
+            "areas_of_expertise": "Nutritional assessment\nDiet optimization for hair health\nSupplement recommendations\nMetabolic support",
+            "philosophy": "Great hair starts with great nutrition.",
             "position_x": "75",
             "position_y": "5"
           }
@@ -1062,7 +1175,10 @@
             "name": "Aubrey",
             "role": "Psychologist",
             "popup_title": "Aubrey Expert",
-            "popup_description": "Mental Health Specialist",
+            "popup_role": "Mental Health Specialist",
+            "popup_bio": "Aubrey supports the psychological aspects of hair health, addressing stress and anxiety that impact treatment outcomes. Her compassionate approach helps clients maintain consistency and mental wellness throughout their journey.",
+            "areas_of_expertise": "Stress management\nBehavioral support\nMental wellness coaching\nCoping strategies",
+            "philosophy": "Mental health directly impacts physical health.",
             "position_x": "10",
             "position_y": "70"
           }
@@ -1073,7 +1189,10 @@
             "name": "Ronald",
             "role": "Personal Trainer",
             "popup_title": "Ronald Coach",
-            "popup_description": "Fitness & Wellness Coach",
+            "popup_role": "Fitness & Wellness Coach",
+            "popup_bio": "Ronald creates personalized fitness and lifestyle programs that complement your hair health treatment plan. His holistic approach integrates exercise, sleep optimization, and daily habits to maximize results.",
+            "areas_of_expertise": "Exercise programming\nLifestyle optimization\nWellness coaching\nHolistic health integration",
+            "philosophy": "Movement and wellness are essential to overall health.",
             "position_x": "80",
             "position_y": "75"
           }
