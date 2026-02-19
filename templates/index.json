@@ -1060,7 +1060,7 @@
         "contact_method_i37zAK": {
           "type": "contact_method",
           "settings": {
-            "icon_type": "chat",
+            "icon_type": "messenger",
             "method_title": "Chat",
             "method_description": "Send us a message",
             "method_link": "",
@@ -1070,7 +1070,7 @@
         "contact_method_nfdLVt": {
           "type": "contact_method",
           "settings": {
-            "icon_type": "chat",
+            "icon_type": "email",
             "method_title": "Chat",
             "method_description": "Send us a message",
             "method_link": "",
