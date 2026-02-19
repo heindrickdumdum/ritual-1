@@ -217,18 +217,16 @@
               <div class="contact-section__method-icon">
                 {% case block.settings.icon_type %}
                   {% when 'chat' %}
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                    </svg>
+                    <img src="{{ 'icon-contact-circlepeople.png' | asset_url }}" alt="Chat Icon" width="64" height="64">
                   {% when 'messenger' %}
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"></path>
-                    </svg>
+                    <img
+                      src="{{ 'icon-contact-messenger.svg' | asset_url }}"
+                      alt="Messenger Icon"
+                      width="64"
+                      height="64"
+                    >
                   {% when 'email' %}
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                    </svg>
+                    <img src="{{ 'icon-contact-email.svg' | asset_url }}" alt="Email Icon" width="64" height="64">
                 {% endcase %}
               </div>
 
