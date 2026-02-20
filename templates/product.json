@@ -428,9 +428,19 @@
         "padding-block-start-mobile": 65,
         "padding-block-end-mobile": 65
       }
+    },
+    "main_product_nAM6tJ": {
+      "type": "main-product",
+      "name": "Main Product",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "background_color": "#ffffff"
+      }
     }
   },
   "order": [
+    "main_product_nAM6tJ",
     "main",
     "product_recommendations_qggXJq"
   ]
