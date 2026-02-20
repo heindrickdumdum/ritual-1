@@ -31,7 +31,7 @@
   }
 
   #shopify-section-{{ section.id }} .contact-faq__title {
-    font-size: 2.5rem;
+    font-size: 44px;
     font-weight: 600;
     line-height: 1.2;
     letter-spacing: -0.02em;
@@ -89,16 +89,73 @@
   }
 
   #shopify-section-{{ section.id }} .contact-faq__icon {
-    font-size: 1.5rem;
-    line-height: 1;
-    color: #181D27;
     margin: 0;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
     transition: transform 0.3s ease;
   }
 
-  #shopify-section-{{ section.id }} .contact-faq__item.open .contact-faq__icon {
-    transform: rotate(45deg);
+  #shopify-section-{{ section.id }} .contact-faq__icon .icon-expand {
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .contact-faq__icon .icon-collapse {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .contact-faq__item.open .contact-faq__icon .icon-expand {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .contact-faq__item.open .contact-faq__icon .icon-collapse {
+    display: block;
+  }
+
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} .contact-faq-wrapper {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+
+    #shopify-section-{{ section.id }} .contact-faq {
+      gap: 40px;
+    }
+
+    #shopify-section-{{ section.id }} .contact-faq__header {
+      align-items: flex-start;
+    }
+
+    #shopify-section-{{ section.id }} .contact-faq__title {
+      font-size: 24px;
+      line-height: 32px;
+      letter-spacing: -0.02em;
+    }
+
+    #shopify-section-{{ section.id }} .contact-faq__question {
+      font-size: 16px;
+      gap: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .contact-faq__answer {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
+      padding-right: 40px;
+      padding-top: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .contact-faq__icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .contact-faq__item {
+      padding: 24px 0;
+    }
   }
 {%- endstyle -%}
 
@@ -113,7 +170,10 @@
           <div class="contact-faq__item" {{ block.shopify_attributes }}>
             <div class="contact-faq__question">
               <span>{{ block.settings.question }}</span>
-              <span class="contact-faq__icon">+</span>
+              <span class="contact-faq__icon">
+                <span class="icon-expand">{{- 'icon-expand.svg' | inline_asset_content -}}</span>
+                <span class="icon-collapse">{{- 'icon-collapse.svg' | inline_asset_content -}}</span>
+              </span>
             </div>
             <div class="contact-faq__answer">{{ block.settings.answer }}</div>
           </div>
@@ -122,7 +182,10 @@
         <div class="contact-faq__item open">
           <div class="contact-faq__question">
             <span>When will I start seeing results?</span>
-            <span class="contact-faq__icon">-</span>
+            <span class="contact-faq__icon">
+              <span class="icon-expand">{{- 'icon-expand.svg' | inline_asset_content -}}</span>
+              <span class="icon-collapse">{{- 'icon-collapse.svg' | inline_asset_content -}}</span>
+            </span>
           </div>
           <div class="contact-faq__answer">
             Most users notice visible improvement within 3—6 months of consistent use.
@@ -131,28 +194,40 @@
         <div class="contact-faq__item">
           <div class="contact-faq__question">
             <span>What affects women's hair growth?</span>
-            <span class="contact-faq__icon">+</span>
+            <span class="contact-faq__icon">
+              <span class="icon-expand">{{- 'icon-expand.svg' | inline_asset_content -}}</span>
+              <span class="icon-collapse">{{- 'icon-collapse.svg' | inline_asset_content -}}</span>
+            </span>
           </div>
           <div class="contact-faq__answer"></div>
         </div>
         <div class="contact-faq__item">
           <div class="contact-faq__question">
             <span>Will hair grow on other parts of my body?</span>
-            <span class="contact-faq__icon">+</span>
+            <span class="contact-faq__icon">
+              <span class="icon-expand">{{- 'icon-expand.svg' | inline_asset_content -}}</span>
+              <span class="icon-collapse">{{- 'icon-collapse.svg' | inline_asset_content -}}</span>
+            </span>
           </div>
           <div class="contact-faq__answer"></div>
         </div>
         <div class="contact-faq__item">
           <div class="contact-faq__question">
             <span>What are the main differences in formulas between Nutrafol Men, and Women's Balance?</span>
-            <span class="contact-faq__icon">+</span>
+            <span class="contact-faq__icon">
+              <span class="icon-expand">{{- 'icon-expand.svg' | inline_asset_content -}}</span>
+              <span class="icon-collapse">{{- 'icon-collapse.svg' | inline_asset_content -}}</span>
+            </span>
           </div>
           <div class="contact-faq__answer"></div>
         </div>
         <div class="contact-faq__item">
           <div class="contact-faq__question">
             <span>How is Nutrafol different from other hair growth products?</span>
-            <span class="contact-faq__icon">+</span>
+            <span class="contact-faq__icon">
+              <span class="icon-expand">{{- 'icon-expand.svg' | inline_asset_content -}}</span>
+              <span class="icon-collapse">{{- 'icon-collapse.svg' | inline_asset_content -}}</span>
+            </span>
           </div>
           <div class="contact-faq__answer"></div>
         </div>
@@ -174,13 +249,11 @@
       faqList.querySelectorAll('.contact-faq__item').forEach(function (i) {
         i.classList.remove('open');
         i.querySelector('.contact-faq__question').setAttribute('aria-expanded', 'false');
-        i.querySelector('.contact-faq__icon').textContent = '+';
       });
       // Open clicked
       if (!open) {
         item.classList.add('open');
         btn.setAttribute('aria-expanded', 'true');
-        btn.querySelector('.contact-faq__icon').textContent = '-';
       }
     });
   });
@@ -189,6 +262,9 @@
 {% schema %}
 {
   "name": "Contact FAQ",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
   "settings": [
     {
       "type": "number",
