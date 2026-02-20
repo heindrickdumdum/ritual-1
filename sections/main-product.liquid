@@ -1,0 +1,323 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --section-background-color: {{ section.settings.background_color }};
+  }
+
+  #shopify-section-{{ section.id }} .main-product {
+    padding-top: var(--section-padding-top);
+    padding-bottom: var(--section-padding-bottom);
+    background-color: var(--section-background-color);
+  }
+
+  #shopify-section-{{ section.id }} .main-product__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__media {
+    position: sticky;
+    top: 2rem;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #181d27;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #181d27;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__price--original {
+    text-decoration: line-through;
+    color: #999;
+    margin-right: 0.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 14px;
+    color: #535862;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__stars {
+    color: #ffc107;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #535862;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__option {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__option-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #181d27;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__option-select {
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #181d27;
+    background-color: white;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__quantity {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__quantity-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #181d27;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__quantity-selector {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    width: fit-content;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__quantity-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #181d27;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__quantity-input {
+    width: 50px;
+    text-align: center;
+    border: none;
+    font-size: 16px;
+    padding: 0.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #2a7a7a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__button:hover {
+    background-color: #1f5c5c;
+  }
+
+  @media (max-width: 1024px) {
+    #shopify-section-{{ section.id }} .main-product__container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    #shopify-section-{{ section.id }} .main-product__media {
+      position: static;
+    }
+
+    #shopify-section-{{ section.id }} .main-product__title {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} .main-product {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    #shopify-section-{{ section.id }} .main-product__container {
+      padding: 0 16px;
+      gap: 1.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .main-product__title {
+      font-size: 1.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .main-product__price {
+      font-size: 1.25rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="main-product">
+  <div class="main-product__container">
+    <!-- Product Media -->
+    <div class="main-product__media">
+      {% if product.featured_image %}
+        <img
+          src="{{ product.featured_image | image_url: width: 800 }}"
+          alt="{{ product.featured_image.alt | escape }}"
+          width="800"
+          height="800"
+          class="main-product__image"
+        >
+      {% endif %}
+    </div>
+
+    <!-- Product Information -->
+    <div class="main-product__content">
+      <h1 class="main-product__title">{{ product.title }}</h1>
+
+      {% if product.compare_at_price > product.price %}
+        <div class="main-product__price">
+          <span class="main-product__price--original">{{ product.compare_at_price | money }}</span>
+          <span>{{ product.price | money }}</span>
+        </div>
+      {% else %}
+        <div class="main-product__price">{{ product.price | money }}</div>
+      {% endif %}
+
+      {% if product.rating %}
+        <div class="main-product__rating">
+          <span class="main-product__stars">★★★★★</span>
+          <span>{{ product.rating }} / 5</span>
+        </div>
+      {% endif %}
+
+      {% if product.description %}
+        <p class="main-product__description">{{ product.description | strip_html | truncatewords: 50 }}</p>
+      {% endif %}
+
+      <form method="post" action="/cart/add" class="main-product__form">
+        {% if product.variants.size > 1 %}
+          <div class="main-product__option">
+            <label for="variant-select" class="main-product__option-label">{{ product.options.first.name }}</label>
+            <select name="id" id="variant-select" class="main-product__option-select">
+              {% for variant in product.variants %}
+                <option value="{{ variant.id }}">
+                  {{ variant.title }}
+                  {% if variant.compare_at_price > variant.price %}
+                    - {{ variant.price | money }}
+                  {% endif %}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+        {% else %}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        {% endif %}
+
+        <div class="main-product__quantity">
+          <label for="quantity" class="main-product__quantity-label">Quantity</label>
+          <div class="main-product__quantity-selector">
+            <button
+              type="button"
+              class="main-product__quantity-btn"
+              onclick="document.getElementById('quantity').value = Math.max(1, parseInt(document.getElementById('quantity').value) - 1)"
+            >
+              −
+            </button>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              min="1"
+              value="1"
+              class="main-product__quantity-input"
+            >
+            <button
+              type="button"
+              class="main-product__quantity-btn"
+              onclick="document.getElementById('quantity').value = parseInt(document.getElementById('quantity').value) + 1"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="main-product__button">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Main Product",
+  "settings": [
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "default": 80
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "default": 80
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main Product",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}
