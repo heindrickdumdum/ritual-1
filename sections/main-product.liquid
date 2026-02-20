@@ -32,11 +32,48 @@
   }
 
   #shopify-section-{{ section.id }} .main-product__title {
-    font-size: 2.5rem;
-    font-weight: 600;
-    line-height: 1.2;
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 68px;
+    letter-spacing: -0.02em;
     color: #181d27;
     margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #717680;
+    margin: 0 0 8px 0;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 14px;
+    color: #535862;
+    margin-top: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__stars {
+    color: #ffc107;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__rating-value {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 150%;
+    color: #181d27;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__review-count {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 150%;
+    color: #535862;
   }
 
   @media (max-width: 1024px) {
@@ -83,7 +120,15 @@
 
     <!-- Product Title -->
     <div>
+      <p class="main-product__label">Your Personalized</p>
       <h1 class="main-product__title">{{ product.title }}</h1>
+      {% if product.metafields.custom.ratings %}
+        <div class="main-product__rating">
+          <span class="main-product__stars">★★★★★</span>
+          <span class="main-product__rating-value">{{ product.metafields.custom.ratings }}/5</span>
+          <span class="main-product__review-count">({{ product.metafields.custom.review_count }}+ Reviews)</span>
+        </div>
+      {% endif %}
     </div>
   </div>
 </div>
