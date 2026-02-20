@@ -1,0 +1,234 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --section-background-color: {{ section.settings.background_color }};
+  }
+
+  #shopify-section-{{ section.id }} .contact-faq-wrapper {
+    width: 100%;
+    background-color: var(--section-background-color);
+    padding-top: var(--section-padding-top);
+    padding-bottom: var(--section-padding-bottom);
+  }
+
+  #shopify-section-{{ section.id }} .contact-faq {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    max-width: var(--full-page-grid-central-column-width);
+    margin-inline: auto;
+  }
+
+  #shopify-section-{{ section.id }} .contact-faq__header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .contact-faq__title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: #181D27;
+  }
+
+  #shopify-section-{{ section.id }} .contact-faq__list {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  #shopify-section-{{ section.id }} .contact-faq__item {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .contact-faq__question {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #181D27;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 24px 0 12px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: color 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .contact-faq__question:focus {
+    outline: 2px solid #181D27;
+    outline-offset: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .contact-faq__answer {
+    font-size: 1rem;
+    color: #535862;
+    padding-bottom: 24px;
+    display: none;
+    animation: fadeIn 0.3s;
+  }
+
+  #shopify-section-{{ section.id }} .contact-faq__item.open .contact-faq__answer {
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .contact-faq__icon {
+    font-size: 2rem;
+    line-height: 1;
+    color: #181D27;
+    margin-left: 16px;
+    transition: transform 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .contact-faq__item.open .contact-faq__icon {
+    transform: rotate(45deg);
+  }
+{%- endstyle -%}
+
+<div class="contact-faq-wrapper">
+  <div class="contact-faq">
+    <div class="contact-faq__header">
+      <h2 class="contact-faq__title">Got Questions? We've Got Answers.</h2>
+    </div>
+    <div class="contact-faq__list" id="faq-list-{{ section.id }}">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <div class="contact-faq__item" {{ block.shopify_attributes }}>
+            <button class="contact-faq__question" aria-expanded="false">
+              <span>{{ block.settings.question }}</span>
+              <span class="contact-faq__icon">+</span>
+            </button>
+            <div class="contact-faq__answer">{{ block.settings.answer }}</div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="contact-faq__item open">
+          <button class="contact-faq__question" aria-expanded="true">
+            <span>When will I start seeing results?</span>
+            <span class="contact-faq__icon">-</span>
+          </button>
+          <div class="contact-faq__answer">
+            Most users notice visible improvement within 3—6 months of consistent use.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What affects women’s hair growth?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Will hair grow on other parts of my body?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What are the main differences in formulas between Nutrafol Men, and Women’s Balance?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>How is Nutrafol different from other hair growth products?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer"></div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var faqList = document.getElementById('faq-list-{{ section.id }}');
+    if (!faqList) return;
+    faqList.addEventListener('click', function (e) {
+      var btn = e.target.closest('.contact-faq__question');
+      if (!btn) return;
+      var item = btn.closest('.contact-faq__item');
+      var open = item.classList.contains('open');
+      // Close all
+      faqList.querySelectorAll('.contact-faq__item').forEach(function (i) {
+        i.classList.remove('open');
+        i.querySelector('.contact-faq__question').setAttribute('aria-expanded', 'false');
+        i.querySelector('.contact-faq__icon').textContent = '+';
+      });
+      // Open clicked
+      if (!open) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        btn.querySelector('.contact-faq__icon').textContent = '-';
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Contact FAQ",
+  "settings": [
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "Section padding top (px)",
+      "default": 80
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "Section padding bottom (px)",
+      "default": 80
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#fff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact FAQ",
+      "category": "Contact"
+    }
+  ]
+}
+{% endschema %}
