@@ -428,26 +428,10 @@
         "padding-block-start-mobile": 65,
         "padding-block-end-mobile": 65
       }
-    },
-    "product_showcase_FUABri": {
-      "type": "product-showcase",
-      "name": "Product Showcase",
-      "settings": {
-        "gallery_width": 500,
-        "gallery_height": 500,
-        "product_label": "",
-        "product_title": "",
-        "product_description": "",
-        "cta_button_text": "",
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "background_color": "#ffffff"
-      }
     }
   },
   "order": [
     "main",
-    "product_showcase_FUABri",
     "product_recommendations_qggXJq"
   ]
 }
