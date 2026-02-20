@@ -15,10 +15,11 @@
   #shopify-section-{{ section.id }} .contact-faq {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 60px;
     width: 100%;
     max-width: var(--full-page-grid-central-column-width);
     margin-inline: auto;
+    padding: 0 20px;
   }
 
   #shopify-section-{{ section.id }} .contact-faq__header {
@@ -30,8 +31,9 @@
   }
 
   #shopify-section-{{ section.id }} .contact-faq__title {
-    font-size: 44px;
-    font-weight: 136%;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.2;
     letter-spacing: -0.02em;
     margin: 0;
     color: #181D27;
@@ -39,7 +41,7 @@
 
   #shopify-section-{{ section.id }} .contact-faq__list {
     width: 100%;
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -47,11 +49,12 @@
     border-radius: 0;
     background: transparent;
     box-shadow: none;
+    border-top: 1px solid #e5e7eb;
   }
 
   #shopify-section-{{ section.id }} .contact-faq__item {
     border-bottom: 1px solid #e5e7eb;
-    padding: 0;
+    padding: 32px 0;
   }
 
   #shopify-section-{{ section.id }} .contact-faq__question {
@@ -63,24 +66,20 @@
     border: none;
     width: 100%;
     text-align: left;
-    padding: 24px 0 12px 0;
+    padding: 0;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: space-between;
     transition: color 0.2s;
-  }
-
-  #shopify-section-{{ section.id }} .contact-faq__question:focus {
-    outline: 2px solid #181D27;
-    outline-offset: 2px;
+    gap: 24px;
   }
 
   #shopify-section-{{ section.id }} .contact-faq__answer {
     font-size: 16px;
     line-height: 24px;
     color: #535862;
-    padding-bottom: 24px;
+    padding-top: 20px;
     display: none;
     animation: fadeIn 0.3s;
   }
@@ -90,11 +89,12 @@
   }
 
   #shopify-section-{{ section.id }} .contact-faq__icon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 1;
     color: #181D27;
-    margin-left: 16px;
-    transition: transform 0.2s;
+    margin: 0;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
   }
 
   #shopify-section-{{ section.id }} .contact-faq__item.open .contact-faq__icon {
@@ -111,49 +111,49 @@
       {% if section.blocks.size > 0 %}
         {% for block in section.blocks %}
           <div class="contact-faq__item" {{ block.shopify_attributes }}>
-            <button class="contact-faq__question" aria-expanded="false">
+            <div class="contact-faq__question">
               <span>{{ block.settings.question }}</span>
               <span class="contact-faq__icon">+</span>
-            </button>
+            </div>
             <div class="contact-faq__answer">{{ block.settings.answer }}</div>
           </div>
         {% endfor %}
       {% else %}
         <div class="contact-faq__item open">
-          <button class="contact-faq__question" aria-expanded="true">
+          <div class="contact-faq__question">
             <span>When will I start seeing results?</span>
             <span class="contact-faq__icon">-</span>
-          </button>
+          </div>
           <div class="contact-faq__answer">
             Most users notice visible improvement within 3—6 months of consistent use.
           </div>
         </div>
         <div class="contact-faq__item">
-          <button class="contact-faq__question" aria-expanded="false">
+          <div class="contact-faq__question">
             <span>What affects women's hair growth?</span>
             <span class="contact-faq__icon">+</span>
-          </button>
+          </div>
           <div class="contact-faq__answer"></div>
         </div>
         <div class="contact-faq__item">
-          <button class="contact-faq__question" aria-expanded="false">
+          <div class="contact-faq__question">
             <span>Will hair grow on other parts of my body?</span>
             <span class="contact-faq__icon">+</span>
-          </button>
+          </div>
           <div class="contact-faq__answer"></div>
         </div>
         <div class="contact-faq__item">
-          <button class="contact-faq__question" aria-expanded="false">
+          <div class="contact-faq__question">
             <span>What are the main differences in formulas between Nutrafol Men, and Women's Balance?</span>
             <span class="contact-faq__icon">+</span>
-          </button>
+          </div>
           <div class="contact-faq__answer"></div>
         </div>
         <div class="contact-faq__item">
-          <button class="contact-faq__question" aria-expanded="false">
+          <div class="contact-faq__question">
             <span>How is Nutrafol different from other hair growth products?</span>
             <span class="contact-faq__icon">+</span>
-          </button>
+          </div>
           <div class="contact-faq__answer"></div>
         </div>
       {% endif %}
