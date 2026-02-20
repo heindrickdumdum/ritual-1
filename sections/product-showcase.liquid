@@ -1,0 +1,243 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --section-background-color: {{ section.settings.background_color }};
+    --gallery-height: {{ section.settings.gallery_height }}px;
+  }
+
+  #shopify-section-{{ section.id }} .product-showcase {
+    padding-top: var(--section-padding-top);
+    padding-bottom: var(--section-padding-bottom);
+    background-color: var(--section-background-color);
+  }
+
+  #shopify-section-{{ section.id }} .product-showcase__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  #shopify-section-{{ section.id }} .product-showcase__media {
+    position: sticky;
+    top: 2rem;
+  }
+
+  #shopify-section-{{ section.id }} .product-showcase__gallery {
+    position: relative;
+    width: 100%;
+    height: var(--gallery-height);
+    background-color: #f0f0f0;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  #shopify-section-{{ section.id }} .product-showcase__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .product-showcase__dots {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .product-showcase__dot {
+    width: 8px;
+    height: 8px;
+    background-color: #e5e7eb;
+    border: none;
+    border-radius: 50%;
+  }
+
+  #shopify-section-{{ section.id }} .product-showcase__dot.active {
+    background-color: #181d27;
+  }
+
+  #shopify-section-{{ section.id }} .product-showcase__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .product-showcase__label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #535862;
+  }
+
+  #shopify-section-{{ section.id }} .product-showcase__title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #181d27;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .product-showcase__description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #535862;
+  }
+
+  #shopify-section-{{ section.id }} .product-showcase__button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #2a7a7a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 1024px) {
+    #shopify-section-{{ section.id }} .product-showcase__container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    #shopify-section-{{ section.id }} .product-showcase__media {
+      position: static;
+    }
+
+    #shopify-section-{{ section.id }} .product-showcase__title {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} .product-showcase {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+    #shopify-section-{{ section.id }} .product-showcase__container {
+      padding: 0 16px;
+      gap: 1.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .product-showcase__title {
+      font-size: 1.5rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="product-showcase">
+  <div class="product-showcase__container">
+    <!-- Media Gallery -->
+    <div class="product-showcase__media">
+      <div class="product-showcase__gallery">
+        {% if section.settings.product_image %}
+          <img
+            src="{{ section.settings.product_image | img_url: '800x800' }}" 
+            alt="{{ section.settings.product_title }}"
+            class="product-showcase__image"
+          >
+        {% else %}
+          <div style="width: 100%; height: 100%; background-color: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #999;">
+            No image selected
+          </div>
+        {% endif %}
+      </div>
+      {% if section.settings.show_dots %}
+      <div class="product-showcase__dots">
+        {% for i in (1..section.settings.image_count) %}
+          <button class="product-showcase__dot{% if i == 1 %} active{% endif %}"></button>
+        {% endfor %}
+      </div>
+      {% endif %}
+    <div class="product-showcase__content">
+      {% if section.settings.product_label != blank %}
+        <div class="product-showcase__label">{{ section.settings.product_label }}</div>
+      {% endif %}
+
+      {% if section.settings.product_title != blank %}
+        <h1 class="product-showcase__title">{{ section.settings.product_title }}</h1>
+      {% endif %}
+
+      {% if section.settings.product_description != blank %}
+        <p class="product-showcase__description">{{ section.settings.product_description }}</p>
+      {% endif %}
+
+      {% if section.settings.cta_button_text != blank %}
+        <button class="product-showcase__button">{{ section.settings.cta_button_text }}</button>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Showcase",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "product_label",
+      "label": "Product Label",
+      "placeholder": "e.g. YOUR PERSONALIZED"
+    },
+    {
+      "type": "text",
+      "id": "product_title",
+      "label": "Product Title",
+      "placeholder": "e.g. Hair Growth Serum"
+    },
+    {
+      "type": "textarea",
+      "id": "product_description",
+      "label": "Product Description",
+      "placeholder": "Enter product description..."
+    },
+    {
+      "type": "text",
+      "id": "cta_button_text",
+      "label": "CTA Button Text",
+      "placeholder": "e.g. Take the Quiz"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "default": 80
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "default": 80
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Showcase",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}
