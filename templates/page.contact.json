@@ -92,8 +92,93 @@
     },
     "contact_section_CQUyzN": {
       "type": "contact-section",
+      "blocks": {
+        "button_deGFkL": {
+          "type": "button",
+          "settings": {
+            "button_text": "Contact",
+            "button_link": ""
+          }
+        },
+        "button_6C3jQd": {
+          "type": "button",
+          "settings": {
+            "button_text": "Returns",
+            "button_link": ""
+          }
+        },
+        "button_BKBeQe": {
+          "type": "button",
+          "settings": {
+            "button_text": "Terms & Conditions",
+            "button_link": ""
+          }
+        },
+        "button_kB3nej": {
+          "type": "button",
+          "settings": {
+            "button_text": "Privacy Policy",
+            "button_link": ""
+          }
+        },
+        "button_gQPVJe": {
+          "type": "button",
+          "settings": {
+            "button_text": "Reviews",
+            "button_link": ""
+          }
+        },
+        "contact_method_XHLYEi": {
+          "type": "contact_method",
+          "settings": {
+            "icon_type": "chat",
+            "method_title": "Chat",
+            "method_description": "Send us a message",
+            "method_link": "",
+            "show_arrow": true
+          }
+        },
+        "contact_method_7BTn8T": {
+          "type": "contact_method",
+          "settings": {
+            "icon_type": "messenger",
+            "method_title": "Messenger",
+            "method_description": "Talk to us on messenger",
+            "method_link": "",
+            "show_arrow": true
+          }
+        },
+        "contact_method_HKYQE3": {
+          "type": "contact_method",
+          "settings": {
+            "icon_type": "chat",
+            "method_title": "E-mail",
+            "method_description": "support@ritual1.com",
+            "method_link": "",
+            "show_arrow": true
+          }
+        }
+      },
+      "block_order": [
+        "button_deGFkL",
+        "button_6C3jQd",
+        "button_BKBeQe",
+        "button_kB3nej",
+        "button_gQPVJe",
+        "contact_method_XHLYEi",
+        "contact_method_7BTn8T",
+        "contact_method_HKYQE3"
+      ],
       "name": "Contact Section",
-      "settings": {}
+      "settings": {
+        "title": "Contact",
+        "description": "You talk and we listen. That's how we live every day, and it's what gets us out of bed in the morning. Our customer service team is always ready to answer all your questions! From help with your order to tips on the best ski resorts to visit.",
+        "how_to_title": "How to contact us",
+        "show_image": true,
+        "padding_top": 80,
+        "padding_bottom": 160,
+        "background_color": "#f7f7f4"
+      }
     }
   },
   "order": [
