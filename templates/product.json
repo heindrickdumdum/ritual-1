@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -24,6 +25,7 @@
             "slideshow_mobile_controls_style": "dots",
             "thumbnail_position": "right",
             "thumbnail_width": 44,
+            "thumbnail_radius": 0,
             "aspect_ratio": "adapt",
             "constrain_to_viewport": true,
             "media_fit": "contain",
@@ -70,7 +72,6 @@
               "type": "group",
               "name": "Header",
               "settings": {
-                "open_in_new_tab": false,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
@@ -98,6 +99,9 @@
                 "overlay_color": "#00000026",
                 "overlay_style": "solid",
                 "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -115,7 +119,12 @@
                     "type_preset": "h3",
                     "font": "var(--font-primary--family)",
                     "font_size": "",
+                    "font_weight": "",
                     "line_height": "normal",
+                    "font_size_mobile": "",
+                    "alignment_mobile": "left",
+                    "font_weight_mobile": "",
+                    "line_height_mobile": "",
                     "letter_spacing": "normal",
                     "case": "none",
                     "wrap": "pretty",
@@ -188,6 +197,7 @@
               "settings": {
                 "stacking": true,
                 "show_pickup_availability": false,
+                "gift_card_form": true,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -228,7 +238,12 @@
                 "type_preset": "rte",
                 "font": "var(--font-primary--family)",
                 "font_size": "",
+                "font_weight": "",
                 "line_height": "normal",
+                "font_size_mobile": "",
+                "alignment_mobile": "left",
+                "font_weight_mobile": "",
+                "line_height_mobile": "",
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
@@ -253,12 +268,14 @@
           ]
         }
       },
+      "disabled": true,
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
         "equal_columns": false,
         "limit_details_width": false,
         "gap": 48,
+        "enable_sticky_add_to_cart": true,
         "color_scheme": "",
         "padding-block-start": 0,
         "padding-block-end": 0
@@ -278,7 +295,12 @@
             "type_preset": "h4",
             "font": "var(--font-primary--family)",
             "font_size": "",
+            "font_weight": "",
             "line_height": "normal",
+            "font_size_mobile": "",
+            "alignment_mobile": "left",
+            "font_weight_mobile": "",
+            "line_height_mobile": "",
             "letter_spacing": "normal",
             "case": "none",
             "wrap": "pretty",
@@ -402,12 +424,30 @@
         "gap": 28,
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-end": 48,
+        "padding-block-start-mobile": 65,
+        "padding-block-end-mobile": 65
+      }
+    },
+    "product_showcase_FUABri": {
+      "type": "product-showcase",
+      "name": "Product Showcase",
+      "settings": {
+        "gallery_width": 500,
+        "gallery_height": 500,
+        "product_label": "",
+        "product_title": "",
+        "product_description": "",
+        "cta_button_text": "",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "background_color": "#ffffff"
       }
     }
   },
   "order": [
     "main",
+    "product_showcase_FUABri",
     "product_recommendations_qggXJq"
   ]
 }
