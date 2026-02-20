@@ -66,11 +66,10 @@
     }
   }
 {%- endstyle -%}
-
 <div class="main-product">
   <div class="main-product__container">
-    <!-- Product Media -->
-    <div class="main-product__media">
+    <!-- Product Image -->
+    <div>
       {% if product.featured_image %}
         <img
           src="{{ product.featured_image | image_url: width: 800 }}"
@@ -82,79 +81,9 @@
       {% endif %}
     </div>
 
-    <!-- Product Information -->
-    <div class="main-product__content">
+    <!-- Product Title -->
+    <div>
       <h1 class="main-product__title">{{ product.title }}</h1>
-
-      {% if product.compare_at_price > product.price %}
-        <div class="main-product__price">
-          <span class="main-product__price--original">{{ product.compare_at_price | money }}</span>
-          <span>{{ product.price | money }}</span>
-        </div>
-      {% else %}
-        <div class="main-product__price">{{ product.price | money }}</div>
-      {% endif %}
-
-      {% if product.rating %}
-        <div class="main-product__rating">
-          <span class="main-product__stars">★★★★★</span>
-          <span>{{ product.rating }} / 5</span>
-        </div>
-      {% endif %}
-
-      {% if product.description %}
-        <p class="main-product__description">{{ product.description | strip_html | truncatewords: 50 }}</p>
-      {% endif %}
-
-      <form method="post" action="/cart/add" class="main-product__form">
-        {% if product.variants.size > 1 %}
-          <div class="main-product__option">
-            <label for="variant-select" class="main-product__option-label">{{ product.options.first.name }}</label>
-            <select name="id" id="variant-select" class="main-product__option-select">
-              {% for variant in product.variants %}
-                <option value="{{ variant.id }}">
-                  {{ variant.title }}
-                  {% if variant.compare_at_price > variant.price %}
-                    - {{ variant.price | money }}
-                  {% endif %}
-                </option>
-              {% endfor %}
-            </select>
-          </div>
-        {% else %}
-          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-        {% endif %}
-
-        <div class="main-product__quantity">
-          <label for="quantity" class="main-product__quantity-label">Quantity</label>
-          <div class="main-product__quantity-selector">
-            <button
-              type="button"
-              class="main-product__quantity-btn"
-              onclick="document.getElementById('quantity').value = Math.max(1, parseInt(document.getElementById('quantity').value) - 1)"
-            >
-              −
-            </button>
-            <input
-              type="number"
-              id="quantity"
-              name="quantity"
-              min="1"
-              value="1"
-              class="main-product__quantity-input"
-            >
-            <button
-              type="button"
-              class="main-product__quantity-btn"
-              onclick="document.getElementById('quantity').value = parseInt(document.getElementById('quantity').value) + 1"
-            >
-              +
-            </button>
-          </div>
-        </div>
-
-        <button type="submit" class="main-product__button">Add to Cart</button>
-      </form>
     </div>
   </div>
 </div>
