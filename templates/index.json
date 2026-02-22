@@ -659,6 +659,8 @@
             "popup_bio": "{{ metaobjects.doctor[\"dr-priya-nair-md\"].bio | metafield_tag }}",
             "areas_of_expertise": "{{ metaobjects.doctor[\"dr-priya-nair-md\"].areas_of_expertise | metafield_tag }}",
             "philosophy": "{{ metaobjects.doctor[\"dr-priya-nair-md\"].philosophy | metafield_tag }}",
+            "cta_text": "Learn More",
+            "cta_link": "shopify://collections/frontpage",
             "position_x": "5",
             "position_y": "6"
           }
@@ -674,6 +676,8 @@
             "popup_bio": "{{ metaobjects.doctor[\"dr-daniel-cho-md\"].bio | metafield_tag }}",
             "areas_of_expertise": "{{ metaobjects.doctor[\"dr-daniel-cho-md\"].areas_of_expertise | metafield_tag }}",
             "philosophy": "{{ metaobjects.doctor[\"dr-daniel-cho-md\"].philosophy | metafield_tag }}",
+            "cta_text": "Learn More",
+            "cta_link": "shopify://collections/frontpage",
             "position_x": "70",
             "position_y": "15"
           }
@@ -686,9 +690,11 @@
             "role": "{{ metaobjects.doctor[\"elena-vasquez-md\"].title_short.value }}",
             "popup_title": "{{ metaobjects.doctor[\"elena-vasquez-md\"].name.value }}",
             "popup_role": "{{ metaobjects.doctor[\"elena-vasquez-md\"].title.value }}",
-            "popup_bio": "{{ metaobjects.doctor[\"elena-vasquez-md\"].bio | metafield_tag }}",
-            "areas_of_expertise": "{{ metaobjects.doctor[\"elena-vasquez-md\"].areas_of_expertise | metafield_tag }}",
-            "philosophy": "{{ metaobjects.doctor[\"elena-vasquez-md\"].philosophy | metafield_tag }}",
+            "popup_bio": "<p>{{ metaobjects.doctor[\"elena-vasquez-md\"].bio | metafield_tag }}</p>",
+            "areas_of_expertise": "<p>{{ metaobjects.doctor[\"elena-vasquez-md\"].areas_of_expertise | metafield_tag }}</p>",
+            "philosophy": "<p>{{ metaobjects.doctor[\"elena-vasquez-md\"].philosophy | metafield_tag }}</p>",
+            "cta_text": "Learn More",
+            "cta_link": "shopify://collections/frontpage",
             "position_x": "10",
             "position_y": "60"
           }
@@ -704,6 +710,8 @@
             "popup_bio": "{{ metaobjects.doctor[\"soham-patel-md\"].bio | metafield_tag }}",
             "areas_of_expertise": "{{ metaobjects.doctor[\"soham-patel-md\"].areas_of_expertise | metafield_tag }}",
             "philosophy": "{{ metaobjects.doctor[\"soham-patel-md\"].philosophy | metafield_tag }}",
+            "cta_text": "Learn More",
+            "cta_link": "shopify://collections/frontpage",
             "position_x": "65",
             "position_y": "65"
           }
