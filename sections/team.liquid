@@ -144,7 +144,9 @@
                         </div>
 
                         <div class="team-section__modal-footer">
-                          <button class="team-section__modal-cta">Learn More</button>
+                          {%- if block.settings.cta_link != blank -%}
+                            <a href="{{ block.settings.cta_link }}" class="team-section__modal-cta">{{ block.settings.cta_text }}</a>
+                          {%- endif -%}
                         </div>
                       </div>
                     </div>
@@ -1277,6 +1279,22 @@
         },
         {
           "type": "header",
+          "content": "Call to Action"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA Text",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "cta_link",
+          "label": "CTA Link (optional)",
+          "info": "Leave blank to use a button instead of a link"
+        },
+        {
+          "type": "header",
           "content": "Position"
         },
         {
@@ -1310,6 +1328,7 @@
             "popup_bio": "<p>Dr. Soham specializes in hair thinning, scalp inflammation, and long-term follicle health. His work focuses on early intervention strategies and evidence-based topical therapies to improve hair density and reduce shedding progression. At Rituall, he oversees clinical protocols and ensures every formulation aligns with dermatological safety standards.</p>",
             "areas_of_expertise": "<ul><li>Androgenetic hair thinning</li><li>Scalp inflammation &amp; irritation</li><li>Long-term topical treatment safety</li><li>Early-stage hair loss intervention</li></ul>",
             "philosophy": "<p>Hair regrowth isn't about quick fixes. It's about consistency, scalp health, and proven ingredients that support the follicle cycle.</p>",
+            "cta_text": "Learn More",
             "position_x": "15",
             "position_y": "5"
           }
@@ -1324,6 +1343,7 @@
             "popup_bio": "<p>Cody is a registered dietitian who designs personalized nutrition plans that support hair health from within. With expertise in metabolic health and nutrient optimization, Cody ensures clients receive comprehensive support for sustainable results.</p>",
             "areas_of_expertise": "<ul><li>Nutritional assessment</li><li>Diet optimization for hair health</li><li>Supplement recommendations</li><li>Metabolic support</li></ul>",
             "philosophy": "<p>Great hair starts with great nutrition.</p>",
+            "cta_text": "Learn More",
             "position_x": "75",
             "position_y": "5"
           }
@@ -1338,6 +1358,7 @@
             "popup_bio": "<p>Aubrey supports the psychological aspects of hair health, addressing stress and anxiety that impact treatment outcomes. Her compassionate approach helps clients maintain consistency and mental wellness throughout their journey.</p>",
             "areas_of_expertise": "<ul><li>Stress management</li><li>Behavioral support</li><li>Mental wellness coaching</li><li>Coping strategies</li></ul>",
             "philosophy": "<p>Mental health directly impacts physical health.</p>",
+            "cta_text": "Learn More",
             "position_x": "10",
             "position_y": "70"
           }
@@ -1352,6 +1373,7 @@
             "popup_bio": "<p>Ronald creates personalized fitness and lifestyle programs that complement your hair health treatment plan. His holistic approach integrates exercise, sleep optimization, and daily habits to maximize results.</p>",
             "areas_of_expertise": "<ul><li>Exercise programming</li><li>Lifestyle optimization</li><li>Wellness coaching</li><li>Holistic health integration</li></ul>",
             "philosophy": "<p>Movement and wellness are essential to overall health.</p>",
+            "cta_text": "Learn More",
             "position_x": "80",
             "position_y": "75"
           }
