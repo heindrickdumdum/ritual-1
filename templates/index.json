@@ -983,6 +983,10 @@
         "show_contact_card": true,
         "contact_title": "Email support",
         "contact_email": "support@yourbrand.com",
+        "show_contact_link": true,
+        "contact_link_heading": "Don't see your question?",
+        "contact_link_text": "Ask Us",
+        "contact_link_url": "",
         "title_font_size_mobile": 24,
         "title_font_weight_mobile": "700",
         "title_line_height_mobile": "",
@@ -1017,6 +1021,63 @@
         "padding-block-start-mobile": 65,
         "padding-block-end-mobile": 65
       }
+    },
+    "community_mWbgek": {
+      "type": "community",
+      "blocks": {
+        "community_item_Ve9Ct9": {
+          "type": "community_item",
+          "settings": {
+            "tag": "#hair-health",
+            "title": "Does Hydration Affect Hair Growth?"
+          }
+        },
+        "community_item_kqLBDq": {
+          "type": "community_item",
+          "settings": {
+            "tag": "#scalp-care",
+            "title": "#scalp-care"
+          }
+        },
+        "community_item_H6ABrU": {
+          "type": "community_item",
+          "settings": {
+            "tag": "#hair-science",
+            "title": "How Scalp Therapy Can Improve Hair Density"
+          }
+        }
+      },
+      "block_order": [
+        "community_item_Ve9Ct9",
+        "community_item_kqLBDq",
+        "community_item_H6ABrU"
+      ],
+      "name": "Community Section",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "title": "Learn More and Support Your Hair Growth Journey",
+        "description": "Strengthen your routine with expert-backed guidance, hair science insights, and real growth strategies.",
+        "button_text": "Join the Ritual Community",
+        "button_link": "",
+        "title_font_size": 40,
+        "title_font_weight": "",
+        "title_line_height": "",
+        "title_font_size_mobile": 28,
+        "title_font_weight_mobile": "",
+        "title_line_height_mobile": "",
+        "description_font_size": 18,
+        "description_font_weight": "",
+        "description_line_height": "",
+        "description_font_size_mobile": 16,
+        "description_font_weight_mobile": "",
+        "description_line_height_mobile": "",
+        "item_title_font_size": 16,
+        "item_title_font_size_mobile": 15,
+        "padding-block-start": 100,
+        "padding-block-end": 100,
+        "padding-block-start-mobile": 65,
+        "padding-block-end-mobile": 65
+      }
     }
   },
   "order": [
@@ -1030,6 +1091,7 @@
     "team_BrVXLJ",
     "customer_reviews_3LGy3J",
     "faq_section_7zEPdk",
-    "personalized_care_tJ7GnD"
+    "personalized_care_tJ7GnD",
+    "community_mWbgek"
   ]
 }
