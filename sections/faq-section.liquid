@@ -348,16 +348,17 @@
         {%- endif -%}
 
 
-        <div class="faq-section__contact-link">
-          Don't see your question? <a href="mailto:{{ section.settings.contact_email }}">
-            Ask Us
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M23.3333 14L4.66661 14" stroke="#1E5B57" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M17.5 19.8337C17.5 19.8337 23.3332 15.5375 23.3333 14.0003C23.3333 12.4631 17.4999 8.16699 17.4999 8.16699" stroke="#1E5B57" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-
-          </a>
-        </div>
+        {%- if section.settings.show_contact_link -%}
+          <div class="faq-section__contact-link">
+            {{ section.settings.contact_link_heading }} <a href="{% if section.settings.contact_link_url != blank %}{{ section.settings.contact_link_url }}{% else %}mailto:{{ section.settings.contact_email }}{% endif %}">
+              {{ section.settings.contact_link_text }}
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M23.3333 14L4.66661 14" stroke="#1E5B57" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17.5 19.8337C17.5 19.8337 23.3332 15.5375 23.3333 14.0003C23.3333 12.4631 17.4999 8.16699 17.4999 8.16699" stroke="#1E5B57" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        {%- endif -%}
       </div>
 
       <div class="faq-section__right">
@@ -463,6 +464,34 @@
       "id": "contact_email",
       "label": "Contact email",
       "default": "support@yourbrand.com"
+    },
+    {
+      "type": "header",
+      "content": "Contact Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_contact_link",
+      "label": "Show contact link",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "contact_link_heading",
+      "label": "Contact link heading",
+      "default": "Don't see your question?"
+    },
+    {
+      "type": "text",
+      "id": "contact_link_text",
+      "label": "Contact link text",
+      "default": "Ask Us"
+    },
+    {
+      "type": "url",
+      "id": "contact_link_url",
+      "label": "Contact link URL (optional)",
+      "info": "Leave blank to use email address instead"
     },
     {
       "type": "header",
