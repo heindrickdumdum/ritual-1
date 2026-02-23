@@ -293,7 +293,10 @@
           "settings": {
             "step_label": "Step 1",
             "title": "Tell Us About Yourself",
-            "description": "Complete a short consultation form about your health goals and medical history"
+            "description": "Complete a short consultation form about your health goals and medical history",
+            "image_1": "shopify://shop_images/93f110ebab316aac42418085ed870b7cdcf4c627.png",
+            "image_2": "shopify://shop_images/uifaces-human-avatar.jpg",
+            "image_3": "shopify://shop_images/4240806b872670d82295b502afe3ec8c7e7098e2.png"
           }
         },
         "step_fWF87D": {
@@ -301,7 +304,9 @@
           "settings": {
             "step_label": "Step 2",
             "title": "Review by Medical Team",
-            "description": "Licensed healthcare providers review your information and create a personalized plan"
+            "description": "Licensed healthcare providers review your information and create a personalized plan",
+            "image_1": "shopify://shop_images/1cdef0657f45d3128f729f078ae13cc177047172.png",
+            "image_2": "shopify://shop_images/uifaces-human-avatar.jpg"
           }
         },
         "step_6wEiCA": {
@@ -309,7 +314,9 @@
           "settings": {
             "step_label": "Step 3",
             "title": "Delivered to Your Door",
-            "description": "Receive your treatment discreetly with ongoing support from our care team"
+            "description": "Receive your treatment discreetly with ongoing support from our care team",
+            "image_1": "shopify://shop_images/4240806b872670d82295b502afe3ec8c7e7098e2.png",
+            "image_2": "shopify://shop_images/93f110ebab316aac42418085ed870b7cdcf4c627.png"
           }
         }
       },
