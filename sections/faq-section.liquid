@@ -29,6 +29,7 @@
   #shopify-section-{{ section.id }} .faq-section__title {
     font-weight: 500;
     margin-bottom: 0;
+    max-width: 430px;
   }
 
   #shopify-section-{{ section.id }} .faq-section__title p {
@@ -177,6 +178,7 @@
     color: #535862;
   }
 
+  #shopify-section-{{ section.id }} .faq-section__wrapper > .faq-section__contact-link,
   #shopify-section-{{ section.id }} .faq-section__wrapper > .faq-section__contact-card {
     display: none;
   }
@@ -214,8 +216,9 @@
       grid-template-columns: 1fr;
       gap: 2.5rem;
     }
-
-    #shopify-section-{{ section.id }} .faq-section__left .faq-section__contact-card {
+    
+    #shopify-section-{{ section.id }} .faq-section__left .faq-section__contact-card,
+    #shopify-section-{{ section.id }} .faq-section__left .faq-section__contact-link {
       display: none;
     }
   }
@@ -235,6 +238,7 @@
       gap: 1.5rem;
      }
 
+    #shopify-section-{{ section.id }} .faq-section__wrapper > .faq-section__contact-link,
     #shopify-section-{{ section.id }} .faq-section__wrapper > .faq-section__contact-card {
       display: inline-flex;
       padding: 24px 22px;
@@ -406,6 +410,17 @@
           </div>
       {%- endif -%}
 
+      {%- if section.settings.show_contact_link -%}
+        <div class="faq-section__contact-link">
+          {{ section.settings.contact_link_heading }} <a href="{% if section.settings.contact_link_url != blank %}{{ section.settings.contact_link_url }}{% else %}mailto:{{ section.settings.contact_email }}{% endif %}">
+            {{ section.settings.contact_link_text }}
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M23.3333 14L4.66661 14" stroke="#1E5B57" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M17.5 19.8337C17.5 19.8337 23.3332 15.5375 23.3333 14.0003C23.3333 12.4631 17.4999 8.16699 17.4999 8.16699" stroke="#1E5B57" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      {%- endif -%}
     </div>
   </div>
 </div>
