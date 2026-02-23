@@ -143,15 +143,15 @@
                           {%- endif -%}
                         </div>
 
-                        <div class="team-section__modal-footer">
-                          {%- if block.settings.cta_link != blank -%}
-                            <a href="{{ block.settings.cta_link }}" class="team-section__modal-cta">{{ block.settings.cta_text }}</a>
-                          {%- endif -%}
-                        </div>
+                        
                       </div>
                     </div>
                     
-                   
+                    <div class="team-section__modal-footer">
+                      {%- if block.settings.cta_link != blank -%}
+                        <a href="{{ block.settings.cta_link }}" class="team-section__modal-cta">{{ block.settings.cta_text }}</a>
+                      {%- endif -%}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -340,6 +340,12 @@
     transform: translateX(0);
   }
 
+  #shopify-section-{{ section.id }} .team-section__modal-content-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
   #shopify-section-{{ section.id }} .team-section__modal-content {
     {% comment %} padding: 2.5rem 2rem;
     position: relative;
@@ -347,10 +353,14 @@
     flex-direction: column;
     height: 100%;
     overflow-y: auto; {% endcomment %}
-    padding: 32px 20px 40px;
+    padding: 32px 20px 0;
     overflow-y: auto;
-    height: auto;
-    /*max-height: calc(100vh - 239px);*/
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .team-section__modal-footer {
+    padding: 20px 20px 20px 20px;
+    flex-shrink: 0;
   }
 
   #shopify-section-{{ section.id }} .team-section__modal-close {
