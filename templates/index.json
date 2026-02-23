@@ -979,7 +979,7 @@
       ],
       "name": "FAQ Section",
       "settings": {
-        "title": "<p>Got Questions?</p><p>We've Got Answers.</p>",
+        "title": "<p>Got Questions? We've Got Answers.</p>",
         "show_contact_card": true,
         "contact_title": "Email support",
         "contact_email": "support@yourbrand.com",
