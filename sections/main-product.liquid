@@ -5,21 +5,24 @@
     --section-background-color: {{ section.settings.background_color }};
   }
 
-  #shopify-section-{{ section.id }} .main-product {
+  #shopify-section-{{ section.id }} .main-product{
     padding-top: var(--section-padding-top);
     padding-bottom: var(--section-padding-bottom);
     background-color: var(--section-background-color);
   }
 
   #shopify-section-{{ section.id }} .main-product__container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 4rem;
     align-items: start;
     width: 100%;
-    max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__container > div {
+    flex: 1 1 50%;
+    min-width: 0;
   }
 
   #shopify-section-{{ section.id }} .main-product__image {
@@ -27,8 +30,16 @@
     height: auto;
     display: block;
     border-radius: 12px;
+    object-fit: cover;
+    background-size: cover;
     overflow: hidden;
     background-color: #f0f0f0;
+    aspect-ratio: 1;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__container > div:first-child {
+    position: sticky;
+    top: 120px;
   }
 
   #shopify-section-{{ section.id }} .main-product__title {
@@ -76,6 +87,212 @@
     color: #535862;
   }
 
+  #shopify-section-{{ section.id }} .main-product__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__content {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    color: #181D27;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__detail-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__detail-label {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 150%;
+    color: #181D27;
+  }
+
+  #shopify-section-{{ section.id }} .main-product__detail-value {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 150%;
+    color: #535862;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz-wrapper {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz-button {
+    background-color: #2a7f7e;
+    border-radius: 12px;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz-button:hover {
+    background-color: #235957;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz-button__heading {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz-button__items {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz-button__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #181d27;
+    font-size: 14px;
+    line-height: 150%;
+    font-weight: 500;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz-button__icon {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz-button__icon img {
+    width: 100%;
+    height: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-row__heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-row__heading-main {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 150%;
+    color: #181d27;
+    letter-spacing: 2%;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-row__heading-sub {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 135%;
+    color: #535862;
+    letter-spacing: 0;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-row__wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-row__carousel {
+    width: 100%;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    padding-bottom: 8px;
+    user-select: none;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-row__carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-row__carousel:active {
+    cursor: grabbing;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-row__item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+    text-align: center;
+    flex: 0 0 calc((100% - 40px) / 3.1);
+    min-width: 160px;
+    background-color: #EEEDE7;
+    border-radius: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-row__image {
+    width: 100%;
+    aspect-ratio: 1.5/1;
+    background-color: #E3E3DE;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-row__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-row__title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #181d27;
+    margin: 0;
+  }
+
   @media (max-width: 1024px) {
     #shopify-section-{{ section.id }} .main-product__container {
       grid-template-columns: 1fr;
@@ -103,7 +320,7 @@
     }
   }
 {%- endstyle -%}
-<div class="main-product">
+<div class="main-product section">
   <div class="main-product__container">
     <!-- Product Image -->
     <div>
@@ -118,20 +335,118 @@
       {% endif %}
     </div>
 
-    <!-- Product Title -->
-    <div>
-      <p class="main-product__label">Your Personalized</p>
-      <h1 class="main-product__title">{{ product.title }}</h1>
-      {% if product.metafields.custom.ratings %}
-        <div class="main-product__rating">
-          <span class="main-product__stars">★★★★★</span>
-          <span class="main-product__rating-value">{{ product.metafields.custom.ratings }}/5</span>
-          <span class="main-product__review-count">({{ product.metafields.custom.review_count }}+ Reviews)</span>
+    <!-- Product Content -->
+    <div class="main-product__content">
+      <div class="main-product__header">
+        <p class="main-product__label">Your Personalized</p>
+        <h1 class="main-product__title">{{ product.title }}</h1>
+        {% if product.metafields.custom.ratings %}
+          <div class="main-product__rating">
+            <span class="main-product__stars">★★★★★</span>
+            <span class="main-product__rating-value">{{ product.metafields.custom.ratings }}/5</span>
+            <span class="main-product__review-count">({{ product.metafields.custom.review_count }}+ Reviews)</span>
+          </div>
+        {% endif %}
+      </div>
+      <div class="main-product__details">
+        {% if product.description %}
+          <p class="main-product__description">{{ product.description | strip_html | truncatewords: 30 }}</p>
+        {% endif %}
+
+        {% if product.metafields.custom.size %}
+          <div class="main-product__detail-row">
+            <span class="main-product__detail-label">Size:</span>
+            <span class="main-product__detail-value">{{ product.metafields.custom.size }}</span>
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Take Quiz Section -->
+      <div class="take-quiz-wrapper">
+        <div class="take-quiz-button">
+          <h3 class="take-quiz-button__heading">Take the Quiz</h3>
         </div>
-      {% endif %}
+        <div class="take-quiz-button__items">
+          <div class="take-quiz-button__item">
+            <div class="take-quiz-button__icon">
+              <img src="{{ 'icon-star.svg' | asset_url }}" alt="Money back" width="18" height="18">
+            </div>
+            <span>60-day money-back</span>
+          </div>
+          <div class="take-quiz-button__item">
+            <div class="take-quiz-button__icon">
+              <img src="{{ 'icon-truck.svg' | asset_url }}" alt="Free shipping" width="18" height="18">
+            </div>
+            <span>Free shipping & returns</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Benefits Row -->
+      <div class="benefits-row">
+        <div class="benefits-row__heading">
+          <span class="benefits-row__heading-main">Benefits</span>
+          <span class="benefits-row__heading-sub">(Result 6-12 months)</span>
+        </div>
+
+        <div class="benefits-row__wrapper">
+          <div class="benefits-row__carousel" id="benefits-carousel-{{ section.id }}">
+            <div class="benefits-row__item">
+              <div class="benefits-row__image"></div>
+              <h3 class="benefits-row__title">Thinning (Women)</h3>
+            </div>
+            <div class="benefits-row__item">
+              <div class="benefits-row__image"></div>
+              <h3 class="benefits-row__title">Bald Spots (Women)</h3>
+            </div>
+            <div class="benefits-row__item">
+              <div class="benefits-row__image"></div>
+              <h3 class="benefits-row__title">Receding Hairline (Women)</h3>
+            </div>
+            <div class="benefits-row__item">
+              <div class="benefits-row__image"></div>
+              <h3 class="benefits-row__title">Hair Loss (Women)</h3>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+  setTimeout(function () {
+    const carousel = document.getElementById('benefits-carousel-{{ section.id }}');
+    if (!carousel) return;
+
+    // Mouse drag support for desktop
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    carousel.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+      isDown = false;
+    });
+
+    carousel.addEventListener('mouseup', () => {
+      isDown = false;
+    });
+
+    carousel.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      carousel.scrollLeft = scrollLeft - walk;
+    });
+  }, 100);
+</script>
 
 {% schema %}
 {
