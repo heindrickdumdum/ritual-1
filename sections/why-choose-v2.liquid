@@ -93,14 +93,23 @@
 
   #shopify-section-{{ section.id }} .why-choose-card__image--full-height {
     /* height: 100%; */
+    height: auto;
     flex: 1;
   }
+
+ 
 
   #shopify-section-{{ section.id }} .why-choose-card__image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+
+  #shopify-section-{{ section.id }} .why-choose-card__image--full-height img {
+    height: auto;
+    width: 100%;
+    object-fit: contain;
+   }
 
   #shopify-section-{{ section.id }} .why-choose-testimonial {
     background: #F7F7F5;
