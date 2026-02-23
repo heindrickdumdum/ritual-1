@@ -402,6 +402,7 @@
         "step_8XtrHf",
         "step_iDxwiV"
       ],
+      "disabled": true,
       "name": "How It Works",
       "settings": {
         "title": "How It Works",
@@ -558,6 +559,7 @@
         "feature_rCriPF",
         "feature_9MjRHd"
       ],
+      "disabled": true,
       "name": "Price Section",
       "settings": {
         "background_color": "#f7f7f4",
@@ -1008,6 +1010,7 @@
     },
     "personalized_care_tJ7GnD": {
       "type": "personalized-care",
+      "disabled": true,
       "name": "Personalized Care",
       "settings": {
         "heading": "Personalized Care at Every Step",
