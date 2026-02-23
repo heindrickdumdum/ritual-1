@@ -108,6 +108,9 @@
     flex-direction: column;
     gap: 1rem;
     flex: 1;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
   }
 
   #shopify-section-{{ section.id }} .how-it-works__main-image {
@@ -115,10 +118,11 @@
     aspect-ratio: 4/3;
     background: #E5E5E5;
     border-radius: 12px;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
   }
 
   #shopify-section-{{ section.id }} .how-it-works__main-image img {
@@ -131,6 +135,10 @@
     display: flex;
     gap: 0.75rem;
     flex-wrap: wrap;
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    z-index: 10;
   }
 
   #shopify-section-{{ section.id }} .how-it-works__thumbnail {
@@ -140,9 +148,10 @@
     border-radius: 8px;
     cursor: pointer;
     overflow: hidden;
-    border: 2px solid transparent;
     transition: border-color 0.2s ease;
     flex-shrink: 0;
+    border: 0;
+    padding: 0;
   }
 
   #shopify-section-{{ section.id }} .how-it-works__thumbnail img {
@@ -254,25 +263,25 @@
                 <div class="how-it-works__thumbnails">
                   {%- if block.settings.image_1 != blank -%}
                     <button class="how-it-works__thumbnail how-it-works__thumbnail--active" data-thumbnail="{{ forloop.index }}-1" aria-label="View image 1">
-                      <img src="{{ block.settings.image_1 | image_url: width: 80 }}" alt="{{ block.settings.title }}" loading="lazy">
+                      <img src="{{ block.settings.image_1 | image_url: width: 500 }}" alt="{{ block.settings.title }}" loading="lazy">
                     </button>
                   {%- endif -%}
                   
                   {%- if block.settings.image_2 != blank -%}
                     <button class="how-it-works__thumbnail" data-thumbnail="{{ forloop.index }}-2" aria-label="View image 2">
-                      <img src="{{ block.settings.image_2 | image_url: width: 80 }}" alt="{{ block.settings.title }}" loading="lazy">
+                      <img src="{{ block.settings.image_2 | image_url: width: 500 }}" alt="{{ block.settings.title }}" loading="lazy">
                     </button>
                   {%- endif -%}
                   
                   {%- if block.settings.image_3 != blank -%}
                     <button class="how-it-works__thumbnail" data-thumbnail="{{ forloop.index }}-3" aria-label="View image 3">
-                      <img src="{{ block.settings.image_3 | image_url: width: 80 }}" alt="{{ block.settings.title }}" loading="lazy">
+                      <img src="{{ block.settings.image_3 | image_url: width: 500 }}" alt="{{ block.settings.title }}" loading="lazy">
                     </button>
                   {%- endif -%}
 
                   {%- if block.settings.image_4 != blank -%}
                     <button class="how-it-works__thumbnail" data-thumbnail="{{ forloop.index }}-4" aria-label="View image 4">
-                      <img src="{{ block.settings.image_4 | image_url: width: 80 }}" alt="{{ block.settings.title }}" loading="lazy">
+                      <img src="{{ block.settings.image_4 | image_url: width: 500 }}" alt="{{ block.settings.title }}" loading="lazy">
                     </button>
                   {%- endif -%}
                 </div>
