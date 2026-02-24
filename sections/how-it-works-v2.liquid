@@ -61,6 +61,8 @@
     gap: 2rem;
   }
 
+  #shopify-section-{{ section.id }} .how-it-works__carousel {\n    display: block;\n  }\n\n  #shopify-section-{{ section.id }} .how-it-works__carousel-nav {\n    display: none;\n  }
+
   #shopify-section-{{ section.id }} .how-it-works__step {
     display: flex;
     flex-direction: column;
@@ -168,6 +170,23 @@
     border-color: #1f5952;
   }
 
+  #shopify-section-{{ section.id }} .how-it-works__progress {
+    height: 2px;
+    background: #E5E5E0;
+    border-radius: 1px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .how-it-works__progress-bar {
+    height: 100%;
+    background: #181D27;
+    transition: width 0.3s ease;
+    width: 0%;
+  }
+
+  #shopify-section-{{ section.id }} .how-it-works__carousel {\n    display: block;\n  }\n\n  #shopify-section-{{ section.id }} .how-it-works-carousel__nav--wrapper {\n    display: none;\n  }\n\n  #shopify-section-{{ section.id }} .how-it-works__progress {\n    display: none;\n  }
+
   /* Tablet Styles */
   @media (max-width: 989px) {
     #shopify-section-{{ section.id }} .how-it-works__steps {
@@ -202,8 +221,19 @@
     }
 
     #shopify-section-{{ section.id }} .how-it-works__steps {
-      grid-template-columns: 1fr;
-      gap: 2rem;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 0.75rem;
+      /* overflow-x: auto;
+      overflow-y: hidden; */
+      overflow: hidden;
+      scroll-behavior: smooth;
+      margin: 0 -20px;
+      padding: 0 20px;
+    }
+
+    #shopify-section-{{ section.id }} .how-it-works__step {
+      flex: 0 0 360px;
     }
 
     #shopify-section-{{ section.id }} .how-it-works__step-title {
@@ -216,10 +246,54 @@
     }
     {% endif %}
 
-    #shopify-section-{{ section.id }} .how-it-works__thumbnail {
-      width: 50px;
-      height: 50px;
+    #shopify-section-{{ section.id }} .how-it-works__carousel-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
     }
+
+    #shopify-section-{{ section.id }} .how-it-works-carousel__nav--wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .how-it-works-carousel__nav {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #4A9B8E;
+      border: none;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease;
+      z-index: 2;
+    }
+
+    #shopify-section-{{ section.id }} .how-it-works-carousel__nav:hover {
+      opacity: 0.9;
+    }
+
+    #shopify-section-{{ section.id }} .how-it-works-carousel__nav:disabled {
+      cursor: not-allowed;
+      background: #F7F7F4;
+      border: 1px solid #D5D7DA;
+      color: #181D27;
+    }
+
+    #shopify-section-{{ section.id }} .how-it-works-carousel__nav svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .how-it-works__carousel {\n      display: block;\n    }\n\n    #shopify-section-{{ section.id }} .how-it-works-carousel__nav--wrapper {\n      display: flex;\n    }\n\n    #shopify-section-{{ section.id }} .how-it-works__progress {\n      display: block;\n    }
   }
 {%- endstyle -%}
 
@@ -236,7 +310,8 @@
       </div>
     {%- endif -%}
 
-    <div class="how-it-works__steps">
+    <div class="how-it-works__carousel" data-carousel>
+      <div class="how-it-works__steps" data-carousel-track>
       {%- for block in section.blocks -%}
         {%- if block.type == 'step' -%}
           <div class="how-it-works__step" {{ block.shopify_attributes }} data-step="{{ forloop.index }}">
@@ -290,19 +365,44 @@
           </div>
         {%- endif -%}
       {%- endfor -%}
+      </div>
+      
+      <div class="how-it-works-carousel__nav--wrapper">
+        <div>
+          <button class="how-it-works-carousel__nav how-it-works-carousel__nav--prev" data-carousel-prev aria-label="Previous step">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="how-it-works__progress">
+          <div class="how-it-works__progress-bar" data-carousel-progress></div>
+        </div>
+
+        <div>
+          <button class="how-it-works-carousel__nav how-it-works-carousel__nav--next" data-carousel-next aria-label="Next step">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const thumbnails = document.querySelectorAll('.how-it-works__thumbnail');
+    const section = document.querySelector('#shopify-section-{{ section.id }}');
+    if (!section) return;
+
+    // Handle thumbnail clicks to switch main image
+    const thumbnails = section.querySelectorAll('.how-it-works__thumbnail');
     
     thumbnails.forEach(thumbnail => {
       thumbnail.addEventListener('click', function() {
         const thumbnailId = this.dataset.thumbnail;
         const [stepIndex, imageIndex] = thumbnailId.split('-');
-        const mainImage = document.querySelector(`[data-main-image="${stepIndex}"]`);
+        const mainImage = section.querySelector(`[data-main-image="${stepIndex}"]`);
         
         if (mainImage) {
           // Get the clicked thumbnail's image
@@ -315,6 +415,56 @@
           this.classList.add('how-it-works__thumbnail--active');
         }
       });
+    });
+
+    // Handle steps carousel on mobile
+    const carousels = section.querySelectorAll('[data-carousel]');
+    
+    carousels.forEach(carousel => {
+      const track = carousel.querySelector('[data-carousel-track]');
+      const prevBtn = carousel.querySelector('[data-carousel-prev]');
+      const nextBtn = carousel.querySelector('[data-carousel-next]');
+      const progressBar = carousel.querySelector('[data-carousel-progress]');
+      const steps = track.querySelectorAll('.how-it-works__step');
+      
+      let currentIndex = 0;
+      
+      function calculateStepWidth() {
+        if (steps.length === 0) return 0;
+        const stepWidth = steps[0].offsetWidth;
+        const trackStyle = window.getComputedStyle(track);
+        const gap = parseFloat(trackStyle.gap) || 6;
+        return stepWidth + gap;
+      }
+      
+      function updateCarousel() {
+        const stepWidth = calculateStepWidth();
+        track.scrollTo({
+          left: currentIndex * stepWidth,
+          behavior: 'smooth'
+        });
+        
+        // Update progress bar
+        const progress = steps.length > 0 ? ((currentIndex + 1) / steps.length) * 100 : 0;
+        progressBar.style.width = `${progress}%`;
+      }
+      
+      prevBtn.addEventListener('click', function() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateCarousel();
+        }
+      });
+      
+      nextBtn.addEventListener('click', function() {
+        if (currentIndex < steps.length - 1) {
+          currentIndex++;
+          updateCarousel();
+        }
+      });
+      
+      // Initialize progress bar
+      updateCarousel();
     });
   });
 </script>
