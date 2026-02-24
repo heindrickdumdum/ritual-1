@@ -1,0 +1,175 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-background-color: {{ section.settings.background_color }};
+    --section-text-color: {{ section.settings.text_color }};
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  #shopify-section-{{ section.id }} .word-strip {
+    background-color: var(--section-background-color);
+    padding: var(--section-padding-top) 0 var(--section-padding-bottom) 0;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .word-strip__container {
+    display: flex;
+    gap: 40px;
+    white-space: nowrap;
+    animation: scroll-left 30s linear infinite;
+    padding: 0 40px;
+  }
+
+  #shopify-section-{{ section.id }} .word-strip__item {
+    flex-shrink: 0;
+    font-size: {{ section.settings.font_size }}px;
+    color: var(--section-text-color);
+    letter-spacing: 1px;
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} .word-strip__item {
+      font-size: {{ section.settings.font_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .word-strip__container {
+      gap: 24px;
+      padding: 0 16px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="word-strip section">
+  <div class="word-strip__container" id="word-strip-{{ section.id }}">
+    {%- for block in section.blocks -%}
+      <span class="word-strip__item">{{ block.settings.text }}</span>
+    {%- endfor -%}
+    <!-- Duplicate items for seamless loop -->
+    {%- for block in section.blocks -%}
+      <span class="word-strip__item">{{ block.settings.text }}</span>
+    {%- endfor -%}
+  </div>
+</div>
+
+<script>
+  // Ensure seamless scrolling by duplicating content
+  setTimeout(function () {
+    const container = document.getElementById('word-strip-{{ section.id }}');
+    if (!container) return;
+
+    // Clone the content for seamless loop
+    const items = container.querySelectorAll('.word-strip__item');
+    const itemCount = items.length / 2; // Already duplicated once
+
+    // Reset if animation ends
+    container.addEventListener('animationiteration', () => {
+      // Animation repeats seamlessly
+    });
+  }, 100);
+</script>
+
+{% schema %}
+{
+  "name": "Word Strip",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#1b5f5a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "default": 20
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "default": 20
+    },
+    {
+      "type": "number",
+      "id": "font_size",
+      "label": "Font Size (px)",
+      "default": 16
+    },
+    {
+      "type": "number",
+      "id": "font_size_mobile",
+      "label": "Font Size Mobile (px)",
+      "default": 14
+    }
+  ],
+  "blocks": [
+    {
+      "type": "word",
+      "name": "Word",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Word"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Word Strip",
+      "category": "Text",
+      "blocks": [
+        {
+          "type": "word",
+          "settings": {
+            "text": "Clean Science"
+          }
+        },
+        {
+          "type": "word",
+          "settings": {
+            "text": "Vegan Certified"
+          }
+        },
+        {
+          "type": "word",
+          "settings": {
+            "text": "Backed by Science"
+          }
+        },
+        {
+          "type": "word",
+          "settings": {
+            "text": "No Synthetic Fragrance"
+          }
+        },
+        {
+          "type": "word",
+          "settings": {
+            "text": "Proven Hair Growth Formula"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
