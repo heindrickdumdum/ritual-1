@@ -9,6 +9,15 @@
  */
 {
   "sections": {
+    "main_product_nAM6tJ": {
+      "type": "main-product",
+      "name": "Main Product",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "background_color": "#ffffff"
+      }
+    },
     "main": {
       "type": "product-information",
       "blocks": {
@@ -429,19 +438,69 @@
         "padding-block-end-mobile": 65
       }
     },
-    "main_product_nAM6tJ": {
-      "type": "main-product",
-      "name": "Main Product",
+    "word_strip_Hk7YtV": {
+      "type": "word-strip",
+      "blocks": {
+        "word_gcGcjd": {
+          "type": "word",
+          "settings": {
+            "text": "Clean Science"
+          }
+        },
+        "word_FfjMap": {
+          "type": "word",
+          "settings": {
+            "text": "Vegan Certified"
+          }
+        },
+        "word_E939FD": {
+          "type": "word",
+          "settings": {
+            "text": "Backed by Science"
+          }
+        },
+        "word_RCJrwn": {
+          "type": "word",
+          "settings": {
+            "text": "No Synthetic Fragrance"
+          }
+        },
+        "word_QQJ9Dw": {
+          "type": "word",
+          "settings": {
+            "text": "Proven Hair Growth Formula"
+          }
+        },
+        "word_Qb6TYD": {
+          "type": "word",
+          "settings": {
+            "text": "Proven Results"
+          }
+        }
+      },
+      "block_order": [
+        "word_gcGcjd",
+        "word_FfjMap",
+        "word_E939FD",
+        "word_RCJrwn",
+        "word_QQJ9Dw",
+        "word_Qb6TYD"
+      ],
+      "name": "Word Strip",
       "settings": {
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "background_color": "#ffffff"
+        "background_color": "#1b5f5a",
+        "text_color": "#ffffff",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "font_size": 16,
+        "font_size_mobile": 14
       }
     }
   },
   "order": [
     "main_product_nAM6tJ",
     "main",
-    "product_recommendations_qggXJq"
+    "product_recommendations_qggXJq",
+    "word_strip_Hk7YtV"
   ]
 }
