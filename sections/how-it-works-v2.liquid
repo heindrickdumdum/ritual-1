@@ -56,8 +56,8 @@
   {% endif %}
 
   #shopify-section-{{ section.id }} .how-it-works__steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    /* grid-template-columns: repeat(3, 1fr); */
     gap: 2rem;
   }
 
@@ -67,6 +67,7 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    flex: 0 0 432px;
   }
 
   #shopify-section-{{ section.id }} .how-it-works__step-label {
@@ -187,16 +188,8 @@
 
   #shopify-section-{{ section.id }} .how-it-works__carousel {\n    display: block;\n  }\n\n  #shopify-section-{{ section.id }} .how-it-works-carousel__nav--wrapper {\n    display: none;\n  }\n\n  #shopify-section-{{ section.id }} .how-it-works__progress {\n    display: none;\n  }
 
-  /* Tablet Styles */
+  /* Tablet & Mobile Styles */
   @media (max-width: 989px) {
-    #shopify-section-{{ section.id }} .how-it-works__steps {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-  }
-
-  /* Mobile Styles */
-  @media (max-width: 749px) {
     #shopify-section-{{ section.id }} {
       --section-padding-top: var(--section-padding-top-mobile);
       --section-padding-bottom: var(--section-padding-bottom-mobile);
@@ -233,7 +226,7 @@
     }
 
     #shopify-section-{{ section.id }} .how-it-works__step {
-      flex: 0 0 360px;
+      flex: 0 0 432px;
     }
 
     #shopify-section-{{ section.id }} .how-it-works__step-title {
@@ -294,6 +287,12 @@
     }
 
     #shopify-section-{{ section.id }} .how-it-works__carousel {\n      display: block;\n    }\n\n    #shopify-section-{{ section.id }} .how-it-works-carousel__nav--wrapper {\n      display: flex;\n    }\n\n    #shopify-section-{{ section.id }} .how-it-works__progress {\n      display: block;\n    }
+  }
+
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} .how-it-works__step {
+      flex: 0 0 360px;
+    }
   }
 {%- endstyle -%}
 
@@ -447,6 +446,10 @@
         // Update progress bar
         const progress = steps.length > 0 ? ((currentIndex + 1) / steps.length) * 100 : 0;
         progressBar.style.width = `${progress}%`;
+        
+        // Update button states
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex >= steps.length - 1;
       }
       
       prevBtn.addEventListener('click', function() {
