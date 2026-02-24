@@ -57,16 +57,15 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #717680;
-    margin: 0 0 8px 0;
+      margin: 0;
   }
 
   #shopify-section-{{ section.id }} .main-product__rating {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 4px;
     font-size: 14px;
     color: #535862;
-    margin-top: 20px;
   }
 
   #shopify-section-{{ section.id }} .main-product__stars {
@@ -90,7 +89,7 @@
   #shopify-section-{{ section.id }} .main-product__header {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 20px;
   }
 
   #shopify-section-{{ section.id }} .main-product__content {
@@ -143,8 +142,8 @@
   }
 
   #shopify-section-{{ section.id }} .take-quiz-button {
-    background-color: #2a7f7e;
-    border-radius: 12px;
+    background-color: #26736D;
+    border-radius: 8px;
     padding: 16px 24px;
     display: flex;
     align-items: center;
@@ -293,9 +292,222 @@
     margin: 0;
   }
 
+  #shopify-section-{{ section.id }} .pricing-row {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #E3E3DE;
+    border-bottom: 1px solid #E3E3DE;
+    padding: 16px 0;
+  }
+
+  #shopify-section-{{ section.id }} .pricing-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .pricing-item__label {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 150%;
+    color: #181D27;
+  }
+
+  #shopify-section-{{ section.id }} .pricing-item__price {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 150%;
+    color: #535862;
+  }
+
+  #shopify-section-{{ section.id }} .pricing-item__price-with-icon {
+    display: flex;
+    align-items: center;
+    height: 16px;
+    width: fit-content;
+    gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .accordion-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid #E3E3DE;
+    border-bottom: 1px solid #E3E3DE;
+  }
+
+  #shopify-section-{{ section.id }} .accordion-item {
+    border-bottom: 1px solid #E3E3DE;
+    padding: 16px 20px;
+  }
+
+  #shopify-section-{{ section.id }} .accordion-item:last-child {
+    border-bottom: none;
+  }
+
+  #shopify-section-{{ section.id }} .accordion-item__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+    background: none;
+    border: none;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 150%;
+    color: #181d27;
+    text-align: left;
+  }
+
+  #shopify-section-{{ section.id }} .accordion-item__header:hover {
+    color: #2a7f7e;
+  }
+
+  #shopify-section-{{ section.id }} .accordion-item__toggle {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #535862;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .accordion-item__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    font-size: 14px;
+    line-height: 150%;
+    margin-top: 12px;
+    color: #535862;
+  }
+
+  #shopify-section-{{ section.id }} .accordion-item__content.active {
+    max-height: 500px;
+  }
+
+  #shopify-section-{{ section.id }} .accordion-list {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .accordion-list__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    flex: 0 1 calc(50% - 8px);
+  }
+
+  #shopify-section-{{ section.id }} .accordion-list__item::before {
+    content: "•";
+    color: #2a7f7e;
+    font-weight: bold;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .videos-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .videos-row__heading {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 150%;
+    color: #181d27;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .videos-row__carousel {
+    width: 100%;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    padding-bottom: 8px;
+    user-select: none;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  #shopify-section-{{ section.id }} .videos-row__carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .videos-row__carousel:active {
+    cursor: grabbing;
+  }
+
+  #shopify-section-{{ section.id }} .videos-row__item {
+    position: relative;
+    flex: 0 0 calc((100% - 40px) / 3.1);
+    min-width: 150px;
+    aspect-ratio: 1/1.5;
+    background-color: #E3E3DE;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .videos-row__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .videos-row__play-button {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #E3E3DE;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .videos-row__play-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .videos-row__progress-indicator {
+    width: 100%;
+    height: 4px;
+    background-color: #d0d0d0;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .videos-row__progress-bar {
+    height: 100%;
+    background-color: #181d27;
+    border-radius: 2px;
+    width: 33.33%;
+    transition: left 0.1s ease-out;
+    position: relative;
+  }
+
   @media (max-width: 1024px) {
     #shopify-section-{{ section.id }} .main-product__container {
-      grid-template-columns: 1fr;
+      flex-direction: column;
       gap: 2rem;
     }
 
@@ -311,12 +523,34 @@
     }
 
     #shopify-section-{{ section.id }} .main-product__container {
+      flex-direction: column;
       padding: 0 16px;
-      gap: 1.5rem;
+      gap: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .main-product__container > div:first-child {
+      position: static;
     }
 
     #shopify-section-{{ section.id }} .main-product__title {
-      font-size: 1.5rem;
+      font-size: 32px;
+      line-height: 40px;
+    }
+
+    #shopify-section-{{ section.id }} .main-product__header {
+      gap: 4px;
+    }
+
+    #shopify-section-{{ section.id }} .main-product__title {
+      font-weight: 700;
+    }
+
+    #shopify-section-{{ section.id }} .main-product__content {
+      gap: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .main-product__details {
+      gap: 24px;
     }
   }
 {%- endstyle -%}
@@ -348,6 +582,8 @@
           </div>
         {% endif %}
       </div>
+
+      <!-- Product Details Row -->
       <div class="main-product__details">
         {% if product.description %}
           <p class="main-product__description">{{ product.description | strip_html | truncatewords: 30 }}</p>
@@ -361,7 +597,22 @@
         {% endif %}
       </div>
 
-      <!-- Take Quiz Section -->
+      <!-- Pricing Row -->
+      <div class="pricing-row">
+        <div class="pricing-item">
+          <span class="pricing-item__label">Buy Once</span>
+          <span class="pricing-item__price">$49.00</span>
+        </div>
+        <div class="pricing-item">
+          <span class="pricing-item__label">Subscribe & Save 15%</span>
+          <div class="pricing-item__price-with-icon">
+            <span class="pricing-item__price">$41.65</span>
+            <img src="{{ 'icon-question-mark-circle.svg' | asset_url }}" alt="Question mark" width="16" height="16">
+          </div>
+        </div>
+      </div>
+
+      <!-- Take Quiz Row -->
       <div class="take-quiz-wrapper">
         <div class="take-quiz-button">
           <h3 class="take-quiz-button__heading">Take the Quiz</h3>
@@ -391,23 +642,117 @@
 
         <div class="benefits-row__wrapper">
           <div class="benefits-row__carousel" id="benefits-carousel-{{ section.id }}">
-            <div class="benefits-row__item">
-              <div class="benefits-row__image"></div>
-              <h3 class="benefits-row__title">Thinning (Women)</h3>
-            </div>
-            <div class="benefits-row__item">
-              <div class="benefits-row__image"></div>
-              <h3 class="benefits-row__title">Bald Spots (Women)</h3>
-            </div>
-            <div class="benefits-row__item">
-              <div class="benefits-row__image"></div>
-              <h3 class="benefits-row__title">Receding Hairline (Women)</h3>
-            </div>
-            <div class="benefits-row__item">
-              <div class="benefits-row__image"></div>
-              <h3 class="benefits-row__title">Hair Loss (Women)</h3>
+            {% if product.metafields.custom.benefits %}
+              {% for benefit in product.metafields.custom.benefits.value %}
+                <div class="benefits-row__item">
+                  {% if benefit.image %}
+                    <div class="benefits-row__image">
+                      <img
+                        src="{{ benefit.image | image_url: width: 300 }}"
+                        alt="{{ benefit.title | escape }}"
+                        width="{{ benefit.image.width }}"
+                        height="{{ benefit.image.height }}"
+                      >
+                    </div>
+                  {% else %}
+                    <div class="benefits-row__image"></div>
+                  {% endif %}
+                  <h3 class="benefits-row__title">{{ benefit.title }}</h3>
+                </div>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Accordion Row -->
+      <div class="accordion-row">
+        <div class="accordion-item">
+          <div class="accordion-item__header" data-accordion="accordion-1">
+            <span>Key ingredients</span>
+            <span class="accordion-item__toggle">+</span>
+          </div>
+          <div class="accordion-item__content" id="accordion-1">
+            <div class="accordion-list">
+              {% for ingredient in product.metafields.custom.key_ingredients.value %}
+                <div class="accordion-list__item">{{ ingredient }}</div>
+              {% endfor %}
             </div>
           </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-item__header" data-accordion="accordion-2">
+            <span>How to use?</span>
+            <span class="accordion-item__toggle">+</span>
+          </div>
+          <div class="accordion-item__content" id="accordion-2">
+            {{ product.metafields.custom.how_to_use }}
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-item__header" data-accordion="accordion-3">
+            <span>Clinical study</span>
+            <span class="accordion-item__toggle">+</span>
+          </div>
+          <div class="accordion-item__content" id="accordion-3">
+            {{ product.metafields.custom.clinical_study }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Videos Row -->
+      <div class="videos-row">
+        <p class="videos-row__heading">Loved by over 100,000 satisfied customers.</p>
+        <div class="videos-row__carousel" id="videos-carousel-{{ section.id }}">
+          <div class="videos-row__item">
+            <div class="videos-row__play-button">
+              <img
+                src="{{ 'icon-play-2.svg' | asset_url }}"
+                alt="Play"
+                class="videos-row__play-icon"
+                width="16"
+                height="16"
+              >
+            </div>
+          </div>
+          <div class="videos-row__item">
+            <div class="videos-row__play-button">
+              <img
+                src="{{ 'icon-play-2.svg' | asset_url }}"
+                alt="Play"
+                class="videos-row__play-icon"
+                width="16"
+                height="16"
+              >
+            </div>
+          </div>
+          <div class="videos-row__item">
+            <div class="videos-row__play-button">
+              <img
+                src="{{ 'icon-play-2.svg' | asset_url }}"
+                alt="Play"
+                class="videos-row__play-icon"
+                width="16"
+                height="16"
+              >
+            </div>
+          </div>
+          <div class="videos-row__item">
+            <div class="videos-row__play-button">
+              <img
+                src="{{ 'icon-play-2.svg' | asset_url }}"
+                alt="Play"
+                class="videos-row__play-icon"
+                width="16"
+                height="16"
+              >
+            </div>
+          </div>
+        </div>
+        <div class="videos-row__progress-indicator">
+          <div class="videos-row__progress-bar" id="videos-progress-{{ section.id }}"></div>
         </div>
       </div>
     </div>
@@ -446,6 +791,83 @@
       carousel.scrollLeft = scrollLeft - walk;
     });
   }, 100);
+
+  // Videos carousel drag support
+  setTimeout(function () {
+    const videosCarousel = document.getElementById('videos-carousel-{{ section.id }}');
+    const progressBar = document.getElementById('videos-progress-{{ section.id }}');
+    if (!videosCarousel) return;
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    // Update progress bar (scrollbar style)
+    const updateProgressBar = () => {
+      if (!progressBar) return;
+      const scrollableWidth = videosCarousel.scrollWidth - videosCarousel.clientWidth;
+      const thumbWidth = (videosCarousel.clientWidth / videosCarousel.scrollWidth) * 100;
+      const thumbPosition = (videosCarousel.scrollLeft / videosCarousel.scrollWidth) * 100;
+      progressBar.style.width = thumbWidth + '%';
+      progressBar.style.left = thumbPosition + '%';
+    };
+
+    // Initial progress bar update
+    updateProgressBar();
+
+    videosCarousel.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - videosCarousel.offsetLeft;
+      scrollLeft = videosCarousel.scrollLeft;
+    });
+
+    videosCarousel.addEventListener('mouseleave', () => {
+      isDown = false;
+    });
+
+    videosCarousel.addEventListener('mouseup', () => {
+      isDown = false;
+    });
+
+    videosCarousel.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - videosCarousel.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      videosCarousel.scrollLeft = scrollLeft - walk;
+      updateProgressBar();
+    });
+
+    // Update progress on scroll (for touch and scrollbar)
+    videosCarousel.addEventListener('scroll', () => {
+      updateProgressBar();
+    });
+  }, 100);
+
+  // Accordion functionality
+  const accordionHeaders = document.querySelectorAll('.accordion-item__header');
+  accordionHeaders.forEach((header) => {
+    header.addEventListener('click', () => {
+      const contentId = header.getAttribute('data-accordion');
+      const content = document.getElementById(contentId);
+      const toggle = header.querySelector('.accordion-item__toggle');
+
+      // Close all other accordion items
+      accordionHeaders.forEach((otherHeader) => {
+        if (otherHeader !== header) {
+          const otherId = otherHeader.getAttribute('data-accordion');
+          const otherContent = document.getElementById(otherId);
+          const otherToggle = otherHeader.querySelector('.accordion-item__toggle');
+          otherContent.classList.remove('active');
+          otherToggle.textContent = '+';
+        }
+      });
+
+      // Toggle current item
+      content.classList.toggle('active');
+      toggle.textContent = content.classList.contains('active') ? '−' : '+';
+    });
+  });
 </script>
 
 {% schema %}
