@@ -61,13 +61,13 @@
     gap: 2rem;
   }
 
-  #shopify-section-{{ section.id }} .how-it-works__carousel {\n    display: block;\n  }\n\n  #shopify-section-{{ section.id }} .how-it-works__carousel-nav {\n    display: none;\n  }
-
   #shopify-section-{{ section.id }} .how-it-works__step {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    flex: 0 0 432px;
+    /* flex: 0 0 432px; */
+    width: 100%;
+    max-width: 432px;
   }
 
   #shopify-section-{{ section.id }} .how-it-works__step-label {
@@ -186,10 +186,16 @@
     width: 0%;
   }
 
-  #shopify-section-{{ section.id }} .how-it-works__carousel {\n    display: block;\n  }\n\n  #shopify-section-{{ section.id }} .how-it-works-carousel__nav--wrapper {\n    display: none;\n  }\n\n  #shopify-section-{{ section.id }} .how-it-works__progress {\n    display: none;\n  }
+  #shopify-section-{{ section.id }} .how-it-works-carousel__nav--wrapper {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .how-it-works__progress {
+    display: none;
+  }
 
   /* Tablet & Mobile Styles */
-  @media (max-width: 989px) {
+  @media (max-width: 1200px) {
     #shopify-section-{{ section.id }} {
       --section-padding-top: var(--section-padding-top-mobile);
       --section-padding-bottom: var(--section-padding-bottom-mobile);
@@ -226,7 +232,7 @@
     }
 
     #shopify-section-{{ section.id }} .how-it-works__step {
-      flex: 0 0 432px;
+      flex: 0 0 360px;
     }
 
     #shopify-section-{{ section.id }} .how-it-works__step-title {
@@ -286,7 +292,17 @@
       height: 24px;
     }
 
-    #shopify-section-{{ section.id }} .how-it-works__carousel {\n      display: block;\n    }\n\n    #shopify-section-{{ section.id }} .how-it-works-carousel__nav--wrapper {\n      display: flex;\n    }\n\n    #shopify-section-{{ section.id }} .how-it-works__progress {\n      display: block;\n    }
+    #shopify-section-{{ section.id }} .how-it-works-carousel__nav--wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .how-it-works__progress {
+      display: block;
+    }
   }
 
   @media (max-width: 749px) {
