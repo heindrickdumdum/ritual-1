@@ -479,7 +479,10 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const carousels = document.querySelectorAll('[data-carousel]');
+    const section = document.querySelector('#shopify-section-{{ section.id }}');
+    if (!section) return;
+
+    const carousels = section.querySelectorAll('[data-carousel]');
     
     carousels.forEach(carousel => {
       const track = carousel.querySelector('[data-carousel-track]');
