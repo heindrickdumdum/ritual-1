@@ -1,0 +1,603 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --section-bg-color: {{ section.settings.bg_color }};
+  }
+
+  #shopify-section-{{ section.id }} {
+    padding-top: var(--section-padding-top);
+    padding-bottom: var(--section-padding-bottom);
+    background-color: var(--section-bg-color);
+  }
+
+  #shopify-section-{{ section.id }} .benefits-carousel-wrapper {
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-header__title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #181d27;
+    max-width: 600px;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-header__cta {
+    background-color: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-header__cta:hover {
+    opacity: 0.9;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-carousel-container {
+    position: relative;
+    margin-bottom: 3rem;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-carousel-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+
+  #shopify-section-{{ section.id }} .benefits-carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .benefit-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .benefit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  #shopify-section-{{ section.id }} .benefit-card__duration {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: {{ section.settings.accent_color }};
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  #shopify-section-{{ section.id }} .benefit-card__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #181d27;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+
+  #shopify-section-{{ section.id }} .benefit-card__benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  #shopify-section-{{ section.id }} .benefit-card__benefit {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  #shopify-section-{{ section.id }} .benefit-card__benefit::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: {{ section.settings.accent_color }};
+    font-weight: bold;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 1.25rem;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-btn:hover:not(:disabled) {
+    background-color: {{ section.settings.accent_color }};
+    color: white;
+    border-color: {{ section.settings.accent_color }};
+  }
+
+  #shopify-section-{{ section.id }} .carousel-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  #shopify-section-{{ section.id }} .featured-product {
+    background: #f8f8f7;
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    text-align: left;
+    margin-top: 3rem;
+  }
+
+  #shopify-section-{{ section.id }} .featured-product__title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #181d27;
+    margin-bottom: 1rem;
+  }
+
+  #shopify-section-{{ section.id }} .featured-product__description {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  #shopify-section-{{ section.id }} .trust-badges {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  #shopify-section-{{ section.id }} .trust-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  #shopify-section-{{ section.id }} .trust-badge__icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .trust-badge__text {
+    font-size: 0.875rem;
+    color: #666;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .benefits-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    #shopify-section-{{ section.id }} .benefits-header__title {
+      font-size: 1.75rem;
+    }
+
+    #shopify-section-{{ section.id }} .benefit-card {
+      min-height: auto;
+      padding: 1.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .featured-product {
+      padding: 2rem 1.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .trust-badges {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="benefits-carousel-wrapper section">
+  {%- if section.settings.title -%}
+    <div class="benefits-header">
+      <h2 class="benefits-header__title">{{ section.settings.title }}</h2>
+      {%- if section.settings.button_text -%}
+        <a href="{{ section.settings.button_link }}" class="benefits-header__cta">
+          {{ section.settings.button_text }}
+        </a>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="benefits-carousel-container">
+    <div class="benefits-carousel-track" id="carousel-track-{{ section.id }}">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'benefit' -%}
+          <div class="benefit-card">
+            <div class="benefit-card__duration">{{ block.settings.duration }}</div>
+            <h3 class="benefit-card__title">{{ block.settings.title }}</h3>
+            <ul class="benefit-card__benefits">
+              {%- for i in (1..3) -%}
+                {%- assign benefit_key = 'benefit_' | append: i -%}
+                {%- if block.settings[benefit_key] != blank -%}
+                  <li class="benefit-card__benefit">{{ block.settings[benefit_key] }}</li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="prev-btn-{{ section.id }}" aria-label="Previous slide">❮</button>
+      <button class="carousel-btn" id="next-btn-{{ section.id }}" aria-label="Next slide">❯</button>
+    </div>
+  </div>
+
+  {%- if section.settings.featured_product_title -%}
+    <div class="featured-product">
+      <h3 class="featured-product__title">{{ section.settings.featured_product_title }}</h3>
+      <p class="featured-product__description">{{ section.settings.featured_product_description }}</p>
+    </div>
+  {%- endif -%}
+
+  {%- if section.settings.show_trust_badges -%}
+    <div class="trust-badges">
+      {%- if section.settings.badge_1_text != blank -%}
+        <div class="trust-badge">
+          <div class="trust-badge__icon">{{ section.settings.badge_1_icon }}</div>
+          <div class="trust-badge__text">{{ section.settings.badge_1_text }}</div>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.badge_2_text != blank -%}
+        <div class="trust-badge">
+          <div class="trust-badge__icon">{{ section.settings.badge_2_icon }}</div>
+          <div class="trust-badge__text">{{ section.settings.badge_2_text }}</div>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.badge_3_text != blank -%}
+        <div class="trust-badge">
+          <div class="trust-badge__icon">{{ section.settings.badge_3_icon }}</div>
+          <div class="trust-badge__text">{{ section.settings.badge_3_text }}</div>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.badge_4_text != blank -%}
+        <div class="trust-badge">
+          <div class="trust-badge__icon">{{ section.settings.badge_4_icon }}</div>
+          <div class="trust-badge__text">{{ section.settings.badge_4_text }}</div>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.badge_5_text != blank -%}
+        <div class="trust-badge">
+          <div class="trust-badge__icon">{{ section.settings.badge_5_icon }}</div>
+          <div class="trust-badge__text">{{ section.settings.badge_5_text }}</div>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.badge_6_text != blank -%}
+        <div class="trust-badge">
+          <div class="trust-badge__icon">{{ section.settings.badge_6_icon }}</div>
+          <div class="trust-badge__text">{{ section.settings.badge_6_text }}</div>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const track = document.getElementById('carousel-track-{{ section.id }}');
+    const prevBtn = document.getElementById('prev-btn-{{ section.id }}');
+    const nextBtn = document.getElementById('next-btn-{{ section.id }}');
+
+    if (!track || !prevBtn || !nextBtn) return;
+
+    const cardWidth = 320;
+    const gap = 24;
+    let scrollPosition = 0;
+
+    function updateButtons() {
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      prevBtn.disabled = scrollPosition <= 0;
+      nextBtn.disabled = scrollPosition >= maxScroll;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      scrollPosition = Math.max(0, scrollPosition - (cardWidth + gap));
+      track.scrollLeft = scrollPosition;
+      updateButtons();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      scrollPosition = Math.min(maxScroll, scrollPosition + (cardWidth + gap));
+      track.scrollLeft = scrollPosition;
+      updateButtons();
+    });
+
+    updateButtons();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product Benefits Carousel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "The Complete Probiotic That Delivers Results in Just 7 Days."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "See Clinical Evidence"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#2c8a7e"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#2c8a7e"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "text",
+      "id": "featured_product_title",
+      "label": "Featured Product Title",
+      "default": "Rituall Hair Growth Serum"
+    },
+    {
+      "type": "textarea",
+      "id": "featured_product_description",
+      "label": "Featured Product Description",
+      "default": "Real hair growth starts with understanding you. A simple daily serum designed to support stronger, fuller-looking hair over time."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_badges",
+      "label": "Show Trust Badges",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "badge_1_text",
+      "label": "Badge 1 Text",
+      "default": "No Animal Testing"
+    },
+    {
+      "type": "text",
+      "id": "badge_1_icon",
+      "label": "Badge 1 Icon",
+      "default": "🐰"
+    },
+    {
+      "type": "text",
+      "id": "badge_2_text",
+      "label": "Badge 2 Text",
+      "default": "Money-back Guarantee"
+    },
+    {
+      "type": "text",
+      "id": "badge_2_icon",
+      "label": "Badge 2 Icon",
+      "default": "💰"
+    },
+    {
+      "type": "text",
+      "id": "badge_3_text",
+      "label": "Badge 3 Text",
+      "default": "Swiss Science"
+    },
+    {
+      "type": "text",
+      "id": "badge_3_icon",
+      "label": "Badge 3 Icon",
+      "default": "🇨🇭"
+    },
+    {
+      "type": "text",
+      "id": "badge_4_text",
+      "label": "Badge 4 Text",
+      "default": "Clean Ingredients"
+    },
+    {
+      "type": "text",
+      "id": "badge_4_icon",
+      "label": "Badge 4 Icon",
+      "default": "✓"
+    },
+    {
+      "type": "text",
+      "id": "badge_5_text",
+      "label": "Badge 5 Text",
+      "default": "Dermatologist Reviewed"
+    },
+    {
+      "type": "text",
+      "id": "badge_5_icon",
+      "label": "Badge 5 Icon",
+      "default": "👨‍⚕️"
+    },
+    {
+      "type": "text",
+      "id": "badge_6_text",
+      "label": "Badge 6 Text",
+      "default": "Proven Results, Backed by Science"
+    },
+    {
+      "type": "text",
+      "id": "badge_6_icon",
+      "label": "Badge 6 Icon",
+      "default": "✓"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "duration",
+          "label": "Duration",
+          "default": "7 DAYS"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Reduces Bloating and Gas"
+        },
+        {
+          "type": "text",
+          "id": "benefit_1",
+          "label": "Benefit 1",
+          "default": "Clinically proven to reduce bloating"
+        },
+        {
+          "type": "text",
+          "id": "benefit_2",
+          "label": "Benefit 2",
+          "default": "Alleviates excess gas"
+        },
+        {
+          "type": "text",
+          "id": "benefit_3",
+          "label": "Benefit 3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Benefits Carousel",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "duration": "7 DAYS",
+            "title": "Reduces Bloating and Gas",
+            "benefit_1": "Clinically proven to reduce bloating",
+            "benefit_2": "Alleviates excess gas"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "duration": "2 WEEKS",
+            "title": "Supports Healthy Regularity",
+            "benefit_1": "Clinically proven to reduce bloating",
+            "benefit_2": "Alleviates excess gas"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "duration": "4 WEEKS",
+            "title": "Smooths + Clears Skin",
+            "benefit_1": "Clinically proven to reduce bloating",
+            "benefit_2": "Alleviates excess gas"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "duration": "3 MONTHS",
+            "title": "Immune + Heart Supp",
+            "benefit_1": "Clinically proven to reduce bloating",
+            "benefit_2": "Alleviates excess gas"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
