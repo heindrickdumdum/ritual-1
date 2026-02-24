@@ -2,13 +2,10 @@
   #shopify-section-{{ section.id }} {
     --section-background-color: {{ section.settings.background_color }};
     --section-text-color: {{ section.settings.text_color }};
-    --section-padding-top: {{ section.settings.padding_top }}px;
-    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
   }
 
   #shopify-section-{{ section.id }} .word-strip {
     background-color: var(--section-background-color);
-    padding: var(--section-padding-top) 0 var(--section-padding-bottom) 0;
     overflow: hidden;
     width: 100%;
   }
@@ -93,18 +90,6 @@
       "id": "text_color",
       "label": "Text Color",
       "default": "#ffffff"
-    },
-    {
-      "type": "number",
-      "id": "padding_top",
-      "label": "Padding Top (px)",
-      "default": 20
-    },
-    {
-      "type": "number",
-      "id": "padding_bottom",
-      "label": "Padding Bottom (px)",
-      "default": 20
     },
     {
       "type": "number",
