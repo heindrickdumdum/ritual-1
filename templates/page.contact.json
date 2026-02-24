@@ -179,10 +179,64 @@
         "padding_bottom": 160,
         "background_color": "#f7f7f4"
       }
+    },
+    "contact_faq_VNqB7e": {
+      "type": "contact-faq",
+      "blocks": {
+        "faq_yV9KTL": {
+          "type": "faq",
+          "settings": {
+            "question": "When will I start seeing results?",
+            "answer": "Most users notice visible improvement within 3–6 months of consistent use."
+          }
+        },
+        "faq_Ly8h7J": {
+          "type": "faq",
+          "settings": {
+            "question": "What affects women’s hair growth?",
+            "answer": ""
+          }
+        },
+        "faq_8eLNVN": {
+          "type": "faq",
+          "settings": {
+            "question": "Will hair grow on other parts of my body?",
+            "answer": ""
+          }
+        },
+        "faq_xmBHa4": {
+          "type": "faq",
+          "settings": {
+            "question": "What are the main differences in formulas between Nutrafol Men, and Women’s Balance?",
+            "answer": ""
+          }
+        },
+        "faq_KWipKU": {
+          "type": "faq",
+          "settings": {
+            "question": "How is Nutrafol different from other hair growth products?",
+            "answer": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_yV9KTL",
+        "faq_Ly8h7J",
+        "faq_8eLNVN",
+        "faq_xmBHa4",
+        "faq_KWipKU"
+      ],
+      "name": "Contact FAQ",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "background_color": "#fff"
+      }
     }
   },
   "order": [
     "main",
-    "contact_section_CQUyzN"
+    "contact_section_CQUyzN",
+    "contact_faq_VNqB7e"
   ]
 }
