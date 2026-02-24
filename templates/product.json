@@ -438,60 +438,51 @@
         "padding-block-end-mobile": 65
       }
     },
-    "word_strip_Hk7YtV": {
+    "word_strip_tWR4hj": {
       "type": "word-strip",
       "blocks": {
-        "word_gcGcjd": {
+        "word_7rX33E": {
           "type": "word",
           "settings": {
             "text": "Clean Science"
           }
         },
-        "word_FfjMap": {
+        "word_xEtkT8": {
           "type": "word",
           "settings": {
             "text": "Vegan Certified"
           }
         },
-        "word_E939FD": {
+        "word_qaLpgA": {
           "type": "word",
           "settings": {
             "text": "Backed by Science"
           }
         },
-        "word_RCJrwn": {
+        "word_HpTmp8": {
           "type": "word",
           "settings": {
             "text": "No Synthetic Fragrance"
           }
         },
-        "word_QQJ9Dw": {
+        "word_wKXfwd": {
           "type": "word",
           "settings": {
             "text": "Proven Hair Growth Formula"
           }
-        },
-        "word_Qb6TYD": {
-          "type": "word",
-          "settings": {
-            "text": "Proven Results"
-          }
         }
       },
       "block_order": [
-        "word_gcGcjd",
-        "word_FfjMap",
-        "word_E939FD",
-        "word_RCJrwn",
-        "word_QQJ9Dw",
-        "word_Qb6TYD"
+        "word_7rX33E",
+        "word_xEtkT8",
+        "word_qaLpgA",
+        "word_HpTmp8",
+        "word_wKXfwd"
       ],
       "name": "Word Strip",
       "settings": {
         "background_color": "#1b5f5a",
         "text_color": "#ffffff",
-        "padding_top": 20,
-        "padding_bottom": 20,
         "font_size": 16,
         "font_size_mobile": 14
       }
@@ -501,6 +492,6 @@
     "main_product_nAM6tJ",
     "main",
     "product_recommendations_qggXJq",
-    "word_strip_Hk7YtV"
+    "word_strip_tWR4hj"
   ]
 }
