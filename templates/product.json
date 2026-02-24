@@ -486,12 +486,91 @@
         "font_size": 18,
         "font_size_mobile": 16
       }
+    },
+    "product_benefits_carousel_LcQ9P8": {
+      "type": "product-benefits-carousel",
+      "blocks": {
+        "benefit_DnWcdU": {
+          "type": "benefit",
+          "settings": {
+            "duration": "7 DAYS",
+            "title": "Reduces Bloating and Gas",
+            "benefit_1": "Clinically proven to reduce bloating",
+            "benefit_2": "Alleviates excess gas",
+            "benefit_3": ""
+          }
+        },
+        "benefit_UCk4X8": {
+          "type": "benefit",
+          "settings": {
+            "duration": "2 WEEKS",
+            "title": "Supports Healthy Regularity",
+            "benefit_1": "Clinically proven to reduce bloating",
+            "benefit_2": "Alleviates excess gas",
+            "benefit_3": ""
+          }
+        },
+        "benefit_zr4dgN": {
+          "type": "benefit",
+          "settings": {
+            "duration": "4 WEEKS",
+            "title": "Smooths + Clears Skin",
+            "benefit_1": "Clinically proven to reduce bloating",
+            "benefit_2": "Alleviates excess gas",
+            "benefit_3": ""
+          }
+        },
+        "benefit_pneAG8": {
+          "type": "benefit",
+          "settings": {
+            "duration": "3 MONTHS",
+            "title": "Immune + Heart Supp",
+            "benefit_1": "Clinically proven to reduce bloating",
+            "benefit_2": "Alleviates excess gas",
+            "benefit_3": ""
+          }
+        }
+      },
+      "block_order": [
+        "benefit_DnWcdU",
+        "benefit_UCk4X8",
+        "benefit_zr4dgN",
+        "benefit_pneAG8"
+      ],
+      "name": "Product Benefits Carousel",
+      "settings": {
+        "title": "The Complete Probiotic That Delivers Results in Just 7 Days.",
+        "button_text": "See Clinical Evidence",
+        "button_link": "",
+        "button_bg_color": "#2c8a7e",
+        "button_text_color": "#ffffff",
+        "accent_color": "#2c8a7e",
+        "bg_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "featured_product_title": "Rituall Hair Growth Serum",
+        "featured_product_description": "Real hair growth starts with understanding you. A simple daily serum designed to support stronger, fuller-looking hair over time.",
+        "show_trust_badges": true,
+        "badge_1_text": "No Animal Testing",
+        "badge_1_icon": "🐰",
+        "badge_2_text": "Money-back Guarantee",
+        "badge_2_icon": "💰",
+        "badge_3_text": "Swiss Science",
+        "badge_3_icon": "🇨🇭",
+        "badge_4_text": "Clean Ingredients",
+        "badge_4_icon": "✓",
+        "badge_5_text": "Dermatologist Reviewed",
+        "badge_5_icon": "👨‍⚕️",
+        "badge_6_text": "Proven Results, Backed by Science",
+        "badge_6_icon": "✓"
+      }
     }
   },
   "order": [
     "main_product_nAM6tJ",
     "main",
     "product_recommendations_qggXJq",
-    "word_strip_tWR4hj"
+    "word_strip_tWR4hj",
+    "product_benefits_carousel_LcQ9P8"
   ]
 }
