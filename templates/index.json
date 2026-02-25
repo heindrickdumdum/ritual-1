@@ -591,6 +591,50 @@
         "padding-block-end-mobile": 65
       }
     },
+    "take_quiz_yCgmHr": {
+      "type": "take-quiz",
+      "blocks": {
+        "step_DrKDtf": {
+          "type": "step",
+          "settings": {
+            "title": "Take the Hair Quiz",
+            "subtitle": "Take the Hair Quiz",
+            "is_active": true,
+            "button_text": "Take The Quiz",
+            "button_url": "shopify://collections/frontpage",
+            "button_meta": "Only takes 60 seconds"
+          }
+        },
+        "step_LJt43Y": {
+          "type": "step",
+          "settings": {
+            "title": "Here's your personalized hair growth routine...",
+            "subtitle": "",
+            "is_active": false,
+            "button_text": "",
+            "button_url": "",
+            "button_meta": ""
+          }
+        }
+      },
+      "block_order": [
+        "step_DrKDtf",
+        "step_LJt43Y"
+      ],
+      "name": "Take Quiz",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "title": "Unlock Your Personalized Hair Growth Plan",
+        "description": "Stop wasting time on products that don't deliver. We create a tailored hair growth routine using clinically backed ingredients and scalp-focused strategies — built specifically for your hair type and goals.",
+        "title_font_size": 44,
+        "title_font_size_mobile": 28,
+        "description_font_size": 16,
+        "padding-block-start": 100,
+        "padding-block-end": 100,
+        "padding-block-start-mobile": 65,
+        "padding-block-end-mobile": 65
+      }
+    },
     "price_section_aN4BeH": {
       "type": "price-section",
       "blocks": {
@@ -1150,6 +1194,7 @@
     "how_it_works_v2_d3X37b",
     "how_it_works_mYkb9q",
     "before_after_cards_N73PB4",
+    "take_quiz_yCgmHr",
     "price_section_aN4BeH",
     "team_BrVXLJ",
     "customer_reviews_3LGy3J",
