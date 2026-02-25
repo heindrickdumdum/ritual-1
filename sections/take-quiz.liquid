@@ -1,0 +1,422 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding-block-start }}px;
+    --section-padding-bottom: {{ section.settings.padding-block-end }}px;
+    --section-padding-top-mobile: {{ section.settings.padding-block-start-mobile }}px;
+    --section-padding-bottom-mobile: {{ section.settings.padding-block-end-mobile }}px;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz {
+    padding-top: var(--section-padding-top);
+    padding-bottom: var(--section-padding-bottom);
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz__title {
+    font-size: 2.75rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0;
+    color: #181D27;
+  }
+
+  {% if section.settings.title_font_size != blank %}
+  #shopify-section-{{ section.id }} .take-quiz__title {
+    font-size: {{ section.settings.title_font_size }}px;
+  }
+  {% endif %}
+
+  #shopify-section-{{ section.id }} .take-quiz__description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    color: #535862;
+  }
+
+  {% if section.settings.description_font_size != blank %}
+  #shopify-section-{{ section.id }} .take-quiz__description {
+    font-size: {{ section.settings.description_font_size }}px;
+  }
+  {% endif %}
+
+  #shopify-section-{{ section.id }} .take-quiz__timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz__step {
+    display: flex;
+    gap: 2rem;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz__step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 70px;
+    width: 2px;
+    height: calc(100% + 64px);
+    background: #E5E5E0;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz__step-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz__step--active .take-quiz__step-circle {
+    background: #181D27;
+    color: white;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz__step--inactive .take-quiz__step-circle {
+    background: transparent;
+    border: 2px solid #D5D7DA;
+    color: #A0A5AC;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz__step-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 0.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz__step-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0;
+    color: #181D27;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz__step--inactive .take-quiz__step-title {
+    color: #A0A5AC;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz__step-subtitle {
+    font-size: 0.875rem;
+    margin: 0;
+    color: #535862;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz__button {
+    padding: 1rem 2rem;
+    background: #26736D;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz__button:hover {
+    background-color: #1f5952;
+  }
+
+  #shopify-section-{{ section.id }} .take-quiz__button-meta {
+    font-size: 0.875rem;
+    color: #535862;
+    text-align: center;
+  }
+
+  /* Tablet Styles */
+  @media (max-width: 989px) {
+    #shopify-section-{{ section.id }} .take-quiz__container {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .take-quiz__title {
+      font-size: 2rem;
+    }
+
+    #shopify-section-{{ section.id }} .take-quiz__step {
+      gap: 1.5rem;
+    }
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} {
+      --section-padding-top: var(--section-padding-top-mobile);
+      --section-padding-bottom: var(--section-padding-bottom-mobile);
+    }
+
+    #shopify-section-{{ section.id }} .take-quiz__title {
+      font-size: 1.75rem;
+    }
+
+    {% if section.settings.title_font_size_mobile != blank %}
+    #shopify-section-{{ section.id }} .take-quiz__title {
+      font-size: {{ section.settings.title_font_size_mobile }}px;
+    }
+    {% endif %}
+
+    #shopify-section-{{ section.id }} .take-quiz__description {
+      font-size: 0.95rem;
+    }
+
+    #shopify-section-{{ section.id }} .take-quiz__step-circle {
+      width: 45px;
+      height: 45px;
+      font-size: 1.1rem;
+    }
+
+    #shopify-section-{{ section.id }} .take-quiz__step-title {
+      font-size: 1.1rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="take-quiz section section--page-width color-{{ section.settings.color_scheme }}" style="padding-top: var(--section-padding-top); padding-bottom: var(--section-padding-bottom);">
+  <div class="container">
+    <div class="take-quiz__container">
+      {%- if section.settings.title != blank or section.settings.description != blank -%}
+        <div class="take-quiz__content">
+          {%- if section.settings.title != blank -%}
+            <h2 class="take-quiz__title">{{ section.settings.title }}</h2>
+          {%- endif -%}
+          {%- if section.settings.description != blank -%}
+            <p class="take-quiz__description">{{ section.settings.description }}</p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <div class="take-quiz__timeline">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'step' -%}
+            <div class="take-quiz__step take-quiz__step--{% if block.settings.is_active %}active{% else %}inactive{% endif %}" {{ block.shopify_attributes }}>
+              <div class="take-quiz__step-circle">{{ forloop.index }}</div>
+              
+              <div class="take-quiz__step-content">
+                {%- if block.settings.title != blank -%}
+                  <h3 class="take-quiz__step-title">{{ block.settings.title }}</h3>
+                {%- endif -%}
+
+                {%- if block.settings.subtitle != blank -%}
+                  <p class="take-quiz__step-subtitle">{{ block.settings.subtitle }}</p>
+                {%- endif -%}
+
+                {%- if block.settings.is_active -%}
+                  {%- if block.settings.button_text != blank and block.settings.button_url != blank -%}
+                    <a href="{{ block.settings.button_url }}" class="take-quiz__button">{{ block.settings.button_text }}</a>
+                  {%- endif -%}
+
+                  {%- if block.settings.button_meta != blank -%}
+                    <div class="take-quiz__button-meta">{{ block.settings.button_meta }}</div>
+                  {%- endif -%}
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Take Quiz",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Unlock Your Personalized Hair Growth Plan"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Stop wasting time on products that don't deliver. We create a tailored hair growth routine using clinically backed ingredients and scalp-focused strategies — built specifically for your hair type and goals."
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title font size",
+      "min": 24,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title font size (mobile)",
+      "min": 16,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "description_font_size",
+      "label": "Description font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top padding",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start-mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 65
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end-mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 65
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "placeholder": "e.g., Take the Hair Quiz"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "placeholder": "e.g., Take the Hair Quiz"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_active",
+          "label": "Is this an active step?",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button text",
+          "placeholder": "e.g., Take The Quiz"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button link"
+        },
+        {
+          "type": "text",
+          "id": "button_meta",
+          "label": "Button meta text",
+          "placeholder": "e.g., Only takes 60 seconds"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Take Quiz",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Take the Hair Quiz",
+            "subtitle": "Take the Hair Quiz",
+            "is_active": true,
+            "button_text": "Take The Quiz",
+            "button_meta": "Only takes 60 seconds"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Here's your personalized hair growth routine...",
+            "is_active": false
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
