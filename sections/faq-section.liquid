@@ -65,6 +65,11 @@
     color: #4A9B8E;
   }
 
+  #shopify-section-{{ section.id }} .faq-section__contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
   #shopify-section-{{ section.id }} .faq-section__contact-info h3 {
     font-size: 1rem;
     font-weight: 700;
@@ -177,12 +182,7 @@
     margin: 0;
     color: #535862;
   }
-
-  #shopify-section-{{ section.id }} .faq-section__wrapper > .faq-section__contact-link,
-  #shopify-section-{{ section.id }} .faq-section__wrapper > .faq-section__contact-card {
-    display: none;
-  }
-
+  
   #shopify-section-{{ section.id }} .faq-section__contact-link {
     font-weight: 500;
     font-size: 20px;
@@ -213,13 +213,7 @@
   /* Tablet Styles */
   @media (max-width: 989px) {
     #shopify-section-{{ section.id }} .faq-section__wrapper {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-    
-    #shopify-section-{{ section.id }} .faq-section__left .faq-section__contact-card,
-    #shopify-section-{{ section.id }} .faq-section__left .faq-section__contact-link {
-      display: none;
+      gap: 2rem;
     }
   }
 
@@ -230,18 +224,32 @@
       --section-padding-bottom: var(--section-padding-bottom-mobile);
     }
 
-    #shopify-section-{{ section.id }} .faq-section__left .faq-section__contact-card {
-      display: none;
+    #shopify-section-{{ section.id }} .faq-section__wrapper {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
     }
 
-     #shopify-section-{{ section.id }} .faq-section__accordion {
-      gap: 1.5rem;
-     }
+    #shopify-section-{{ section.id }} .faq-section__accordion {
+      /* gap: 1.5rem; */
+    }
 
-    #shopify-section-{{ section.id }} .faq-section__wrapper > .faq-section__contact-link,
-    #shopify-section-{{ section.id }} .faq-section__wrapper > .faq-section__contact-card {
+    #shopify-section-{{ section.id }} .faq-accordion-item {
+      padding-block: 1.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .faq-section__title p {
+      letter-spacing: -0.02em;
+    }
+
+    /* #shopify-section-{{ section.id }} .faq-section__wrapper > .faq-section__contact-link,
+    #shopify-section-{{ section.id }} .faq-section__wrapper > .faq-section__contact-card--wrapper  {
       display: inline-flex;
       padding: 24px 22px;
+      width: 100%;
+    } */
+
+    #shopify-section-{{ section.id }} .faq-section__contact-card {
+      padding: 20px 24px;
       width: 100%;
     }
 
@@ -249,6 +257,8 @@
       font-size: 2rem;
       margin-bottom: 0;
     }
+
+
 
     {% if section.settings.title_font_size_mobile != blank %}
     #shopify-section-{{ section.id }} .faq-section__title {
@@ -304,6 +314,9 @@
     }
     {% endif %}
 
+    #shopify-section-{{ section.id }} .faq-section__contact-info h3 {
+      line-height: 24px;
+    }
     {% if section.settings.contact_title_font_size_mobile != blank %}
     #shopify-section-{{ section.id }} .faq-section__contact-info h3 {
       font-size: {{ section.settings.contact_title_font_size_mobile }}px;
@@ -321,6 +334,10 @@
       font-size: {{ section.settings.contact_link_font_size_mobile }}px;
     }
     {% endif %}
+
+    #shopify-section-{{ section.id }} .faq-section__contact-email {
+      line-height: 24px;
+    }
   }
 {%- endstyle -%}
 
@@ -333,7 +350,7 @@
         {%- endif -%}
 
         {%- if section.settings.show_contact_card -%}
-          <div>
+          <div class="hidden--mobile faq-section__contact-card--wrapper">
             <div class="faq-section__contact-card">
               <div class="faq-section__contact-icon">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -353,7 +370,7 @@
 
 
         {%- if section.settings.show_contact_link -%}
-          <div class="faq-section__contact-link">
+          <div class="hidden--mobile faq-section__contact-link">
             {{ section.settings.contact_link_heading }} <a href="{% if section.settings.contact_link_url != blank %}{{ section.settings.contact_link_url }}{% else %}mailto:{{ section.settings.contact_email }}{% endif %}">
               {{ section.settings.contact_link_text }}
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -394,24 +411,24 @@
       </div>
 
       {%- if section.settings.show_contact_card -%}
-          <div class="faq-section__contact-card">
-            <div class="faq-section__contact-icon">
-             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2.66406 6.66699L11.8814 11.8998C15.249 13.8117 16.7458 13.8117 20.1134 11.8998L29.3307 6.66699" stroke="#26736D" stroke-width="2" stroke-linejoin="round"/>
-              <path d="M13.9974 25.9997C13.3757 25.9915 12.7532 25.9797 12.1292 25.9639C7.93117 25.8585 5.83217 25.8057 4.32401 24.2909C2.81584 22.7761 2.77225 20.7313 2.68509 16.6415C2.65706 15.3265 2.65705 14.0193 2.68508 12.7042C2.77225 8.61451 2.81582 6.56965 4.324 5.05486C5.83217 3.54007 7.93117 3.48731 12.1292 3.38178C14.7165 3.31674 17.2783 3.31675 19.8657 3.38179C24.0637 3.48733 26.1626 3.5401 27.6707 5.05489C29.179 6.56966 29.2226 8.61453 29.3097 12.7043C29.3226 13.3097 29.3295 13.595 29.3306 13.9997" stroke="#26736D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M25.3359 22.667C25.3359 23.7715 24.4405 24.667 23.3359 24.667C22.2314 24.667 21.3359 23.7715 21.3359 22.667C21.3359 21.5625 22.2314 20.667 23.3359 20.667C24.4405 20.667 25.3359 21.5625 25.3359 22.667ZM25.3359 22.667V23.3337C25.3359 24.4382 26.2314 25.3337 27.3359 25.3337C28.4405 25.3337 29.3359 24.4382 29.3359 23.3337V22.667C29.3359 19.3533 26.6497 16.667 23.3359 16.667C20.0222 16.667 17.3359 19.3533 17.3359 22.667C17.3359 25.9807 20.0222 28.667 23.3359 28.667" stroke="#26736D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+        <div class="hidden--desktop faq-section__contact-card">
+          <div class="faq-section__contact-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.66406 6.66699L11.8814 11.8998C15.249 13.8117 16.7458 13.8117 20.1134 11.8998L29.3307 6.66699" stroke="#26736D" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M13.9974 25.9997C13.3757 25.9915 12.7532 25.9797 12.1292 25.9639C7.93117 25.8585 5.83217 25.8057 4.32401 24.2909C2.81584 22.7761 2.77225 20.7313 2.68509 16.6415C2.65706 15.3265 2.65705 14.0193 2.68508 12.7042C2.77225 8.61451 2.81582 6.56965 4.324 5.05486C5.83217 3.54007 7.93117 3.48731 12.1292 3.38178C14.7165 3.31674 17.2783 3.31675 19.8657 3.38179C24.0637 3.48733 26.1626 3.5401 27.6707 5.05489C29.179 6.56966 29.2226 8.61453 29.3097 12.7043C29.3226 13.3097 29.3295 13.595 29.3306 13.9997" stroke="#26736D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M25.3359 22.667C25.3359 23.7715 24.4405 24.667 23.3359 24.667C22.2314 24.667 21.3359 23.7715 21.3359 22.667C21.3359 21.5625 22.2314 20.667 23.3359 20.667C24.4405 20.667 25.3359 21.5625 25.3359 22.667ZM25.3359 22.667V23.3337C25.3359 24.4382 26.2314 25.3337 27.3359 25.3337C28.4405 25.3337 29.3359 24.4382 29.3359 23.3337V22.667C29.3359 19.3533 26.6497 16.667 23.3359 16.667C20.0222 16.667 17.3359 19.3533 17.3359 22.667C17.3359 25.9807 20.0222 28.667 23.3359 28.667" stroke="#26736D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
 
-            </div>
-            <div class="faq-section__contact-info">
-              <h3 class="faq-section__contact-title">{{ section.settings.contact_title }}</h3>
-              <p><a class="faq-section__contact-email" href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a></p>
-            </div>
           </div>
+          <div class="faq-section__contact-info">
+            <h3 class="faq-section__contact-title">{{ section.settings.contact_title }}</h3>
+            <p><a class="faq-section__contact-email" href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a></p>
+          </div>
+        </div>
       {%- endif -%}
 
       {%- if section.settings.show_contact_link -%}
-        <div class="faq-section__contact-link">
+        <div class="hidden--desktop faq-section__contact-link">
           {{ section.settings.contact_link_heading }} <a href="{% if section.settings.contact_link_url != blank %}{{ section.settings.contact_link_url }}{% else %}mailto:{{ section.settings.contact_email }}{% endif %}">
             {{ section.settings.contact_link_text }}
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
