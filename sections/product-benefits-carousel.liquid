@@ -326,9 +326,11 @@
     #shopify-section-{{ section.id }} .benefits-carousel-wrapper {
       padding-top: 0;
       padding-bottom: 0;
+      row-gap: 40px;
     }
 
     #shopify-section-{{ section.id }} .benefits-carousel-main {
+      gap: 40px;
       margin: 0;
       padding: 0;
     }
@@ -345,6 +347,7 @@
     #shopify-section-{{ section.id }} .benefits-header {
       flex-direction: column;
       align-items: flex-start;
+      gap: 24px;
     }
 
     #shopify-section-{{ section.id }} .benefits-header__title {
@@ -354,18 +357,54 @@
       max-width: none;
     }
 
+    #shopify-section-{{ section.id }} .benefits-header__cta {
+      text-align: center;
+      width: 100%;
+    }
+
     #shopify-section-{{ section.id }} .benefit-card {
       min-height: auto;
       flex: 0 0 calc((100% - 4px) / 1.1);
     }
 
+    #shopify-section-{{ section.id }} .benefit-card__duration {
+      padding: 4px 8px;
+    }
+
+    #shopify-section-{{ section.id }} .benefit-card__title {
+      font-size: 20px;
+      line-height: 28px;
+    }
+
+    #shopify-section-{{ section.id }} .benefit-card__benefit {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
+      padding-left: 16px;
+    }
+
     #shopify-section-{{ section.id }} .featured-product {
-      padding: 2rem 1.5rem;
+      padding: 0;
+    }
+
+    #shopify-section-{{ section.id }} h2.featured-product__title {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .featured-product p {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      margin: 0;
+      color: #535862;
     }
 
     #shopify-section-{{ section.id }} .trust-badges {
+      margin-top: 0;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+      gap: 40px;
     }
   }
 {%- endstyle -%}
@@ -451,12 +490,10 @@
       </div>
     </div>
 
-    {%- if section.settings.featured_product_title -%}
-      <div class="featured-product">
-        <h2 class="featured-product__title">{{ section.settings.featured_product_title }}</h2>
-        <p class="featured-product__description">{{ section.settings.featured_product_description }}</p>
-      </div>
-    {%- endif -%}
+    <div class="featured-product">
+      <h2 class="featured-product__title">{{ product.title }}</h2>
+      <p class="featured-product__description">{{ product.description }}</p>
+    </div>
   </div>
 
   {%- if section.settings.show_trust_badges -%}
@@ -715,18 +752,6 @@
       "step": 10,
       "unit": "px",
       "default": 60
-    },
-    {
-      "type": "text",
-      "id": "featured_product_title",
-      "label": "Featured Product Title",
-      "default": "Rituall Hair Growth Serum"
-    },
-    {
-      "type": "textarea",
-      "id": "featured_product_description",
-      "label": "Featured Product Description",
-      "default": "Real hair growth starts with understanding you. A simple daily serum designed to support stronger, fuller-looking hair over time."
     },
     {
       "type": "checkbox",
