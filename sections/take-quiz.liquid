@@ -188,6 +188,8 @@
 
     #shopify-section-{{ section.id }} .take-quiz__title {
       font-size: 2rem;
+              font-weight: 700;
+        line-height: 32px;
     }
 
     #shopify-section-{{ section.id }} .take-quiz__step {
@@ -206,6 +208,10 @@
       font-size: 1.75rem;
     }
 
+    #shopify-section-{{ section.id }} .take-quiz__content {
+      gap: 0.75rem;
+    }
+
     {% if section.settings.title_font_size_mobile != blank %}
     #shopify-section-{{ section.id }} .take-quiz__title {
       font-size: {{ section.settings.title_font_size_mobile }}px;
@@ -213,17 +219,41 @@
     {% endif %}
 
     #shopify-section-{{ section.id }} .take-quiz__description {
-      font-size: 0.95rem;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
     }
 
     #shopify-section-{{ section.id }} .take-quiz__step-circle {
-      width: 45px;
-      height: 45px;
-      font-size: 1.1rem;
+      width: 48px;
+      height: 48px;
+      font-size: 1.25rem;
     }
 
     #shopify-section-{{ section.id }} .take-quiz__step-title {
-      font-size: 1.1rem;
+      font-size: 20px;
+      line-height: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .take-quiz__step-text {
+      gap: 0.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .take-quiz__step-subtitle {
+      font-weight: 450;
+      font-size: 18px;
+      line-height: 145%;
+    }
+
+    #shopify-section-{{ section.id }} .take-quiz__step-content {
+      gap: 1.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .take-quiz__button {
+      padding: 16px 32px;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
     }
   }
 {%- endstyle -%}
