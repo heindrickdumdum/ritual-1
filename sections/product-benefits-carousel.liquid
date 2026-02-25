@@ -18,6 +18,9 @@
   }
 
   #shopify-section-{{ section.id }} .benefits-carousel-main {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
     margin: 0 auto;
     padding: 0 20px;
   }
@@ -60,8 +63,8 @@
   }
 
   #shopify-section-{{ section.id }} .benefits-carousel-container {
+
     position: relative;
-    margin-bottom: 3rem;
   }
 
   #shopify-section-{{ section.id }} .benefits-carousel-track {
@@ -94,18 +97,23 @@
   }
 
   #shopify-section-{{ section.id }} .benefit-card__duration {
-    font-size: 0.75rem;
-    font-weight: 600;
+    width: fit-content;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 14px;
+    line-height: 150%;
+    font-weight: 700;
     letter-spacing: 0.05em;
     color: {{ section.settings.accent_color }};
     text-transform: uppercase;
   }
 
   #shopify-section-{{ section.id }} .benefit-card__title {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 700;
     color: #181d27;
-    line-height: 1.4;
+    line-height: 140%;
     margin: 0;
   }
 
@@ -117,11 +125,11 @@
   }
 
   #shopify-section-{{ section.id }} .benefit-card__benefit {
-    font-size: 0.95rem;
-    color: #666;
+    font-size: 18px;
+    color: #535862;
     padding-left: 1.5rem;
     position: relative;
-    line-height: 1.5;
+    line-height: 145%;
   }
 
   #shopify-section-{{ section.id }} .benefit-card__benefit::before {
