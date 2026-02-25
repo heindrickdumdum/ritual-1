@@ -126,6 +126,88 @@
     color: #26736D;
   }
 
+  #shopify-section-{{ section.id }} .review-card__media {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .review-card__video {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    background: #E5E5E0;
+  }
+
+  #shopify-section-{{ section.id }} .review-card__video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .review-card__video iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .review-card__play-button {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: rgba(38, 115, 109, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 2;
+  }
+
+  #shopify-section-{{ section.id }} .review-card__play-button svg {
+    width: 24px;
+    height: 24px;
+    margin-left: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .review-card__photos {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .review-card__photos--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #shopify-section-{{ section.id }} .review-card__photos--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  #shopify-section-{{ section.id }} .review-card__photos--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #shopify-section-{{ section.id }} .review-card__photo {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #E5E5E0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .review-card__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   #shopify-section-{{ section.id }} .review-card__text {
     font-size: 1rem;
     line-height: 1.5;
@@ -339,6 +421,61 @@
       {%- for block in section.blocks -%}
         {%- if block.type == 'review' -%}
           <div class="review-card" {{ block.shopify_attributes }}>
+            {%- if block.settings.media_type == 'video' and block.settings.video_url != blank -%}
+              <div class="review-card__media">
+                <div class="review-card__video">
+                  <div class="review-card__video-container">
+                    {%- if block.settings.video_url contains 'youtube' or block.settings.video_url contains 'youtu.be' -%}
+                      {%- assign video_id = block.settings.video_url | split: 'v=' | last | split: '&' | first -%}
+                      <iframe src="https://www.youtube.com/embed/{{ video_id }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    {%- elsif block.settings.video_url contains 'vimeo' -%}
+                      {%- assign video_id = block.settings.video_url | split: '/' | last -%}
+                      <iframe src="https://player.vimeo.com/video/{{ video_id }}" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+            {%- elsif block.settings.media_type == 'photos' -%}
+              {%- assign photo_count = 0 -%}
+              {%- if block.settings.photo_1 != blank -%}
+                {%- assign photo_count = photo_count | plus: 1 -%}
+              {%- endif -%}
+              {%- if block.settings.photo_2 != blank -%}
+                {%- assign photo_count = photo_count | plus: 1 -%}
+              {%- endif -%}
+              {%- if block.settings.photo_3 != blank -%}
+                {%- assign photo_count = photo_count | plus: 1 -%}
+              {%- endif -%}
+              {%- if block.settings.photo_4 != blank -%}
+                {%- assign photo_count = photo_count | plus: 1 -%}
+              {%- endif -%}
+              
+              {%- if photo_count > 0 -%}
+                <div class="review-card__photos review-card__photos--{{ photo_count }}">
+                  {%- if block.settings.photo_1 != blank -%}
+                    <div class="review-card__photo">
+                      <img src="{{ block.settings.photo_1 | image_url: width: 400 }}" alt="Review photo" loading="lazy">
+                    </div>
+                  {%- endif -%}
+                  {%- if block.settings.photo_2 != blank -%}
+                    <div class="review-card__photo">
+                      <img src="{{ block.settings.photo_2 | image_url: width: 400 }}" alt="Review photo" loading="lazy">
+                    </div>
+                  {%- endif -%}
+                  {%- if block.settings.photo_3 != blank -%}
+                    <div class="review-card__photo">
+                      <img src="{{ block.settings.photo_3 | image_url: width: 400 }}" alt="Review photo" loading="lazy">
+                    </div>
+                  {%- endif -%}
+                  {%- if block.settings.photo_4 != blank -%}
+                    <div class="review-card__photo">
+                      <img src="{{ block.settings.photo_4 | image_url: width: 400 }}" alt="Review photo" loading="lazy">
+                    </div>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            {%- endif -%}
+            
             <div class="review-card__header">
               <div class="review-card__avatar">
                 {%- if block.settings.avatar != blank -%}
@@ -844,6 +981,46 @@
           "id": "review_text",
           "label": "Review text",
           "default": "Great service and products. Everything always arrived in a timely manner."
+        },
+        {
+          "type": "header",
+          "content": "Media (Optional)"
+        },
+        {
+          "type": "select",
+          "id": "media_type",
+          "label": "Media type",
+          "options": [
+            {"value": "none", "label": "No media"},
+            {"value": "video", "label": "Video"},
+            {"value": "photos", "label": "Photos"}
+          ],
+          "default": "none"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL (YouTube or Vimeo)"
+        },
+        {
+          "type": "image_picker",
+          "id": "photo_1",
+          "label": "Photo 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "photo_2",
+          "label": "Photo 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "photo_3",
+          "label": "Photo 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "photo_4",
+          "label": "Photo 4"
         }
       ]
     }
