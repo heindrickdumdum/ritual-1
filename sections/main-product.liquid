@@ -511,6 +511,10 @@
       gap: 2rem;
     }
 
+    #shopify-section-{{ section.id }} .main-product__container > div:first-child {
+      position: static;
+    }
+
     #shopify-section-{{ section.id }} .main-product__title {
       font-size: 2rem;
     }
@@ -528,9 +532,7 @@
       gap: 32px;
     }
 
-    #shopify-section-{{ section.id }} .main-product__container > div:first-child {
-      position: static;
-    }
+
 
     #shopify-section-{{ section.id }} .main-product__title {
       font-size: 32px;
@@ -601,7 +603,7 @@
       <div class="pricing-row">
         <div class="pricing-item">
           <span class="pricing-item__label">Buy Once</span>
-          <span class="pricing-item__price">$49.00</span>
+          <span class="pricing-item__price">{{ product.price | money }}</span>
         </div>
         <div class="pricing-item">
           <span class="pricing-item__label">Subscribe & Save 15%</span>
