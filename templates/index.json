@@ -317,6 +317,7 @@
             "column": "right",
             "title": "Clinically proven treatments",
             "description": "Access prescription medications, supported by science and supported by our experienced healthcare practitioners.",
+            "image": "shopify://shop_images/anshu-a-7n5_0j7b7Hg-unsplash.jpg",
             "link": "",
             "full_height_image": false,
             "text_alignment": "left",
@@ -329,6 +330,7 @@
             "column": "right",
             "title": "Truly compassionate care",
             "description": "No judgment, no stigma. Instead, a practitioner who's there for you when you need them.",
+            "image": "shopify://shop_images/towfiqu-barbhuiya-jbjmimlaC-U-unsplash.jpg",
             "link": "",
             "full_height_image": false,
             "text_alignment": "left",
@@ -491,6 +493,8 @@
           "type": "testimonial_card",
           "settings": {
             "title": "Lina's Transformation",
+            "before_image": "shopify://shop_images/93f110ebab316aac42418085ed870b7cdcf4c627.png",
+            "after_image": "shopify://shop_images/4240806b872670d82295b502afe3ec8c7e7098e2.png",
             "treatment": "Clear Complexion",
             "duration": "4 months"
           }
@@ -1172,6 +1176,7 @@
         "community_item_Ve9Ct9": {
           "type": "community_item",
           "settings": {
+            "image": "shopify://shop_images/towfiqu-barbhuiya-jbjmimlaC-U-unsplash.jpg",
             "tag": "#hair-health",
             "title": "Does Hydration Affect Hair Growth?"
           }
@@ -1179,6 +1184,7 @@
         "community_item_kqLBDq": {
           "type": "community_item",
           "settings": {
+            "image": "shopify://shop_images/anshu-a-7n5_0j7b7Hg-unsplash.jpg",
             "tag": "#scalp-care",
             "title": "#scalp-care"
           }
@@ -1186,6 +1192,7 @@
         "community_item_H6ABrU": {
           "type": "community_item",
           "settings": {
+            "image": "shopify://shop_images/priscilla-du-preez--xcCXCRi9Xg-unsplash.jpg",
             "tag": "#hair-science",
             "title": "How Scalp Therapy Can Improve Hair Density"
           }

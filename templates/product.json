@@ -550,17 +550,11 @@
         "featured_product_description": "Real hair growth starts with understanding you. A simple daily serum designed to support stronger, fuller-looking hair over time.",
         "show_trust_badges": true,
         "badge_1_text": "No Animal Testing",
-        "badge_1_icon": "🐰",
         "badge_2_text": "Money-back Guarantee",
-        "badge_2_icon": "💰",
         "badge_3_text": "Swiss Science",
-        "badge_3_icon": "🇨🇭",
         "badge_4_text": "Clean Ingredients",
-        "badge_4_icon": "✓",
         "badge_5_text": "Dermatologist Reviewed",
-        "badge_5_icon": "👨‍⚕️",
-        "badge_6_text": "Proven Results, Backed by Science",
-        "badge_6_icon": "✓"
+        "badge_6_text": "Proven Results, Backed by Science"
       }
     }
   },
