@@ -15,6 +15,7 @@
     padding-top: var(--section-padding-top);
     padding-bottom: var(--section-padding-bottom);
     background-color: var(--section-bg-color);
+    overflow: hidden;
   }
 
   #shopify-section-{{ section.id }} .benefits-carousel-main {
@@ -89,11 +90,60 @@
     gap: 16px;
   }
 
+  #shopify-section-{{ section.id }} .benefit-card__image-wrapper {
+    position: relative;
+  }
+
   #shopify-section-{{ section.id }} .benefit-card__image {
     width: 100%;
-    height: 460px;
+    aspect-ratio: 7/8;
     background-color: #E3E3DE;
-    border-radius: 20px;
+    border-radius: 12px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .benefit-card__image-gallery {
+    width: 60%;
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    display: flex;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .benefit-card__image-thumbnail {
+    flex: 1;
+    aspect-ratio: 7/8;
+    height: auto;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .benefit-card__image-thumbnail:nth-child(1) {
+    background-color: #E3E3DE;
+  }
+
+  #shopify-section-{{ section.id }} .benefit-card__image-thumbnail:nth-child(2) {
+    background-color: rgb(150, 180, 200);
+  }
+
+  #shopify-section-{{ section.id }} .benefit-card__image-thumbnail:nth-child(3) {
+    background-color: rgb(180, 150, 200);
+  }
+
+  #shopify-section-{{ section.id }} .benefit-card__image-thumbnail:hover {
+    border-color: {{ section.settings.accent_color }};
+  }
+
+  #shopify-section-{{ section.id }} .benefit-card__image-thumbnail.active {
+    border-color: {{ section.settings.accent_color }};
+    box-shadow: 0 0 0 3px rgba({{ section.settings.accent_color }}, 0.1);
   }
 
   #shopify-section-{{ section.id }} .benefit-card__duration {
@@ -145,6 +195,27 @@
     gap: 1rem;
     justify-content: center;
     align-items: center;
+
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-progress-bar {
+    flex: 1;
+    height: 3px;
+    background-color: #E9EAEB;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-progress-bar__fill {
+    height: 100%;
+    background-color: #181D27;
+    border-radius: 2px;
+    transition: left 0.3s ease;
+    position: absolute;
+    top: 0;
+    width: 20%;
   }
 
   #shopify-section-{{ section.id }} .carousel-btn {
@@ -174,50 +245,74 @@
 
   #shopify-section-{{ section.id }} .featured-product {
     background: #f8f8f7;
-    border-radius: 12px;
-    padding: 3rem 2rem;
+    padding: 0;
     text-align: left;
-    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
-  #shopify-section-{{ section.id }} .featured-product__title {
-    font-size: 1.75rem;
-    font-weight: 600;
+  #shopify-section-{{ section.id }} h2.featured-product__title  {
+    font-size: 44px;
+    font-weight: 500;
     color: #181d27;
-    margin-bottom: 1rem;
+    margin: 0;
   }
 
-  #shopify-section-{{ section.id }} .featured-product__description {
-    font-size: 1rem;
-    color: #666;
-    line-height: 1.6;
-    max-width: 600px;
+  #shopify-section-{{ section.id }} p.featured-product__description {
+    font-size: 20px;
+    color: #535862;
+    line-height: 140%;
+    margin: 0;
   }
 
   #shopify-section-{{ section.id }} .trust-badges {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-    padding-top: 3rem;
-    border-top: 1px solid #e0e0e0;
+    margin-top: 100px;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background-color: #FFFFFF;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .trust-badges__container {
+    display: flex;
+    gap: 40px;
+    white-space: nowrap;
+    animation: scroll-badges 45s linear infinite;
+    padding: 24px 40px;
   }
 
   #shopify-section-{{ section.id }} .trust-badge {
+    flex-shrink: 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     text-align: center;
-    gap: 0.75rem;
+    gap: 12px;
+  }
+
+  @keyframes scroll-badges {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
 
   #shopify-section-{{ section.id }} .trust-badge__icon {
-    width: 40px;
-    height: 40px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 145%;
   }
 
   #shopify-section-{{ section.id }} .trust-badge__text {
@@ -228,18 +323,40 @@
   }
 
   @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .benefits-carousel-wrapper {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    #shopify-section-{{ section.id }} .benefits-carousel-main {
+      margin: 0;
+      padding: 0;
+    }
+
+    #shopify-section-{{ section.id }} .benefits-carousel-track {
+      gap: 4px;
+    }
+
+    #shopify-section-{{ section.id }} .trust-badges__container {
+      gap: 24px;
+      padding: 12px 16px;
+    }
+
     #shopify-section-{{ section.id }} .benefits-header {
       flex-direction: column;
       align-items: flex-start;
     }
 
     #shopify-section-{{ section.id }} .benefits-header__title {
-      font-size: 1.75rem;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 32px;
+      max-width: none;
     }
 
     #shopify-section-{{ section.id }} .benefit-card {
       min-height: auto;
-      padding: 1.5rem;
+      flex: 0 0 calc((100% - 4px) / 1.1);
     }
 
     #shopify-section-{{ section.id }} .featured-product {
@@ -271,7 +388,45 @@
         {%- for block in section.blocks -%}
           {%- if block.type == 'benefit' -%}
             <div class="benefit-card">
-              <div class="benefit-card__image"></div>
+              <div class="benefit-card__image-wrapper">
+                <div
+                  class="benefit-card__image"
+                  {%- if block.settings.image_1 != blank %}
+                    style="background-image: url('{{ block.settings.image_1 | image_url: width: 500 }}'); background-size: cover;"
+                  {%- else %}
+                    style="background-color: #E3E3DE;"
+                  {%- endif %}
+                ></div>
+                <div class="benefit-card__image-gallery">
+                  <div
+                    class="benefit-card__image-thumbnail active"
+                    alt="Image 1"
+                    data-image-index="0"
+                    {%- if block.settings.image_1 != blank %}
+                      data-image-src="{{ block.settings.image_1 | image_url: width: 500 }}"
+                      style="background-image: url('{{ block.settings.image_1 | image_url: width: 100 }}'); background-size: cover;"
+                    {%- endif %}
+                  ></div>
+                  <div
+                    class="benefit-card__image-thumbnail"
+                    alt="Image 2"
+                    data-image-index="1"
+                    {%- if block.settings.image_2 != blank %}
+                      data-image-src="{{ block.settings.image_2 | image_url: width: 500 }}"
+                      style="background-image: url('{{ block.settings.image_2 | image_url: width: 100 }}'); background-size: cover;"
+                    {%- endif %}
+                  ></div>
+                  <div
+                    class="benefit-card__image-thumbnail"
+                    alt="Image 3"
+                    data-image-index="2"
+                    {%- if block.settings.image_3 != blank %}
+                      data-image-src="{{ block.settings.image_3 | image_url: width: 500 }}"
+                      style="background-image: url('{{ block.settings.image_3 | image_url: width: 100 }}'); background-size: cover;"
+                    {%- endif %}
+                  ></div>
+                </div>
+              </div>
               <div class="benefit-card__duration">{{ block.settings.duration }}</div>
               <h3 class="benefit-card__title">{{ block.settings.title }}</h3>
               <ul class="benefit-card__benefits">
@@ -289,58 +444,124 @@
 
       <div class="carousel-controls">
         <button class="carousel-btn" id="prev-btn-{{ section.id }}" aria-label="Previous slide">❮</button>
+        <div class="carousel-progress-bar">
+          <div class="carousel-progress-bar__fill" id="progress-bar-{{ section.id }}"></div>
+        </div>
         <button class="carousel-btn" id="next-btn-{{ section.id }}" aria-label="Next slide">❯</button>
       </div>
     </div>
 
     {%- if section.settings.featured_product_title -%}
       <div class="featured-product">
-        <h3 class="featured-product__title">{{ section.settings.featured_product_title }}</h3>
+        <h2 class="featured-product__title">{{ section.settings.featured_product_title }}</h2>
         <p class="featured-product__description">{{ section.settings.featured_product_description }}</p>
       </div>
     {%- endif -%}
+  </div>
 
-    {%- if section.settings.show_trust_badges -%}
-      <div class="trust-badges">
+  {%- if section.settings.show_trust_badges -%}
+    <div class="trust-badges">
+      <div class="trust-badges__container" id="trust-badges-{{ section.id }}">
         {%- if section.settings.badge_1_text != blank -%}
           <div class="trust-badge">
-            <div class="trust-badge__icon">{{ section.settings.badge_1_icon }}</div>
+            <div class="trust-badge__icon">
+              <img src="{{ 'icon-organic-food.svg' | asset_url }}" alt="Organic Food" width="28" height="28">
+            </div>
             <div class="trust-badge__text">{{ section.settings.badge_1_text }}</div>
           </div>
         {%- endif -%}
         {%- if section.settings.badge_2_text != blank -%}
           <div class="trust-badge">
-            <div class="trust-badge__icon">{{ section.settings.badge_2_icon }}</div>
+            <div class="trust-badge__icon">
+              <img src="{{ 'icon-save-money-dollar.svg' | asset_url }}" alt="Save Money" width="28" height="28">
+            </div>
             <div class="trust-badge__text">{{ section.settings.badge_2_text }}</div>
           </div>
         {%- endif -%}
         {%- if section.settings.badge_3_text != blank -%}
           <div class="trust-badge">
-            <div class="trust-badge__icon">{{ section.settings.badge_3_icon }}</div>
+            <div class="trust-badge__icon">
+              <img src="{{ 'icon-swiss.svg' | asset_url }}" alt="Swiss" width="28" height="28">
+            </div>
             <div class="trust-badge__text">{{ section.settings.badge_3_text }}</div>
           </div>
         {%- endif -%}
         {%- if section.settings.badge_4_text != blank -%}
           <div class="trust-badge">
-            <div class="trust-badge__icon">{{ section.settings.badge_4_icon }}</div>
+            <div class="trust-badge__icon">
+              <img src="{{ 'icon-atom.svg' | asset_url }}" alt="Atom" width="28" height="28">
+            </div>
             <div class="trust-badge__text">{{ section.settings.badge_4_text }}</div>
           </div>
         {%- endif -%}
         {%- if section.settings.badge_5_text != blank -%}
           <div class="trust-badge">
-            <div class="trust-badge__icon">{{ section.settings.badge_5_icon }}</div>
+            <div class="trust-badge__icon">
+              <img src="{{ 'icon-security-check.svg' | asset_url }}" alt="Security Check" width="28" height="28">
+            </div>
             <div class="trust-badge__text">{{ section.settings.badge_5_text }}</div>
           </div>
         {%- endif -%}
         {%- if section.settings.badge_6_text != blank -%}
           <div class="trust-badge">
-            <div class="trust-badge__icon">{{ section.settings.badge_6_icon }}</div>
+            <div class="trust-badge__icon">
+              <img src="{{ 'icon-unavailable-2.svg' | asset_url }}" alt="Proven Results" width="28" height="28">
+            </div>
+            <div class="trust-badge__text">{{ section.settings.badge_6_text }}</div>
+          </div>
+        {%- endif -%}
+        <!-- Duplicate items for seamless loop -->
+        {%- if section.settings.badge_1_text != blank -%}
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <img src="{{ 'icon-organic-food.svg' | asset_url }}" alt="Organic Food" width="28" height="28">
+            </div>
+            <div class="trust-badge__text">{{ section.settings.badge_1_text }}</div>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.badge_2_text != blank -%}
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <img src="{{ 'icon-save-money-dollar.svg' | asset_url }}" alt="Save Money" width="28" height="28">
+            </div>
+            <div class="trust-badge__text">{{ section.settings.badge_2_text }}</div>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.badge_3_text != blank -%}
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <img src="{{ 'icon-swiss.svg' | asset_url }}" alt="Swiss" width="28" height="28">
+            </div>
+            <div class="trust-badge__text">{{ section.settings.badge_3_text }}</div>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.badge_4_text != blank -%}
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <img src="{{ 'icon-atom.svg' | asset_url }}" alt="Atom" width="28" height="28">
+            </div>
+            <div class="trust-badge__text">{{ section.settings.badge_4_text }}</div>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.badge_5_text != blank -%}
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <img src="{{ 'icon-security-check.svg' | asset_url }}" alt="Security Check" width="28" height="28">
+            </div>
+            <div class="trust-badge__text">{{ section.settings.badge_5_text }}</div>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.badge_6_text != blank -%}
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <img src="{{ 'icon-unavailable-2.svg' | asset_url }}" alt="Proven Results" width="28" height="28">
+            </div>
             <div class="trust-badge__text">{{ section.settings.badge_6_text }}</div>
           </div>
         {%- endif -%}
       </div>
-    {%- endif -%}
-  </div>
+    </div>
+  {%- endif -%}
 </div>
 
 <script>
@@ -348,14 +569,18 @@
     const track = document.getElementById('carousel-track-{{ section.id }}');
     const prevBtn = document.getElementById('prev-btn-{{ section.id }}');
     const nextBtn = document.getElementById('next-btn-{{ section.id }}');
+    const progressBar = document.getElementById('progress-bar-{{ section.id }}');
 
     if (!track || !prevBtn || !nextBtn) return;
 
-    const gap = 32;
+    const gap = window.innerWidth <= 768 ? 4 : 32;
     let scrollPosition = 0;
 
     function getScrollDistance() {
-      const visibleCards = 3;
+      let visibleCards = 3;
+      if (window.innerWidth <= 768) {
+        visibleCards = 1.1;
+      }
       const availableWidth = track.clientWidth;
       const totalGapWidth = gap * (visibleCards - 1);
       const cardWidth = (availableWidth - totalGapWidth) / visibleCards;
@@ -366,6 +591,22 @@
       const maxScroll = track.scrollWidth - track.clientWidth;
       prevBtn.disabled = scrollPosition <= 0;
       nextBtn.disabled = scrollPosition >= maxScroll - 1;
+
+      // Update progress bar to act like a scrollbar
+      if (progressBar) {
+        const visibleWidth = track.clientWidth;
+        const totalWidth = track.scrollWidth;
+
+        // Scrollbar thumb width = percentage of content visible
+        const thumbWidth = (visibleWidth / totalWidth) * 100;
+
+        // Scrollbar thumb position = scroll position mapped to available space
+        const maxThumbPosition = 100 - thumbWidth;
+        const thumbPosition = (scrollPosition / maxScroll) * maxThumbPosition;
+
+        progressBar.style.width = thumbWidth + '%';
+        progressBar.style.left = thumbPosition + '%';
+      }
     }
 
     prevBtn.addEventListener('click', () => {
@@ -387,6 +628,35 @@
     track.addEventListener('scroll', () => {
       scrollPosition = track.scrollLeft;
       updateButtons();
+    });
+
+    // Image gallery thumbnail switching
+    const thumbnails = document.querySelectorAll('#shopify-section-{{ section.id }} .benefit-card__image-thumbnail');
+    thumbnails.forEach((thumbnail) => {
+      thumbnail.addEventListener('click', () => {
+        const cardWrapper = thumbnail.closest('.benefit-card__image-wrapper');
+        const mainImage = cardWrapper.querySelector('.benefit-card__image');
+        const galleryWrapper = thumbnail.closest('.benefit-card__image-gallery');
+
+        // Get the computed styles from the thumbnail
+        const computedStyle = window.getComputedStyle(thumbnail);
+        const bgImage = computedStyle.backgroundImage;
+        const bgColor = computedStyle.backgroundColor;
+
+        // Apply to main image
+        if (bgImage && bgImage !== 'none') {
+          mainImage.style.backgroundImage = bgImage;
+          mainImage.style.backgroundSize = 'cover';
+        } else {
+          mainImage.style.backgroundImage = 'none';
+          mainImage.style.backgroundColor = bgColor;
+        }
+
+        // Update active state
+        const allThumbnails = galleryWrapper.querySelectorAll('.benefit-card__image-thumbnail');
+        allThumbnails.forEach((thumb) => thumb.classList.remove('active'));
+        thumbnail.classList.add('active');
+      });
     });
 
     updateButtons();
@@ -470,71 +740,40 @@
       "label": "Badge 1 Text",
       "default": "No Animal Testing"
     },
-    {
-      "type": "text",
-      "id": "badge_1_icon",
-      "label": "Badge 1 Icon",
-      "default": "🐰"
-    },
+
     {
       "type": "text",
       "id": "badge_2_text",
       "label": "Badge 2 Text",
       "default": "Money-back Guarantee"
     },
-    {
-      "type": "text",
-      "id": "badge_2_icon",
-      "label": "Badge 2 Icon",
-      "default": "💰"
-    },
+
     {
       "type": "text",
       "id": "badge_3_text",
       "label": "Badge 3 Text",
       "default": "Swiss Science"
     },
-    {
-      "type": "text",
-      "id": "badge_3_icon",
-      "label": "Badge 3 Icon",
-      "default": "🇨🇭"
-    },
+
     {
       "type": "text",
       "id": "badge_4_text",
       "label": "Badge 4 Text",
       "default": "Clean Ingredients"
     },
-    {
-      "type": "text",
-      "id": "badge_4_icon",
-      "label": "Badge 4 Icon",
-      "default": "✓"
-    },
+
     {
       "type": "text",
       "id": "badge_5_text",
       "label": "Badge 5 Text",
       "default": "Dermatologist Reviewed"
     },
-    {
-      "type": "text",
-      "id": "badge_5_icon",
-      "label": "Badge 5 Icon",
-      "default": "👨‍⚕️"
-    },
+
     {
       "type": "text",
       "id": "badge_6_text",
       "label": "Badge 6 Text",
       "default": "Proven Results, Backed by Science"
-    },
-    {
-      "type": "text",
-      "id": "badge_6_icon",
-      "label": "Badge 6 Icon",
-      "default": "✓"
     }
   ],
   "blocks": [
@@ -542,6 +781,21 @@
       "type": "benefit",
       "name": "Benefit Card",
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Image 3"
+        },
         {
           "type": "text",
           "id": "duration",
@@ -609,7 +863,7 @@
           "type": "benefit",
           "settings": {
             "duration": "3 MONTHS",
-            "title": "Immune + Heart Supp",
+            "title": "Immune + Heart Support",
             "benefit_1": "Clinically proven to reduce bloating",
             "benefit_2": "Alleviates excess gas"
           }
