@@ -612,7 +612,11 @@
       "name": "FAQ Section",
       "settings": {
         "layout": "single-column",
+        "enable_wrapper_narrow": true,
+        "wrapper_max_width": 900,
         "title": "<p>Got Questions? We've Got Answers.</p>",
+        "enable_title_max_width": false,
+        "title_max_width": 430,
         "show_contact_card": false,
         "contact_title": "Email support",
         "contact_email": "support@yourbrand.com",
