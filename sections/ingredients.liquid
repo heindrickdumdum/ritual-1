@@ -83,7 +83,7 @@
   #shopify-section-{{ section.id }} .ingredient-card {
     flex: 0 0 316px;
     background: #F7F7F4;
-    border-radius: 16px;
+    border-radius: 12px;
     padding: 1.25rem;
     display: flex;
     flex-direction: column;
@@ -202,11 +202,13 @@
       font-size: 0.9rem;
     }
 
+    #shopify-section-{{ section.id }} .ingredients-carousel__track {
+      gap: 0.25rem;
+    }
+
     #shopify-section-{{ section.id }} .ingredient-card {
-      flex: 0 0 240px;
-      min-width: 240px;
-      padding: 1rem;
-      position: relative;
+      flex: 0 0 320px;
+      min-width: 320px;
     }
 
     #shopify-section-{{ section.id }} .ingredient-card__image-wrapper {
