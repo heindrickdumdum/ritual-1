@@ -30,7 +30,9 @@
   #shopify-section-{{ section.id }} .faq-section__title {
     font-weight: 500;
     margin-bottom: 0;
-    max-width: 430px;
+    {% if section.settings.enable_title_max_width %}
+    max-width: {{ section.settings.title_max_width }}px;
+    {% endif %}
   }
 
   #shopify-section-{{ section.id }} .faq-section__title p {
@@ -485,6 +487,26 @@
       "id": "title",
       "label": "Heading",
       "default": "<p>Got Questions? dWe've Got Answers.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Title Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_title_max_width",
+      "label": "Enable title max-width",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "title_max_width",
+      "label": "Title max-width",
+      "min": 200,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "default": 430
     },
     {
       "type": "header",
