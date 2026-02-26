@@ -563,6 +563,115 @@
         "description": ""
       }
     },
+    "ingredients_qPiiY4": {
+      "type": "ingredients",
+      "blocks": {
+        "ingredient_item_CpxPTr": {
+          "type": "ingredient_item",
+          "settings": {
+            "title": "Hyaluronic Acid",
+            "description": "to hydrate skin and support its moisture barrier"
+          }
+        },
+        "ingredient_item_c9c8tU": {
+          "type": "ingredient_item",
+          "settings": {
+            "title": "Sea Moss",
+            "description": "to protect skin from environmental stressors like pollution"
+          }
+        },
+        "ingredient_item_XJTFky": {
+          "type": "ingredient_item",
+          "settings": {
+            "title": "Spirulina",
+            "description": "to balance and refresh oily roots"
+          }
+        },
+        "ingredient_item_Ex3tPd": {
+          "type": "ingredient_item",
+          "settings": {
+            "title": "Rosehip Oil",
+            "description": "to nourish skin and promote a healthy glow"
+          }
+        },
+        "ingredient_item_hfx9HG": {
+          "type": "ingredient_item",
+          "settings": {
+            "title": "Biotin",
+            "description": "to support hair strength and resilience from within"
+          }
+        },
+        "ingredient_item_qnezNy": {
+          "type": "ingredient_item",
+          "settings": {
+            "title": "Keratin",
+            "description": "to strengthen and protect hair structure"
+          }
+        },
+        "ingredient_item_4WLmrQ": {
+          "type": "ingredient_item",
+          "settings": {
+            "title": "Vitamin E",
+            "description": "to provide antioxidant protection and nourishment"
+          }
+        },
+        "ingredient_item_Nd6b8x": {
+          "type": "ingredient_item",
+          "settings": {
+            "title": "Collagen",
+            "description": "to improve skin elasticity and firmness"
+          }
+        },
+        "ingredient_item_3GJR7X": {
+          "type": "ingredient_item",
+          "settings": {
+            "title": "Zinc",
+            "description": "to support scalp health and hair growth"
+          }
+        },
+        "ingredient_item_wpGfRG": {
+          "type": "ingredient_item",
+          "settings": {
+            "title": "Niacinamide",
+            "description": "to strengthen hair and improve scalp condition"
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_item_CpxPTr",
+        "ingredient_item_c9c8tU",
+        "ingredient_item_XJTFky",
+        "ingredient_item_Ex3tPd",
+        "ingredient_item_hfx9HG",
+        "ingredient_item_qnezNy",
+        "ingredient_item_4WLmrQ",
+        "ingredient_item_Nd6b8x",
+        "ingredient_item_3GJR7X",
+        "ingredient_item_wpGfRG"
+      ],
+      "name": "Ingredients",
+      "settings": {
+        "title": "Naturally Powerful Ingredients",
+        "subtitle": "Your formula is uniquely yours. We target your goals with multi-benefit ingredients like:",
+        "link_text": "See All 185+ Ingredients",
+        "link_url": "",
+        "heading_font_size": 40,
+        "heading_font_size_mobile": 28,
+        "heading_font_weight": "",
+        "heading_font_weight_mobile": "",
+        "heading_line_height": "",
+        "heading_line_height_mobile": "",
+        "card_title_font_size": 16,
+        "card_title_font_size_mobile": 14,
+        "previous_button_label": "Previous",
+        "next_button_label": "Next",
+        "color_scheme": "",
+        "padding-block-start": 100,
+        "padding-block-end": 100,
+        "padding-block-start-mobile": 60,
+        "padding-block-end-mobile": 60
+      }
+    },
     "faq_section_VHxhCC": {
       "type": "faq-section",
       "blocks": {
@@ -652,6 +761,7 @@
     "word_strip_tWR4hj",
     "product_benefits_carousel_LcQ9P8",
     "product_testimonials_T63mVC",
+    "ingredients_qPiiY4",
     "faq_section_VHxhCC"
   ]
 }
