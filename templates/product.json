@@ -560,7 +560,8 @@
       "name": "Product Testimonials",
       "settings": {
         "heading": "Join Thousands Who’ve Regained Confidence in Their Hair",
-        "description": ""
+        "description": "<p>See how real users achieved visible growth and restored their natural shine.</p>",
+        "bg_color": "#ffffff"
       }
     },
     "ingredients_qPiiY4": {
