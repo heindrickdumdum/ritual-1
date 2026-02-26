@@ -38,6 +38,9 @@
     {% if section.settings.enable_title_max_width %}
     max-width: {{ section.settings.title_max_width }}px;
     {% endif %}
+    {% if section.settings.center_title %}
+    text-align: center;
+    {% endif %}
   }
 
   #shopify-section-{{ section.id }} .faq-section__title p {
@@ -528,6 +531,12 @@
       "step": 10,
       "unit": "px",
       "default": 430
+    },
+    {
+      "type": "checkbox",
+      "id": "center_title",
+      "label": "Center title",
+      "default": false
     },
     {
       "type": "header",
