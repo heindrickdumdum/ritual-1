@@ -1,3 +1,274 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-bg-color: {{ section.settings.bg_color }};
+  }
+
+  #shopify-section-{{ section.id }} {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: var(--section-bg-color);
+  }
+
+  #shopify-section-{{ section.id }} .product-testimonials-wrapper {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: var(--section-bg-color);
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .product-testimonials-main {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  #shopify-section-{{ section.id }} .product-testimonials-main h2 {
+    font-size: 44px;
+    line-height: 146%;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    text-align: center;
+    text-wrap-style: balance;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .product-testimonials-main .description {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .testimonials-carousel-container {
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .testimonials-carousel-track {
+    display: flex;
+    gap: 32px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    padding-bottom: 10px;
+  }
+
+  #shopify-section-{{ section.id }} .testimonials-carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-card {
+    padding: 40px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    flex: 0 0 calc(100% - 32px);
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-content {
+    font-size: 24px;
+    line-height: 100%;
+    font-weight: 400;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-author {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-tag {
+    display: inline-block;
+    background-color: #e0e0e0;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 145%;
+    color: #181D27;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-controls {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-progress-bar {
+    flex: 1;
+    height: 3px;
+    background-color: #E9EAEB;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    max-width: 200px;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-progress-bar__fill {
+    height: 100%;
+    background-color: #181D27;
+    border-radius: 2px;
+    transition: left 0.3s linear;
+    position: absolute;
+    top: 0;
+    width: 20%;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-btn:hover:not(:disabled) {
+    background-color: #26736D;
+    color: white;
+    border-color: #26736D;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .product-testimonials-main {
+      gap: 40px;
+      margin: 0;
+      padding: 0;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-card {
+      padding: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-content {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-author {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .carousel-progress-bar {
+      max-width: 120px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="product-testimonials-wrapper section">
+  <div class="product-testimonials-main">
+    <div class="product-testimonials-heading">
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+    {% if section.settings.description %}
+      <div class="description">
+        {{ section.settings.description }}
+      </div>
+    {% endif %}
+
+    {% assign testimonials = product.metafields.custom.testimonials %}
+    {% if testimonials %}
+      <div class="testimonials-carousel-container">
+        <div class="testimonials-carousel-track" id="carousel-track-{{ section.id }}">
+          {% for testimonial in testimonials.value %}
+            <div class="testimonial-card">
+              <div class="testimonial-content">"{{ testimonial.content }}"</div>
+              <div class="testimonial-author">— {{ testimonial.name_age }}</div>
+              {% if testimonial.tags %}
+                <div class="testimonial-tags">
+                  {% for tag in testimonial.tags.value %}
+                    <span class="testimonial-tag">{{ tag }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="prev-btn-{{ section.id }}" aria-label="Previous testimonial">❮</button>
+          <div class="carousel-progress-bar">
+            <div class="carousel-progress-bar__fill" id="progress-bar-{{ section.id }}"></div>
+          </div>
+          <button class="carousel-btn" id="next-btn-{{ section.id }}" aria-label="Next testimonial">❯</button>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const track = document.getElementById('carousel-track-{{ section.id }}');
+    const prevBtn = document.getElementById('prev-btn-{{ section.id }}');
+    const nextBtn = document.getElementById('next-btn-{{ section.id }}');
+    const progressBar = document.getElementById('progress-bar-{{ section.id }}');
+
+    if (!track || !prevBtn || !nextBtn) return;
+
+    let scrollPosition = 0;
+
+    function updateButtons() {
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      prevBtn.disabled = scrollPosition <= 0;
+      nextBtn.disabled = scrollPosition >= maxScroll - 1;
+
+      if (progressBar) {
+        const visibleWidth = track.clientWidth;
+        const totalWidth = track.scrollWidth;
+        const thumbWidth = (visibleWidth / totalWidth) * 100;
+        const maxThumbPosition = 100 - thumbWidth;
+        const thumbPosition = (scrollPosition / maxScroll) * maxThumbPosition;
+
+        progressBar.style.width = thumbWidth + '%';
+        progressBar.style.left = thumbPosition + '%';
+      }
+    }
+
+    prevBtn.addEventListener('click', () => {
+      scrollPosition = Math.max(0, scrollPosition - track.clientWidth);
+      track.scrollLeft = scrollPosition;
+      updateButtons();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      scrollPosition = Math.min(maxScroll, scrollPosition + track.clientWidth);
+      track.scrollLeft = scrollPosition;
+      updateButtons();
+    });
+
+    track.addEventListener('scroll', () => {
+      scrollPosition = track.scrollLeft;
+      updateButtons();
+    });
+
+    updateButtons();
+  });
+</script>
+
 {% schema %}
 {
   "name": "Product Testimonials",
@@ -12,24 +283,22 @@
       "type": "richtext",
       "id": "description",
       "label": "Description"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
     }
   ],
   "presets": [
     {
       "name": "Product Testimonials",
       "settings": {
-        "heading": "What Our Customers Say"
+        "heading": "Join Thousands Who've Regained Confidence in Their Hair",
+        "description": "<p>See how real users achieved visible growth and restored their natural shine.</p>"
       }
     }
   ]
 }
 {% endschema %}
-
-<div class="product-testimonials">
-  <h2>{{ section.settings.heading }}</h2>
-  {% if section.settings.description %}
-    <div class="description">
-      {{ section.settings.description }}
-    </div>
-  {% endif %}
-</div>
