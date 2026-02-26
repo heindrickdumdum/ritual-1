@@ -569,6 +569,7 @@
         "ingredient_item_CpxPTr": {
           "type": "ingredient_item",
           "settings": {
+            "image": "shopify://shop_images/ingredient-1.png",
             "title": "Hyaluronic Acid",
             "description": "to hydrate skin and support its moisture barrier"
           }
@@ -576,6 +577,7 @@
         "ingredient_item_c9c8tU": {
           "type": "ingredient_item",
           "settings": {
+            "image": "shopify://shop_images/ingredient-2.png",
             "title": "Sea Moss",
             "description": "to protect skin from environmental stressors like pollution"
           }
@@ -583,6 +585,7 @@
         "ingredient_item_XJTFky": {
           "type": "ingredient_item",
           "settings": {
+            "image": "shopify://shop_images/ingredient-3.png",
             "title": "Spirulina",
             "description": "to balance and refresh oily roots"
           }
@@ -590,6 +593,7 @@
         "ingredient_item_Ex3tPd": {
           "type": "ingredient_item",
           "settings": {
+            "image": "shopify://shop_images/ingredient-4.png",
             "title": "Rosehip Oil",
             "description": "to nourish skin and promote a healthy glow"
           }
