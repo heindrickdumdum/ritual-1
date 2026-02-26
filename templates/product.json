@@ -546,8 +546,6 @@
         "bg_color": "#f7f7f4",
         "padding_top": 60,
         "padding_bottom": 60,
-        "featured_product_title": "Rituall Hair Growth Serum",
-        "featured_product_description": "Real hair growth starts with understanding you. A simple daily serum designed to support stronger, fuller-looking hair over time.",
         "show_trust_badges": true,
         "badge_1_text": "No Animal Testing",
         "badge_2_text": "Money-back Guarantee",
@@ -556,6 +554,14 @@
         "badge_5_text": "Dermatologist Reviewed",
         "badge_6_text": "Proven Results, Backed by Science"
       }
+    },
+    "product_testimonials_T63mVC": {
+      "type": "product-testimonials",
+      "name": "Product Testimonials",
+      "settings": {
+        "heading": "What Our Customers Say",
+        "description": ""
+      }
     }
   },
   "order": [
@@ -563,6 +569,7 @@
     "main",
     "product_recommendations_qggXJq",
     "word_strip_tWR4hj",
-    "product_benefits_carousel_LcQ9P8"
+    "product_benefits_carousel_LcQ9P8",
+    "product_testimonials_T63mVC"
   ]
 }
