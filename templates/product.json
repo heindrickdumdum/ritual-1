@@ -611,6 +611,7 @@
       ],
       "name": "FAQ Section",
       "settings": {
+        "layout": "single-column",
         "title": "<p>Got Questions? We've Got Answers.</p>",
         "show_contact_card": false,
         "contact_title": "Email support",
