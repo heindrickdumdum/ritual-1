@@ -111,20 +111,22 @@
 
   #shopify-section-{{ section.id }} .testimonial-content-wrapper {
     flex: 0 0 calc(30% - 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 
   #shopify-section-{{ section.id }} .testimonial-content {
     font-size: 24px;
     line-height: 100%;
     font-weight: 400;
-    margin-bottom: 24px;
     font-style: italic;
   }
 
   #shopify-section-{{ section.id }} .testimonial-author {
     font-size: 16px;
     font-weight: 600;
-    margin-bottom: 12px;
+    line-height: 150%;
   }
 
   #shopify-section-{{ section.id }} .testimonial-tags {
@@ -135,7 +137,7 @@
 
   #shopify-section-{{ section.id }} .testimonial-tag {
     display: inline-block;
-    background-color: #e0e0e0;
+    background-color: #EEEDE7;
     padding: 4px 12px;
     border-radius: 16px;
     font-size: 14px;
@@ -152,24 +154,24 @@
     margin-top: 40px;
   }
 
-  #shopify-section-{{ section.id }} .carousel-progress-bar {
-    flex: 1;
-    height: 3px;
-    background-color: #E9EAEB;
-    border-radius: 2px;
-    overflow: hidden;
-    position: relative;
-    max-width: 200px;
+  #shopify-section-{{ section.id }} .carousel-dots {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
   }
 
-  #shopify-section-{{ section.id }} .carousel-progress-bar__fill {
-    height: 100%;
-    background-color: #181D27;
-    border-radius: 2px;
-    transition: left 0.3s linear;
-    position: absolute;
-    top: 0;
-    width: 20%;
+  #shopify-section-{{ section.id }} .carousel-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #E3E3DE;
+    border: none;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-dot.active {
+    border: 2px solid #26736D;
   }
 
   #shopify-section-{{ section.id }} .carousel-btn {
@@ -182,7 +184,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: all 0.3s linear;
     font-size: 20px;
   }
 
@@ -211,7 +213,6 @@
     #shopify-section-{{ section.id }} .testimonial-content {
       font-size: 16px;
       line-height: 24px;
-      margin-bottom: 16px;
     }
 
     #shopify-section-{{ section.id }} .testimonial-author {
@@ -270,7 +271,7 @@
                 </div>
               </div>
               <div class="testimonial-content-wrapper">
-                <div class="testimonial-content">"{{ testimonial.content }}"</div>
+                <div class="testimonial-content">{{ testimonial.content }}</div>
                 <div class="testimonial-author">— {{ testimonial.name_age }}</div>
                 {% if testimonial.tags %}
                   <div class="testimonial-tags">
@@ -286,8 +287,14 @@
 
         <div class="carousel-controls">
           <button class="carousel-btn" id="prev-btn-{{ section.id }}" aria-label="Previous testimonial">❮</button>
-          <div class="carousel-progress-bar">
-            <div class="carousel-progress-bar__fill" id="progress-bar-{{ section.id }}"></div>
+          <div class="carousel-dots" id="carousel-dots-{{ section.id }}">
+            {% for testimonial in testimonials.value %}
+              <button
+                class="carousel-dot{% if forloop.first %} active{% endif %}"
+                data-index="{{ forloop.index0 }}"
+                aria-label="Go to testimonial {{ forloop.index }}"
+              ></button>
+            {% endfor %}
           </div>
           <button class="carousel-btn" id="next-btn-{{ section.id }}" aria-label="Next testimonial">❯</button>
         </div>
@@ -301,48 +308,66 @@
     const track = document.getElementById('carousel-track-{{ section.id }}');
     const prevBtn = document.getElementById('prev-btn-{{ section.id }}');
     const nextBtn = document.getElementById('next-btn-{{ section.id }}');
-    const progressBar = document.getElementById('progress-bar-{{ section.id }}');
+    const dotsContainer = document.getElementById('carousel-dots-{{ section.id }}');
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
 
     if (!track || !prevBtn || !nextBtn) return;
 
-    let scrollPosition = 0;
+    let currentIndex = 0;
+    let isAnimating = false;
+    let animationTimeout;
+
+    function updateDots() {
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+      });
+    }
 
     function updateButtons() {
-      const maxScroll = track.scrollWidth - track.clientWidth;
-      prevBtn.disabled = scrollPosition <= 0;
-      nextBtn.disabled = scrollPosition >= maxScroll - 1;
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex === dots.length - 1;
+    }
 
-      if (progressBar) {
-        const visibleWidth = track.clientWidth;
-        const totalWidth = track.scrollWidth;
-        const thumbWidth = (visibleWidth / totalWidth) * 100;
-        const maxThumbPosition = 100 - thumbWidth;
-        const thumbPosition = (scrollPosition / maxScroll) * maxThumbPosition;
+    function scrollToIndex(index) {
+      index = Math.max(0, Math.min(index, dots.length - 1));
+      const cardWidth = track.querySelector('.testimonial-card').offsetWidth + 40;
+      const targetScroll = index * cardWidth;
 
-        progressBar.style.width = thumbWidth + '%';
-        progressBar.style.left = thumbPosition + '%';
-      }
+      currentIndex = index;
+      isAnimating = true;
+      clearTimeout(animationTimeout);
+      animationTimeout = setTimeout(() => {
+        isAnimating = false;
+      }, 600);
+
+      track.scrollLeft = targetScroll;
+      updateDots();
+      updateButtons();
     }
 
     prevBtn.addEventListener('click', () => {
-      const cardWidth = track.querySelector('.testimonial-card').offsetWidth + 40; // card + gap
-      scrollPosition = Math.max(0, scrollPosition - cardWidth);
-      track.scrollLeft = scrollPosition;
-      updateButtons();
+      scrollToIndex(currentIndex - 1);
     });
 
     nextBtn.addEventListener('click', () => {
-      const cardWidth = track.querySelector('.testimonial-card').offsetWidth + 40; // card + gap
-      scrollPosition = scrollPosition + cardWidth;
-      track.scrollLeft = scrollPosition;
+      scrollToIndex(currentIndex + 1);
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        scrollToIndex(parseInt(dot.dataset.index));
+      });
+    });
+
+    track.addEventListener('scroll', (event) => {
+      if (isAnimating) return; // Skip while scroll animation in progress
+      const cardWidth = track.querySelector('.testimonial-card').offsetWidth + 40;
+      currentIndex = Math.round(track.scrollLeft / cardWidth);
+      updateDots();
       updateButtons();
     });
 
-    track.addEventListener('scroll', () => {
-      scrollPosition = track.scrollLeft;
-      updateButtons();
-    });
-
+    updateDots();
     updateButtons();
   });
 </script>
