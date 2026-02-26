@@ -17,6 +17,11 @@
     grid-template-columns: repeat(var(--section-columns), 1fr);
     gap: 4rem;
     align-items: start;
+    {% if section.settings.enable_wrapper_narrow %}
+    max-width: {{ section.settings.wrapper_max_width }}px;
+    margin-left: auto;
+    margin-right: auto;
+    {% endif %}
   }
 
   #shopify-section-{{ section.id }} .faq-section__left {
@@ -481,6 +486,22 @@
         {"value": "single-column", "label": "Single Column"}
       ],
       "default": "two-column"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_wrapper_narrow",
+      "label": "Make section narrow",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "wrapper_max_width",
+      "label": "Section max-width",
+      "min": 400,
+      "max": 1400,
+      "step": 20,
+      "unit": "px",
+      "default": 900
     },
     {
       "type": "richtext",
