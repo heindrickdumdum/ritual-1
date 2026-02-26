@@ -562,6 +562,81 @@
         "heading": "What Our Customers Say",
         "description": ""
       }
+    },
+    "faq_section_VHxhCC": {
+      "type": "faq-section",
+      "blocks": {
+        "faq_item_Kx76BG": {
+          "type": "faq_item",
+          "settings": {
+            "question": "When will I start seeing results?",
+            "answer": "Most users notice visible improvement within 3-6 months of consistent use."
+          }
+        },
+        "faq_item_QF4CgM": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What affects women's hair growth?",
+            "answer": "Various factors including hormones, stress, nutrition, and genetics can affect hair growth."
+          }
+        },
+        "faq_item_tYtGiD": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Will hair grow on other parts of my body?",
+            "answer": "Our formula is specifically designed to target scalp hair growth only."
+          }
+        },
+        "faq_item_wPNzm4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are the main differences in formulas between Nutrafol Men, and Women's Balance?",
+            "answer": "Each formula is tailored to address the unique hormonal and nutritional needs of different demographics."
+          }
+        },
+        "faq_item_TBm6gd": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How is Nutrafol different from other hair growth products?",
+            "answer": "Our approach combines science-backed ingredients with personalized recommendations for comprehensive hair wellness."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_Kx76BG",
+        "faq_item_QF4CgM",
+        "faq_item_tYtGiD",
+        "faq_item_wPNzm4",
+        "faq_item_TBm6gd"
+      ],
+      "name": "FAQ Section",
+      "settings": {
+        "title": "<p>Got Questions? We've Got Answers.</p>",
+        "show_contact_card": false,
+        "contact_title": "Email support",
+        "contact_email": "support@yourbrand.com",
+        "show_contact_link": false,
+        "contact_link_heading": "Don't see your question?",
+        "contact_link_text": "Ask Us",
+        "contact_link_url": "",
+        "title_font_size_mobile": 32,
+        "title_font_weight_mobile": "",
+        "title_line_height_mobile": "",
+        "question_font_size_mobile": 16,
+        "question_font_weight_mobile": "",
+        "question_line_height_mobile": "",
+        "answer_font_size_mobile": 15,
+        "answer_font_weight_mobile": "",
+        "answer_line_height_mobile": "",
+        "contact_title_font_size_mobile": 15,
+        "contact_text_font_size_mobile": 18,
+        "contact_link_font_size_mobile": 15,
+        "color_scheme": "scheme-3",
+        "padding-block-start": 100,
+        "padding-block-end": 100,
+        "padding-block-start-mobile": 65,
+        "padding-block-end-mobile": 65
+      }
     }
   },
   "order": [
@@ -570,6 +645,7 @@
     "product_recommendations_qggXJq",
     "word_strip_tWR4hj",
     "product_benefits_carousel_LcQ9P8",
-    "product_testimonials_T63mVC"
+    "product_testimonials_T63mVC",
+    "faq_section_VHxhCC"
   ]
 }
