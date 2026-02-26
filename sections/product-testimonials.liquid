@@ -34,6 +34,15 @@
     margin: 0;
   }
 
+  #shopify-section-{{ section.id }} .product-testimonials-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    max-width: 720px;
+    align-self: center;
+  }
+
   #shopify-section-{{ section.id }} .product-testimonials-main .description {
     margin: 0;
   }
@@ -181,12 +190,12 @@
   <div class="product-testimonials-main">
     <div class="product-testimonials-heading">
       <h2>{{ section.settings.heading }}</h2>
+      {% if section.settings.description %}
+        <div class="description">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
     </div>
-    {% if section.settings.description %}
-      <div class="description">
-        {{ section.settings.description }}
-      </div>
-    {% endif %}
 
     {% assign testimonials = product.metafields.custom.testimonials %}
     {% if testimonials %}
@@ -194,15 +203,25 @@
         <div class="testimonials-carousel-track" id="carousel-track-{{ section.id }}">
           {% for testimonial in testimonials.value %}
             <div class="testimonial-card">
-              <div class="testimonial-content">"{{ testimonial.content }}"</div>
-              <div class="testimonial-author">— {{ testimonial.name_age }}</div>
-              {% if testimonial.tags %}
-                <div class="testimonial-tags">
-                  {% for tag in testimonial.tags.value %}
-                    <span class="testimonial-tag">{{ tag }}</span>
-                  {% endfor %}
+              <div class="testimonial-images">
+                <div class="testimonial-image">
+                  <!-- Image 1 will be added here -->
                 </div>
-              {% endif %}
+                <div class="testimonial-image">
+                  <!-- Image 2 will be added here -->
+                </div>
+              </div>
+              <div class="testimonial-content-wrapper">
+                <div class="testimonial-content">"{{ testimonial.content }}"</div>
+                <div class="testimonial-author">— {{ testimonial.name_age }}</div>
+                {% if testimonial.tags %}
+                  <div class="testimonial-tags">
+                    {% for tag in testimonial.tags.value %}
+                      <span class="testimonial-tag">{{ tag }}</span>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
             </div>
           {% endfor %}
         </div>
