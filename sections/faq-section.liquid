@@ -4,6 +4,7 @@
     --section-padding-bottom: {{ section.settings.padding-block-end }}px;
     --section-padding-top-mobile: {{ section.settings.padding-block-start-mobile }}px;
     --section-padding-bottom-mobile: {{ section.settings.padding-block-end-mobile }}px;
+    --section-columns: {% if section.settings.layout == 'single-column' %}1{% else %}2{% endif %};
   }
 
   #shopify-section-{{ section.id }} .faq-section {
@@ -13,7 +14,7 @@
 
   #shopify-section-{{ section.id }} .faq-section__wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(var(--section-columns), 1fr);
     gap: 4rem;
     align-items: start;
   }
@@ -469,6 +470,16 @@
   "name": "FAQ Section",
   "tag": "section",
   "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {"value": "two-column", "label": "Two Column"},
+        {"value": "single-column", "label": "Single Column"}
+      ],
+      "default": "two-column"
+    },
     {
       "type": "richtext",
       "id": "title",
