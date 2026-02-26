@@ -19,8 +19,7 @@
   }
 
   #shopify-section-{{ section.id }} .ingredients-header {
-    text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
   }
 
   #shopify-section-{{ section.id }} .ingredients-header__title {
@@ -28,6 +27,7 @@
     font-size: var(--heading-font-size);
     margin: 0 0 1.5rem 0;
     color: rgb(var(--color-foreground));
+    text-align: left;
   }
 
   {% if section.settings.heading_font_weight != blank %}
@@ -42,23 +42,28 @@
   }
   {% endif %}
 
+   #shopify-section-{{ section.id }} .ingredients-header__subtitle-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
   #shopify-section-{{ section.id }} .ingredients-header__subtitle {
-    font-size: 1rem;
+    font-size: 1.25rem;
     color: #535862;
     margin: 0;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 1rem;
-    line-height: 1.6;
+    line-height: 140%;
   }
 
   #shopify-section-{{ section.id }} .ingredients-header__link {
-    font-size: 0.95rem;
-    color: #4A9B8E;
+    font-size: 1.125rem;
+    color: #26736D;
     text-decoration: none;
     font-weight: 500;
     display: inline-block;
+    line-height: 135%;
+    text-decoration-line: underline;
   }
 
   #shopify-section-{{ section.id }} .ingredients-header__link:hover {
@@ -67,7 +72,6 @@
 
   #shopify-section-{{ section.id }} .ingredients-carousel {
     position: relative;
-    margin-bottom: 5rem;
   }
 
   #shopify-section-{{ section.id }} .ingredients-carousel__wrapper {
@@ -196,10 +200,18 @@
       font-size: var(--heading-font-size-mobile);
       line-height: 32px;
       letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
     }
 
     #shopify-section-{{ section.id }} .ingredients-header__subtitle {
       font-size: 0.9rem;
+    }
+
+    #shopify-section-{{ section.id }} .ingredients-header__link {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+      color: #1E5B57;
     }
 
     #shopify-section-{{ section.id }} .ingredients-carousel__track {
@@ -253,13 +265,19 @@
   <div class="container">
     {%- if section.settings.title != blank -%}
       <div class="ingredients-header">
-        <h2 class="ingredients-header__title">{{ section.settings.title }}</h2>
+       
+          <h2 class="ingredients-header__title">{{ section.settings.title }}</h2>
+          
+       
+
+        <div class="ingredients-header__subtitle-wrapper">
         {%- if section.settings.subtitle != blank -%}
-          <p class="ingredients-header__subtitle">{{ section.settings.subtitle }}</p>
-        {%- endif -%}
+            <p class="ingredients-header__subtitle">{{ section.settings.subtitle }}</p>
+          {%- endif -%}
         {%- if section.settings.link_text != blank and section.settings.link_url != blank -%}
           <a href="{{ section.settings.link_url }}" class="ingredients-header__link">{{ section.settings.link_text }}</a>
         {%- endif -%}
+        </div>
       </div>
     {%- endif -%}
 
