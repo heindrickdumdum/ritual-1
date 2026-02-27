@@ -4,6 +4,8 @@
 
   #shopify-section-{{ section.id }} .product-promotion-wrapper {
     place-items: center;
+    padding: 160px;
+    background-color: {{ section.settings.bg_color }};
   }
 
   #shopify-section-{{ section.id }} .product-promotion-main {
@@ -29,9 +31,8 @@
 
   #shopify-section-{{ section.id }} .promotion-heading__content {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
+    flex-direction: column;
+    gap: 8px;
     flex: 1;
   }
 
@@ -44,9 +45,70 @@
   }
 
   #shopify-section-{{ section.id }} .promotion-heading__subtitle {
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 100%;
+    font-weight: 500;
+    letter-spacing: 0.05em;
     margin: 0;
-    flex: 1;
     white-space: nowrap;
+    color: #181D27;
+  }
+
+  #shopify-section-{{ section.id }} .promotion-heading__content img {
+    width: 24px;
+    height: 24px;
+  }
+
+  #shopify-section-{{ section.id }} .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+  }
+
+  #shopify-section-{{ section.id }} .content-header {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  #shopify-section-{{ section.id }} .content-header-cell {
+    padding: 16px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 1px solid #E9EAEB;
+  }
+
+  #shopify-section-{{ section.id }} .content-header-cell:nth-child(2) {
+    background-color: #FFFFFF;
+    border-radius: 20px 20px 0 0;
+  }
+
+  #shopify-section-{{ section.id }} .content-row {
+    display: contents;
+  }
+
+  #shopify-section-{{ section.id }} .content-label {
+    padding: 16px;
+    font-weight: 500;
+    border-bottom: 1px solid #E9EAEB;
+  }
+
+  #shopify-section-{{ section.id }} .content-cell {
+    padding: 16px;
+    text-align: center;
+    border-bottom: 1px solid #E9EAEB;
+  }
+
+  #shopify-section-{{ section.id }} .content-cell:nth-child(3n + 2) {
+    background-color: #FFFFFF;
+  }
+
+  #shopify-section-{{ section.id }} .promotion-heading__top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
   }
 {%- endstyle -%}
 
@@ -57,17 +119,39 @@
         <img src="{{ 'icon-piggy-bank.svg' | asset_url }}" alt="Piggy Bank Icon">
       </div>
       <div class="promotion-heading__content">
-        <h3 class="promotion-heading__title">{{ section.settings.promote_title }}</h3>
-        <p class="promotion-heading__subtitle">{{ section.settings.promote_subtitle }}</p>
-        <img src="{{ 'icon-question-mark-circle.svg' | asset_url }}" alt="Question Mark Icon" width="24" height="24">
+        <div class="promotion-heading__top">
+          <h3 class="promotion-heading__title">{{ section.settings.promote_title }}</h3>
+          <p class="promotion-heading__subtitle">{{ section.settings.promote_subtitle }}</p>
+          <img src="{{ 'icon-question-mark-circle.svg' | asset_url }}" alt="Question Mark Icon" width="24" height="24">
+        </div>
+        <div class="promotion-heading__bottom">
+      <p>{{ section.settings.description }}</p>
+    </div>
       </div>
     </div>
 
-    <div class="content">
-      <!-- Content goes here -->
-    </div>
-
-    <div class="terms-and-conditions">
+      <div class="content">
+        <div class="content-header">
+          <div class="content-label"></div>
+          <div class="content-header-cell">Ritual1</div>
+          <div class="content-header-cell">Traditional</div>
+        </div>
+        <div class="content-row">
+          <div class="content-label">Online visit</div>
+          <div class="content-cell">{{ section.settings.ritual1_online_visit }}</div>
+          <div class="content-cell">{{ section.settings.traditional_online_visit }}</div>
+        </div>
+        <div class="content-row">
+          <div class="content-label">Solution</div>
+          <div class="content-cell">{{ section.settings.ritual1_solution }}</div>
+          <div class="content-cell">{{ section.settings.traditional_solution }}</div>
+        </div>
+        <div class="content-row">
+          <div class="content-label">60-day consultation</div>
+          <div class="content-cell">{{ section.settings.ritual1_consultation }}</div>
+          <div class="content-cell">{{ section.settings.traditional_consultation }}</div>
+        </div>
+      </div>    <div class="terms-and-conditions">
       <!-- Terms and Conditions goes here -->
     </div>
   </main>
@@ -91,6 +175,18 @@
       "id": "promote_subtitle",
       "label": "Promote Subtitle",
       "default": "More Affordable"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Significantly cheaper visits and treatments compared to standard prescriptions or laser treatment:</p>"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#F7F7F4"
     },
     {
       "type": "header",
