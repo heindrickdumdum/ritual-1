@@ -1,10 +1,76 @@
 {%- style -%}
   #shopify-section-{{ section.id }} {
   }
+
+  #shopify-section-{{ section.id }} .product-promotion-wrapper {
+    place-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .product-promotion-main {
+    align-self: center;
+    max-width: 720px;
+  }
+
+  #shopify-section-{{ section.id }} .promotion-heading {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  #shopify-section-{{ section.id }} .promotion-heading__icon {
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .promotion-heading__icon img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .promotion-heading__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .promotion-heading__title {
+    margin: 0;
+    font-size: 32px;
+    line-height: 136%;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  #shopify-section-{{ section.id }} .promotion-heading__subtitle {
+    margin: 0;
+    flex: 1;
+    white-space: nowrap;
+  }
 {%- endstyle -%}
 
 <div class="product-promotion-wrapper section">
-  <!-- Content goes here -->
+  <main class="product-promotion-main">
+    <div class="promotion-heading">
+      <div class="promotion-heading__icon">
+        <img src="{{ 'icon-piggy-bank.svg' | asset_url }}" alt="Piggy Bank Icon">
+      </div>
+      <div class="promotion-heading__content">
+        <h3 class="promotion-heading__title">{{ section.settings.promote_title }}</h3>
+        <p class="promotion-heading__subtitle">{{ section.settings.promote_subtitle }}</p>
+        <img src="{{ 'icon-question-mark-circle.svg' | asset_url }}" alt="Question Mark Icon" width="24" height="24">
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- Content goes here -->
+    </div>
+
+    <div class="terms-and-conditions">
+      <!-- Terms and Conditions goes here -->
+    </div>
+  </main>
 </div>
 
 {% schema %}
@@ -27,6 +93,10 @@
       "default": "More Affordable"
     },
     {
+      "type": "header",
+      "content": "Online Visit"
+    },
+    {
       "type": "text",
       "id": "ritual1_online_visit",
       "label": "Ritual1 Online Visit",
@@ -39,6 +109,10 @@
       "default": "$200+"
     },
     {
+      "type": "header",
+      "content": "Solution"
+    },
+    {
       "type": "text",
       "id": "ritual1_solution",
       "label": "Ritual1 Solution",
@@ -49,6 +123,10 @@
       "id": "traditional_solution",
       "label": "Traditional Solution",
       "default": "$400–$1000+"
+    },
+    {
+      "type": "header",
+      "content": "Consultation"
     },
     {
       "type": "text",
