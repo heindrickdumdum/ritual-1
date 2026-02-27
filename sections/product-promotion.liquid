@@ -1,0 +1,79 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+  }
+{%- endstyle -%}
+
+<div class="product-promotion-wrapper section">
+  <!-- Content goes here -->
+</div>
+
+{% schema %}
+{
+  "name": "Product Promotion",
+  "settings": [
+    {
+      "type": "text",
+      "id": "promote_title",
+      "label": "Promote Title",
+      "default": "10X"
+    },
+    {
+      "type": "text",
+      "id": "promote_subtitle",
+      "label": "Promote Subtitle",
+      "default": "More Affordable"
+    },
+    {
+      "type": "text",
+      "id": "ritual1_online_visit",
+      "label": "Ritual1 Online Visit",
+      "default": "$20"
+    },
+    {
+      "type": "text",
+      "id": "traditional_online_visit",
+      "label": "Traditional Online Visit",
+      "default": "$200+"
+    },
+    {
+      "type": "text",
+      "id": "ritual1_solution",
+      "label": "Ritual1 Solution",
+      "default": "$36/mo."
+    },
+    {
+      "type": "text",
+      "id": "traditional_solution",
+      "label": "Traditional Solution",
+      "default": "$400–$1000+"
+    },
+    {
+      "type": "text",
+      "id": "ritual1_consultation",
+      "label": "Ritual1 Consultation",
+      "default": "Free"
+    },
+    {
+      "type": "text",
+      "id": "traditional_consultation",
+      "label": "Traditional Consultation",
+      "default": "None"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Promotion",
+      "settings": {
+        "promote_title": "10X",
+        "promote_subtitle": "More Affordable",
+        "ritual1_online_visit": "$20",
+        "traditional_online_visit": "$200+",
+        "ritual1_solution": "$36/mo.",
+        "traditional_solution": "$400–$1000+",
+        "ritual1_consultation": "Free",
+        "traditional_consultation": "None"
+      }
+    }
+  ]
+}
+{% endschema %}
