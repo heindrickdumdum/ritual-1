@@ -10,6 +10,9 @@
 {% schema %}
 {
   "name": "Product Promotion",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
   "settings": [
     {
       "type": "text",
@@ -63,7 +66,7 @@
   "presets": [
     {
       "name": "Product Promotion",
-      "category": "product",
+      "category": "Products",
       "settings": {
         "promote_title": "10X",
         "promote_subtitle": "More Affordable",
