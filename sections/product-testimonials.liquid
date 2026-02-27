@@ -44,6 +44,7 @@
   }
 
   #shopify-section-{{ section.id }} .product-testimonials-main .description {
+    color: #535862;
     margin: 0;
   }
 
@@ -314,6 +315,8 @@
     }
 
     #shopify-section-{{ section.id }} .testimonials-cta {
+      font-size: 16px;
+      line-height: 24px;
       width: 100%;
       text-align: center;
     }
@@ -412,6 +415,11 @@
     let currentIndex = 0;
     let isAnimating = false;
     let animationTimeout;
+    let resizeTimeout;
+
+    function getCardWidth() {
+      return track.querySelector('.testimonial-card').offsetWidth + 40;
+    }
 
     function updateDots() {
       dots.forEach((dot, index) => {
@@ -426,7 +434,7 @@
 
     function scrollToIndex(index) {
       index = Math.max(0, Math.min(index, dots.length - 1));
-      const cardWidth = track.querySelector('.testimonial-card').offsetWidth + 40;
+      const cardWidth = getCardWidth();
       const targetScroll = index * cardWidth;
 
       currentIndex = index;
@@ -439,6 +447,15 @@
       track.scrollLeft = targetScroll;
       updateDots();
       updateButtons();
+    }
+
+    function handleResize() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const cardWidth = getCardWidth();
+        const targetScroll = currentIndex * cardWidth;
+        track.scrollLeft = targetScroll;
+      }, 150);
     }
 
     prevBtn.addEventListener('click', () => {
@@ -457,11 +474,13 @@
 
     track.addEventListener('scroll', (event) => {
       if (isAnimating) return; // Skip while scroll animation in progress
-      const cardWidth = track.querySelector('.testimonial-card').offsetWidth + 40;
+      const cardWidth = getCardWidth();
       currentIndex = Math.round(track.scrollLeft / cardWidth);
       updateDots();
       updateButtons();
     });
+
+    window.addEventListener('resize', handleResize);
 
     updateDots();
     updateButtons();
