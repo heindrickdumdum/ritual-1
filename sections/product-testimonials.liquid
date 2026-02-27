@@ -57,7 +57,6 @@
     overflow-x: auto;
     scroll-behavior: smooth;
     scrollbar-width: none;
-    padding-bottom: 10px;
   }
 
   #shopify-section-{{ section.id }} .testimonials-carousel-track::-webkit-scrollbar {
@@ -65,7 +64,9 @@
   }
 
   #shopify-section-{{ section.id }} .testimonial-card {
-    padding: 0;
+    background-color: #F7F7F4;
+    padding: 16px;
+    border-radius: 20px;
     flex: 0 0 100%;
     min-width: 0;
     display: flex;
@@ -86,8 +87,12 @@
     flex: 1;
     aspect-ratio: 1 / 1;
     overflow: hidden;
-    border-radius: 12px;
     position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-image {
+    border-radius: 12px;
+    border: 1px solid #E3E3DE;
   }
 
   #shopify-section-{{ section.id }} .testimonial-image-label {
@@ -152,6 +157,8 @@
     justify-content: center;
     align-items: center;
     margin-top: 40px;
+    overflow: visible;
+    padding-bottom: 12px;
   }
 
   #shopify-section-{{ section.id }} .carousel-dots {
@@ -179,13 +186,16 @@
     height: 44px;
     border-radius: 50%;
     background-color: white;
-    border: 1px solid #e0e0e0;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s linear;
     font-size: 20px;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    border: 1px solid #F5F5F5;
+    filter: drop-shadow(0 2px 4px rgba(10, 13, 18, 0.04)) drop-shadow(0 4px 6px rgba(10, 13, 18, 0.03)) drop-shadow(0 12px 16px rgba(10, 13, 18, 0.08));
   }
 
   #shopify-section-{{ section.id }} .carousel-btn:hover:not(:disabled) {
@@ -199,28 +209,113 @@
     cursor: not-allowed;
   }
 
+  #shopify-section-{{ section.id }} .testimonials-cta {
+    background-color: #26736D;
+    width: fit-content;
+    color: white;
+    padding: 16px 32px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    transition: opacity 0.3s linear;
+    text-decoration: none;
+    display: inline-block;
+    align-self: center;
+  }
+
+  #shopify-section-{{ section.id }} .testimonials-cta:hover {
+    opacity: 0.9;
+  }
+
   @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .product-testimonials-wrapper {
+      overflow: visible;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
     #shopify-section-{{ section.id }} .product-testimonials-main {
       gap: 40px;
       margin: 0;
       padding: 0;
     }
 
-    #shopify-section-{{ section.id }} .testimonial-card {
-      padding: 24px;
+    #shopify-section-{{ section.id }} .product-testimonials-main h2 {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 32px;
+      letter-spacing: -0.02em;
+      text-align: left;
     }
 
-    #shopify-section-{{ section.id }} .testimonial-content {
+    #shopify-section-{{ section.id }} .product-testimonials-main .description {
+      text-align: left;
       font-size: 16px;
       line-height: 24px;
     }
 
+    #shopify-section-{{ section.id }} .testimonial-card {
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 16px;
+      gap: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-images {
+      flex: none;
+      gap: 8px;
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-content-wrapper {
+      display: flex;
+      gap: 20px;
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-image {
+      height: fit-content;
+      aspect-ratio: 1 / 1;
+      max-width: calc(50%);
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-image-label {
+      top: 8px;
+      left: 8px;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-image img {
+      object-fit: cover;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-content {
+      font-size: 18px;
+      line-height: 120%;
+      font-weight: 500;
+
+    }
+
     #shopify-section-{{ section.id }} .testimonial-author {
       font-size: 14px;
+      line-height: 24px;
+      font-weight: 700;
     }
 
     #shopify-section-{{ section.id }} .carousel-progress-bar {
       max-width: 120px;
+    }
+
+    #shopify-section-{{ section.id }} .carousel-controls {
+      margin-top: 32px;
+      justify-content: space-between;
+    }
+
+    #shopify-section-{{ section.id }} .testimonials-cta {
+      width: 100%;
+      text-align: center;
     }
   }
 {%- endstyle -%}
@@ -299,6 +394,7 @@
           <button class="carousel-btn" id="next-btn-{{ section.id }}" aria-label="Next testimonial">❯</button>
         </div>
       </div>
+      <a href="{{ section.settings.button_link }}" class="testimonials-cta">{{ section.settings.button_text }}</a>
     {% endif %}
   </div>
 </div>
@@ -392,6 +488,17 @@
       "id": "bg_color",
       "label": "Background Color",
       "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "CTA Button Text",
+      "default": "Buy Now & Save 40%"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
     }
   ],
   "presets": [
