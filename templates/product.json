@@ -561,7 +561,9 @@
       "settings": {
         "heading": "Join Thousands Who’ve Regained Confidence in Their Hair",
         "description": "<p>See how real users achieved visible growth and restored their natural shine.</p>",
-        "bg_color": "#ffffff"
+        "bg_color": "#ffffff",
+        "button_text": "Buy Now & Save 40%",
+        "button_link": ""
       }
     },
     "ingredients_qPiiY4": {
@@ -757,6 +759,20 @@
         "padding-block-start-mobile": 65,
         "padding-block-end-mobile": 65
       }
+    },
+    "product_promotion_qnGCzB": {
+      "type": "product-promotion",
+      "name": "Product Promotion",
+      "settings": {
+        "promote_title": "10X",
+        "promote_subtitle": "More Affordable",
+        "ritual1_online_visit": "$20",
+        "traditional_online_visit": "$200+",
+        "ritual1_solution": "$36/mo.",
+        "traditional_solution": "$400–$1000+",
+        "ritual1_consultation": "Free",
+        "traditional_consultation": "None"
+      }
     }
   },
   "order": [
@@ -766,6 +782,7 @@
     "word_strip_tWR4hj",
     "product_benefits_carousel_LcQ9P8",
     "product_testimonials_T63mVC",
+    "product_promotion_qnGCzB",
     "ingredients_qPiiY4",
     "faq_section_VHxhCC"
   ]
