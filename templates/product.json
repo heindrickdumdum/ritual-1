@@ -617,12 +617,72 @@
             "testimonial_title": "Real, visible improvement",
             "testimonial_text": "Less shedding in the shower and stronger strands. Friends noticed before I did!"
           }
+        },
+        "testimonial_dmUqV8": {
+          "type": "testimonial",
+          "settings": {
+            "after_text": "After 3 Months",
+            "country_flag": "",
+            "customer_name": "John Doe",
+            "verified": true,
+            "testimonial_title": "Amazing Results",
+            "testimonial_text": "This product really works!"
+          }
+        },
+        "testimonial_hkYjHU": {
+          "type": "testimonial",
+          "settings": {
+            "after_text": "After 3 Months",
+            "country_flag": "",
+            "customer_name": "John Doe",
+            "verified": true,
+            "testimonial_title": "Amazing Results",
+            "testimonial_text": "This product really works!"
+          }
+        },
+        "testimonial_R8DeKG": {
+          "type": "testimonial",
+          "settings": {
+            "after_text": "After 3 Months",
+            "country_flag": "",
+            "customer_name": "John Doe",
+            "verified": true,
+            "testimonial_title": "Amazing Results",
+            "testimonial_text": "This product really works!"
+          }
+        },
+        "testimonial_9Xm76a": {
+          "type": "testimonial",
+          "settings": {
+            "after_text": "After 3 Months",
+            "country_flag": "",
+            "customer_name": "John Doe",
+            "verified": true,
+            "testimonial_title": "Amazing Results",
+            "testimonial_text": "This product really works!"
+          }
+        },
+        "testimonial_FGWa8i": {
+          "type": "testimonial",
+          "settings": {
+            "after_text": "After 3 Months",
+            "country_flag": "",
+            "customer_name": "John Doe",
+            "verified": true,
+            "testimonial_title": "Amazing Results",
+            "testimonial_text": "This product really works!"
+          }
         }
       },
       "block_order": [
         "testimonial_WbND3b",
         "testimonial_7hdYGb",
-        "testimonial_VX9rjn"
+        "testimonial_VX9rjn",
+        "testimonial_dmUqV8",
+        "testimonial_hkYjHU",
+        "testimonial_R8DeKG",
+        "testimonial_9Xm76a",
+        "testimonial_FGWa8i"
       ],
       "name": "Product Results",
       "settings": {
