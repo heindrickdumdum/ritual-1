@@ -566,6 +566,70 @@
         "button_link": ""
       }
     },
+    "product_promotion_CxtbM3": {
+      "type": "product-promotion",
+      "name": "Product Promotion",
+      "settings": {
+        "promote_title": "10X",
+        "promote_subtitle": "More Affordable",
+        "description": "<p>Significantly cheaper visits and treatments compared to standard prescriptions or laser treatment:</p>",
+        "bg_color": "#f7f7f4",
+        "ritual1_online_visit": "$20",
+        "traditional_online_visit": "$200+",
+        "ritual1_solution": "$36/mo.",
+        "traditional_solution": "$400–$1000+",
+        "ritual1_consultation": "Free",
+        "traditional_consultation": "None"
+      }
+    },
+    "product_results_nkye9R": {
+      "type": "product-results",
+      "blocks": {
+        "testimonial_WbND3b": {
+          "type": "testimonial",
+          "settings": {
+            "after_text": "After 3 Months",
+            "country_flag": "🇺🇸",
+            "customer_name": "Lindsey P.",
+            "verified": true,
+            "testimonial_title": "Wish I started years ago",
+            "testimonial_text": "After two months I began to see real volume and less shedding. People keep asking what changed!"
+          }
+        },
+        "testimonial_7hdYGb": {
+          "type": "testimonial",
+          "settings": {
+            "after_text": "After 3 Months",
+            "country_flag": "🇩🇪",
+            "customer_name": "Anika R.",
+            "verified": true,
+            "testimonial_title": "Confidence is back",
+            "testimonial_text": "The serum feels light, and my hairline looks fuller. I'm finally comfortable wearing it down again."
+          }
+        },
+        "testimonial_VX9rjn": {
+          "type": "testimonial",
+          "settings": {
+            "after_text": "After 3 Months",
+            "country_flag": "🇲🇽",
+            "customer_name": "Maria S.",
+            "verified": true,
+            "testimonial_title": "Real, visible improvement",
+            "testimonial_text": "Less shedding in the shower and stronger strands. Friends noticed before I did!"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_WbND3b",
+        "testimonial_7hdYGb",
+        "testimonial_VX9rjn"
+      ],
+      "name": "Product Results",
+      "settings": {
+        "heading": "What Do 3-5 Month Hair Growth Results Look Like?",
+        "subheading": "Real men. Real photos. Real progress."
+      }
+    },
     "ingredients_qPiiY4": {
       "type": "ingredients",
       "blocks": {
@@ -759,20 +823,6 @@
         "padding-block-start-mobile": 65,
         "padding-block-end-mobile": 65
       }
-    },
-    "product_promotion_CxtbM3": {
-      "type": "product-promotion",
-      "name": "Product Promotion",
-      "settings": {
-        "promote_title": "10X",
-        "promote_subtitle": "More Affordable",
-        "ritual1_online_visit": "$20",
-        "traditional_online_visit": "$200+",
-        "ritual1_solution": "$36/mo.",
-        "traditional_solution": "$400–$1000+",
-        "ritual1_consultation": "Free",
-        "traditional_consultation": "None"
-      }
     }
   },
   "order": [
@@ -783,6 +833,7 @@
     "product_benefits_carousel_LcQ9P8",
     "product_testimonials_T63mVC",
     "product_promotion_CxtbM3",
+    "product_results_nkye9R",
     "ingredients_qPiiY4",
     "faq_section_VHxhCC"
   ]
