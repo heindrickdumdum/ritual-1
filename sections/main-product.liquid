@@ -69,7 +69,8 @@
   }
 
   #shopify-section-{{ section.id }} .main-product__stars {
-    color: #ffc107;
+    display: flex;
+    gap: 2px;
   }
 
   #shopify-section-{{ section.id }} .main-product__rating-value {
@@ -384,12 +385,12 @@
     transition: max-height 0.3s ease;
     font-size: 14px;
     line-height: 150%;
-    margin-top: 12px;
     color: #535862;
   }
 
   #shopify-section-{{ section.id }} .accordion-item__content.active {
     max-height: 500px;
+    margin-top: 12px;
   }
 
   #shopify-section-{{ section.id }} .accordion-list {
@@ -406,11 +407,13 @@
   }
 
   #shopify-section-{{ section.id }} .accordion-list__item::before {
-    content: "•";
-    color: #2a7f7e;
-    font-weight: bold;
-    margin-top: 2px;
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: #181D27;
+    border-radius: 50%;
     flex-shrink: 0;
+    margin: auto 0;
   }
 
   #shopify-section-{{ section.id }} .videos-row {
@@ -560,6 +563,35 @@
     #shopify-section-{{ section.id }} .main-product__details {
       gap: 24px;
     }
+
+    #shopify-section-{{ section.id }} .benefits-row__carousel {
+      gap: 4px;
+    }
+
+    #shopify-section-{{ section.id }} .benefits-row__item {
+      padding-bottom: 12px;
+      gap: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .benefits-row__title {
+      text-wrap: balance;
+      margin: auto 0;
+    }
+
+    #shopify-section-{{ section.id }} .accordion-item__header {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0%;
+    }
+
+    #shopify-section-{{ section.id }} .videos-row__item {
+      aspect-ratio: 3/4;
+    }
+
+    #shopify-section-{{ section.id }} .videos-row__carousel {
+      gap: 4px;
+    }
   }
 {%- endstyle -%}
 <div class="main-product section">
@@ -584,7 +616,13 @@
         <h1 class="main-product__title">{{ product.title }}</h1>
         {% if product.metafields.custom.ratings %}
           <div class="main-product__rating">
-            <span class="main-product__stars">★★★★★</span>
+            <span class="main-product__stars">
+              <img src="{{ 'icon-rate-star.svg' | asset_url }}" alt="Star" width="16" height="16">
+              <img src="{{ 'icon-rate-star.svg' | asset_url }}" alt="Star" width="16" height="16">
+              <img src="{{ 'icon-rate-star.svg' | asset_url }}" alt="Star" width="16" height="16">
+              <img src="{{ 'icon-rate-star.svg' | asset_url }}" alt="Star" width="16" height="16">
+              <img src="{{ 'icon-rate-star-80.svg' | asset_url }}" alt="Star" width="16" height="16">
+            </span>
             <span class="main-product__rating-value">{{ product.metafields.custom.ratings }}/5</span>
             <span class="main-product__review-count">({{ product.metafields.custom.review_count }}+ Reviews)</span>
           </div>
@@ -678,7 +716,13 @@
         <div class="accordion-item">
           <div class="accordion-item__header" data-accordion="accordion-1">
             <span>Key ingredients</span>
-            <span class="accordion-item__toggle">+</span>
+            <img
+              src="{{ 'icon-expand.svg' | asset_url }}"
+              alt="Expand"
+              class="accordion-item__toggle"
+              width="20"
+              height="20"
+            >
           </div>
           <div class="accordion-item__content" id="accordion-1">
             <div class="accordion-list">
@@ -692,7 +736,13 @@
         <div class="accordion-item">
           <div class="accordion-item__header" data-accordion="accordion-2">
             <span>How to use?</span>
-            <span class="accordion-item__toggle">+</span>
+            <img
+              src="{{ 'icon-expand.svg' | asset_url }}"
+              alt="Expand"
+              class="accordion-item__toggle"
+              width="20"
+              height="20"
+            >
           </div>
           <div class="accordion-item__content" id="accordion-2">
             {{ product.metafields.custom.how_to_use }}
@@ -702,7 +752,13 @@
         <div class="accordion-item">
           <div class="accordion-item__header" data-accordion="accordion-3">
             <span>Clinical study</span>
-            <span class="accordion-item__toggle">+</span>
+            <img
+              src="{{ 'icon-expand.svg' | asset_url }}"
+              alt="Expand"
+              class="accordion-item__toggle"
+              width="20"
+              height="20"
+            >
           </div>
           <div class="accordion-item__content" id="accordion-3">
             {{ product.metafields.custom.clinical_study }}
@@ -867,13 +923,14 @@
           const otherContent = document.getElementById(otherId);
           const otherToggle = otherHeader.querySelector('.accordion-item__toggle');
           otherContent.classList.remove('active');
-          otherToggle.textContent = '+';
+          otherToggle.src = "{{ 'icon-expand.svg' | asset_url }}";
         }
       });
 
       // Toggle current item
       content.classList.toggle('active');
-      toggle.textContent = content.classList.contains('active') ? '−' : '+';
+      const iconName = content.classList.contains('active') ? 'icon-collapse.svg' : 'icon-expand.svg';
+      toggle.src = "{{ 'icon-expand.svg' | asset_url }}".replace('icon-expand.svg', iconName);
     });
   });
 </script>
