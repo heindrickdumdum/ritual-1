@@ -13,7 +13,7 @@
     <!-- Testimonials Carousel -->
     <div class="pr-carousel-wrapper">
       <div class="pr-carousel">
-        <div class="pr-carousel-inner" id="carouselWrapper">
+        <div class="pr-carousel-inner" id="carouselWrapper" data-items-desktop="{{ section.settings.items_per_row_desktop }}" data-items-mobile="{{ section.settings.items_per_row_mobile }}">
           {% for block in section.blocks %}
             <div class="pr-slide">
               <div class="pr-slide-content">
@@ -97,30 +97,78 @@
 
   <script>
     (function() {
-      const wrapper = document.getElementById('carouselWrapper');
-      const slides = document.querySelectorAll('.pr-slide');
-      const prevBtn = document.getElementById('prevBtn');
-      const nextBtn = document.getElementById('nextBtn');
-      const currentSlideSpan = document.getElementById('currentSlide');
-      const totalSlides = slides.length;
+      const section = document.getElementById('shopify-section-{{ section.id }}');
+      if (!section) return;
+      
+      const wrapper = section.querySelector('#carouselWrapper');
+      const slides = section.querySelectorAll('.pr-slide');
+      const prevBtn = section.querySelector('#prevBtn');
+      const nextBtn = section.querySelector('#nextBtn');
+      const currentSlideSpan = section.querySelector('#currentSlide');
+      const totalSlidesSpan = section.querySelector('#totalSlides');
+      
+      if (!wrapper || !slides.length) return;
+
+      const itemsDesktop = parseInt(wrapper.dataset.itemsDesktop) || 3;
+      const itemsMobile = parseInt(wrapper.dataset.itemsMobile) || 1;
+      const totalItems = slides.length;
       
       let currentSlide = 0;
 
-      function updateCarousel() {
-        const offset = -currentSlide * 100;
-        wrapper.style.transform = `translateX(${offset}%)`;
-        currentSlideSpan.textContent = currentSlide + 1;
+      function getItemsPerSlide() {
+        return window.innerWidth < 768 ? itemsMobile : itemsDesktop;
       }
 
-      prevBtn.addEventListener('click', () => {
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        updateCarousel();
-      });
+      function getTotalSlides() {
+        const itemsPerSlide = getItemsPerSlide();
+        return Math.ceil(totalItems / itemsPerSlide);
+      }
 
-      nextBtn.addEventListener('click', () => {
-        currentSlide = (currentSlide + 1) % totalSlides;
+      function updateCarousel() {
+        if (!wrapper) return;
+        const itemsPerSlide = getItemsPerSlide();
+        const offset = -currentSlide * (100 / itemsPerSlide);
+        wrapper.style.transform = `translateX(${offset}%)`;
+        if (currentSlideSpan) {
+          currentSlideSpan.textContent = currentSlide + 1;
+        }
+      }
+
+      function setVariables() {
+        const itemsPerSlide = getItemsPerSlide();
+        document.documentElement.style.setProperty('--items-per-slide', itemsPerSlide);
+        const totalSlides = getTotalSlides();
+        if (totalSlidesSpan) {
+          totalSlidesSpan.textContent = totalSlides;
+        }
+        const maxSlide = Math.max(0, totalSlides - 1);
+        if (currentSlide > maxSlide) {
+          currentSlide = maxSlide;
+        }
         updateCarousel();
-      });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          const totalSlides = getTotalSlides();
+          currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+          updateCarousel();
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          const totalSlides = getTotalSlides();
+          currentSlide = (currentSlide + 1) % totalSlides;
+          updateCarousel();
+        });
+      }
+
+      // Set initial variables
+      setVariables();
+
+      // Handle window resize
+      window.addEventListener('resize', setVariables);
     })();
   </script>
 
@@ -172,8 +220,8 @@
     }
 
     #shopify-section-{{ section.id }} .pr-slide {
-      flex: 0 0 100%;
-      padding: 0 1rem;
+      flex: 0 0 calc(100% / var(--items-per-slide, 1));
+      padding: 0 0.5rem;
       display: flex;
       justify-content: center;
     }
@@ -181,6 +229,7 @@
     #shopify-section-{{ section.id }} .pr-slide-content {
       max-width: 500px;
       width: 100%;
+      padding: 0 0.5rem;
     }
 
     #shopify-section-{{ section.id }} .pr-images {
@@ -333,6 +382,14 @@
       #shopify-section-{{ section.id }} .pr-image-box {
         height: 12rem;
       }
+
+      #shopify-section-{{ section.id }} .pr-slide {
+        padding: 0 0.25rem;
+      }
+
+      #shopify-section-{{ section.id }} .pr-slide-content {
+        margin: 0 0.25rem;
+      }
     }
   </style>
 </section>
@@ -352,6 +409,24 @@
       "id": "subheading",
       "label": "Subheading",
       "default": "Real men. Real photos. Real progress."
+    },
+    {
+      "type": "range",
+      "id": "items_per_row_desktop",
+      "label": "Items per row (Desktop)",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "items_per_row_mobile",
+      "label": "Items per row (Mobile)",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 1
     }
   ],
   "blocks": [
