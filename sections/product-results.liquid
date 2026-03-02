@@ -145,7 +145,7 @@
       function updateCarousel() {
         if (!wrapper) return;
         const offset = -currentSlide * 100;
-        wrapper.style.transform = `translateX(${offset}%)`;
+        wrapper.style.transform = `translateX(calc(${offset}% - ${currentSlide * 2}rem))`;
         if (currentSlideSpan) {
           currentSlideSpan.textContent = currentSlide + 1;
         }
