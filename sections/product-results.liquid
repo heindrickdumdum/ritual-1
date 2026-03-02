@@ -1,0 +1,452 @@
+<section class="product-results-section">
+  <div class="pr-container">
+    <!-- Header -->
+    <div class="pr-header">
+      <h2 class="pr-heading">
+        {{ section.settings.heading }}
+      </h2>
+      <p class="pr-subheading">
+        {{ section.settings.subheading }}
+      </p>
+    </div>
+
+    <!-- Testimonials Carousel -->
+    <div class="pr-carousel-wrapper">
+      <div class="pr-carousel">
+        <div class="pr-carousel-inner" id="carouselWrapper">
+          {% for block in section.blocks %}
+            <div class="pr-slide">
+              <div class="pr-slide-content">
+                <!-- Before/After Images -->
+                <div class="pr-images">
+                  <div class="pr-image-pair">
+                    <div class="pr-image-box">
+                      {% if block.settings.before_image %}
+                        <img 
+                          src="{{ block.settings.before_image | image_url: width: 300 }}"
+                          alt="Before"
+                        >
+                      {% else %}
+                        <div class="pr-image-placeholder">
+                          <span>Before Image</span>
+                        </div>
+                      {% endif %}
+                    </div>
+                    <span class="pr-image-label">Before</span>
+                  </div>
+                  <div class="pr-image-pair">
+                    <div class="pr-image-box">
+                      {% if block.settings.after_image %}
+                        <img 
+                          src="{{ block.settings.after_image | image_url: width: 300 }}"
+                          alt="After"
+                        >
+                      {% else %}
+                        <div class="pr-image-placeholder">
+                          <span>After Image</span>
+                        </div>
+                      {% endif %}
+                    </div>
+                    <span class="pr-image-label">{{ block.settings.after_text }}</span>
+                  </div>
+                </div>
+
+                <!-- Customer Info -->
+                <div class="pr-customer-info">
+                  <div class="pr-customer-header">
+                    {% if block.settings.country_flag %}
+                      <span class="pr-flag">{{ block.settings.country_flag }}</span>
+                    {% endif %}
+                    <h3 class="pr-customer-name">{{ block.settings.customer_name }}</h3>
+                    {% if block.settings.verified %}
+                      <svg class="pr-badge-icon" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span class="pr-badge-text">Verified customer</span>
+                    {% endif %}
+                  </div>
+                  <h4 class="pr-testimonial-title">{{ block.settings.testimonial_title }}</h4>
+                  <p class="pr-testimonial-text">
+                    "{{ block.settings.testimonial_text }}"
+                  </p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="pr-navigation">
+        <button class="pr-nav-btn pr-nav-prev" id="prevBtn">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <span class="pr-slide-counter" id="slideCount">
+          <span id="currentSlide">1</span>/<span id="totalSlides">{{ section.blocks.size }}</span>
+        </span>
+        <button class="pr-nav-btn pr-nav-next" id="nextBtn">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const wrapper = document.getElementById('carouselWrapper');
+      const slides = document.querySelectorAll('.pr-slide');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const currentSlideSpan = document.getElementById('currentSlide');
+      const totalSlides = slides.length;
+      
+      let currentSlide = 0;
+
+      function updateCarousel() {
+        const offset = -currentSlide * 100;
+        wrapper.style.transform = `translateX(${offset}%)`;
+        currentSlideSpan.textContent = currentSlide + 1;
+      }
+
+      prevBtn.addEventListener('click', () => {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      });
+    })();
+  </script>
+
+  <style>
+    #shopify-section-{{ section.id }} .product-results-section {
+      background-color: #f5f5f5;
+      padding: 2rem 0;
+    }
+
+    #shopify-section-{{ section.id }} .pr-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    #shopify-section-{{ section.id }} .pr-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    #shopify-section-{{ section.id }} .pr-heading {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    #shopify-section-{{ section.id }} .pr-subheading {
+      font-size: 1.125rem;
+      color: #666666;
+      margin: 0;
+    }
+
+    #shopify-section-{{ section.id }} .pr-carousel-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .pr-carousel {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .pr-carousel-inner {
+      display: flex;
+      transition: transform 0.3s ease;
+      will-change: transform;
+    }
+
+    #shopify-section-{{ section.id }} .pr-slide {
+      flex: 0 0 100%;
+      padding: 0 1rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    #shopify-section-{{ section.id }} .pr-slide-content {
+      max-width: 500px;
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .pr-images {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .pr-image-pair {
+      flex: 1;
+    }
+
+    #shopify-section-{{ section.id }} .pr-image-box {
+      background-color: #e0e0e0;
+      border-radius: 0.5rem;
+      height: 16rem;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .pr-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    #shopify-section-{{ section.id }} .pr-image-placeholder {
+      width: 100%;
+      height: 100%;
+      background-color: #d0d0d0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999999;
+      font-size: 0.875rem;
+    }
+
+    #shopify-section-{{ section.id }} .pr-image-label {
+      font-size: 0.875rem;
+      color: #666666;
+      font-weight: 500;
+      display: block;
+    }
+
+    #shopify-section-{{ section.id }} .pr-customer-info {
+      margin-bottom: 1rem;
+    }
+
+    #shopify-section-{{ section.id }} .pr-customer-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    #shopify-section-{{ section.id }} .pr-flag {
+      font-size: 1.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .pr-customer-name {
+      font-weight: 600;
+      color: #1a1a1a;
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    #shopify-section-{{ section.id }} .pr-badge-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: #16a34a;
+      flex-shrink: 0;
+    }
+
+    #shopify-section-{{ section.id }} .pr-badge-text {
+      font-size: 0.75rem;
+      color: #16a34a;
+      font-weight: 500;
+    }
+
+    #shopify-section-{{ section.id }} .pr-testimonial-title {
+      font-weight: 600;
+      color: #1a1a1a;
+      margin: 0.5rem 0;
+      font-size: 1rem;
+    }
+
+    #shopify-section-{{ section.id }} .pr-testimonial-text {
+      font-size: 0.875rem;
+      color: #666666;
+      font-style: italic;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    #shopify-section-{{ section.id }} .pr-navigation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    #shopify-section-{{ section.id }} .pr-nav-btn {
+      padding: 0.5rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      border-radius: 9999px;
+      transition: background-color 0.2s ease;
+      width: 2rem;
+      height: 2rem;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #shopify-section-{{ section.id }} .pr-nav-btn:hover {
+      background-color: #f0f0f0;
+    }
+
+    #shopify-section-{{ section.id }} .pr-nav-btn svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: #666666;
+    }
+
+    #shopify-section-{{ section.id }} .pr-slide-counter {
+      color: #666666;
+      font-weight: 500;
+      font-size: 1rem;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+      #shopify-section-{{ section.id }} .product-results-section {
+        padding: 1rem 0;
+      }
+
+      #shopify-section-{{ section.id }} .pr-heading {
+        font-size: 1.5rem;
+      }
+
+      #shopify-section-{{ section.id }} .pr-subheading {
+        font-size: 1rem;
+      }
+
+      #shopify-section-{{ section.id }} .pr-image-box {
+        height: 12rem;
+      }
+    }
+  </style>
+</section>
+
+{% schema %}
+{
+  "name": "Product Results",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Do 3-5 Month Hair Growth Results Look Like?"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Real men. Real photos. Real progress."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "before_image",
+          "label": "Before Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "after_image",
+          "label": "After Image"
+        },
+        {
+          "type": "text",
+          "id": "after_text",
+          "label": "After Label",
+          "default": "After 3 Months"
+        },
+        {
+          "type": "text",
+          "id": "country_flag",
+          "label": "Country Flag Emoji",
+          "placeholder": "e.g., 🇺🇸"
+        },
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Customer Name",
+          "default": "John Doe"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Show Verified Customer Badge",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "testimonial_title",
+          "label": "Testimonial Title",
+          "default": "Amazing Results"
+        },
+        {
+          "type": "textarea",
+          "id": "testimonial_text",
+          "label": "Testimonial Text",
+          "default": "This product really works!"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Results",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "country_flag": "🇺🇸",
+            "customer_name": "Lindsey P.",
+            "verified": true,
+            "testimonial_title": "Wish I started years ago",
+            "testimonial_text": "After two months I began to see real volume and less shedding. People keep asking what changed!",
+            "after_text": "After 3 Months"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "country_flag": "🇩🇪",
+            "customer_name": "Anika R.",
+            "verified": true,
+            "testimonial_title": "Confidence is back",
+            "testimonial_text": "The serum feels light, and my hairline looks fuller. I'm finally comfortable wearing it down again.",
+            "after_text": "After 3 Months"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "country_flag": "🇲🇽",
+            "customer_name": "Maria S.",
+            "verified": true,
+            "testimonial_title": "Real, visible improvement",
+            "testimonial_text": "Less shedding in the shower and stronger strands. Friends noticed before I did!",
+            "after_text": "After 3 Months"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
