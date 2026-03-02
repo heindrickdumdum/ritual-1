@@ -8,105 +8,107 @@
 {%- endstyle -%}
 
 <section class="product-results-section color-{{ section.settings.color_scheme }}">
-  <div class="pr-container">
-    <!-- Header -->
-    <div class="pr-header">
-      <h2 class="pr-heading">
-        {{ section.settings.heading }}
-      </h2>
-      <p class="pr-subheading">
-        {{ section.settings.subheading }}
-      </p>
-    </div>
-
-    <!-- Testimonials Carousel -->
-    <div class="pr-carousel-wrapper">
-      <div class="pr-carousel">
-        <div class="pr-carousel-inner" id="carouselWrapper" data-items-desktop="{{ section.settings.items_per_row_desktop }}" data-items-mobile="{{ section.settings.items_per_row_mobile }}">
-          {% for block in section.blocks %}
-            <div class="pr-slide">
-              <div class="pr-slide-content">
-                <!-- Before/After Images -->
-                <div class="pr-images">
-                  <div class="pr-image-pair">
-                    <div class="pr-image-box">
-                      {% if block.settings.before_image %}
-                        <img 
-                          src="{{ block.settings.before_image | image_url: width: 300 }}"
-                          alt="Before"
-                        >
-                      {% else %}
-                        <div class="pr-image-placeholder">
-                          <span>Before Image</span>
-                        </div>
-                      {% endif %}
-                    </div>
-                    <span class="pr-image-label">Before</span>
-                  </div>
-                  <div class="pr-image-pair">
-                    <div class="pr-image-box">
-                      {% if block.settings.after_image %}
-                        <img 
-                          src="{{ block.settings.after_image | image_url: width: 300 }}"
-                          alt="After"
-                        >
-                      {% else %}
-                        <div class="pr-image-placeholder">
-                          <span>After Image</span>
-                        </div>
-                      {% endif %}
-                    </div>
-                    <span class="pr-image-label">{{ block.settings.after_text }}</span>
-                  </div>
-                </div>
-
-                <!-- Customer Info -->
-                <div class="pr-customer-info">
-                  <div class="pr-customer-header">
-                    <div class="pr-customer-header-name">
-                      {% if block.settings.country_flag %}
-                        <span class="pr-flag">{{ block.settings.country_flag }}</span>
-                      {% endif %}
-                        <span class="pr-customer-name">{{ block.settings.customer_name }}</span>
-                    </div>
-                    {% if block.settings.verified %}
-                      <div class="pr-customer-badge">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14.2429 14.25H14.25H14.2429ZM14.2429 14.25C13.7758 14.7131 12.9295 14.5978 12.3359 14.5978C11.6074 14.5978 11.2565 14.7403 10.7366 15.2603C10.2938 15.703 9.70028 16.5 9 16.5C8.29973 16.5 7.70618 15.703 7.26343 15.2603C6.74346 14.7403 6.39262 14.5978 5.66405 14.5978C5.07051 14.5978 4.22413 14.7131 3.75712 14.25C3.28636 13.7832 3.40221 12.9333 3.40221 12.3359C3.40221 11.5811 3.23712 11.2339 2.69954 10.6964C1.89986 9.8967 1.50001 9.4968 1.5 9C1.50001 8.50313 1.89984 8.1033 2.69951 7.30363C3.1794 6.82374 3.40221 6.34821 3.40221 5.66405C3.40221 5.07049 3.28687 4.2241 3.75 3.75708C4.21682 3.28633 5.0667 3.4022 5.66406 3.4022C6.3482 3.4022 6.82374 3.1794 7.30361 2.69953C8.1033 1.89984 8.50313 1.5 9 1.5C9.49687 1.5 9.8967 1.89984 10.6964 2.69953C11.1761 3.1793 11.6516 3.4022 12.3359 3.4022C12.9295 3.4022 13.7759 3.28685 14.243 3.75C14.7137 4.21682 14.5978 5.06669 14.5978 5.66405C14.5978 6.41894 14.7629 6.76603 15.3005 7.30363C16.1002 8.1033 16.5 8.50313 16.5 9C16.5 9.4968 16.1002 9.8967 15.3005 10.6964C14.7629 11.2339 14.5978 11.5811 14.5978 12.3359C14.5978 12.9333 14.7136 13.7832 14.2429 14.25Z" fill="#26736D"/>
-                        <path d="M14.2429 14.25H14.25M14.2429 14.25C13.7758 14.7131 12.9295 14.5978 12.3359 14.5978C11.6074 14.5978 11.2565 14.7403 10.7366 15.2603C10.2938 15.7031 9.70028 16.5 9 16.5C8.29972 16.5 7.70618 15.7031 7.26343 15.2603C6.74346 14.7403 6.39262 14.5978 5.66405 14.5978C5.07051 14.5978 4.22414 14.7131 3.75712 14.25C3.28636 13.7832 3.40221 12.9333 3.40221 12.3359C3.40221 11.5811 3.23712 11.2339 2.69954 10.6963C1.89986 9.8967 1.50001 9.4968 1.5 9C1.50001 8.50312 1.89984 8.1033 2.69951 7.30363C3.1794 6.82374 3.40221 6.34821 3.40221 5.66405C3.40221 5.07049 3.28687 4.2241 3.75 3.75708C4.21682 3.28633 5.0667 3.4022 5.66406 3.4022C6.3482 3.4022 6.82374 3.1794 7.30361 2.69953C8.1033 1.89984 8.50312 1.5 9 1.5C9.49688 1.5 9.8967 1.89984 10.6963 2.69953C11.1761 3.1793 11.6516 3.4022 12.3359 3.4022C12.9295 3.4022 13.7759 3.28685 14.243 3.75C14.7137 4.21682 14.5978 5.06669 14.5978 5.66405C14.5978 6.41894 14.7629 6.76603 15.3005 7.30363C16.1002 8.1033 16.5 8.50312 16.5 9C16.5 9.4968 16.1002 9.8967 15.3005 10.6963C14.7629 11.2339 14.5978 11.5811 14.5978 12.3359C14.5978 12.9333 14.7136 13.7832 14.2429 14.25Z" stroke="#26736D" stroke-width="1.5"/>
-                        <path d="M6.75 9.66968L8.1 10.875L11.25 7.125" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-
-                        <span class="pr-badge-text">Verified customer</span>
-                        </div>
-                    {% endif %}
-                  </div>
-                  <p class="pr-testimonial-title">{{ block.settings.testimonial_title }}</p>
-                  <p class="pr-testimonial-text">
-                    "{{ block.settings.testimonial_text }}"
-                  </p>
-                </div>
-              </div>
-            </div>
-          {% endfor %}
-        </div>
+  <div class="section ">
+    <div class="container">
+      <!-- Header -->
+      <div class="pr-header">
+        <h2 class="pr-heading">
+          {{ section.settings.heading }}
+        </h2>
+        <p class="pr-subheading">
+          {{ section.settings.subheading }}
+        </p>
       </div>
 
-      <!-- Navigation -->
-      <div class="pr-navigation">
-        <button class="pr-nav-btn pr-nav-prev" id="prevBtn">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-        </button>
-        <span class="pr-slide-counter" id="slideCount">
-          <span id="currentSlide">1</span>/<span id="totalSlides">{{ section.blocks.size }}</span>
-        </span>
-        <button class="pr-nav-btn pr-nav-next" id="nextBtn">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </button>
+      <!-- Testimonials Carousel -->
+      <div class="pr-carousel-wrapper">
+        <div class="pr-carousel">
+          <div class="pr-carousel-inner" id="carouselWrapper" data-items-desktop="{{ section.settings.items_per_row_desktop }}" data-items-mobile="{{ section.settings.items_per_row_mobile }}">
+            {% for block in section.blocks %}
+              <div class="pr-slide">
+                <div class="pr-slide-content">
+                  <!-- Before/After Images -->
+                  <div class="pr-images">
+                    <div class="pr-image-pair">
+                      <div class="pr-image-box">
+                        {% if block.settings.before_image %}
+                          <img 
+                            src="{{ block.settings.before_image | image_url: width: 300 }}"
+                            alt="Before"
+                          >
+                        {% else %}
+                          <div class="pr-image-placeholder">
+                            <span>Before Image</span>
+                          </div>
+                        {% endif %}
+                      </div>
+                      <span class="pr-image-label">Before</span>
+                    </div>
+                    <div class="pr-image-pair">
+                      <div class="pr-image-box">
+                        {% if block.settings.after_image %}
+                          <img 
+                            src="{{ block.settings.after_image | image_url: width: 300 }}"
+                            alt="After"
+                          >
+                        {% else %}
+                          <div class="pr-image-placeholder">
+                            <span>After Image</span>
+                          </div>
+                        {% endif %}
+                      </div>
+                      <span class="pr-image-label">{{ block.settings.after_text }}</span>
+                    </div>
+                  </div>
+
+                  <!-- Customer Info -->
+                  <div class="pr-customer-info">
+                    <div class="pr-customer-header">
+                      <div class="pr-customer-header-name">
+                        {% if block.settings.country_flag %}
+                          <span class="pr-flag">{{ block.settings.country_flag }}</span>
+                        {% endif %}
+                          <span class="pr-customer-name">{{ block.settings.customer_name }}</span>
+                      </div>
+                      {% if block.settings.verified %}
+                        <div class="pr-customer-badge">
+                          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M14.2429 14.25H14.25H14.2429ZM14.2429 14.25C13.7758 14.7131 12.9295 14.5978 12.3359 14.5978C11.6074 14.5978 11.2565 14.7403 10.7366 15.2603C10.2938 15.703 9.70028 16.5 9 16.5C8.29973 16.5 7.70618 15.703 7.26343 15.2603C6.74346 14.7403 6.39262 14.5978 5.66405 14.5978C5.07051 14.5978 4.22413 14.7131 3.75712 14.25C3.28636 13.7832 3.40221 12.9333 3.40221 12.3359C3.40221 11.5811 3.23712 11.2339 2.69954 10.6964C1.89986 9.8967 1.50001 9.4968 1.5 9C1.50001 8.50313 1.89984 8.1033 2.69951 7.30363C3.1794 6.82374 3.40221 6.34821 3.40221 5.66405C3.40221 5.07049 3.28687 4.2241 3.75 3.75708C4.21682 3.28633 5.0667 3.4022 5.66406 3.4022C6.3482 3.4022 6.82374 3.1794 7.30361 2.69953C8.1033 1.89984 8.50313 1.5 9 1.5C9.49687 1.5 9.8967 1.89984 10.6964 2.69953C11.1761 3.1793 11.6516 3.4022 12.3359 3.4022C12.9295 3.4022 13.7759 3.28685 14.243 3.75C14.7137 4.21682 14.5978 5.06669 14.5978 5.66405C14.5978 6.41894 14.7629 6.76603 15.3005 7.30363C16.1002 8.1033 16.5 8.50313 16.5 9C16.5 9.4968 16.1002 9.8967 15.3005 10.6964C14.7629 11.2339 14.5978 11.5811 14.5978 12.3359C14.5978 12.9333 14.7136 13.7832 14.2429 14.25Z" fill="#26736D"/>
+                          <path d="M14.2429 14.25H14.25M14.2429 14.25C13.7758 14.7131 12.9295 14.5978 12.3359 14.5978C11.6074 14.5978 11.2565 14.7403 10.7366 15.2603C10.2938 15.7031 9.70028 16.5 9 16.5C8.29972 16.5 7.70618 15.7031 7.26343 15.2603C6.74346 14.7403 6.39262 14.5978 5.66405 14.5978C5.07051 14.5978 4.22414 14.7131 3.75712 14.25C3.28636 13.7832 3.40221 12.9333 3.40221 12.3359C3.40221 11.5811 3.23712 11.2339 2.69954 10.6963C1.89986 9.8967 1.50001 9.4968 1.5 9C1.50001 8.50312 1.89984 8.1033 2.69951 7.30363C3.1794 6.82374 3.40221 6.34821 3.40221 5.66405C3.40221 5.07049 3.28687 4.2241 3.75 3.75708C4.21682 3.28633 5.0667 3.4022 5.66406 3.4022C6.3482 3.4022 6.82374 3.1794 7.30361 2.69953C8.1033 1.89984 8.50312 1.5 9 1.5C9.49688 1.5 9.8967 1.89984 10.6963 2.69953C11.1761 3.1793 11.6516 3.4022 12.3359 3.4022C12.9295 3.4022 13.7759 3.28685 14.243 3.75C14.7137 4.21682 14.5978 5.06669 14.5978 5.66405C14.5978 6.41894 14.7629 6.76603 15.3005 7.30363C16.1002 8.1033 16.5 8.50312 16.5 9C16.5 9.4968 16.1002 9.8967 15.3005 10.6963C14.7629 11.2339 14.5978 11.5811 14.5978 12.3359C14.5978 12.9333 14.7136 13.7832 14.2429 14.25Z" stroke="#26736D" stroke-width="1.5"/>
+                          <path d="M6.75 9.66968L8.1 10.875L11.25 7.125" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+
+                          <span class="pr-badge-text">Verified customer</span>
+                          </div>
+                      {% endif %}
+                    </div>
+                    <p class="pr-testimonial-title">{{ block.settings.testimonial_title }}</p>
+                    <p class="pr-testimonial-text">
+                      "{{ block.settings.testimonial_text }}"
+                    </p>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="pr-navigation">
+          <button class="pr-nav-btn pr-nav-prev" id="prevBtn">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+          <span class="pr-slide-counter" id="slideCount">
+            <span id="currentSlide">1</span>/<span id="totalSlides">{{ section.blocks.size }}</span>
+          </span>
+          <button class="pr-nav-btn pr-nav-next" id="nextBtn">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -190,15 +192,8 @@
 
   <style>
     #shopify-section-{{ section.id }} .product-results-section {
-      background-color: #f5f5f5;
       padding-top: var(--section-padding-top);
       padding-bottom: var(--section-padding-bottom);
-    }
-
-    #shopify-section-{{ section.id }} .pr-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
     }
 
     #shopify-section-{{ section.id }} .pr-header {
@@ -248,6 +243,7 @@
       background: #FFFFFF;
       box-shadow: 0px 1px 2px rgba(10, 13, 18, 0.05);
       border-radius: 20px;
+      max-width: 432px;
     }
 
     #shopify-section-{{ section.id }} .pr-slide-content {
@@ -396,6 +392,8 @@
       margin-top: 3rem;
     }
 
+
+
     #shopify-section-{{ section.id }} .pr-nav-btn {
       padding: 0.5rem;
       background: transparent;
@@ -403,16 +401,33 @@
       cursor: pointer;
       border-radius: 9999px;
       transition: background-color 0.2s ease;
-      width: 2rem;
-      height: 2rem;
+      width: 40px;
+      height: 40px;
+      background: #E3E3DE;
+      border-radius: 40px;
       flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
+
+      width: 40px;
+      height: 40px;
+
+      /* White */
+      background: #FFFFFF;
+      /* Gray/100 */
+      border: 1px solid #F5F5F5;
+      /* Shadows/shadow-lg
+
+      Shadows allow you to add depth and realism to designs by positioning elements on a z-axis.
+      */
+      box-shadow: 0px 12px 16px -4px rgba(10, 13, 18, 0.08), 0px 4px 6px -2px rgba(10, 13, 18, 0.03), 0px 2px 2px -1px rgba(10, 13, 18, 0.04);
+      border-radius: 40px;
+      transform: matrix(1, 0, 0, -1, 0, 0);
     }
 
     #shopify-section-{{ section.id }} .pr-nav-btn:hover {
-      background-color: #f0f0f0;
+      background-color: #E3E3DE;
     }
 
     #shopify-section-{{ section.id }} .pr-nav-btn svg {
@@ -422,10 +437,10 @@
     }
 
     #shopify-section-{{ section.id }} .pr-slide-counter {
-      color: #666666;
       font-weight: 500;
-      font-size: 1rem;
-      white-space: nowrap;
+      font-size: 24px;
+      line-height: 140%;
+      color: #181D27;
     }
 
     @media (max-width: 768px) {
