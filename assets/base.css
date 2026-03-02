@@ -846,6 +846,7 @@ h1,
 h2,
 .h2.h2,
 .text-block.h2 > * {
+  --font-h2--weight: 500;
   font-family: var(--font-h2--family);
   font-style: var(--font-h2--style);
   font-weight: var(--font-h2--weight);
