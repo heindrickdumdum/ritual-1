@@ -203,15 +203,17 @@
 
     #shopify-section-{{ section.id }} .pr-header {
       text-align: center;
+      max-width: 720px;
+      margin-inline: auto;
       margin-bottom: 3rem;
     }
 
     #shopify-section-{{ section.id }} .pr-heading {
-      font-size: 2rem;
+      {% comment %} font-size: 2rem;
       font-weight: 700;
       color: #1a1a1a;
       margin-bottom: 1rem;
-      line-height: 1.2;
+      line-height: 1.2; {% endcomment %}
     }
 
     #shopify-section-{{ section.id }} .pr-subheading {
