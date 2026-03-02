@@ -144,8 +144,7 @@
 
       function updateCarousel() {
         if (!wrapper) return;
-        const itemsPerSlide = getItemsPerSlide();
-        const offset = -currentSlide * (100 / itemsPerSlide);
+        const offset = -currentSlide * 100;
         wrapper.style.transform = `translateX(${offset}%)`;
         if (currentSlideSpan) {
           currentSlideSpan.textContent = currentSlide + 1;
@@ -238,7 +237,7 @@
     }
 
     #shopify-section-{{ section.id }} .pr-slide {
-      flex: 0 0 calc(100% / var(--items-per-slide, 1) - 2rem);
+      flex: 0 0 calc((100% - 4rem) / 3);
       padding: 1rem;
       padding-bottom: 1.25rem;
       display: flex;
@@ -246,7 +245,7 @@
       background: #FFFFFF;
       box-shadow: 0px 1px 2px rgba(10, 13, 18, 0.05);
       border-radius: 20px;
-      max-width: 432px;
+      max-width: none;
     }
 
     #shopify-section-{{ section.id }} .pr-slide-content {
@@ -465,6 +464,7 @@
       }
 
       #shopify-section-{{ section.id }} .pr-slide {
+        flex: 0 0 100%;
         padding: 0 0.25rem;
       }
 
