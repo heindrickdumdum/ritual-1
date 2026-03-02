@@ -159,7 +159,6 @@
     align-items: center;
     margin-top: 40px;
     overflow: visible;
-    padding-bottom: 12px;
   }
 
   #shopify-section-{{ section.id }} .carousel-dots {
@@ -170,16 +169,60 @@
   }
 
   #shopify-section-{{ section.id }} .carousel-dot {
+    position: relative;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: #E3E3DE;
     border: none;
     cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  #shopify-section-{{ section.id }} .carousel-dot.active {
-    border: 2px solid #26736D;
+  #shopify-section-{{ section.id }} .carousel-dot-progress {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-dot-track {
+    fill: none;
+    stroke: transparent;
+    stroke-width: 2;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-dot-indicator {
+    fill: none;
+    stroke: #26736D;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 113.1;
+    stroke-dashoffset: 113.1;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-dot.active .carousel-dot-track {
+    stroke: #26736D;
+    opacity: 0.4;
+  }
+
+  #shopify-section-{{ section.id }} .carousel-dot.active.is-playing .carousel-dot-indicator {
+    animation: testimonialDotProgress var(--testimonial-autoplay-duration, 5000ms) linear forwards;
+  }
+
+  @keyframes testimonialDotProgress {
+    from {
+      stroke-dashoffset: 113.1;
+    }
+
+    to {
+      stroke-dashoffset: 0;
+    }
   }
 
   #shopify-section-{{ section.id }} .carousel-btn {
@@ -391,7 +434,12 @@
                 class="carousel-dot{% if forloop.first %} active{% endif %}"
                 data-index="{{ forloop.index0 }}"
                 aria-label="Go to testimonial {{ forloop.index }}"
-              ></button>
+              >
+                <svg class="carousel-dot-progress" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+                  <circle class="carousel-dot-track" cx="20" cy="20" r="18"></circle>
+                  <circle class="carousel-dot-indicator" cx="20" cy="20" r="18"></circle>
+                </svg>
+              </button>
             {% endfor %}
           </div>
           <button class="carousel-btn" id="next-btn-{{ section.id }}" aria-label="Next testimonial">❯</button>
@@ -408,14 +456,21 @@
     const prevBtn = document.getElementById('prev-btn-{{ section.id }}');
     const nextBtn = document.getElementById('next-btn-{{ section.id }}');
     const dotsContainer = document.getElementById('carousel-dots-{{ section.id }}');
+
+    if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+
     const dots = dotsContainer.querySelectorAll('.carousel-dot');
 
-    if (!track || !prevBtn || !nextBtn) return;
+    if (!dots.length) return;
 
+    const AUTOPLAY_DURATION = 5000;
     let currentIndex = 0;
     let isAnimating = false;
     let animationTimeout;
     let resizeTimeout;
+    let autoplayTimeout;
+
+    track.style.setProperty('--testimonial-autoplay-duration', `${AUTOPLAY_DURATION}ms`);
 
     function getCardWidth() {
       return track.querySelector('.testimonial-card').offsetWidth + 40;
@@ -423,8 +478,23 @@
 
     function updateDots() {
       dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentIndex);
+        const isActive = index === currentIndex;
+        dot.classList.toggle('active', isActive);
+
+        if (!isActive) {
+          dot.classList.remove('is-playing');
+        }
       });
+    }
+
+    function startActiveDotProgress() {
+      const activeDot = dots[currentIndex];
+
+      if (!activeDot) return;
+
+      activeDot.classList.remove('is-playing');
+      void activeDot.offsetWidth;
+      activeDot.classList.add('is-playing');
     }
 
     function updateButtons() {
@@ -449,6 +519,27 @@
       updateButtons();
     }
 
+    function clearAutoplay() {
+      clearTimeout(autoplayTimeout);
+      dots.forEach((dot) => dot.classList.remove('is-playing'));
+    }
+
+    function startAutoplay() {
+      if (dots.length < 2) {
+        clearAutoplay();
+        return;
+      }
+
+      clearTimeout(autoplayTimeout);
+      startActiveDotProgress();
+
+      autoplayTimeout = setTimeout(() => {
+        const nextIndex = currentIndex === dots.length - 1 ? 0 : currentIndex + 1;
+        scrollToIndex(nextIndex);
+        startAutoplay();
+      }, AUTOPLAY_DURATION);
+    }
+
     function handleResize() {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
@@ -460,15 +551,18 @@
 
     prevBtn.addEventListener('click', () => {
       scrollToIndex(currentIndex - 1);
+      startAutoplay();
     });
 
     nextBtn.addEventListener('click', () => {
       scrollToIndex(currentIndex + 1);
+      startAutoplay();
     });
 
     dots.forEach((dot) => {
       dot.addEventListener('click', () => {
         scrollToIndex(parseInt(dot.dataset.index));
+        startAutoplay();
       });
     });
 
@@ -480,10 +574,19 @@
       updateButtons();
     });
 
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        clearAutoplay();
+      } else {
+        startAutoplay();
+      }
+    });
+
     window.addEventListener('resize', handleResize);
 
     updateDots();
     updateButtons();
+    startAutoplay();
   });
 </script>
 
