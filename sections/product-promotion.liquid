@@ -75,43 +75,40 @@
 
   #shopify-section-{{ section.id }} .modal {
     display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(24, 29, 39, 0.95);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    line-height: 18px;
+    white-space: nowrap;
+    z-index: 100;
+    margin-bottom: 8px;
+    pointer-events: none;
   }
 
   #shopify-section-{{ section.id }} .modal.active {
-    display: flex;
+    display: block;
   }
 
-  #shopify-section-{{ section.id }} .modal-content {
-    background-color: white;
-    padding: 32px;
-    border-radius: 12px;
-    max-width: 500px;
-    width: 90%;
+  #shopify-section-{{ section.id }} .question-mark-icon {
     position: relative;
   }
 
+  #shopify-section-{{ section.id }} .modal-content {
+    all: unset;
+  }
+
   #shopify-section-{{ section.id }} .modal-content h2 {
-    margin: 0;
+    display: none;
   }
 
   #shopify-section-{{ section.id }} .modal-close {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    background: none;
-    border: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: #181D27;
+    display: none;
   }
 
   #shopify-section-{{ section.id }} .content {
@@ -172,6 +169,7 @@
     flex-direction: row;
     align-items: center;
     gap: 12px;
+    position: relative;
   }
 
   #shopify-section-{{ section.id }} .terms-and-conditions {
@@ -338,6 +336,9 @@
               height="24"
             >
           </button>
+          <div class="modal" id="infoModal-{{ section.id }}">
+            <div class="modal-content">Learn more about this offer</div>
+          </div>
         </div>
         <div class="promotion-heading__bottom">
           <p>{{ section.settings.description }}</p>
@@ -384,14 +385,6 @@
       </div>
     {% endcomment %}
   </main>
-
-  <div class="modal" id="infoModal-{{ section.id }}">
-    <div class="modal-content">
-      <button class="modal-close" type="button" aria-label="Close modal">×</button>
-      <h2>Learn More</h2>
-      <p>Additional information about Ritual1 can be found here.</p>
-    </div>
-  </div>
 </div>
 
 {% schema %}
@@ -498,21 +491,14 @@
     const sectionId = '{{ section.id }}';
     const modal = document.getElementById(`infoModal-${sectionId}`);
     const btn = document.querySelector(`#shopify-section-${sectionId} .question-mark-icon`);
-    const closeBtn = document.querySelector(`#shopify-section-${sectionId} .modal-close`);
 
     if (btn && modal) {
-      btn.addEventListener('click', function () {
+      btn.addEventListener('mouseenter', function () {
         modal.classList.add('active');
       });
 
-      closeBtn.addEventListener('click', function () {
+      btn.addEventListener('mouseleave', function () {
         modal.classList.remove('active');
-      });
-
-      modal.addEventListener('click', function (event) {
-        if (event.target === modal) {
-          modal.classList.remove('active');
-        }
       });
     }
   });
