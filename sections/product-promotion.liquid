@@ -80,6 +80,9 @@
   }
 
   #shopify-section-{{ section.id }} .content-header-cell:nth-child(2) {
+    font-size: 20px;
+    line-height: 140%;
+    font-weight: 700;
     background-color: #FFFFFF;
     border-radius: 20px 20px 0 0;
   }
@@ -116,7 +119,7 @@
   <main class="product-promotion-main">
     <div class="promotion-heading">
       <div class="promotion-heading__icon">
-        <img src="{{ 'icon-piggy-bank.svg' | asset_url }}" alt="Piggy Bank Icon">
+        <img src="{{ 'icon-piggy-bank.svg' | asset_url }}" alt="Piggy Bank Icon" width="72" height="72">
       </div>
       <div class="promotion-heading__content">
         <div class="promotion-heading__top">
@@ -125,33 +128,34 @@
           <img src="{{ 'icon-question-mark-circle.svg' | asset_url }}" alt="Question Mark Icon" width="24" height="24">
         </div>
         <div class="promotion-heading__bottom">
-      <p>{{ section.settings.description }}</p>
-    </div>
+          <p>{{ section.settings.description }}</p>
+        </div>
       </div>
     </div>
 
-      <div class="content">
-        <div class="content-header">
-          <div class="content-label"></div>
-          <div class="content-header-cell">Ritual1</div>
-          <div class="content-header-cell">Traditional</div>
-        </div>
-        <div class="content-row">
-          <div class="content-label">Online visit</div>
-          <div class="content-cell">{{ section.settings.ritual1_online_visit }}</div>
-          <div class="content-cell">{{ section.settings.traditional_online_visit }}</div>
-        </div>
-        <div class="content-row">
-          <div class="content-label">Solution</div>
-          <div class="content-cell">{{ section.settings.ritual1_solution }}</div>
-          <div class="content-cell">{{ section.settings.traditional_solution }}</div>
-        </div>
-        <div class="content-row">
-          <div class="content-label">60-day consultation</div>
-          <div class="content-cell">{{ section.settings.ritual1_consultation }}</div>
-          <div class="content-cell">{{ section.settings.traditional_consultation }}</div>
-        </div>
-      </div>    <div class="terms-and-conditions">
+    <div class="content">
+      <div class="content-header">
+        <div class="content-label"></div>
+        <div class="content-header-cell">Ritual1</div>
+        <div class="content-header-cell">Traditional</div>
+      </div>
+      <div class="content-row">
+        <div class="content-label">Online visit</div>
+        <div class="content-cell">{{ section.settings.ritual1_online_visit }}</div>
+        <div class="content-cell">{{ section.settings.traditional_online_visit }}</div>
+      </div>
+      <div class="content-row">
+        <div class="content-label">Solution</div>
+        <div class="content-cell">{{ section.settings.ritual1_solution }}</div>
+        <div class="content-cell">{{ section.settings.traditional_solution }}</div>
+      </div>
+      <div class="content-row">
+        <div class="content-label">60-day consultation</div>
+        <div class="content-cell">{{ section.settings.ritual1_consultation }}</div>
+        <div class="content-cell">{{ section.settings.traditional_consultation }}</div>
+      </div>
+    </div>
+    <div class="terms-and-conditions">
       <!-- Terms and Conditions goes here -->
     </div>
   </main>
