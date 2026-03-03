@@ -48,6 +48,74 @@
     margin-bottom: 5rem;
   }
 
+  #shopify-section-{{ section.id }} .customer-reviews__carousel {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .customer-reviews__carousel-wrapper {
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .customer-reviews__carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .customer-reviews__carousel-nav {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #4A9B8E;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+  }
+
+  #shopify-section-{{ section.id }} .customer-reviews__carousel-nav:hover {
+    opacity: 0.9;
+  }
+
+  #shopify-section-{{ section.id }} .customer-reviews__carousel-nav:disabled {
+    cursor: not-allowed;
+    background: #F7F7F4;
+    border: 1px solid #D5D7DA;
+    color: #181D27;
+  }
+
+  #shopify-section-{{ section.id }} .customer-reviews__carousel-nav svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  #shopify-section-{{ section.id }} .customer-reviews__carousel-progress {
+    height: 2px;
+    background: #E5E5E0;
+    border-radius: 1px;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .customer-reviews__carousel-progress-bar {
+    height: 100%;
+    background: #181D27;
+    transition: width 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .customer-reviews__carousel-nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
 
   #shopify-section-{{ section.id }} .review-card {
     background: #FFFFFF;
@@ -303,6 +371,16 @@
       --section-padding-bottom: var(--section-padding-bottom-mobile);
     }
 
+    #shopify-section-{{ section.id }} .customer-reviews__grid {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .customer-reviews__carousel {
+      display: block;
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+
     #shopify-section-{{ section.id }} .customer-reviews__title {
       font-size: 2rem;
     }
@@ -315,6 +393,8 @@
     #shopify-section-{{ section.id }} .review-card {
       padding: 1.25rem;
       margin-bottom: 1rem;
+      flex: 0 0 327px;
+      min-width: 327px;
     }
 
     #shopify-section-{{ section.id }} .review-card__header {
@@ -398,11 +478,6 @@
       line-height: {{ section.settings.button_line_height_mobile }};
     }
     {% endif %}
-
-    #shopify-section-{{ section.id }} .customer-reviews__grid {
-      column-count: 1;
-      margin-bottom: 2.5rem;
-    }
   }
 {%- endstyle -%}
 
@@ -512,6 +587,121 @@
         </div>
     </div>
 
+    <div class="customer-reviews__carousel" data-carousel>
+      <div class="customer-reviews__carousel-wrapper">
+        <div class="customer-reviews__carousel-track" data-carousel-track>
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'review' -%}
+              <div class="review-card" {{ block.shopify_attributes }}>
+
+                <div class="review-card__header">
+                  <div class="review-card__avatar">
+                    {%- if block.settings.avatar != blank -%}
+                      <img src="{{ block.settings.avatar | image_url: width: 96 }}" alt="{{ block.settings.name }}" loading="lazy">
+                    {%- endif -%}
+                  </div>
+                  <div class="review-card__info">
+                    {%- if block.settings.name != blank -%}
+                      <h3 class="review-card__name">{{ block.settings.name }}</h3>
+                    {%- endif -%}
+                    <div class="review-card__rating">
+                      {%- for i in (1..5) -%}
+                        <svg class="review-card__star" viewBox="0 0 20 20" fill="currentColor">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                </div>
+
+                {%- if block.settings.media_type == 'video' and block.settings.video_url != blank -%}
+                  <div class="review-card__media">
+                    <div class="review-card__video">
+                      <div class="review-card__video-container">
+                        {%- if block.settings.video_url contains 'youtube' or block.settings.video_url contains 'youtu.be' -%}
+                          {%- if block.settings.video_url contains 'youtu.be' -%}
+                            {%- assign video_id = block.settings.video_url | split: '/' | last | split: '?' | first -%}
+                          {%- else -%}
+                            {%- assign video_id = block.settings.video_url | split: 'v=' | last | split: '&' | first -%}
+                          {%- endif -%}
+                          <iframe src="https://www.youtube.com/embed/{{ video_id }}?rel=0" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
+                        {%- elsif block.settings.video_url contains 'vimeo' -%}
+                          {%- assign video_id = block.settings.video_url | split: '/' | last | split: '?' | first -%}
+                          <iframe src="https://player.vimeo.com/video/{{ video_id }}" title="Vimeo video" allow="autoplay; fullscreen" allowfullscreen="allowfullscreen"></iframe>
+                        {%- endif -%}
+                      </div>
+                    </div>
+                  </div>
+                {%- elsif block.settings.media_type == 'photos' -%}
+                  {%- assign photo_count = 0 -%}
+                  {%- if block.settings.photo_1 != blank -%}
+                    {%- assign photo_count = photo_count | plus: 1 -%}
+                  {%- endif -%}
+                  {%- if block.settings.photo_2 != blank -%}
+                    {%- assign photo_count = photo_count | plus: 1 -%}
+                  {%- endif -%}
+                  {%- if block.settings.photo_3 != blank -%}
+                    {%- assign photo_count = photo_count | plus: 1 -%}
+                  {%- endif -%}
+                  {%- if block.settings.photo_4 != blank -%}
+                    {%- assign photo_count = photo_count | plus: 1 -%}
+                  {%- endif -%}
+                  
+                  {%- if photo_count > 0 -%}
+                    <div class="review-card__photos review-card__photos--{{ photo_count }}">
+                      {%- if block.settings.photo_1 != blank -%}
+                        <div class="review-card__photo">
+                          <img src="{{ block.settings.photo_1 | image_url: width: 400 }}" alt="Review photo" loading="lazy">
+                        </div>
+                      {%- endif -%}
+                      {%- if block.settings.photo_2 != blank -%}
+                        <div class="review-card__photo">
+                          <img src="{{ block.settings.photo_2 | image_url: width: 400 }}" alt="Review photo" loading="lazy">
+                        </div>
+                      {%- endif -%}
+                      {%- if block.settings.photo_3 != blank -%}
+                        <div class="review-card__photo">
+                          <img src="{{ block.settings.photo_3 | image_url: width: 400 }}" alt="Review photo" loading="lazy">
+                        </div>
+                      {%- endif -%}
+                      {%- if block.settings.photo_4 != blank -%}
+                        <div class="review-card__photo">
+                          <img src="{{ block.settings.photo_4 | image_url: width: 400 }}" alt="Review photo" loading="lazy">
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                {%- endif -%}
+                
+            
+                {%- if block.settings.review_text != blank -%}
+                  <p class="review-card__text">{{ block.settings.review_text }}</p>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <div class="customer-reviews__carousel-nav-wrapper">
+        <button class="customer-reviews__carousel-nav" data-carousel-prev aria-label="Previous review">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <div class="customer-reviews__carousel-progress">
+          <div class="customer-reviews__carousel-progress-bar" data-carousel-progress></div>
+        </div>
+
+        <button class="customer-reviews__carousel-nav" data-carousel-next aria-label="Next review">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
 
     {%- if section.settings.button_text != blank and section.settings.button_url != blank -%}
       <div class="customer-reviews__cta">
@@ -522,6 +712,97 @@
     {%- endif -%}
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const section = document.querySelector('#shopify-section-{{ section.id }}');
+    if (!section) return;
+
+    const carousel = section.querySelector('[data-carousel]');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('[data-carousel-track]');
+    const prevBtn = carousel.querySelector('[data-carousel-prev]');
+    const nextBtn = carousel.querySelector('[data-carousel-next]');
+    const progressBar = carousel.querySelector('[data-carousel-progress]');
+    const cards = track.querySelectorAll('.review-card');
+    
+    let currentIndex = 0;
+    
+    function calculateCardWidth() {
+      if (cards.length === 0) return 0;
+      const cardWidth = cards[0].offsetWidth;
+      const trackStyle = window.getComputedStyle(track);
+      const gap = parseFloat(trackStyle.gap) || 24;
+      return cardWidth + gap;
+    }
+    
+    function calculateMaxIndex() {
+      const wrapperWidth = carousel.querySelector('.customer-reviews__carousel-wrapper').offsetWidth;
+      const trackWidth = track.scrollWidth;
+      
+      if (trackWidth <= wrapperWidth) {
+        return 0;
+      }
+      
+      const cardWidth = calculateCardWidth();
+      if (cardWidth === 0) return 0;
+      
+      const visibleCards = Math.floor(wrapperWidth / cardWidth);
+      return Math.max(0, cards.length - visibleCards);
+    }
+
+    function updateCarousel() {
+      const wrapperWidth = carousel.querySelector('.customer-reviews__carousel-wrapper').offsetWidth;
+      const trackWidth = track.scrollWidth;
+      const allItemsVisible = trackWidth <= wrapperWidth;
+      
+      if (allItemsVisible) {
+        track.style.transform = 'translateX(0px)';
+        progressBar.style.width = '100%';
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+        return;
+      }
+      
+      const cardWidth = calculateCardWidth();
+      const maxIndex = calculateMaxIndex();
+      const maxOffset = Math.max(0, trackWidth - wrapperWidth);
+      
+      const offset = Math.min(currentIndex * cardWidth, maxOffset);
+      
+      track.style.transform = `translateX(-${offset}px)`;
+      
+      const progress = maxIndex > 0 ? ((currentIndex + 1) / (maxIndex + 1)) * 100 : 100;
+      progressBar.style.width = `${progress}%`;
+      
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex >= maxIndex;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const maxIndex = calculateMaxIndex();
+      if (currentIndex < maxIndex) {
+        currentIndex++;
+        updateCarousel();
+      }
+    });
+
+    updateCarousel();
+
+    window.addEventListener('resize', () => {
+      currentIndex = 0;
+      updateCarousel();
+    });
+  });
+</script>
 
 {% schema %}
 {
