@@ -582,6 +582,48 @@
         "traditional_consultation": "None"
       }
     },
+    "product_how_to_use_CK8Bkk": {
+      "type": "product-how-to-use",
+      "blocks": {
+        "step_8YHpzQ": {
+          "type": "step",
+          "settings": {
+            "title": "Apply directly to scalp",
+            "details": "Use the dropper to apply 1–2 pipettes of serum evenly on your scalp, focusing on thinning areas.",
+            "image": "shopify://shop_images/towfiqu-barbhuiya-jbjmimlaC-U-unsplash.jpg"
+          }
+        },
+        "step_dWkdCW": {
+          "type": "step",
+          "settings": {
+            "title": "Gently massage for 1–2 minutes",
+            "details": "Use your fingertips to massage in circular motions to boost blood flow and absorption.",
+            "image": "shopify://shop_images/priscilla-du-preez--xcCXCRi9Xg-unsplash.jpg"
+          }
+        },
+        "step_9xCBik": {
+          "type": "step",
+          "settings": {
+            "title": "Leave in, no rinse needed",
+            "details": "Let it absorb naturally. It’s lightweight and non-greasy, perfect for day or night use.",
+            "image": "shopify://shop_images/anshu-a-7n5_0j7b7Hg-unsplash.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "step_8YHpzQ",
+        "step_dWkdCW",
+        "step_9xCBik"
+      ],
+      "name": "Product How To Use",
+      "settings": {
+        "title": "",
+        "description": "",
+        "bg_color": "#FFFFFF",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
     "product_results_nkye9R": {
       "type": "product-results",
       "blocks": {
@@ -902,6 +944,7 @@
     "product_benefits_carousel_LcQ9P8",
     "product_testimonials_T63mVC",
     "product_promotion_CxtbM3",
+    "product_how_to_use_CK8Bkk",
     "product_results_nkye9R",
     "ingredients_qPiiY4",
     "faq_section_VHxhCC"
