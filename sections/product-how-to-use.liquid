@@ -1,0 +1,249 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --section-bg-color: {{ section.settings.bg_color }};
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-wrapper {
+    padding-top: var(--section-padding-top);
+    padding-bottom: var(--section-padding-bottom);
+    background-color: var(--section-bg-color);
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 144px;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-images {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-image-header {
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-image-header h2 {
+    margin: 0;
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 136%;
+    letter-spacing: -0.02em;
+    color: #181D27;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-image-header p {
+    margin: 0;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: #181D27;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-header {
+    margin-bottom: 40px;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-title {
+    margin: 0 0 16px;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-description {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-steps {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-step {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid #E9EAEB;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-step:last-child {
+    border-bottom: none;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-step-number {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #26736D;
+    color: white;
+    font-size: 18px;
+    line-height: 145%;
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-step-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-step-title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-step-details {
+    margin: 0;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 140%;
+  }
+{%- endstyle -%}
+
+<div class="how-to-use-wrapper section">
+  <div class="how-to-use-main">
+    {%- if section.blocks.size > 0 -%}
+      <div class="how-to-use-images">
+        <div class="how-to-use-image-header">
+          <h2>How to Use for Best Results</h2>
+          <p>A simple, 3-step daily ritual for stronger, fuller hair.</p>
+        </div>
+        {%- if section.blocks.first.settings.image != blank -%}
+          {%- render 'image', image: section.blocks.first.settings.image, size: '500x500' -%}
+        {%- endif -%}
+      </div>
+
+      <div class="how-to-use-list">
+        <div class="how-to-use-header">
+          {%- if section.settings.title != blank -%}
+            <h2 class="how-to-use-title">{{ section.settings.title }}</h2>
+          {%- endif -%}
+
+          {%- if section.settings.description != blank -%}
+            <p class="how-to-use-description">{{ section.settings.description }}</p>
+          {%- endif -%}
+        </div>
+
+        <div class="how-to-use-steps">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'step' -%}
+                <div class="how-to-use-step" {{ block.shopify_attributes }}>
+                  <div class="how-to-use-step-number">{{ forloop.index }}</div>
+
+                  <div class="how-to-use-step-content">
+                    {%- if block.settings.title != blank -%}
+                      <h3 class="how-to-use-step-title">{{ block.settings.title }}</h3>
+                    {%- endif -%}
+
+                    {%- if block.settings.details != blank -%}
+                      <p class="how-to-use-step-details">{{ block.settings.details }}</p>
+                    {%- endif -%}
+                  </div>
+                </div>
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product How To Use",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step"
+        },
+        {
+          "type": "textarea",
+          "id": "details",
+          "label": "Step Details"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Step Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product How To Use",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}
