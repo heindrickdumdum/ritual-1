@@ -144,8 +144,9 @@
 
       function updateCarousel() {
         if (!wrapper) return;
+        const slideGap = getItemsPerSlide() === itemsMobile ? 0.75 : 2; // gap in rem defined in CSS
         const offset = -currentSlide * 100;
-        wrapper.style.transform = `translateX(calc(${offset}% - ${currentSlide * 2}rem))`;
+        wrapper.style.transform = `translateX(calc(${offset}% - ${currentSlide * slideGap}rem))`;
         if (currentSlideSpan) {
           currentSlideSpan.textContent = currentSlide + 1;
         }
@@ -480,6 +481,10 @@
 
       #shopify-section-{{ section.id }} .pr-carousel-inner {
         gap: 0.75rem;
+      }
+
+      #shopify-section-{{ section.id }} .pr-navigation {
+        justify-content: space-between;
       }
     }
 
