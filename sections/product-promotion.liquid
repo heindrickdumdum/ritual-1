@@ -113,6 +113,41 @@
     align-items: center;
     gap: 12px;
   }
+
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .product-promotion-wrapper {
+      padding: 64px 0;
+    }
+
+    #shopify-section-{{ section.id }} .promotion-heading {
+      gap: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .promotion-heading__icon {
+      width: 64px;
+      height: 64px;
+    }
+
+    #shopify-section-{{ section.id }} .content {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    #shopify-section-{{ section.id }} .content-header {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    #shopify-section-{{ section.id }} .content-header-cell {
+      padding: 24px 16px;
+    }
+
+    #shopify-section-{{ section.id }} .content-label {
+      grid-column: auto;
+    }
+
+    #shopify-section-{{ section.id }} .content-cell {
+      grid-column: auto;
+    }
+  }
 {%- endstyle -%}
 
 <div class="product-promotion-wrapper section">
