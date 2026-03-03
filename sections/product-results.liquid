@@ -471,7 +471,7 @@
         text-align: left;
 
         font-weight: 700;
-    line-height: 32px;
+        line-height: 32px;
       }
 
       #shopify-section-{{ section.id }} .pr-subheading {
@@ -483,17 +483,20 @@
       }
 
       #shopify-section-{{ section.id }} .pr-image-box {
-        height: 12rem;
+        /*height: 12rem;*/
+        width: 100%;
       }
 
       #shopify-section-{{ section.id }} .pr-slide {
         /* flex: 0 0 100%; */
         /* padding: 0 0.25rem; */
+        padding: 0.75rem;
         flex: 0 0 360px;
+        max-width: 360px;
       }
 
       #shopify-section-{{ section.id }} .pr-slide-content {
-        margin: 0 0.25rem;
+        /* margin: 0 0.25rem; */
       }
 
       #shopify-section-{{ section.id }} .pr-carousel-inner {
