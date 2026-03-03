@@ -9,6 +9,9 @@
   }
 
   #shopify-section-{{ section.id }} .product-promotion-main {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
     align-self: center;
     max-width: 720px;
   }
@@ -60,6 +63,57 @@
     height: 24px;
   }
 
+  #shopify-section-{{ section.id }} .question-mark-icon {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .modal.active {
+    display: flex;
+  }
+
+  #shopify-section-{{ section.id }} .modal-content {
+    background-color: white;
+    padding: 32px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .modal-content h2 {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #181D27;
+  }
+
   #shopify-section-{{ section.id }} .content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -68,13 +122,12 @@
 
   #shopify-section-{{ section.id }} .content-header {
     grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: contents;
   }
 
   #shopify-section-{{ section.id }} .content-header-cell {
-    padding: 16px;
-    font-weight: 600;
+    padding: 32px;
+    font-weight: 700;
     text-align: center;
     border-bottom: 1px solid #E9EAEB;
   }
@@ -98,9 +151,16 @@
   }
 
   #shopify-section-{{ section.id }} .content-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 16px;
     text-align: center;
     border-bottom: 1px solid #E9EAEB;
+    font-size: 14px;
+    line-height: 145%;
+    font-weight: 500;
+    color: #181D27;
   }
 
   #shopify-section-{{ section.id }} .content-cell:nth-child(3n + 2) {
@@ -112,6 +172,69 @@
     flex-direction: row;
     align-items: center;
     gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .terms-and-conditions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background-color: #FFFFFF;
+    gap: 32px;
+    padding: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .guarantee-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border: 1px solid #181D27;
+    border-radius: 0 0 0 20px;
+    color: #181D27;
+  }
+
+  #shopify-section-{{ section.id }} .guarantee-content img {
+    width: 24px;
+    height: 24px;
+  }
+
+  #shopify-section-{{ section.id }} .guarantee-content h5 {
+    margin: 0;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  #shopify-section-{{ section.id }} .guarantee-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .guarantee-top h4 {
+    margin: 0;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 500;
+  }
+
+  #shopify-section-{{ section.id }} .terms-link__anchor {
+    display: inline-block;
+    width: fit-content;
+    text-decoration: underline;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: #1E5B57;
+  }
+
+  #shopify-section-{{ section.id }} .terms-link {
+    flex-shrink: 0;
+    display: inline-block;
   }
 
   @media (max-width: 768px) {
@@ -128,6 +251,12 @@
       height: 64px;
     }
 
+    #shopify-section-{{ section.id }} .promotion-heading__subtitle {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
+    }
+
     #shopify-section-{{ section.id }} .content {
       grid-template-columns: 1fr 1fr 1fr;
     }
@@ -137,15 +266,56 @@
     }
 
     #shopify-section-{{ section.id }} .content-header-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 24px 16px;
+      font-size: 14px;
+      line-height: 24px;
+      font-weight: 700;
+    }
+
+    #shopify-section-{{ section.id }} .content-header-cell:nth-child(2) {
+      font-size: 20px;
+      line-height: 140%;
+      font-weight: 700;
     }
 
     #shopify-section-{{ section.id }} .content-label {
+      display: flex;
+      align-items: center;
+      margin: auto 0;
       grid-column: auto;
+      height: 100%;
     }
 
     #shopify-section-{{ section.id }} .content-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       grid-column: auto;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
+    }
+
+    #shopify-section-{{ section.id }} .promotion-heading__title {
+      font-size: 32px;
+      line-height: 40px;
+      font-weight: 700;
+    }
+
+    #shopify-section-{{ section.id }} .guarantee-content h5 {
+      white-space: nowrap;
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .guarantee-content {
+      gap: 5px;
+    }
+
+    #shopify-section-{{ section.id }} .terms-and-conditions {
+      gap: 20px;
     }
   }
 {%- endstyle -%}
@@ -160,7 +330,14 @@
         <div class="promotion-heading__top">
           <h3 class="promotion-heading__title">{{ section.settings.promote_title }}</h3>
           <p class="promotion-heading__subtitle">{{ section.settings.promote_subtitle }}</p>
-          <img src="{{ 'icon-question-mark-circle.svg' | asset_url }}" alt="Question Mark Icon" width="24" height="24">
+          <button class="question-mark-icon" type="button">
+            <img
+              src="{{ 'icon-question-mark-circle.svg' | asset_url }}"
+              alt="Question Mark Icon"
+              width="24"
+              height="24"
+            >
+          </button>
         </div>
         <div class="promotion-heading__bottom">
           <p>{{ section.settings.description }}</p>
@@ -190,10 +367,31 @@
         <div class="content-cell">{{ section.settings.traditional_consultation }}</div>
       </div>
     </div>
-    <div class="terms-and-conditions">
-      <!-- Terms and Conditions goes here -->
-    </div>
+    {% comment %}
+      <div class="terms-and-conditions">
+        <div class="terms-guarantee">
+          <div class="guarantee-content">
+            <div class="guarantee-top">
+              <h4>1 Year</h4>
+              <img src="{{ 'icon-security-check.svg' | asset_url }}" alt="Shield Check Icon" width="28" height="28">
+            </div>
+            <h5>Result Guarantee</h5>
+          </div>
+        </div>
+        <div class="terms-link">
+          <a href="/terms" class="terms-link__anchor">View Terms & Conditions</a>
+        </div>
+      </div>
+    {% endcomment %}
   </main>
+
+  <div class="modal" id="infoModal-{{ section.id }}">
+    <div class="modal-content">
+      <button class="modal-close" type="button" aria-label="Close modal">×</button>
+      <h2>Learn More</h2>
+      <p>Additional information about Ritual1 can be found here.</p>
+    </div>
+  </div>
 </div>
 
 {% schema %}
@@ -294,3 +492,28 @@
   ]
 }
 {% endschema %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const sectionId = '{{ section.id }}';
+    const modal = document.getElementById(`infoModal-${sectionId}`);
+    const btn = document.querySelector(`#shopify-section-${sectionId} .question-mark-icon`);
+    const closeBtn = document.querySelector(`#shopify-section-${sectionId} .modal-close`);
+
+    if (btn && modal) {
+      btn.addEventListener('click', function () {
+        modal.classList.add('active');
+      });
+
+      closeBtn.addEventListener('click', function () {
+        modal.classList.remove('active');
+      });
+
+      modal.addEventListener('click', function (event) {
+        if (event.target === modal) {
+          modal.classList.remove('active');
+        }
+      });
+    }
+  });
+</script>
