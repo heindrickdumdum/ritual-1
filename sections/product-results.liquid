@@ -128,13 +128,20 @@
       if (!wrapper || !slides.length) return;
 
       const itemsDesktop = parseInt(wrapper.dataset.itemsDesktop) || 3;
+      const itemsTablet = parseInt(wrapper.dataset.itemsTablet) || 2;
       const itemsMobile = parseInt(wrapper.dataset.itemsMobile) || 1;
       const totalItems = slides.length;
       
       let currentSlide = 0;
 
       function getItemsPerSlide() {
-        return window.innerWidth < 768 ? itemsMobile : itemsDesktop;
+        if (window.innerWidth < 768) {
+          return itemsMobile;
+        } else if (window.innerWidth < 1024) {
+          return itemsTablet;
+        } else {
+          return itemsDesktop;
+        }
       }
 
       function getTotalSlides() {
@@ -144,7 +151,8 @@
 
       function updateCarousel() {
         if (!wrapper) return;
-        const slideGap = getItemsPerSlide() === itemsMobile ? 0.75 : 2; // gap in rem defined in CSS
+        const slideGap = getItemsPerSlide() === itemsMobile || getItemsPerSlide() === itemsTablet ? 0.75 : 2; // gap in rem defined in CSS
+
         const offset = -currentSlide * 100;
         wrapper.style.transform = `translateX(calc(${offset}% - ${currentSlide * slideGap}rem))`;
         if (currentSlideSpan) {
@@ -460,10 +468,18 @@
 
       #shopify-section-{{ section.id }} .pr-heading {
         font-size: 1.5rem;
+        text-align: left;
+
+        font-weight: 700;
+    line-height: 32px;
       }
 
       #shopify-section-{{ section.id }} .pr-subheading {
         font-size: 1rem;
+        text-align: left;
+        font-weight: 500;
+        line-height: 24px;
+        color: #535862;
       }
 
       #shopify-section-{{ section.id }} .pr-image-box {
@@ -488,6 +504,18 @@
 
       #shopify-section-{{ section.id }} .pr-navigation {
         justify-content: space-between;
+        margin-top: 1.25rem;
+      }
+
+      #shopify-section-{{ section.id }} .pr-header {
+        margin-bottom: 2.5rem;
+      }
+
+      #shopify-section-{{ section.id }} .pr-slide-counter {
+        font-weight: 500;
+    color: #181D27;
+    font-size: 18px;
+    line-height: 28px;
       }
     }
 
@@ -502,6 +530,10 @@
 
       #shopify-section-{{ section.id }} .pr-carousel-inner {
         gap: 1rem;
+
+                max-width: calc(360px * 2 + 24px);
+        margin: 0 auto;
+    }
       }
     }
 
@@ -526,6 +558,10 @@
 
       #shopify-section-{{ section.id }} .pr-carousel-inner {
         gap: 2rem;
+
+                max-width: none;
+        margin: 0 auto;
+
       }
     }
   </style>
