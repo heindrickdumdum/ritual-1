@@ -9,6 +9,7 @@
     padding-top: var(--section-padding-top);
     padding-bottom: var(--section-padding-bottom);
     background-color: var(--section-bg-color);
+    overflow: hidden;
   }
 
   #shopify-section-{{ section.id }} .how-to-use-main {
@@ -31,6 +32,14 @@
     gap: 16px;
   }
 
+  #shopify-section-{{ section.id }} .how-to-use-image-header-mobile {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-image-header-desktop {
+    display: flex;
+  }
+
   #shopify-section-{{ section.id }} .how-to-use-image-header h2 {
     margin: 0;
     font-weight: 500;
@@ -46,7 +55,7 @@
     font-size: 20px;
     line-height: 140%;
     letter-spacing: 0%;
-    color: #181D27;
+    color: #535862;
   }
 
   #shopify-section-{{ section.id }} .how-to-use-image-wrapper {
@@ -70,8 +79,8 @@
 
   #shopify-section-{{ section.id }} .how-to-use-step-badge {
     position: absolute;
-    bottom: 24px;
-    left: 24px;
+    bottom: 16px;
+    left: 16px;
     background-color: white;
     color: #26736D;
     padding: 8px 16px;
@@ -124,10 +133,6 @@
     background: linear-gradient(to right, #181D27 var(--progress, 0%), #E9EAEB var(--progress, 0%));
   }
 
-  #shopify-section-{{ section.id }} .how-to-use-step-number.active {
-    background-color: #26736D;
-  }
-
   #shopify-section-{{ section.id }} .how-to-use-step-number {
     flex-shrink: 0;
     width: 42px;
@@ -141,6 +146,18 @@
     font-size: 18px;
     line-height: 145%;
     font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-step-number.active {
+    background-color: #26736D;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-step-image {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .how-to-use-progress-bar {
+    display: none;
   }
 
   #shopify-section-{{ section.id }} .how-to-use-step-content {
@@ -166,18 +183,185 @@
   }
 
   @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .how-to-use-image-header-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-image-header-mobile h2 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #181D27;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-image-header-mobile p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
+      color: #535862;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-image-header-desktop {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-wrapper {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+
     #shopify-section-{{ section.id }} .how-to-use-main {
       flex-direction: column;
-      gap: 32px;
+      gap: 0;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-images {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-header {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-steps {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 12px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-steps::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-steps::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-steps::-webkit-scrollbar-thumb {
+      background: #E9EAEB;
+      border-radius: 2px;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-step {
+      flex-direction: column;
+      gap: 0;
+      padding: 0;
+      min-width: calc(100vw - 32px - 8px);
+      width: calc(100vw - 32px - 8px);
+      scroll-snap-align: start;
+      border-radius: 12px;
+      overflow: hidden;
+      background: white;
+      border: 1px solid #E9EAEB;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-step:last-child {
+      margin-right: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-step::after {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-step-number {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-step-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 11 / 9;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-step-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-step-badge {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      padding: 4px 12px;
+      font-size: 14px;
+      line-height: 24px;
+      font-weight: 700;
+      background-color: white;
+      color: #26736D;
+      border-radius: 8px;
+      z-index: 10;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-step-content {
+      gap: 12px;
+      padding: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-step-title {
+      font-size: 20px;
+      line-height: 28px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-step-details {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-progress-bar {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: #E9EAEB;
+      margin-top: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-progress-bar-fill {
+      height: 100%;
+      background-color: #181D27;
+      width: 0%;
+      transition: width 0.1s linear;
     }
   }
 {%- endstyle -%}
 
 <div class="how-to-use-wrapper section">
+  <div class="how-to-use-image-header how-to-use-image-header-mobile">
+    <h2>How to Use for Best Results</h2>
+    <p>A simple, 3-step daily ritual for stronger, fuller hair.</p>
+  </div>
   <div class="how-to-use-main">
     {%- if section.blocks.size > 0 -%}
       <div class="how-to-use-images">
-        <div class="how-to-use-image-header">
+        <div class="how-to-use-image-header how-to-use-image-header-desktop">
           <h2>How to Use for Best Results</h2>
           <p>A simple, 3-step daily ritual for stronger, fuller hair.</p>
         </div>
@@ -226,6 +410,13 @@
                 >
                   <div class="how-to-use-step-number">{{ forloop.index }}</div>
 
+                  <div class="how-to-use-step-image">
+                    {%- if block.settings.image != blank -%}
+                      {%- render 'image', image: block.settings.image -%}
+                    {%- endif -%}
+                    <div class="how-to-use-step-badge">Step {{ forloop.index }}</div>
+                  </div>
+
                   <div class="how-to-use-step-content">
                     {%- if block.settings.title != blank -%}
                       <h3 class="how-to-use-step-title">{{ block.settings.title }}</h3>
@@ -234,6 +425,10 @@
                     {%- if block.settings.details != blank -%}
                       <p class="how-to-use-step-details">{{ block.settings.details }}</p>
                     {%- endif -%}
+                  </div>
+
+                  <div class="how-to-use-progress-bar">
+                    <div class="how-to-use-progress-bar-fill"></div>
                   </div>
                 </div>
             {%- endcase -%}
@@ -249,11 +444,12 @@
     const sectionId = '{{ section.id }}';
     const stepsContainer = document.querySelector(`[data-section-id="${sectionId}"]`);
     const imageWrapper = document.querySelector(`#shopify-section-${sectionId} .how-to-use-image-wrapper`);
+    const isMobile = window.innerWidth <= 768;
 
-    if (!stepsContainer || !imageWrapper) return;
+    if (!stepsContainer) return;
 
     const steps = Array.from(stepsContainer.querySelectorAll('[data-step]'));
-    const imageItems = Array.from(imageWrapper.querySelectorAll('[data-step]'));
+    const imageItems = imageWrapper ? Array.from(imageWrapper.querySelectorAll('[data-step]')) : [];
     const totalSteps = steps.length;
     let currentStep = 0;
     let animationInterval = null;
@@ -261,8 +457,18 @@
 
     // Preload all images
     function preloadImages() {
-      imageItems.forEach((item) => {
-        const img = item.querySelector('img');
+      if (imageWrapper) {
+        imageItems.forEach((item) => {
+          const img = item.querySelector('img');
+          if (img && img.src) {
+            const preloadImg = new Image();
+            preloadImg.src = img.src;
+          }
+        });
+      }
+
+      steps.forEach((step) => {
+        const img = step.querySelector('img');
         if (img && img.src) {
           const preloadImg = new Image();
           preloadImg.src = img.src;
@@ -281,15 +487,27 @@
       steps[stepIndex].classList.add('active');
       steps[stepIndex].setAttribute('data-active', 'true');
 
-      // Update image display
-      imageItems.forEach((item) => {
-        item.style.display = 'none';
-      });
-      imageItems[stepIndex].style.display = 'block';
+      if (isMobile) {
+        // On mobile, scroll the step into view
+        const step = steps[stepIndex];
+        step.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+      } else {
+        // Desktop: Update image display
+        if (imageWrapper) {
+          imageItems.forEach((item) => {
+            item.style.display = 'none';
+          });
+          imageItems[stepIndex].style.display = 'block';
+        }
+      }
 
-      // Reset progress
+      // Reset progress for all steps
       steps.forEach((step) => {
         step.style.setProperty('--progress', '0%');
+        const progressFill = step.querySelector('.how-to-use-progress-bar-fill');
+        if (progressFill) {
+          progressFill.style.width = '0%';
+        }
       });
     }
 
@@ -304,6 +522,12 @@
         const elapsed = Date.now() - startTime;
         const progress = Math.min((elapsed / duration) * 100, 100);
         currentStepElement.style.setProperty('--progress', progress + '%');
+
+        // Update mobile progress bar fill
+        const progressFill = currentStepElement.querySelector('.how-to-use-progress-bar-fill');
+        if (progressFill) {
+          progressFill.style.width = progress + '%';
+        }
 
         if (progress >= 100) {
           clearInterval(animationInterval);
