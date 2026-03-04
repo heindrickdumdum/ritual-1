@@ -164,6 +164,13 @@
     line-height: 140%;
     color: #535862;
   }
+
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .how-to-use-main {
+      flex-direction: column;
+      gap: 32px;
+    }
+  }
 {%- endstyle -%}
 
 <div class="how-to-use-wrapper section">
@@ -300,7 +307,7 @@
 
         if (progress >= 100) {
           clearInterval(animationInterval);
-          // Move to next step after animation completes
+          // Move to the next step after a short delay to allow the progress bar to fill
           if (stepTimeout) clearTimeout(stepTimeout);
           stepTimeout = setTimeout(() => {
             currentStep = (currentStep + 1) % totalSteps;
