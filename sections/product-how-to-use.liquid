@@ -262,7 +262,7 @@
       min-width: calc((100vw - 32px - 8px) * 0.9);
       flex-shrink: 0;
       scroll-snap-align: start;
-      overflow: hidden; 
+      overflow: hidden;
       background: white;
       position: relative;
       flex-shrink: 0;
@@ -495,6 +495,7 @@
         console.log('Step:', stepIndex, 'cardWidth:', cardWidth, 'scrollLeft:', scrollLeft, 'containerScrollLeft before:', container.scrollLeft);
         container.scrollLeft = scrollLeft;
         console.log('containerScrollLeft after:', container.scrollLeft);
+        console.log('Scrolled to step', stepIndex + 1);
       } else {
         // Desktop: Update image display
         imageItems.forEach((item) => {
@@ -514,16 +515,19 @@
         const elapsed = Date.now() - startTime;
         const progress = Math.min((elapsed / duration) * 100, 100);
 
-        // Update the progress CSS variable for desktop
+        // Update the progress for the current step
         steps[currentStep].style.setProperty('--progress', progress + '%');
 
-        // Update progress bar fill for mobile
+        // Update the width of the progress bar fill
         const progressFill = steps[currentStep].querySelector('.how-to-use-progress-bar-fill');
         if (progressFill) {
           progressFill.style.width = progress + '%';
         }
 
+
+        // If progress is complete move to the next step
         if (progress >= 100) {
+          console.log('Step', currentStep + 1, 'completed');
           clearInterval(animationInterval);
           // Move to the next step
           if (stepTimeout) clearTimeout(stepTimeout);
