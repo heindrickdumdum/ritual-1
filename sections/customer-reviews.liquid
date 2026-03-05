@@ -395,6 +395,9 @@
       margin-bottom: 1rem;
       flex: 0 0 327px;
       min-width: 327px;
+
+      flex: 0 0 280px;
+      min-width: 280px;
     }
 
     #shopify-section-{{ section.id }} .review-card__header {
@@ -405,6 +408,10 @@
 
     #shopify-section-{{ section.id }} .customer-reviews__button {
       width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .customer-reviews__carousel-track {
+      gap: 0.75rem;
     }
 
     {% if section.settings.title_font_size_mobile != blank %}
@@ -683,23 +690,31 @@
         </div>
       </div>
 
-      <div class="customer-reviews__carousel-nav-wrapper">
-        <button class="customer-reviews__carousel-nav" data-carousel-prev aria-label="Previous review">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
+      <div>
+        <div class="customer-reviews__carousel-nav-wrapper">
+          <div>
+            <button class="customer-reviews__carousel-nav" data-carousel-prev aria-label="Previous review">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+          </div>
 
-        <div class="customer-reviews__carousel-progress">
-          <div class="customer-reviews__carousel-progress-bar" data-carousel-progress></div>
+          <div class="customer-reviews__carousel-progress tw-w-full">
+            <div class="customer-reviews__carousel-progress-bar" data-carousel-progress></div>
+          </div>
+
+          <div>
+            <button class="customer-reviews__carousel-nav" data-carousel-next aria-label="Next review">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
         </div>
 
-        <button class="customer-reviews__carousel-nav" data-carousel-next aria-label="Next review">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
       </div>
+
     </div>
 
 
