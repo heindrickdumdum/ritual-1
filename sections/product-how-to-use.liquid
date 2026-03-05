@@ -148,6 +148,10 @@
     font-weight: 700;
   }
 
+  #shopify-section-{{ section.id }} .how-to-use-step-number-mobile {
+    display: none;
+  }
+
   #shopify-section-{{ section.id }} .how-to-use-step-number.active {
     background-color: #26736D;
   }
@@ -186,7 +190,7 @@
     #shopify-section-{{ section.id }} .how-to-use-image-header-mobile {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 16px;
       margin-bottom: 24px;
     }
 
@@ -219,6 +223,7 @@
     #shopify-section-{{ section.id }} .how-to-use-main {
       flex-direction: column;
       gap: 0;
+      width: 100%;
     }
 
     #shopify-section-{{ section.id }} .how-to-use-images {
@@ -227,9 +232,6 @@
 
     #shopify-section-{{ section.id }} .how-to-use-list {
       width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
     }
 
     #shopify-section-{{ section.id }} .how-to-use-header {
@@ -240,59 +242,47 @@
       display: flex;
       flex-direction: row;
       gap: 8px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 12px;
       width: 100%;
       box-sizing: border-box;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
 
     #shopify-section-{{ section.id }} .how-to-use-steps::-webkit-scrollbar {
-      height: 4px;
-    }
-
-    #shopify-section-{{ section.id }} .how-to-use-steps::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    #shopify-section-{{ section.id }} .how-to-use-steps::-webkit-scrollbar-thumb {
-      background: #E9EAEB;
-      border-radius: 2px;
+      display: none;
     }
 
     #shopify-section-{{ section.id }} .how-to-use-step {
       flex-direction: column;
       gap: 0;
       padding: 0;
-      min-width: calc(100vw - 32px - 8px);
-      width: calc(100vw - 32px - 8px);
+      width: calc((100vw - 32px - 8px) * 0.9);
+      min-width: calc((100vw - 32px - 8px) * 0.9);
+      flex-shrink: 0;
       scroll-snap-align: start;
-      border-radius: 12px;
-      overflow: hidden;
+      overflow: hidden; 
       background: white;
-      border: 1px solid #E9EAEB;
       position: relative;
       flex-shrink: 0;
     }
 
     #shopify-section-{{ section.id }} .how-to-use-step:last-child {
-      margin-right: 16px;
+      margin-right: 0;
     }
 
     #shopify-section-{{ section.id }} .how-to-use-step::after {
       display: none;
     }
 
-    #shopify-section-{{ section.id }} .how-to-use-step-number {
-      display: none;
-    }
-
     #shopify-section-{{ section.id }} .how-to-use-step-image {
       display: block;
       width: 100%;
-      aspect-ratio: 11 / 9;
+      aspect-ratio: 12 / 11;
       overflow: hidden;
       position: relative;
+      border-radius: 12px;
     }
 
     #shopify-section-{{ section.id }} .how-to-use-step-image img {
@@ -320,6 +310,26 @@
     #shopify-section-{{ section.id }} .how-to-use-step-content {
       gap: 12px;
       padding: 16px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-step-number-desktop {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-step-number-mobile {
+      display: flex;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-step-content {
+      padding: 0;
+      margin-top: 32px;
+      gap: 0;
+    }
+
+    #shopify-section-{{ section.id }} .how-to-use-step-number-mobile {
+      margin-bottom: 24px;
     }
 
     #shopify-section-{{ section.id }} .how-to-use-step-title {
@@ -327,6 +337,7 @@
       line-height: 28px;
       font-weight: 700;
       margin: 0;
+      margin-bottom: 16px;
     }
 
     #shopify-section-{{ section.id }} .how-to-use-step-details {
@@ -341,7 +352,7 @@
       width: 100%;
       height: 2px;
       background-color: #E9EAEB;
-      margin-top: 16px;
+      margin-top: 24px;
     }
 
     #shopify-section-{{ section.id }} .how-to-use-progress-bar-fill {
@@ -358,6 +369,17 @@
     <h2>How to Use for Best Results</h2>
     <p>A simple, 3-step daily ritual for stronger, fuller hair.</p>
   </div>
+
+  <div class="how-to-use-header">
+    {%- if section.settings.title != blank -%}
+      <h2 class="how-to-use-title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.description != blank -%}
+      <p class="how-to-use-description">{{ section.settings.description }}</p>
+    {%- endif -%}
+  </div>
+
   <div class="how-to-use-main">
     {%- if section.blocks.size > 0 -%}
       <div class="how-to-use-images">
@@ -386,16 +408,6 @@
       </div>
 
       <div class="how-to-use-list">
-        <div class="how-to-use-header">
-          {%- if section.settings.title != blank -%}
-            <h2 class="how-to-use-title">{{ section.settings.title }}</h2>
-          {%- endif -%}
-
-          {%- if section.settings.description != blank -%}
-            <p class="how-to-use-description">{{ section.settings.description }}</p>
-          {%- endif -%}
-        </div>
-
         <div class="how-to-use-steps" data-section-id="{{ section.id }}">
           {%- for block in section.blocks -%}
             {%- case block.type -%}
@@ -408,7 +420,7 @@
                     data-active="true"
                   {% endif %}
                 >
-                  <div class="how-to-use-step-number">{{ forloop.index }}</div>
+                  <div class="how-to-use-step-number how-to-use-step-number-desktop">{{ forloop.index }}</div>
 
                   <div class="how-to-use-step-image">
                     {%- if block.settings.image != blank -%}
@@ -418,6 +430,7 @@
                   </div>
 
                   <div class="how-to-use-step-content">
+                    <div class="how-to-use-step-number how-to-use-step-number-mobile">{{ forloop.index }}</div>
                     {%- if block.settings.title != blank -%}
                       <h3 class="how-to-use-step-title">{{ block.settings.title }}</h3>
                     {%- endif -%}
@@ -442,66 +455,28 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const sectionId = '{{ section.id }}';
-    const stepsContainer = document.querySelector(`[data-section-id="${sectionId}"]`);
     const imageWrapper = document.querySelector(`#shopify-section-${sectionId} .how-to-use-image-wrapper`);
+    const stepsContainer = document.querySelector(`#shopify-section-${sectionId} .how-to-use-steps`);
     const isMobile = window.innerWidth <= 768;
 
-    if (!stepsContainer) return;
+    if (!imageWrapper || !stepsContainer) return;
 
+    const imageItems = Array.from(imageWrapper.querySelectorAll('[data-step]'));
     const steps = Array.from(stepsContainer.querySelectorAll('[data-step]'));
-    const imageItems = imageWrapper ? Array.from(imageWrapper.querySelectorAll('[data-step]')) : [];
-    const totalSteps = steps.length;
     let currentStep = 0;
     let animationInterval = null;
     let stepTimeout = null;
 
-    // Preload all images
-    function preloadImages() {
-      if (imageWrapper) {
-        imageItems.forEach((item) => {
-          const img = item.querySelector('img');
-          if (img && img.src) {
-            const preloadImg = new Image();
-            preloadImg.src = img.src;
-          }
-        });
-      }
-
-      steps.forEach((step) => {
-        const img = step.querySelector('img');
-        if (img && img.src) {
-          const preloadImg = new Image();
-          preloadImg.src = img.src;
-        }
-      });
-    }
-
     function updateStep(stepIndex) {
-      // Remove active class from all steps
+      // Update active class on steps
       steps.forEach((step) => {
         step.classList.remove('active');
         step.removeAttribute('data-active');
       });
-
-      // Add active class to current step
       steps[stepIndex].classList.add('active');
       steps[stepIndex].setAttribute('data-active', 'true');
 
-      if (isMobile) {
-        // On mobile, scroll the step into view
-        const step = steps[stepIndex];
-        step.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-      } else {
-        // Desktop: Update image display
-        if (imageWrapper) {
-          imageItems.forEach((item) => {
-            item.style.display = 'none';
-          });
-          imageItems[stepIndex].style.display = 'block';
-        }
-      }
-
-      // Reset progress for all steps
+      // Reset progress
       steps.forEach((step) => {
         step.style.setProperty('--progress', '0%');
         const progressFill = step.querySelector('.how-to-use-progress-bar-fill');
@@ -509,10 +484,27 @@
           progressFill.style.width = '0%';
         }
       });
+
+      if (isMobile) {
+        // Mobile: Scroll to the step
+        const step = steps[stepIndex];
+        const container = stepsContainer;
+        const cardWidth = step.offsetWidth;
+        const gap = 8;
+        const scrollLeft = stepIndex * (cardWidth + gap);
+        console.log('Step:', stepIndex, 'cardWidth:', cardWidth, 'scrollLeft:', scrollLeft, 'containerScrollLeft before:', container.scrollLeft);
+        container.scrollLeft = scrollLeft;
+        console.log('containerScrollLeft after:', container.scrollLeft);
+      } else {
+        // Desktop: Update image display
+        imageItems.forEach((item) => {
+          item.style.display = 'none';
+        });
+        imageItems[stepIndex].style.display = 'block';
+      }
     }
 
     function animateProgress() {
-      const currentStepElement = steps[currentStep];
       const duration = 3000; // 3 seconds
       const startTime = Date.now();
 
@@ -521,29 +513,28 @@
       animationInterval = setInterval(() => {
         const elapsed = Date.now() - startTime;
         const progress = Math.min((elapsed / duration) * 100, 100);
-        currentStepElement.style.setProperty('--progress', progress + '%');
 
-        // Update mobile progress bar fill
-        const progressFill = currentStepElement.querySelector('.how-to-use-progress-bar-fill');
+        // Update the progress CSS variable for desktop
+        steps[currentStep].style.setProperty('--progress', progress + '%');
+
+        // Update progress bar fill for mobile
+        const progressFill = steps[currentStep].querySelector('.how-to-use-progress-bar-fill');
         if (progressFill) {
           progressFill.style.width = progress + '%';
         }
 
         if (progress >= 100) {
           clearInterval(animationInterval);
-          // Move to the next step after a short delay to allow the progress bar to fill
+          // Move to the next step
           if (stepTimeout) clearTimeout(stepTimeout);
           stepTimeout = setTimeout(() => {
-            currentStep = (currentStep + 1) % totalSteps;
+            currentStep = (currentStep + 1) % steps.length;
             updateStep(currentStep);
             animateProgress();
           }, 0);
         }
       }, 16); // ~60fps
     }
-
-    // Preload all images first
-    preloadImages();
 
     // Initialize first step
     updateStep(0);
