@@ -356,7 +356,7 @@
         if (cards.length === 0) return 0;
         const cardWidth = cards[0].offsetWidth;
         const trackStyle = window.getComputedStyle(track);
-        const gap = parseFloat(trackStyle.gap) || 24;
+        const gap = parseFloat(trackStyle.gap) || 32;
         return cardWidth + gap;
       }
       
@@ -397,11 +397,11 @@
         
         track.style.transform = `translateX(-${offset}px)`;
         
-        const progress = maxIndex > 0 ? ((currentIndex + 1) / (maxIndex + 1)) * 100 : 100;
+        const progress = ((offset + wrapperWidth) / trackWidth) * 100;
         progressBar.style.width = `${progress}%`;
         
         prevBtn.disabled = currentIndex === 0;
-        nextBtn.disabled = currentIndex >= maxIndex;
+        nextBtn.disabled = offset >= maxOffset;
       }
       
       prevBtn.addEventListener('click', () => {
