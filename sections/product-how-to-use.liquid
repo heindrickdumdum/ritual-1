@@ -265,7 +265,6 @@
       overflow: hidden;
       background: white;
       position: relative;
-      flex-shrink: 0;
     }
 
     #shopify-section-{{ section.id }} .how-to-use-step:last-child {
@@ -308,10 +307,11 @@
     }
 
     #shopify-section-{{ section.id }} .how-to-use-step-content {
-      gap: 12px;
-      padding: 16px;
       display: flex;
       flex-direction: column;
+      padding: 0;
+      margin-top: 32px;
+      gap: 0;
     }
 
     #shopify-section-{{ section.id }} .how-to-use-step-number-desktop {
@@ -320,12 +320,6 @@
 
     #shopify-section-{{ section.id }} .how-to-use-step-number-mobile {
       display: flex;
-    }
-
-    #shopify-section-{{ section.id }} .how-to-use-step-content {
-      padding: 0;
-      margin-top: 32px;
-      gap: 0;
     }
 
     #shopify-section-{{ section.id }} .how-to-use-step-number-mobile {
@@ -492,10 +486,7 @@
         const cardWidth = step.offsetWidth;
         const gap = 8;
         const scrollLeft = stepIndex * (cardWidth + gap);
-        console.log('Step:', stepIndex, 'cardWidth:', cardWidth, 'scrollLeft:', scrollLeft, 'containerScrollLeft before:', container.scrollLeft);
         container.scrollLeft = scrollLeft;
-        console.log('containerScrollLeft after:', container.scrollLeft);
-        console.log('Scrolled to step', stepIndex + 1);
       } else {
         // Desktop: Update image display
         imageItems.forEach((item) => {
@@ -527,9 +518,8 @@
 
         // If progress is complete move to the next step
         if (progress >= 100) {
-          console.log('Step', currentStep + 1, 'completed');
           clearInterval(animationInterval);
-          // Move to the next step
+          
           if (stepTimeout) clearTimeout(stepTimeout);
           stepTimeout = setTimeout(() => {
             currentStep = (currentStep + 1) % steps.length;
