@@ -369,6 +369,8 @@
       <h2 class="how-to-use-title">{{ section.settings.title }}</h2>
     {%- endif -%}
 
+    
+
     {%- if section.settings.description != blank -%}
       <p class="how-to-use-description">{{ section.settings.description }}</p>
     {%- endif -%}
@@ -448,6 +450,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    console.log('Initializing How To Use section script for section ID: {{ section.id }}');
     const sectionId = '{{ section.id }}';
     const imageWrapper = document.querySelector(`#shopify-section-${sectionId} .how-to-use-image-wrapper`);
     const stepsContainer = document.querySelector(`#shopify-section-${sectionId} .how-to-use-steps`);
@@ -462,7 +465,7 @@
     let stepTimeout = null;
 
     function updateStep(stepIndex) {
-      // Update active class on steps
+      // Update active step classes and attributes
       steps.forEach((step) => {
         step.classList.remove('active');
         step.removeAttribute('data-active');
@@ -479,6 +482,7 @@
         }
       });
 
+
       if (isMobile) {
         // Mobile: Scroll to the step
         const step = steps[stepIndex];
@@ -488,7 +492,7 @@
         const scrollLeft = stepIndex * (cardWidth + gap);
         container.scrollLeft = scrollLeft;
       } else {
-        // Desktop: Update image display
+        // Desktop: Show corresponding image
         imageItems.forEach((item) => {
           item.style.display = 'none';
         });
@@ -506,7 +510,7 @@
         const elapsed = Date.now() - startTime;
         const progress = Math.min((elapsed / duration) * 100, 100);
 
-        // Update the progress for the current step
+        // Update the progress CSS variable for the current step
         steps[currentStep].style.setProperty('--progress', progress + '%');
 
         // Update the width of the progress bar fill
@@ -515,11 +519,10 @@
           progressFill.style.width = progress + '%';
         }
 
-
-        // If progress is complete move to the next step
+        //If progress is complete, move to the next step after a short delay
         if (progress >= 100) {
           clearInterval(animationInterval);
-          
+
           if (stepTimeout) clearTimeout(stepTimeout);
           stepTimeout = setTimeout(() => {
             currentStep = (currentStep + 1) % steps.length;
