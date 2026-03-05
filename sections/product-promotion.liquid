@@ -1,7 +1,4 @@
 {%- style -%}
-  #shopify-section-{{ section.id }} {
-  }
-
   #shopify-section-{{ section.id }} .product-promotion-wrapper {
     place-items: center;
     padding: 160px;
@@ -64,6 +61,7 @@
   }
 
   #shopify-section-{{ section.id }} .question-mark-icon {
+    position: relative;
     background: none;
     border: none;
     padding: 0;
@@ -95,10 +93,6 @@
     display: block;
   }
 
-  #shopify-section-{{ section.id }} .question-mark-icon {
-    position: relative;
-  }
-
   #shopify-section-{{ section.id }} .modal-content {
     all: unset;
   }
@@ -124,7 +118,6 @@
 
   #shopify-section-{{ section.id }} .content-header-cell {
     padding: 32px;
-    font-weight: 700;
     text-align: center;
     border-bottom: 1px solid #E9EAEB;
   }
@@ -132,7 +125,6 @@
   #shopify-section-{{ section.id }} .content-header-cell:nth-child(2) {
     font-size: 20px;
     line-height: 140%;
-    font-weight: 700;
     background-color: #FFFFFF;
     border-radius: 20px 20px 0 0;
   }
